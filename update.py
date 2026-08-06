@@ -243,9 +243,11 @@ def main():
     print(f"  📊 去重后剩余 {len(deduped)} 个站点")
 
     # 5. 生成 tvbox.json
+    now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     tvbox_data = {
         "spider": "",
         "wallpaper": "https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/wallpaper.jpg",
+        "updateTime": now,
         "warningText": "资源来自网络，仅供学习交流使用，请勿用于商业用途。",
         "sites": deduped,
     }
