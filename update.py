@@ -145,6 +145,9 @@ LINES = [
     ("挺好分享多仓", "https://ztha.top/TVBox/GYCK.json", []),
     ("饭太硬(ftygit)", "https://cdn09022024.gitlink.org.cn/api/v1/repos/xxooo/in/raw/in.bmp", []),
     ("饭太硬(官方)", "http://www.饭太硬.cc/tv", []),
+    ("王二小", "http://new.王二小放牛娃.top", []),
+    ("小盒子多仓", "http://xhztv.top/dc", []),
+    ("拾光多仓", "http://xmbjm.fh4u.org/dc.txt", []),
 ]
 
 # 上游数据源（从中拉取 sites）
