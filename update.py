@@ -161,7 +161,7 @@ def main():
     # 4. 生成 tvbox.json
     tvbox_data = {
         "spider": "",
-        "wallpaper": "https://raw.githubusercontent.com/你的用户名/tvbox-sources/main/wallpaper.jpg",
+        "wallpaper": "https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/wallpaper.jpg",
         "warningText": "资源来自网络，仅供学习交流使用，请勿用于商业用途。",
         "sites": deduped,
     }

@@ -9,7 +9,7 @@
 在 TVBox / 影视仓 的配置地址中输入以下链接：
 
 ```
-https://raw.githubusercontent.com/你的用户名/tvbox-sources/main/urls.json
+https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/urls.json
 ```
 
 包含 12 个精选线路，一个失效自动切换。
@@ -17,7 +17,7 @@ https://raw.githubusercontent.com/你的用户名/tvbox-sources/main/urls.json
 ### 方式二：单仓配置
 
 ```
-https://raw.githubusercontent.com/你的用户名/tvbox-sources/main/tvbox.json
+https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/tvbox.json
 ```
 
 包含精选去重后的站点列表。
