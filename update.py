@@ -11,6 +11,7 @@ import urllib.request
 import urllib.error
 import ssl
 from datetime import datetime
+from urllib.parse import urlparse, urlunparse
 
 # 忽略 SSL 证书验证
 ssl_ctx = ssl.create_default_context()
@@ -22,10 +23,21 @@ HEALTH_FILE = os.path.join(SCRIPT_DIR, "health_state.json")
 MAX_FAILURES = 3
 
 
+def encode_url(url):
+    """将中文域名转为 IDNA punycode 编码，解决 urllib 无法处理中文域名的问题"""
+    parsed = urlparse(url)
+    if parsed.hostname and not parsed.hostname.isascii():
+        encoded_host = parsed.hostname.encode("idna").decode("ascii")
+        return urlunparse((parsed.scheme, encoded_host, parsed.path,
+                           parsed.params, parsed.query, parsed.fragment))
+    return url
+
+
 def fetch_json(url, timeout=15):
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
     }
+    url = encode_url(url)
     req = urllib.request.Request(url, headers=headers)
     try:
         with urllib.request.urlopen(req, timeout=timeout, context=ssl_ctx) as resp:
@@ -55,6 +67,7 @@ def fetch_bmp_json(url, timeout=15):
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
     }
+    url = encode_url(url)
     req = urllib.request.Request(url, headers=headers)
     try:
         with urllib.request.urlopen(req, timeout=timeout, context=ssl_ctx) as resp:
@@ -101,6 +114,7 @@ def check_source_health(url):
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
     }
+    url = encode_url(url)
     req = urllib.request.Request(url, headers=headers)
     try:
         with urllib.request.urlopen(req, timeout=15, context=ssl_ctx) as resp:
