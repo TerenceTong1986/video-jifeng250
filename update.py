@@ -1,28 +1,28 @@
 #!/usr/bin/env python3
 """
 TVBox 整合源自动更新脚本
-每天自动拉取上游源，去重合并，生成最新的 tvbox.json 和 urls.json
+每天自动拉取上游源，去重合并，自动移除失效线路，同步国内镜像
 """
 
 import json
-import hashlib
 import os
-import sys
+import re
 import urllib.request
 import urllib.error
 import ssl
 from datetime import datetime
 
-# 忽略 SSL 证书验证（某些源可能是自签名证书）
+# 忽略 SSL 证书验证
 ssl_ctx = ssl.create_default_context()
 ssl_ctx.check_hostname = False
 ssl_ctx.verify_mode = ssl.CERT_NONE
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+HEALTH_FILE = os.path.join(SCRIPT_DIR, "health_state.json")
+MAX_FAILURES = 3
 
 
 def fetch_json(url, timeout=15):
-    """获取远程 JSON 数据"""
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
     }
@@ -30,24 +30,17 @@ def fetch_json(url, timeout=15):
     try:
         with urllib.request.urlopen(req, timeout=timeout, context=ssl_ctx) as resp:
             data = resp.read().decode("utf-8", errors="ignore")
-            # 去除 BOM 和 JS 注释
             if data.startswith("\ufeff"):
                 data = data[1:]
-            # 尝试解析 JSON
             try:
                 return json.loads(data)
             except json.JSONDecodeError:
-                # 有些源在 JSON 前面有 JS 注释行，尝试去掉
                 lines = data.split("\n")
-                clean_lines = [
-                    l for l in lines if not l.strip().startswith("//")
-                ]
+                clean_lines = [l for l in lines if not l.strip().startswith("//")]
                 clean_data = "\n".join(clean_lines)
                 try:
                     return json.loads(clean_data)
                 except json.JSONDecodeError:
-                    # 移除控制字符后再试
-                    import re
                     clean_data = re.sub(r'[\x00-\x1f\x7f]', '', clean_data)
                     return json.loads(clean_data)
     except Exception as e:
@@ -55,22 +48,7 @@ def fetch_json(url, timeout=15):
         return None
 
 
-def fetch_text(url, timeout=15):
-    """获取远程文本数据"""
-    headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
-    }
-    req = urllib.request.Request(url, headers=headers)
-    try:
-        with urllib.request.urlopen(req, timeout=timeout, context=ssl_ctx) as resp:
-            return resp.read().decode("utf-8", errors="ignore")
-    except Exception as e:
-        print(f"  ⚠️  获取失败: {e}")
-        return None
-
-
 def deduplicate_sites(sites):
-    """按 key 去重，保留最后出现的"""
     seen = {}
     for site in sites:
         key = site.get("key", "")
@@ -79,39 +57,64 @@ def deduplicate_sites(sites):
     return list(seen.values())
 
 
-def generate_urls_json():
-    """生成多仓配置"""
-    urls = [
-        {"name": "⭐小盒子4K", "url": "http://xhztv.top/4k.json"},
-        {"name": "⭐小盒子单仓", "url": "http://xhztv.top/xhz/"},
-        {"name": "⭐老刘备", "url": "https://raw.liucn.cc/box/m.json"},
-        {"name": "⭐小马", "url": "https://szyyds.cn/tv/x.json"},
-        {"name": "⭐无名", "url": "https://6800.kstore.vip/fish.json"},
-        {"name": "⭐jinenge", "url": "https://jinenge.us.kg/app/tvbox/tvbox.json"},
-        {"name": "⭐摸鱼儿", "url": "http://摸鱼儿.cc"},
-        {"name": "⭐肥猫", "url": "http://肥猫.net/"},
-        {"name": "⭐OK影视", "url": "https://cdn.jsdelivr.net/gh/2hacc/TVBox@main/oktv.json"},
-        {"name": "⭐嗷呜", "url": "http://itv666.cc/aowu/config.webp"},
-        {"name": "⭐VOX", "url": "http://rihou.cc:88/demo.php"},
-        {"name": "⭐挺好分享多仓", "url": "https://ztha.top/TVBox/GYCK.json"},
-    ]
-    return {"urls": urls}
+def load_health_state():
+    try:
+        with open(HEALTH_FILE, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        return {}
+
+
+def save_health_state(state):
+    with open(HEALTH_FILE, "w", encoding="utf-8") as f:
+        json.dump(state, f, ensure_ascii=False, indent=2)
 
 
 def check_source_health(url):
-    """检查源是否可用（使用 GET 请求，有些服务器不支持 HEAD）"""
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
     }
     req = urllib.request.Request(url, headers=headers)
     try:
-        with urllib.request.urlopen(req, timeout=10, context=ssl_ctx) as resp:
+        with urllib.request.urlopen(req, timeout=15, context=ssl_ctx) as resp:
             return resp.status == 200
     except urllib.error.HTTPError as e:
-        # 301/302 重定向也算正常
-        return e.code in (301, 302, 303, 307, 308)
+        if e.code in (301, 302, 303, 307, 308):
+            return True
+        return False
     except Exception:
         return False
+
+
+# 线路定义：(名称, 主地址, [镜像地址列表])
+LINES = [
+    ("小盒子4K", "http://xhztv.top/4k.json", []),
+    ("小盒子单仓", "http://xhztv.top/xhz/", []),
+    ("老刘备", "https://raw.liucn.cc/box/m.json", []),
+    ("小马", "https://szyyds.cn/tv/x.json", []),
+    ("无名", "https://6800.kstore.vip/fish.json", []),
+    ("jinenge", "https://jinenge.us.kg/app/tvbox/tvbox.json", []),
+    ("摸鱼儿", "http://摸鱼儿.cc", []),
+    ("肥猫", "http://肥猫.net/", []),
+    ("OK影视", "https://cdn.jsdelivr.net/gh/2hacc/TVBox@main/oktv.json", [
+        "https://fastly.jsdelivr.net/gh/2hacc/TVBox@main/oktv.json",
+    ]),
+    ("嗷呜", "http://itv666.cc/aowu/config.webp", []),
+    ("VOX", "http://rihou.cc:88/demo.php", []),
+    ("挺好分享多仓", "https://ztha.top/TVBox/GYCK.json", []),
+]
+
+# 上游数据源（从中拉取 sites）
+UPSTREAM_SOURCES = [
+    ("老刘备", "https://raw.liucn.cc/box/m.json"),
+    ("小马", "https://szyyds.cn/tv/x.json"),
+    ("无名", "https://6800.kstore.vip/fish.json"),
+    ("jinenge", "https://jinenge.us.kg/app/tvbox/tvbox.json"),
+    ("小盒子4K", "http://xhztv.top/4k.json"),
+    ("小盒子单仓", "http://xhztv.top/xhz/"),
+    ("OK影视", "https://cdn.jsdelivr.net/gh/2hacc/TVBox@main/oktv.json"),
+    ("VOX", "http://rihou.cc:88/demo.php"),
+]
 
 
 def main():
@@ -120,45 +123,76 @@ def main():
     print(f"⏰ 更新时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print("=" * 50)
 
-    # 1. 更新 urls.json
-    print("\n📋 更新多仓配置 (urls.json)...")
-    urls_data = generate_urls_json()
+    # 1. 健康检查 + 自动移除
+    print(f"\n🔍 健康检查（连续{MAX_FAILURES}次失败自动移除）...")
+    health_state = load_health_state()
+    active_lines = []
+    removed_lines = []
+
+    for name, url, mirrors in LINES:
+        ok = check_source_health(url)
+        if ok:
+            print(f"  ✅ {name} — 正常")
+            health_state[url] = 0
+            active_lines.append((name, url, mirrors))
+        else:
+            fail_count = health_state.get(url, 0) + 1
+            health_state[url] = fail_count
+            if fail_count >= MAX_FAILURES:
+                print(f"  ❌ {name} — 连续 {fail_count} 次失败，已移除")
+                removed_lines.append(name)
+            else:
+                print(f"  ⚠️  {name} — 第 {fail_count}/{MAX_FAILURES} 次失败，保留")
+                active_lines.append((name, url, mirrors))
+
+    save_health_state(health_state)
+    if removed_lines:
+        print(f"\n  🗑️  本次移除: {', '.join(removed_lines)}")
+    print(f"  📊 活跃线路: {len(active_lines)} 个")
+
+    # 2. 生成 urls.json（主地址 + 镜像地址）
+    print("\n📋 生成多仓配置 (urls.json)...")
+    urls = []
+    for name, url, mirrors in active_lines:
+        urls.append({"name": f"⭐{name}", "url": url})
+        for i, mirror in enumerate(mirrors):
+            urls.append({"name": f"🪞{name}镜像{i+1}", "url": mirror})
+
+    # 通用国内镜像入口
+    urls.append({"name": "🪞GitHub镜像(kgithub)", "url": "https://raw.kkgithub.com/jifeng250/tvbox-sources/main/tvbox.json"})
+    urls.append({"name": "🪞GitHub镜像(jsdelivr)", "url": "https://fastly.jsdelivr.net/gh/jifeng250/tvbox-sources@main/tvbox.json"})
+
+    urls_data = {"urls": urls}
     urls_path = os.path.join(SCRIPT_DIR, "urls.json")
     with open(urls_path, "w", encoding="utf-8") as f:
         json.dump(urls_data, f, ensure_ascii=False, indent=2)
-    print(f"   ✅ 已生成 {len(urls_data['urls'])} 个多仓线路")
+    print(f"   ✅ 已生成 {len(urls)} 个线路（含镜像）")
 
-    # 2. 从各个源拉取数据并合并
+    # 3. 拉取上游站点数据
     print("\n🔄 从上游源拉取站点数据...")
-    source_urls = [
-        ("老刘备", "https://raw.liucn.cc/box/m.json"),
-        ("小马", "https://szyyds.cn/tv/x.json"),
-        ("无名", "https://6800.kstore.vip/fish.json"),
-        ("jinenge", "https://jinenge.us.kg/app/tvbox/tvbox.json"),
-        ("小盒子4K", "http://xhztv.top/4k.json"),
-        ("小盒子单仓", "http://xhztv.top/xhz/"),
-    ]
-
     all_sites = []
     total_sites = 0
-    for name, url in source_urls:
+    success_count = 0
+
+    for name, url in UPSTREAM_SOURCES:
         print(f"  📥 正在获取 {name}...", end=" ")
         data = fetch_json(url)
         if data and "sites" in data:
             sites = data["sites"]
             all_sites.extend(sites)
             total_sites += len(sites)
+            success_count += 1
             print(f"✅ 获取 {len(sites)} 个站点")
         else:
             print("❌ 失败")
 
-    print(f"\n  📊 共获取 {total_sites} 个站点（去重前）")
+    print(f"\n  📊 共获取 {total_sites} 个站点（来自 {success_count}/{len(UPSTREAM_SOURCES)} 个源）")
 
-    # 3. 去重
+    # 4. 去重
     deduped = deduplicate_sites(all_sites)
     print(f"  📊 去重后剩余 {len(deduped)} 个站点")
 
-    # 4. 生成 tvbox.json
+    # 5. 生成 tvbox.json
     tvbox_data = {
         "spider": "",
         "wallpaper": "https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/wallpaper.jpg",
@@ -170,22 +204,6 @@ def main():
     with open(tvbox_path, "w", encoding="utf-8") as f:
         json.dump(tvbox_data, f, ensure_ascii=False, indent=2)
     print(f"\n  ✅ 已生成 tvbox.json（{len(deduped)} 个站点）")
-
-    # 5. 健康检查
-    print("\n🔍 对多仓线路进行健康检查...")
-    healthy = 0
-    unhealthy = 0
-    for entry in urls_data["urls"]:
-        url = entry["url"]
-        print(f"  📡 {entry['name']}...", end=" ")
-        ok = check_source_health(url)
-        if ok:
-            print("✅ 正常")
-            healthy += 1
-        else:
-            print("❌ 不可达")
-            unhealthy += 1
-    print(f"\n  📊 健康检查: {healthy} 正常, {unhealthy} 异常")
 
     print("\n" + "=" * 50)
     print("✅ 更新完成！")

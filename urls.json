@@ -37,6 +37,10 @@
       "url": "https://cdn.jsdelivr.net/gh/2hacc/TVBox@main/oktv.json"
     },
     {
+      "name": "🪞OK影视镜像1",
+      "url": "https://fastly.jsdelivr.net/gh/2hacc/TVBox@main/oktv.json"
+    },
+    {
       "name": "⭐嗷呜",
       "url": "http://itv666.cc/aowu/config.webp"
     },
@@ -47,6 +51,14 @@
     {
       "name": "⭐挺好分享多仓",
       "url": "https://ztha.top/TVBox/GYCK.json"
+    },
+    {
+      "name": "🪞GitHub镜像(kgithub)",
+      "url": "https://raw.kkgithub.com/jifeng250/tvbox-sources/main/tvbox.json"
+    },
+    {
+      "name": "🪞GitHub镜像(jsdelivr)",
+      "url": "https://fastly.jsdelivr.net/gh/jifeng250/tvbox-sources@main/tvbox.json"
     }
   ]
 }
