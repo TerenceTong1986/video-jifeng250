@@ -29,7 +29,8 @@ def fetch_json(url, timeout=15):
     req = urllib.request.Request(url, headers=headers)
     try:
         with urllib.request.urlopen(req, timeout=timeout, context=ssl_ctx) as resp:
-            data = resp.read().decode("utf-8", errors="ignore")
+            raw = resp.read()
+            data = raw.decode("utf-8", errors="ignore")
             if data.startswith("\ufeff"):
                 data = data[1:]
             try:
@@ -43,6 +44,32 @@ def fetch_json(url, timeout=15):
                 except json.JSONDecodeError:
                     clean_data = re.sub(r'[\x00-\x1f\x7f]', '', clean_data)
                     return json.loads(clean_data)
+    except Exception as e:
+        print(f"  ⚠️  获取失败: {e}")
+        return None
+
+
+def fetch_bmp_json(url, timeout=15):
+    """从 BMP 图片中提取内嵌的 base64 JSON 配置（饭太硬格式）"""
+    import base64
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+    }
+    req = urllib.request.Request(url, headers=headers)
+    try:
+        with urllib.request.urlopen(req, timeout=timeout, context=ssl_ctx) as resp:
+            raw = resp.read()
+        text = raw.decode("latin-1")
+        match = re.search(r"[A-Za-z0-9+/=]{500,}", text)
+        if not match:
+            return None
+        decoded = base64.b64decode(match.group())
+        json_str = decoded.decode("utf-8", errors="ignore")
+        start = json_str.find("{")
+        end = json_str.rfind("}")
+        if start < 0 or end <= start:
+            return None
+        return json.loads(json_str[start:end+1])
     except Exception as e:
         print(f"  ⚠️  获取失败: {e}")
         return None
@@ -102,6 +129,8 @@ LINES = [
     ("嗷呜", "http://itv666.cc/aowu/config.webp", []),
     ("VOX", "http://rihou.cc:88/demo.php", []),
     ("挺好分享多仓", "https://ztha.top/TVBox/GYCK.json", []),
+    ("饭太硬(ftygit)", "https://cdn09022024.gitlink.org.cn/api/v1/repos/xxooo/in/raw/in.bmp", []),
+    ("饭太硬(官方)", "http://www.饭太硬.cc/tv", []),
 ]
 
 # 上游数据源（从中拉取 sites）
@@ -114,6 +143,7 @@ UPSTREAM_SOURCES = [
     ("小盒子单仓", "http://xhztv.top/xhz/"),
     ("OK影视", "https://cdn.jsdelivr.net/gh/2hacc/TVBox@main/oktv.json"),
     ("VOX", "http://rihou.cc:88/demo.php"),
+    ("饭太硬", "https://cdn09022024.gitlink.org.cn/api/v1/repos/xxooo/in/raw/in.bmp"),
 ]
 
 
@@ -177,6 +207,9 @@ def main():
     for name, url in UPSTREAM_SOURCES:
         print(f"  📥 正在获取 {name}...", end=" ")
         data = fetch_json(url)
+        if data is None and "bmp" in url:
+            print("重试 BMP 解析...", end=" ")
+            data = fetch_bmp_json(url)
         if data and "sites" in data:
             sites = data["sites"]
             all_sites.extend(sites)
