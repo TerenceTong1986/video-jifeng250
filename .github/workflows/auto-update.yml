@@ -8,6 +8,11 @@ on:
   push:
     branches: [main]
 
+# 防止定时任务与手动触发同时运行产生提交竞态
+concurrency:
+  group: tvbox-update
+  cancel-in-progress: true
+
 permissions:
   contents: write
 
@@ -24,6 +29,7 @@ jobs:
           python-version: '3.11'
 
       - name: 运行更新脚本
+        id: run_update
         run: python update.py
 
       - name: 检查是否有变化
@@ -36,6 +42,21 @@ jobs:
         run: |
           git config --local user.name "github-actions[bot]"
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git add tvbox.json urls.json
-          git commit -m "🔄 自动更新 TVBox 源 - $(date +'%Y-%m-%d %H:%M')"
+          # 关键修复：health_state.json / speed_state.json 必须一并提交，
+          # 熔断计数与测速历史才能跨天持久化
+          git add tvbox.json urls.json health_state.json speed_state.json
+          git commit -m "🔄 自动更新 TVBox 源 - $(date +'%Y-%m-%d %H:%M') (站点:${{ steps.run_update.outputs.sites }})"
           git push
+
+      - name: 失败告警（Telegram）
+        if: failure()
+        env:
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
+        run: |
+          if [ -n "$TG_BOT_TOKEN" ] && [ -n "$TG_CHAT_ID" ]; then
+            curl -s -X POST "https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage" \
+              -d chat_id="${TG_CHAT_ID}" \
+              -d text="❌ TVBox 源自动更新失败
+${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" > /dev/null
+          fi
