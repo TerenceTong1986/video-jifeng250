@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-TVBox 整合源自动更新脚本 v2.4（优化版）
+TVBox 整合源自动更新脚本 v2.5（优化版）
 基于 jifeng250/tvbox-sources 原版重构。
 
 【修复的问题】
@@ -30,7 +30,7 @@ TVBox 整合源自动更新脚本 v2.4（优化版）
      ⚠️   波动  有失败史（1-2 次）
 10. urls.json 按星级排序输出（推荐线路排最前），星级直接体现在线路名前缀。
 
-【v2.4 新增：源库扩充】
+【v2.5 新增：源库扩充】
 11. 线路 17 → 21 条，上游源 9 → 13 个：新增 高天流云(298站)/俊佬(24站)/
     道长(435站)/FM影视(82站)，全部经真实探活 + 格式校验后收录
     （2026-08-07 调研：南风/香雅情/潇洒/太阳/小美 等因国内不可达或格式不兼容未收录）。
@@ -78,11 +78,21 @@ MAX_SPEED_SAMPLES = 5            # 每线路保留的测速样本数（滑动窗
 STAR_TTFB_ABSOLUTE_MAX = 3000.0  # 绝对约束：平均 TTFB 超过该值（ms）一律降为 ⭐
 STAR_ORDER = {"⭐⭐⭐": 0, "⭐⭐": 1, "⭐": 2, "⚠️": 3}  # 星级排序权重
 
-# --- 单仓接口评分参数（v2.4）---
+# --- 单仓接口评分参数（v2.5）---
 SCORE_TIMEOUT = 6        # 单仓接口测速超时（秒）
 SCORE_CONCURRENCY = 16   # 单仓接口测速并发数
 SCORE_TTFB_A = 1000.0    # TTFB < 1s → A
 SCORE_TTFB_B = 3000.0    # TTFB < 3s → B，否则 C
+
+# --- 深度检测与动态熔断参数（v2.5）---
+DEAD_CAND_FILE = os.path.join(SCRIPT_DIR, "dead_candidates.json")
+DEEP_CONCURRENCY = 8     # 深度检测并发
+DEEP_TIMEOUT = 6         # 目标站探测超时（秒）
+DEEP_FETCH_TIMEOUT = 8   # 配置 JSON 下载超时（秒）
+DEAD_THRESHOLD = 3       # D 级连续失败次数，达到自动剔除
+# 域名停放页特征（命中即判源站已废弃）
+PARKING_MARKERS = ["for sale", "abovedomains", "domain may be",
+                   "buy this domain", "domain is parked", "forsale"]
 
 ssl_ctx = ssl.create_default_context()
 ssl_ctx.check_hostname = False
@@ -262,7 +272,7 @@ def save_health_state(state):
 
 # ---------------------------------------------------------------------------
 # 线路定义：(名称, 主地址, [镜像地址列表])
-# v2.4 扩充：新增高天流云 / 俊佬 / 道长 / FM影视 4 条已验证线路（21 条）
+# v2.5 扩充：新增高天流云 / 俊佬 / 道长 / FM影视 4 条已验证线路（21 条）
 # ---------------------------------------------------------------------------
 LINES = [
     ("小盒子4K", "http://xhztv.top/4k.json", []),
@@ -293,7 +303,7 @@ LINES = [
 # ---------------------------------------------------------------------------
 # 上游数据源：(名称, 地址, need_bmp)。顺序即优先级：靠前的源（主源）同 key 站点胜出。
 # 饭太硬使用 BMP 图内嵌配置，标记 need_bmp=True 走专用解析。
-# v2.4 扩充：新增道长/高天流云/FM影视/俊佬 4 个已验证源（13 个上游源），
+# v2.5 扩充：新增道长/高天流云/FM影视/俊佬 4 个已验证源（13 个上游源），
 # 追加在原有主源之后，作为站点补充源（重叠 key 仍以原主源为准）。
 # ---------------------------------------------------------------------------
 UPSTREAM_SOURCES = [
@@ -313,7 +323,7 @@ UPSTREAM_SOURCES = [
 ]
 
 # ---------------------------------------------------------------------------
-# 失效站点维护表（v2.4 合并自 reasonix 实测调研成果）
+# 失效站点维护表（v2.5 合并自 reasonix 实测调研成果）
 # ---------------------------------------------------------------------------
 # 已知失效 API 修复表：将失效的 API 地址替换为可用的替代地址
 API_FIXES = {
@@ -376,56 +386,147 @@ GRADE_RANK = {"A": 0, "B": 1, "C": 2, "D": 3, "N/A": 4}
 GRADE_ICON = {"A": "🟢", "B": "🟡", "C": "🟠", "D": "🔴", "N/A": "⚪"}
 
 
+def load_dead_candidates():
+    """动态黑名单计数（D 级连续失败次数），供自动熔断剔除。"""
+    try:
+        with open(DEAD_CAND_FILE, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        return {}
+
+
+def save_dead_candidates(cands):
+    with open(DEAD_CAND_FILE, "w", encoding="utf-8") as f:
+        json.dump(cands, f, ensure_ascii=False, indent=2)
+
+
+def deep_check_config_site(url):
+    """
+    深度检测配置型站点（v2.5，揪"配置活、源站死"假阳性）：
+      1. 下载配置 JSON（XBPQ/XBiu 格式）
+      2. 提取 主页url / homeUrl / url 字段
+      3. 探测目标站：不可达 → 死；返回停放页特征 → 死（域名废弃）
+    返回 (target_url, alive, note)
+    """
+    # 本地组件（TVBox 本地服务/插件）不做网络探测，视为正常
+    if url.startswith("http://127.0.0.1") or url.startswith("http://localhost"):
+        return None, True, "本地组件"
+    try:
+        cfg = fetch_json(url, timeout=DEEP_FETCH_TIMEOUT)
+    except Exception:
+        return None, False, "配置下载失败"
+    if not isinstance(cfg, dict):
+        return None, False, "配置格式异常"
+    target = None
+    for key in ("主页url", "homeUrl", "url", "主页", "host", "siteUrl"):
+        v = cfg.get(key)
+        if isinstance(v, str) and v.startswith("http"):
+            target = v.split()[0] if v.split() else v
+            break
+    if not target:
+        return None, True, "配置无目标站字段"  # 纯本地数据，不判死
+
+    ok, metrics = probe_once(target, timeout=DEEP_TIMEOUT)
+    if not ok:
+        return target, False, "目标站不可达"
+    # 停放页特征检测
+    try:
+        req = urllib.request.Request(encode_url(target), headers={
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"})
+        body = urllib.request.urlopen(req, timeout=DEEP_TIMEOUT,
+                                      context=ssl_ctx).read()[:4000]
+        low = body.decode("utf-8", errors="ignore").lower()
+        if any(mk in low for mk in PARKING_MARKERS):
+            return target, False, "目标站为停放页(域名废弃)"
+    except Exception:
+        pass
+    return target, True, f"目标站可达 TTFB {metrics[1]:.0f}ms"
+
+
 def score_and_sort_sites(sites):
     """
-    单仓接口评分 + 按分数排序（v2.4）：
-      - 可测接口（api 为 http 或 ext 内嵌 http URL）实测打分：
-        A = TTFB < 1s，B = < 3s，C = 其余可达，D = 不可达
-      - 站点名称加前缀标注（🟢A· 名称 / 🟡B· / 🔴D·），按分数降序排列
-      - 不可测站点（csp_ 内置爬虫、本地脚本等无网络地址）保持原顺序排在后部
-    返回排序标注后的站点列表。
+    单仓接口评分 + 深度检测 + 按分数排序（v2.5）：
+      1. 可测接口（api 为 http 或 ext 内嵌 http URL）实测打分
+      2. 配置型站点（api=csp_ 且 ext 为 http JSON）做深度检测：
+         下载配置 → 提取目标站 URL → 探测目标站死活，识别"配置活、源站死"假阳性
+      3. D 级接口记入动态黑名单计数（连续 DEAD_THRESHOLD 次自动剔除）
+      4. 名称加前缀标注（🟢A·/🟡B·/🟠C·/🔴D·/⚪），按分数降序，不可测排后
+    返回 (排序标注后的站点列表, 自动剔除的 key 集合)
     """
     testable, untestable = [], []
     for s in sites:
         api = s.get("api", "")
+        ext = s.get("ext", "")
         url = None
+        is_config = False
         if api.startswith("http"):
             url = api.split()[0]
         elif (api.startswith("csp_") or api.startswith("csp ")) \
-                and isinstance(s.get("ext", ""), str) \
-                and s.get("ext", "").startswith("http"):
-            url = s["ext"].split()[0]
+                and isinstance(ext, str) and ext.startswith("http"):
+            url = ext.split()[0]
+            is_config = True
         if url:
-            testable.append((s.get("key", ""), s, url))
+            testable.append((s.get("key", ""), s, url, is_config))
         else:
             untestable.append(s)
 
     if not testable:
         logging.info("  📊 单仓接口评分: 无可测接口")
-        return sites
+        return sites, set()
 
+    # 阶段 1：浅测配置/接口 URL 的 TTFB
     def probe(item):
-        key, site, url = item
+        key, site, url, is_config = item
         ok, m = probe_once(url, timeout=SCORE_TIMEOUT)
         if not ok:
-            # 本地组件 / 模板 URL 视为不可测，不算失败
             if url.startswith("http://127.0.0.1") or "{" in url \
                     or "$$$" in url or " " in url or "+4" in url:
                 return key, "N/A", None
             return key, "D", None
-        ttfb = m[1]
-        grade = "A" if ttfb < SCORE_TTFB_A else ("B" if ttfb < SCORE_TTFB_B else "C")
-        return key, grade, ttfb
+        return key, ("A" if m[1] < SCORE_TTFB_A
+                     else ("B" if m[1] < SCORE_TTFB_B else "C")), m[1]
 
     scores = {}
     with ThreadPoolExecutor(max_workers=SCORE_CONCURRENCY) as ex:
         for key, grade, ttfb in ex.map(probe, testable):
             scores[key] = (grade, ttfb)
 
+    # 阶段 2：深度检测配置型站点（揪假阳性）
+    deep_note = {}
+    cfg_items = [(k, s, u) for k, s, u, c in testable if c]
+    if cfg_items:
+        def deep(item):
+            key, site, url = item
+            target, alive, note = deep_check_config_site(url)
+            return key, target, alive, note
+        with ThreadPoolExecutor(max_workers=DEEP_CONCURRENCY) as ex:
+            for key, target, alive, note in ex.map(deep, cfg_items):
+                deep_note[key] = (target, alive, note)
+                if not alive:
+                    scores[key] = ("D", None)  # 源站死 → 降级 D
+
+    # 阶段 3：D 级熔断计数（连续 DEAD_THRESHOLD 次自动剔除）
+    cands = load_dead_candidates()
+    auto_dead = set()
+    for key, site, url, is_config in testable:
+        grade = scores.get(key, ("N/A", None))[0]
+        if grade == "D":
+            cands[key] = cands.get(key, 0) + 1
+            if cands[key] >= DEAD_THRESHOLD:
+                auto_dead.add(key)
+        elif grade not in ("N/A", None):
+            if cands.get(key):
+                del cands[key]  # 恢复后清账
+    save_dead_candidates(cands)
+
+    # 阶段 4：标注 + 排序
     marked = []
-    for key, site, url in testable:
+    for key, site, url, is_config in testable:
         grade, ttfb = scores.get(key, ("N/A", None))
         name = site.get("name", "")
+        note = deep_note.get(key)
+        if note and not note[1]:
+            name = f"{name}[源站死]"
         icon = GRADE_ICON.get(grade, "⚪")
         site["name"] = f"{icon}{grade}·{name}" if grade != "N/A" else f"{icon}{name}"
         marked.append((GRADE_RANK.get(grade, 4),
@@ -439,13 +540,17 @@ def score_and_sort_sites(sites):
         for letter in "ABCD":
             if n.startswith(f"{GRADE_ICON[letter]}{letter}·"):
                 g_cnt[letter] += 1
-    logging.info("  📊 单仓接口评分: 可测 %d 个 | A=%d B=%d C=%d D=%d N/A=%d",
+    logging.info("  📊 单仓接口评分: 可测 %d 个 | A=%d B=%d C=%d D=%d N/A=%d | 深度检测 %d 个",
                  len(marked), g_cnt.get("A", 0), g_cnt.get("B", 0),
                  g_cnt.get("C", 0), g_cnt.get("D", 0),
-                 sum(1 for rk, _, s in marked if s["name"].startswith("⚪")))
+                 sum(1 for rk, _, s in marked if s["name"].startswith("⚪")),
+                 len(deep_note))
+    if auto_dead:
+        logging.warning("  🗑️  连续 %d 次 D 级自动剔除 %d 个: %s",
+                        DEAD_THRESHOLD, len(auto_dead), ", ".join(list(auto_dead)[:10]))
     logging.info("  🔀 单仓站点已按评分排序（可测接口在前，内置爬虫在后）")
 
-    return [m[2] for m in marked] + untestable
+    return [m[2] for m in marked] + untestable, auto_dead
 
 
 def load_speed_state():
@@ -646,7 +751,7 @@ def write_ci_output(key, value):
 def main():
     setup_logging()
     logging.info("=" * 50)
-    logging.info("📺 TVBox 源自动更新工具 v2.4")
+    logging.info("📺 TVBox 源自动更新工具 v2.5")
     logging.info("⏰ 更新时间: %s", datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
     logging.info("=" * 50)
 
@@ -690,7 +795,7 @@ def main():
     deduped = deduplicate_by_priority(upstream_results)
     logging.info("  📊 去重后剩余 %d 个站点", len(deduped))
 
-    # 4.5 失效站点维护（v2.4：死站黑名单移除 + 失效 API 替换，reasonix 调研表）
+    # 4.5 失效站点维护（v2.5：死站黑名单移除 + 失效 API 替换，reasonix 调研表）
     deduped = fix_sites(deduped)
     logging.info("  📊 失效维护后剩余 %d 个站点", len(deduped))
 
@@ -702,8 +807,13 @@ def main():
         notify_telegram(f"❌ TVBox 源更新失败\n{msg}")
         sys.exit(1)
 
-    # 6. 单仓接口评分 + 排序（v2.4：按评分高低整理，名称标注分数等级）
-    deduped = score_and_sort_sites(deduped)
+    # 6. 单仓接口评分 + 深度检测 + 排序（v2.5），并自动剔除连续失败的 D 级站点
+    deduped, auto_dead = score_and_sort_sites(deduped)
+    if auto_dead:
+        before = len(deduped)
+        deduped = [s for s in deduped if s.get("key") not in auto_dead]
+        logging.warning("  🗑️  自动剔除 %d 个连续失败站点（%d → %d）",
+                        len(auto_dead), before, len(deduped))
 
     # 7. 生成 tvbox.json（JSON 回读校验后落盘）
     tvbox_data = {
