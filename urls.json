@@ -1,6 +1,14 @@
 {
   "urls": [
     {
+      "name": "⭐⭐⭐OK影视",
+      "url": "https://cdn.jsdelivr.net/gh/2hacc/TVBox@main/oktv.json"
+    },
+    {
+      "name": "🪞OK影视镜像1",
+      "url": "https://fastly.jsdelivr.net/gh/2hacc/TVBox@main/oktv.json"
+    },
+    {
       "name": "⭐⭐⭐小盒子多仓",
       "url": "http://xhztv.top/dc"
     },
@@ -13,20 +21,12 @@
       "url": "http://xhztv.top/4k.json"
     },
     {
-      "name": "⭐⭐⭐OK影视",
-      "url": "https://cdn.jsdelivr.net/gh/2hacc/TVBox@main/oktv.json"
-    },
-    {
-      "name": "🪞OK影视镜像1",
-      "url": "https://fastly.jsdelivr.net/gh/2hacc/TVBox@main/oktv.json"
+      "name": "⭐⭐⭐高天流云",
+      "url": "https://fastly.jsdelivr.net/gh/gaotianliuyun/gao@master/js.json"
     },
     {
       "name": "⭐⭐⭐老刘备",
       "url": "https://raw.liucn.cc/box/m.json"
-    },
-    {
-      "name": "⭐⭐⭐高天流云",
-      "url": "https://fastly.jsdelivr.net/gh/gaotianliuyun/gao@master/js.json"
     },
     {
       "name": "⭐⭐⭐拾光多仓",
@@ -37,16 +37,16 @@
       "url": "https://6800.kstore.vip/fish.json"
     },
     {
+      "name": "⭐⭐道长",
+      "url": "https://gitlab.com/duomv/dzhipy/-/raw/main/index.json"
+    },
+    {
       "name": "⭐⭐王二小",
       "url": "https://9280.kstore.vip/newwex.json"
     },
     {
       "name": "🪞王二小镜像1",
       "url": "https://9280.kstore.vip/wex.json"
-    },
-    {
-      "name": "⭐⭐道长",
-      "url": "https://gitlab.com/duomv/dzhipy/-/raw/main/index.json"
     },
     {
       "name": "⭐⭐FM影视",
@@ -83,6 +83,14 @@
     {
       "name": "⭐饭太硬(ftygit)",
       "url": "https://cdn09022024.gitlink.org.cn/api/v1/repos/xxooo/in/raw/in.bmp"
+    },
+    {
+      "name": "⚠️饭太硬(官方)",
+      "url": "http://www.饭太硬.net/tv"
+    },
+    {
+      "name": "🪞饭太硬(官方)镜像1",
+      "url": "http://fty.xxooo.cf/tv"
     },
     {
       "name": "🪞GitHub镜像(kgithub)",
