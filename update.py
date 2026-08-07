@@ -78,6 +78,14 @@ MAX_SPEED_SAMPLES = 5            # 每线路保留的测速样本数（滑动窗
 STAR_TTFB_ABSOLUTE_MAX = 3000.0  # 绝对约束：平均 TTFB 超过该值（ms）一律降为 ⭐
 STAR_ORDER = {"⭐⭐⭐": 0, "⭐⭐": 1, "⭐": 2, "⚠️": 3}  # 星级排序权重
 
+# --- 熔断豁免线路（v2.6.2）---
+# 国内源在海外 CI（GitHub Actions 美国）探活不稳定，但国内用户完全可用。
+# 豁免后：探活失败仅降级标注，不参与连续失败熔断移除，避免误杀。
+EXEMPT_LINES = {
+    "http://www.饭太硬.net/tv",   # 饭太硬国内源（图片配置）
+    "http://fty.xxooo.cf/tv",     # 饭太硬镜像（国内）
+}
+
 # --- 单仓接口评分参数（v2.6）---
 SCORE_TIMEOUT = 6        # 单仓接口测速超时（秒）
 SCORE_CONCURRENCY = 16   # 单仓接口测速并发数
@@ -729,6 +737,12 @@ def health_check_all():
             else:
                 logging.info("  ✅ %s — 正常", name)
         else:
+            # 豁免线路：失败仅保留降级，不熔断（海外 CI 探活国内源不稳，避免误杀）
+            if url in EXEMPT_LINES:
+                active.append((name, url, mirrors, None))
+                logging.warning("  🛡️ %s — 失败（豁免源，不熔断移除）%s",
+                                name, f"（{note}）" if note else "")
+                continue
             health_state[url] = health_state.get(url, 0) + 1
             fail_count = health_state[url]
             if fail_count >= MAX_FAILURES:
