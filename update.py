@@ -339,6 +339,7 @@ DEAD_KEYS = {
     "drpy_js_360影视",    # jihulab.com 404
     "drpy_js_310直播",    # github.moeyy.xyz DNS 死
     "虎牙直播js",         # notabug 404，且已有虎牙直播替代
+    "农民",               # 数据源 m.xiangdao.me 域名废弃（停放页"may be for sale"），2026-08-07 实测
 }
 
 
