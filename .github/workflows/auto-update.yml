@@ -42,9 +42,9 @@ jobs:
         run: |
           git config --local user.name "github-actions[bot]"
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          # 关键修复：health_state.json / speed_state.json 必须一并提交，
-          # 熔断计数与测速历史才能跨天持久化
-          git add tvbox.json urls.json health_state.json speed_state.json
+          # 关键修复：health_state.json / speed_state.json / dead_candidates.json
+          # 必须一并提交，熔断计数、测速历史、D级失败计数才能跨天持久化
+          git add tvbox.json urls.json health_state.json speed_state.json dead_candidates.json
           git commit -m "🔄 自动更新 TVBox 源 - $(date +'%Y-%m-%d %H:%M') (站点:${{ steps.run_update.outputs.sites }})"
           git push
 
