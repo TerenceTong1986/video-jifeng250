@@ -1,12 +1,12 @@
 {
   "urls": [
     {
-      "name": "⭐⭐⭐小盒子多仓",
-      "url": "http://xhztv.top/dc"
-    },
-    {
       "name": "⭐⭐⭐小盒子单仓",
       "url": "http://xhztv.top/xhz/"
+    },
+    {
+      "name": "⭐⭐⭐小盒子多仓",
+      "url": "http://xhztv.top/dc"
     },
     {
       "name": "⭐⭐⭐小盒子4K",
@@ -25,24 +25,20 @@
       "url": "https://fastly.jsdelivr.net/gh/2hacc/TVBox@main/oktv.json"
     },
     {
+      "name": "⭐⭐⭐高天流云",
+      "url": "https://fastly.jsdelivr.net/gh/gaotianliuyun/gao@master/js.json"
+    },
+    {
       "name": "⭐⭐⭐拾光多仓",
       "url": "http://xmbjm.fh4u.org/dc.txt"
     },
     {
-      "name": "⭐⭐⭐王二小",
+      "name": "⭐⭐王二小",
       "url": "https://9280.kstore.vip/newwex.json"
     },
     {
       "name": "🪞王二小镜像1",
       "url": "https://9280.kstore.vip/wex.json"
-    },
-    {
-      "name": "⭐⭐高天流云",
-      "url": "https://fastly.jsdelivr.net/gh/gaotianliuyun/gao@master/js.json"
-    },
-    {
-      "name": "⭐⭐道长",
-      "url": "https://gitlab.com/duomv/dzhipy/-/raw/main/index.json"
     },
     {
       "name": "⭐⭐FM影视",
@@ -51,6 +47,10 @@
     {
       "name": "⭐⭐无名",
       "url": "https://6800.kstore.vip/fish.json"
+    },
+    {
+      "name": "⭐⭐道长",
+      "url": "https://gitlab.com/duomv/dzhipy/-/raw/main/index.json"
     },
     {
       "name": "⭐⭐VOX",
@@ -73,24 +73,24 @@
       "url": "https://jinenge.us.kg/app/tvbox/tvbox.json"
     },
     {
-      "name": "⭐小马",
-      "url": "https://szyyds.cn/tv/x.json"
-    },
-    {
       "name": "⭐挺好分享多仓",
       "url": "https://ztha.top/TVBox/GYCK.json"
+    },
+    {
+      "name": "⭐小马",
+      "url": "https://szyyds.cn/tv/x.json"
     },
     {
       "name": "⭐饭太硬(ftygit)",
       "url": "https://cdn09022024.gitlink.org.cn/api/v1/repos/xxooo/in/raw/in.bmp"
     },
     {
-      "name": "⚠️摸鱼儿",
-      "url": "http://摸鱼儿.cc"
-    },
-    {
       "name": "⚠️饭太硬(官方)",
       "url": "http://www.饭太硬.net/tv"
+    },
+    {
+      "name": "🪞饭太硬(官方)镜像1",
+      "url": "http://fty.xxooo.cf/tv"
     },
     {
       "name": "🪞GitHub镜像(kgithub)",
