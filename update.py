@@ -447,6 +447,28 @@ def deep_check_config_site(url):
     return target, True, f"目标站可达 TTFB {metrics[1]:.0f}ms"
 
 
+def sanitize_sites(sites):
+    """
+    净化异常站点（v2.6.1）：过滤 key/name/api 缺失或类型错误的站点。
+    上游源可能把错误日志（如 key=logError、无 api）混入 sites，
+    导致 TVBox 客户端解析整个配置失败。
+    """
+    clean = []
+    for s in sites:
+        if not isinstance(s, dict):
+            continue
+        api, key, name = s.get("api"), s.get("key"), s.get("name")
+        if not isinstance(api, str) or not api.strip():
+            logging.info("  🧹 过滤异常站点: key=%r name=%r (api缺失/非法)", key, name)
+            continue
+        if not isinstance(key, str) or not key.strip():
+            continue
+        if not isinstance(name, str) or not name.strip():
+            continue
+        clean.append(s)
+    return clean
+
+
 def score_and_sort_sites(sites):
     """
     单仓接口评分 + 深度检测 + 按分数排序（v2.6）：
@@ -853,7 +875,10 @@ def main():
     deduped = fix_sites(deduped)
     logging.info("  📊 失效维护后剩余 %d 个站点", len(deduped))
 
-    # 5. 站点数异常熔断：低于阈值拒绝覆盖（保护线上配置）
+    # 5. 净化异常站点（过滤 api/key/name 缺失的错误日志站点，防 TVBox 解析失败）
+    deduped = sanitize_sites(deduped)
+
+    # 5.5 站点数异常熔断：低于阈值拒绝覆盖（保护线上配置）
     if len(deduped) < MIN_SITES_WARN:
         msg = (f"🚨 站点数异常熔断：仅 {len(deduped)} 个站点"
                f"（阈值 {MIN_SITES_WARN}），疑似上游大面积故障，已放弃本次更新")
