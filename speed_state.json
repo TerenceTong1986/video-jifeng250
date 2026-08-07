@@ -1,0 +1,233 @@
+{
+  "http://xhztv.top/4k.json": {
+    "samples": [
+      {
+        "ts": "08-07 03:13",
+        "connect": 117.6,
+        "ttfb": 3.2,
+        "total": 120.8,
+        "size": 2856
+      }
+    ]
+  },
+  "http://xhztv.top/xhz/": {
+    "samples": [
+      {
+        "ts": "08-07 03:13",
+        "connect": 116.7,
+        "ttfb": 2.8,
+        "total": 119.4,
+        "size": 4096
+      }
+    ]
+  },
+  "https://raw.liucn.cc/box/m.json": {
+    "samples": [
+      {
+        "ts": "08-07 03:13",
+        "connect": 86.2,
+        "ttfb": 121.4,
+        "total": 207.6,
+        "size": 702
+      }
+    ]
+  },
+  "https://szyyds.cn/tv/x.json": {
+    "samples": [
+      {
+        "ts": "08-07 03:13",
+        "connect": 611.1,
+        "ttfb": 616.9,
+        "total": 1228.0,
+        "size": 4096
+      }
+    ]
+  },
+  "https://6800.kstore.vip/fish.json": {
+    "samples": [
+      {
+        "ts": "08-07 03:13",
+        "connect": 199.9,
+        "ttfb": 73.1,
+        "total": 272.9,
+        "size": 2977
+      }
+    ]
+  },
+  "https://jinenge.us.kg/app/tvbox/tvbox.json": {
+    "samples": [
+      {
+        "ts": "08-07 03:13",
+        "connect": 390.1,
+        "ttfb": 499.4,
+        "total": 889.4,
+        "size": 4096
+      }
+    ]
+  },
+  "http://摸鱼儿.cc": {
+    "samples": [
+      {
+        "ts": "08-07 03:13",
+        "connect": 65.5,
+        "ttfb": 631.7,
+        "total": 697.2,
+        "size": 4096
+      }
+    ]
+  },
+  "http://肥猫.net/": {
+    "samples": [
+      {
+        "ts": "08-07 03:13",
+        "connect": 238.1,
+        "ttfb": 564.1,
+        "total": 802.1,
+        "size": 608
+      }
+    ]
+  },
+  "https://cdn.jsdelivr.net/gh/2hacc/TVBox@main/oktv.json": {
+    "samples": [
+      {
+        "ts": "08-07 03:13",
+        "connect": 3.8,
+        "ttfb": 314.7,
+        "total": 318.5,
+        "size": 742
+      }
+    ]
+  },
+  "http://itv666.cc/aowu/config.webp": {
+    "samples": [
+      {
+        "ts": "08-07 03:13",
+        "connect": 649.8,
+        "ttfb": 545.6,
+        "total": 1195.4,
+        "size": 1029
+      }
+    ]
+  },
+  "http://rihou.cc:88/demo.php": {
+    "samples": [
+      {
+        "ts": "08-07 03:13",
+        "connect": 213.1,
+        "ttfb": 197.7,
+        "total": 410.8,
+        "size": 209
+      }
+    ]
+  },
+  "https://ztha.top/TVBox/GYCK.json": {
+    "samples": [
+      {
+        "ts": "08-07 03:13",
+        "connect": 606.3,
+        "ttfb": 609.5,
+        "total": 1215.9,
+        "size": 3811
+      }
+    ]
+  },
+  "https://cdn09022024.gitlink.org.cn/api/v1/repos/xxooo/in/raw/in.bmp": {
+    "samples": [
+      {
+        "ts": "08-07 03:13",
+        "connect": 582.1,
+        "ttfb": 850.5,
+        "total": 1432.6,
+        "size": 4096
+      }
+    ]
+  },
+  "http://www.饭太硬.cc/tv": {
+    "samples": [
+      {
+        "ts": "08-07 03:13",
+        "connect": 355.3,
+        "ttfb": 22.8,
+        "total": 378.1,
+        "size": 394
+      }
+    ]
+  },
+  "http://new.王二小放牛娃.top": {
+    "samples": [
+      {
+        "ts": "08-07 03:13",
+        "connect": 106.0,
+        "ttfb": 34.5,
+        "total": 140.5,
+        "size": 217
+      }
+    ]
+  },
+  "http://xhztv.top/dc": {
+    "samples": [
+      {
+        "ts": "08-07 03:13",
+        "connect": 46.9,
+        "ttfb": 3.1,
+        "total": 50.0,
+        "size": 491
+      }
+    ]
+  },
+  "http://xmbjm.fh4u.org/dc.txt": {
+    "samples": [
+      {
+        "ts": "08-07 03:13",
+        "connect": 363.9,
+        "ttfb": 154.0,
+        "total": 518.0,
+        "size": 4096
+      }
+    ]
+  },
+  "https://fastly.jsdelivr.net/gh/gaotianliuyun/gao@master/js.json": {
+    "samples": [
+      {
+        "ts": "08-07 03:13",
+        "connect": 23.9,
+        "ttfb": 386.0,
+        "total": 409.9,
+        "size": 752
+      }
+    ]
+  },
+  "http://home.jundie.top:81/top98.json": {
+    "samples": [
+      {
+        "ts": "08-07 03:13",
+        "connect": 413.4,
+        "ttfb": 214.0,
+        "total": 627.4,
+        "size": 4096
+      }
+    ]
+  },
+  "https://gitlab.com/duomv/dzhipy/-/raw/main/index.json": {
+    "samples": [
+      {
+        "ts": "08-07 03:13",
+        "connect": 3.2,
+        "ttfb": 146.2,
+        "total": 149.4,
+        "size": 4107
+      }
+    ]
+  },
+  "http://fmys.top/fmys.json": {
+    "samples": [
+      {
+        "ts": "08-07 03:13",
+        "connect": 429.5,
+        "ttfb": 168.2,
+        "total": 597.6,
+        "size": 4096
+      }
+    ]
+  }
+}
