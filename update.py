@@ -290,7 +290,9 @@ LINES = [
     ("VOX", "http://rihou.cc:88/demo.php", []),
     ("挺好分享多仓", "https://ztha.top/TVBox/GYCK.json", []),
     ("饭太硬(ftygit)", "https://cdn09022024.gitlink.org.cn/api/v1/repos/xxooo/in/raw/in.bmp", []),
-    ("饭太硬(官方)", "http://www.饭太硬.net/tv", []),  # 图片内嵌配置源（原 .cc 已废弃为官网页）
+    ("饭太硬(官方)", "http://www.饭太硬.net/tv", [
+        "http://fty.xxooo.cf/tv",   # 备用镜像（同款图片配置，封哥提供，实测49站可用）
+    ]),  # 图片内嵌配置源（原 .cc 已废弃为官网页）
     ("王二小", "https://9280.kstore.vip/newwex.json", [
         "https://9280.kstore.vip/wex.json",   # 备用（67站版本）
     ]),  # 原 new.王二小放牛娃.top 已废弃为官网页
@@ -494,6 +496,8 @@ def score_and_sort_sites(sites):
             scores[key] = (grade, ttfb)
 
     # 阶段 2：深度检测配置型站点（揪假阳性）
+    # 注意：深度检测结果只用于"降级标注"，不参与熔断剔除——
+    # 深测判死可能是网络/地区差异导致的目标站探测失败，误杀风险高。
     deep_note = {}
     cfg_items = [(k, s, u) for k, s, u, c in testable if c]
     if cfg_items:
@@ -504,15 +508,15 @@ def score_and_sort_sites(sites):
         with ThreadPoolExecutor(max_workers=DEEP_CONCURRENCY) as ex:
             for key, target, alive, note in ex.map(deep, cfg_items):
                 deep_note[key] = (target, alive, note)
-                if not alive:
-                    scores[key] = ("D", None)  # 源站死 → 降级 D
 
-    # 阶段 3：D 级熔断计数（连续 DEAD_THRESHOLD 次自动剔除）
+    # 阶段 3：浅测 D 级熔断计数（连续 DEAD_THRESHOLD 次自动剔除）
+    # 深测判死的站点跳过计数，只降级标注（避免误杀常用站）
     cands = load_dead_candidates()
     auto_dead = set()
     for key, site, url, is_config in testable:
         grade = scores.get(key, ("N/A", None))[0]
-        if grade == "D":
+        deep_dead = deep_note.get(key) and not deep_note[key][1]
+        if grade == "D" and not deep_dead:
             cands[key] = cands.get(key, 0) + 1
             if cands[key] >= DEAD_THRESHOLD:
                 auto_dead.add(key)
@@ -521,13 +525,14 @@ def score_and_sort_sites(sites):
                 del cands[key]  # 恢复后清账
     save_dead_candidates(cands)
 
-    # 阶段 4：标注 + 排序
+    # 阶段 4：标注 + 排序（深测判死 → 展示降级 D + [源站死]）
     marked = []
     for key, site, url, is_config in testable:
         grade, ttfb = scores.get(key, ("N/A", None))
         name = site.get("name", "")
         note = deep_note.get(key)
         if note and not note[1]:
+            grade = "D"  # 深测判死 → 展示降级
             name = f"{name}[源站死]"
         icon = GRADE_ICON.get(grade, "⚪")
         site["name"] = f"{icon}{grade}·{name}" if grade != "N/A" else f"{icon}{name}"
