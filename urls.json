@@ -1,24 +1,24 @@
 {
   "urls": [
     {
-      "name": "⭐⭐⭐OK影视",
-      "url": "https://cdn.jsdelivr.net/gh/2hacc/TVBox@main/oktv.json"
-    },
-    {
-      "name": "🪞OK影视镜像1",
-      "url": "https://fastly.jsdelivr.net/gh/2hacc/TVBox@main/oktv.json"
-    },
-    {
       "name": "⭐⭐⭐小盒子多仓",
       "url": "http://xhztv.top/dc"
+    },
+    {
+      "name": "⭐⭐⭐小盒子4K",
+      "url": "http://xhztv.top/4k.json"
     },
     {
       "name": "⭐⭐⭐小盒子单仓",
       "url": "http://xhztv.top/xhz/"
     },
     {
-      "name": "⭐⭐⭐小盒子4K",
-      "url": "http://xhztv.top/4k.json"
+      "name": "⭐⭐⭐OK影视",
+      "url": "https://cdn.jsdelivr.net/gh/2hacc/TVBox@main/oktv.json"
+    },
+    {
+      "name": "🪞OK影视镜像1",
+      "url": "https://fastly.jsdelivr.net/gh/2hacc/TVBox@main/oktv.json"
     },
     {
       "name": "⭐⭐⭐高天流云",
@@ -61,16 +61,16 @@
       "url": "http://home.jundie.top:81/top98.json"
     },
     {
-      "name": "⭐⭐肥猫",
-      "url": "http://肥猫.net/"
+      "name": "⭐⭐嗷呜",
+      "url": "http://itv666.cc/aowu/config.webp"
     },
     {
       "name": "⭐jinenge",
       "url": "https://jinenge.us.kg/app/tvbox/tvbox.json"
     },
     {
-      "name": "⭐嗷呜",
-      "url": "http://itv666.cc/aowu/config.webp"
+      "name": "⭐肥猫",
+      "url": "http://肥猫.net/"
     },
     {
       "name": "⭐挺好分享多仓",
