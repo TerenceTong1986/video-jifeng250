@@ -1,7 +1,7 @@
 {
  "spider": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/fan.jar;md5;9d90c83bc7504392dd02c2236f08713a",
  "wallpaper": "https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/wallpaper.jpg",
- "updateTime": "2026-08-11 15:30",
+ "updateTime": "2026-08-11 16:00",
  "warningText": "精选单仓(17源+7解析接口)，资源来自网络，仅供学习交流使用。",
  "sites": [
   {
@@ -666,9 +666,9 @@
  "lives": [
   {
    "key": "IPTV4-直播",
-   "name": "📺 IPTV4直播(央视卫视等)",
+   "name": "📺 优选直播(本网测速)",
    "type": 0,
-   "url": "https://live.zbds.top/tv/iptv4.txt",
+   "url": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/live/iptv4-fast.txt",
    "playerType": 2
   },
   {
