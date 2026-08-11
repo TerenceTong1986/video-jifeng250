@@ -9,24 +9,24 @@
       "url": "https://raw.liucn.cc/box/m.json"
     },
     {
-      "name": "⭐⭐⭐OK影视",
-      "url": "https://cdn.jsdelivr.net/gh/2hacc/TVBox@main/oktv.json"
-    },
-    {
-      "name": "🪞OK影视镜像1",
-      "url": "https://fastly.jsdelivr.net/gh/2hacc/TVBox@main/oktv.json"
-    },
-    {
       "name": "⭐⭐⭐小盒子4K",
       "url": "http://xhztv.top/4k.json"
+    },
+    {
+      "name": "⭐⭐⭐小盒子单仓",
+      "url": "http://xhztv.top/xhz/"
     },
     {
       "name": "⭐⭐⭐小盒子多仓",
       "url": "http://xhztv.top/dc"
     },
     {
-      "name": "⭐⭐⭐小盒子单仓",
-      "url": "http://xhztv.top/xhz/"
+      "name": "⭐⭐⭐OK影视",
+      "url": "https://cdn.jsdelivr.net/gh/2hacc/TVBox@main/oktv.json"
+    },
+    {
+      "name": "🪞OK影视镜像1",
+      "url": "https://fastly.jsdelivr.net/gh/2hacc/TVBox@main/oktv.json"
     },
     {
       "name": "⭐⭐道长",
