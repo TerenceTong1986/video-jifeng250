@@ -1,8 +1,8 @@
 {
  "spider": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/fan.jar;md5;9d90c83bc7504392dd02c2236f08713a",
  "wallpaper": "https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/wallpaper.jpg",
- "updateTime": "2026-08-11 10:35:28",
- "warningText": "精选单仓（2026-08-11：13采集源+荐片/玩偶哥哥/小雅），资源来自网络，仅供学习交流使用。",
+ "updateTime": "2026-08-11 11:34:58",
+ "warningText": "精选单仓（16源+7解析接口），资源来自网络，仅供学习交流使用。",
  "sites": [
   {
    "key": "官采",
@@ -10,7 +10,8 @@
    "type": 1,
    "api": "https://cj.jusj.top/api.php/provide/vod/?ac=list",
    "searchable": 1,
-   "changeable": 1
+   "changeable": 1,
+   "playerUrl": "https://jx.xmflv.com/?url="
   },
   {
    "key": "暴風",
@@ -70,7 +71,8 @@
    "type": 1,
    "api": "http://api.xinlangapi.com/xinlangapi.php/provide/vod/",
    "searchable": 1,
-   "quickSearch": 1
+   "quickSearch": 1,
+   "playerUrl": "https://jx.xmflv.com/?url="
   },
   {
    "key": "光速资源",
@@ -78,7 +80,8 @@
    "type": 1,
    "api": "https://api.guangsuapi.com/api.php/provide/vod/",
    "searchable": 1,
-   "quickSearch": 1
+   "quickSearch": 1,
+   "playerUrl": "https://jx.xmflv.com/?url="
   },
   {
    "key": "红牛资源",
@@ -320,6 +323,109 @@
      }
     ]
    }
+  }
+ ],
+ "parses": [
+  {
+   "name": "虾米",
+   "type": 0,
+   "url": "https://jx.xmflv.com/?url=",
+   "ext": {
+    "flag": [
+     "qq",
+     "腾讯",
+     "qiyi",
+     "爱奇艺",
+     "奇艺",
+     "youku",
+     "优酷",
+     "sohu",
+     "搜狐",
+     "letv",
+     "乐视",
+     "mgtv",
+     "芒果",
+     "imgo",
+     "rx",
+     "ltnb",
+     "bilibili",
+     "1905",
+     "xigua"
+    ]
+   }
+  },
+  {
+   "name": "云解析",
+   "type": 0,
+   "url": "https://jx.yparse.com/index.php?url=",
+   "ext": {
+    "header": {
+     "user-agent": "Mozilla/5.0(Linux;Android13;V2049ABuild/TP1A.220624.014;wv)AppleWebKit/537.36(KHTML,likeGecko)Version/4.0Chrome/116.0.0.0MobileSafari/537.36"
+    }
+   }
+  },
+  {
+   "name": "爱豆",
+   "type": 0,
+   "url": "https://jx.aidouer.net/?url=",
+   "ext": {
+    "header": {
+     "user-agent": "Mozilla/5.0(Linux;Android13;V2049ABuild/TP1A.220624.014;wv)AppleWebKit/537.36(KHTML,likeGecko)Version/4.0Chrome/116.0.0.0MobileSafari/537.36",
+     "referer": "https://jiejie.uk/"
+    }
+   }
+  },
+  {
+   "name": "看看",
+   "type": 0,
+   "url": "https://jx.m3u8.pw/?url="
+  },
+  {
+   "name": "PM",
+   "type": 0,
+   "url": "https://www.playm3u8.cn/jiexi.php?url=",
+   "ext": {
+    "flag": [
+     "qiyi",
+     "imgo",
+     "爱奇艺",
+     "奇艺",
+     "qq",
+     "腾讯",
+     "youku",
+     "优酷",
+     "pptv",
+     "PPTV",
+     "letv",
+     "乐视",
+     "leshi",
+     "bilibili",
+     "哔哩哔哩",
+     "哔哩",
+     "mgtv",
+     "芒果",
+     "sohu",
+     "xigua",
+     "fun",
+     "风行"
+    ]
+   }
+  },
+  {
+   "name": "咸鱼",
+   "type": 0,
+   "url": "https://jx.xyflv.cc/?url=",
+   "ext": {
+    "header": {
+     "user-agent": "Mozilla/5.0(Linux;Android13;V2049ABuild/TP1A.220624.014;wv)AppleWebKit/537.36(KHTML,likeGecko)Version/4.0Chrome/116.0.0.0MobileSafari/537.36",
+     "referer": "https://www.xyflv.cc/"
+    }
+   }
+  },
+  {
+   "name": "m3u8",
+   "type": 0,
+   "url": "https://jx.m3u8.tv/jiexi/?url="
   }
  ]
 }
