@@ -1,7 +1,7 @@
 {
  "spider": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/fan.jar;md5;9d90c83bc7504392dd02c2236f08713a",
  "wallpaper": "https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/wallpaper.jpg",
- "updateTime": "2026-08-11 12:00:00",
+ "updateTime": "2026-08-11 12:30:00",
  "warningText": "精选单仓(17源+7解析接口)，资源来自网络，仅供学习交流使用。",
  "sites": [
   {
@@ -10,7 +10,34 @@
    "type": 1,
    "api": "https://bfzyapi.com/api.php/provide/vod/?ac=list",
    "searchable": 1,
-   "changeable": 1
+   "changeable": 1,
+   "filterable": 1,
+   "quickSearch": 1,
+   "categories": [
+    "电影",
+    "电视剧",
+    "综艺",
+    "动漫",
+    "动作片",
+    "喜剧片",
+    "爱情片",
+    "科幻片",
+    "恐怖片",
+    "剧情片",
+    "国产剧",
+    "欧美剧",
+    "香港剧",
+    "韩国剧",
+    "日本剧",
+    "台湾剧",
+    "国产动漫",
+    "日韩动漫",
+    "欧美动漫",
+    "大陆综艺",
+    "港台综艺",
+    "日韩综艺",
+    "欧美综艺"
+   ]
   },
   {
    "key": "csp_SNzy",
@@ -46,7 +73,8 @@
     "港台综艺",
     "日韩综艺",
     "欧美综艺"
-   ]
+   ],
+   "changeable": 1
   },
   {
    "key": "闪电资源",
@@ -54,7 +82,34 @@
    "type": 1,
    "api": "http://sdzyapi.com/api.php/provide/vod/",
    "searchable": 1,
-   "quickSearch": 1
+   "quickSearch": 1,
+   "filterable": 1,
+   "changeable": 1,
+   "categories": [
+    "电影",
+    "电视剧",
+    "综艺",
+    "动漫",
+    "动作片",
+    "喜剧片",
+    "爱情片",
+    "科幻片",
+    "恐怖片",
+    "剧情片",
+    "国产剧",
+    "欧美剧",
+    "香港剧",
+    "韩国剧",
+    "日本剧",
+    "台湾剧",
+    "国产动漫",
+    "日韩动漫",
+    "欧美动漫",
+    "大陆综艺",
+    "港台综艺",
+    "日韩综艺",
+    "欧美综艺"
+   ]
   },
   {
    "key": "新浪资源",
@@ -63,7 +118,34 @@
    "api": "http://api.xinlangapi.com/xinlangapi.php/provide/vod/",
    "searchable": 1,
    "quickSearch": 1,
-   "playerUrl": "https://jx.xmflv.com/?url="
+   "playerUrl": "https://jx.xmflv.com/?url=",
+   "filterable": 1,
+   "changeable": 1,
+   "categories": [
+    "电影",
+    "电视剧",
+    "综艺",
+    "动漫",
+    "动作片",
+    "喜剧片",
+    "爱情片",
+    "科幻片",
+    "恐怖片",
+    "剧情片",
+    "国产剧",
+    "欧美剧",
+    "香港剧",
+    "韩国剧",
+    "日本剧",
+    "台湾剧",
+    "国产动漫",
+    "日韩动漫",
+    "欧美动漫",
+    "大陆综艺",
+    "港台综艺",
+    "日韩综艺",
+    "欧美综艺"
+   ]
   },
   {
    "key": "光速资源",
@@ -72,7 +154,34 @@
    "api": "https://api.guangsuapi.com/api.php/provide/vod/",
    "searchable": 1,
    "quickSearch": 1,
-   "playerUrl": "https://jx.xmflv.com/?url="
+   "playerUrl": "https://jx.xmflv.com/?url=",
+   "filterable": 1,
+   "changeable": 1,
+   "categories": [
+    "电影",
+    "电视剧",
+    "综艺",
+    "动漫",
+    "动作片",
+    "喜剧片",
+    "爱情片",
+    "科幻片",
+    "恐怖片",
+    "剧情片",
+    "国产剧",
+    "欧美剧",
+    "香港剧",
+    "韩国剧",
+    "日本剧",
+    "台湾剧",
+    "国产动漫",
+    "日韩动漫",
+    "欧美动漫",
+    "大陆综艺",
+    "港台综艺",
+    "日韩综艺",
+    "欧美综艺"
+   ]
   },
   {
    "key": "红牛资源",
@@ -80,7 +189,34 @@
    "type": 1,
    "api": "https://www.hongniuzy2.com/api.php/provide/vod/",
    "searchable": 1,
-   "quickSearch": 1
+   "quickSearch": 1,
+   "filterable": 1,
+   "changeable": 1,
+   "categories": [
+    "电影",
+    "电视剧",
+    "综艺",
+    "动漫",
+    "动作片",
+    "喜剧片",
+    "爱情片",
+    "科幻片",
+    "恐怖片",
+    "剧情片",
+    "国产剧",
+    "欧美剧",
+    "香港剧",
+    "韩国剧",
+    "日本剧",
+    "台湾剧",
+    "国产动漫",
+    "日韩动漫",
+    "欧美动漫",
+    "大陆综艺",
+    "港台综艺",
+    "日韩综艺",
+    "欧美综艺"
+   ]
   },
   {
    "key": "虎牙",
@@ -113,7 +249,9 @@
     "中国动漫",
     "日本动漫",
     "欧美动漫"
-   ]
+   ],
+   "filterable": 1,
+   "changeable": 1
   },
   {
    "key": "极速资源",
@@ -156,7 +294,10 @@
    ],
    "header": {
     "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0 Mobile/15E148 Safari/604.1"
-   }
+   },
+   "filterable": 1,
+   "quickSearch": 1,
+   "changeable": 1
   },
   {
    "key": "非凡",
@@ -190,7 +331,10 @@
     "欧美动漫",
     "港台动漫",
     "海外动漫"
-   ]
+   ],
+   "filterable": 1,
+   "quickSearch": 1,
+   "changeable": 1
   },
   {
    "key": "taopian",
@@ -198,7 +342,7 @@
    "type": 1,
    "api": "https://taopianapi.com/cjapi/mc/vod/json.html",
    "searchable": 1,
-   "filterable": 0,
+   "filterable": 1,
    "categories": [
     "动漫/国产动漫",
     "动漫/日本动漫",
@@ -230,7 +374,9 @@
     "电影/剧情片",
     "电影/悬疑片",
     "电影/纪录片"
-   ]
+   ],
+   "quickSearch": 1,
+   "changeable": 1
   },
   {
    "key": "电影天堂",
@@ -241,7 +387,32 @@
    "quickSearch": 1,
    "filterable": 1,
    "changeable": 1,
-   "playerType": 2
+   "playerType": 2,
+   "categories": [
+    "电影",
+    "电视剧",
+    "综艺",
+    "动漫",
+    "动作片",
+    "喜剧片",
+    "爱情片",
+    "科幻片",
+    "恐怖片",
+    "剧情片",
+    "国产剧",
+    "欧美剧",
+    "香港剧",
+    "韩国剧",
+    "日本剧",
+    "台湾剧",
+    "国产动漫",
+    "日韩动漫",
+    "欧美动漫",
+    "大陆综艺",
+    "港台综艺",
+    "日韩综艺",
+    "欧美综艺"
+   ]
   },
   {
    "key": "天涯采集",
@@ -256,7 +427,32 @@
    "quickSearch": 1,
    "filterable": 1,
    "changeable": 1,
-   "playerType": 2
+   "playerType": 2,
+   "categories": [
+    "电影",
+    "电视剧",
+    "综艺",
+    "动漫",
+    "动作片",
+    "喜剧片",
+    "爱情片",
+    "科幻片",
+    "恐怖片",
+    "剧情片",
+    "国产剧",
+    "欧美剧",
+    "香港剧",
+    "韩国剧",
+    "日本剧",
+    "台湾剧",
+    "国产动漫",
+    "日韩动漫",
+    "欧美动漫",
+    "大陆综艺",
+    "港台综艺",
+    "日韩综艺",
+    "欧美综艺"
+   ]
   },
   {
    "key": "荐片",
@@ -324,7 +520,32 @@
    "quickSearch": 1,
    "filterable": 1,
    "changeable": 1,
-   "playerType": 0
+   "playerType": 0,
+   "categories": [
+    "电影",
+    "电视剧",
+    "综艺",
+    "动漫",
+    "动作片",
+    "喜剧片",
+    "爱情片",
+    "科幻片",
+    "恐怖片",
+    "剧情片",
+    "国产剧",
+    "欧美剧",
+    "香港剧",
+    "韩国剧",
+    "日本剧",
+    "台湾剧",
+    "国产动漫",
+    "日韩动漫",
+    "欧美动漫",
+    "大陆综艺",
+    "港台综艺",
+    "日韩综艺",
+    "欧美综艺"
+   ]
   },
   {
    "key": "热播",
