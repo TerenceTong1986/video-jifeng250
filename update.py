@@ -76,7 +76,7 @@ LOG_BACKUP_COUNT = 2
 # --- 测速与星标推荐参数 ---
 MAX_SPEED_SAMPLES = 5            # 每线路保留的测速样本数（滑动窗口）
 STAR_TTFB_ABSOLUTE_MAX = 3000.0  # 绝对约束：平均 TTFB 超过该值（ms）一律降为 ⭐
-STAR_ORDER = {"⭐⭐⭐": 0, "⭐⭐": 1, "⭐": 2, "⚠️": 3}  # 星级排序权重
+STAR_ORDER = {"⭐⭐⭐": 0, "⭐⭐": 1, "⭐": 2, "⚠️": 3, "❌": 4}  # v2.7 打分制排序权重
 
 # --- 熔断豁免线路（v2.6.2）---
 # 国内源在海外 CI（GitHub Actions 美国）探活不稳定，但国内用户完全可用。
@@ -635,36 +635,40 @@ def avg_total(state, url):
 
 def compute_ratings(health_state, speed_state, active_urls):
     """
-    星级评级（相对排名分档，保证区分度）：
-      1. 无失败史线路按平均 TTFB 升序排名，前 1/3 → ⭐⭐⭐，中 1/3 → ⭐⭐，后 1/3 → ⭐
-      2. 有失败史（1-2 次）→ ⚠️ 波动，排最后
-      3. 绝对约束：平均 TTFB >= 3000ms 一律降为 ⭐（慢源不配推荐）
+    v2.7 打分评级（不再删除线路，全部保留，按分数排序）：
+      基础分 100
+      - 每次失败 -25 分（连续失败越多分越低）
+      - 速度加成（按平均 TTFB）：
+          <500ms  +20 | <1000ms +10 | <3000ms +5 | >=3000ms -10
+      星级映射：>=90 ⭐⭐⭐ | >=75 ⭐⭐ | >=60 ⭐ | >=40 ⚠️ | <40 ❌
     返回 {url: (星标前缀, 排序权重, avg_ttfb)}
     """
-    no_fail = []
-    for url in active_urls:
-        if health_state.get(url, 0) > 0:
-            continue
-        ttfb = avg_ttfb(speed_state, url)
-        no_fail.append((url, ttfb if ttfb is not None else 99999.0))
-    no_fail.sort(key=lambda x: x[1])
-    n = len(no_fail)
-    third = max(1, (n + 2) // 3)  # 每档至少 1 条
-
     ratings = {}
-    for idx, (url, ttfb) in enumerate(no_fail):
-        if idx < third:
-            star = "⭐⭐⭐"
-        elif idx < third * 2:
-            star = "⭐⭐"
-        else:
-            star = "⭐"
-        if ttfb >= 3000.0:  # 绝对约束：太慢的源不配推荐
-            star = "⭐"
-        ratings[url] = (star, STAR_ORDER[star], ttfb)
     for url in active_urls:
-        if health_state.get(url, 0) > 0:
-            ratings[url] = ("⚠️", STAR_ORDER["⚠️"], avg_ttfb(speed_state, url))
+        fails = health_state.get(url, 0)
+        score = 100 - fails * 25
+        ttfb = avg_ttfb(speed_state, url)
+        if ttfb is not None:
+            if ttfb < 500:
+                score += 20
+            elif ttfb < 1000:
+                score += 10
+            elif ttfb < 3000:
+                score += 5
+            else:
+                score -= 10
+        score = max(0, min(130, score))
+        if score >= 90:
+            star = "⭐⭐⭐"
+        elif score >= 75:
+            star = "⭐⭐"
+        elif score >= 60:
+            star = "⭐"
+        elif score >= 40:
+            star = "⚠️"
+        else:
+            star = "❌"
+        ratings[url] = (star, STAR_ORDER[star], ttfb)
     return ratings
 
 
@@ -706,7 +710,7 @@ def verify_line_content(url):
 
 def health_check_all():
     """并发探活测速 17 个线路，返回
-    (active_lines, removed_lines, health_state, speed_state, ratings)。
+    (active_lines, health_state, speed_state, ratings)。
     active_lines 元素: (name, url, mirrors, metrics)
     ratings: {url: (star_prefix, 排序权重, avg_ttfb)}
     """
@@ -726,7 +730,7 @@ def health_check_all():
     with ThreadPoolExecutor(max_workers=CONCURRENCY) as ex:
         results = list(ex.map(probe, LINES))
 
-    active, removed = [], []
+    active = []
     for name, url, mirrors, ok, metrics, note in results:
         if ok and metrics:
             health_state[url] = 0
@@ -737,22 +741,15 @@ def health_check_all():
             else:
                 logging.info("  ✅ %s — 正常", name)
         else:
-            # 豁免线路：失败仅保留降级，不熔断（海外 CI 探活国内源不稳，避免误杀）
-            if url in EXEMPT_LINES:
-                active.append((name, url, mirrors, None))
-                logging.warning("  🛡️ %s — 失败（豁免源，不熔断移除）%s",
-                                name, f"（{note}）" if note else "")
-                continue
+            # v2.7 打分制：失败不删除，仅累计失败次数，打分降级排后
             health_state[url] = health_state.get(url, 0) + 1
-            fail_count = health_state[url]
-            if fail_count >= MAX_FAILURES:
-                removed.append(name)
-                logging.warning("  ❌ %s — 连续 %d 次失败，已移除%s",
-                                name, fail_count, f"（{note}）" if note else "")
+            active.append((name, url, mirrors, None))
+            if url in EXEMPT_LINES:
+                logging.warning("  🛡️ %s — 失败（豁免源，打分降级不排名）%s",
+                                name, f"（{note}）" if note else "")
             else:
-                active.append((name, url, mirrors, None))
-                logging.warning("  ⚠️  %s — 第 %d/%d 次失败%s",
-                                name, fail_count, MAX_FAILURES,
+                logging.warning("  ⚠️  %s — 第 %d 次失败（保留，打分降级）%s",
+                                name, health_state[url],
                                 f"（{note}）" if note else "")
 
     save_health_state(health_state)
@@ -774,10 +771,13 @@ def health_check_all():
             line = f"{name}: TTFB {ttfb:.0f}ms | 总耗时 {total:.0f}ms | {star}"
         logging.info("  │ %-52s │", line[:52])
     logging.info("  └─────────────────────────────────────────────────────┘")
-    if removed:
-        logging.warning("  🗑️  本次移除: %s", ", ".join(removed))
-    logging.info("  📊 活跃线路: %d 个", len(active))
-    return active, removed, health_state, speed_state, ratings
+    failed_lines = [name for name, url, mirrors, metrics in active
+                    if metrics is None]
+    if failed_lines:
+        logging.warning("  📊 本轮失败线路（保留，打分垫底）: %s",
+                        ", ".join(failed_lines))
+    logging.info("  📊 活跃线路: %d 个（全部保留，按打分排序）", len(active))
+    return active, health_state, speed_state, ratings
 
 
 def fetch_upstream_sources():
@@ -846,7 +846,7 @@ def main():
     logging.info("=" * 50)
 
     # 1. 健康检查 + 测速 + 熔断（并发 + 重试）
-    active_lines, removed_lines, _hs, speed_state, ratings = health_check_all()
+    active_lines, _hs, speed_state, ratings = health_check_all()
 
     # 2. 生成 urls.json（按星级排序，推荐线路排最前；镜像随主线路）
     #    评级数据: ratings[url] = (星标, 排序权重, avg_ttfb)
@@ -869,11 +869,12 @@ def main():
                  "url": "https://fastly.jsdelivr.net/gh/jifeng250/tvbox-sources@main/tvbox.json"})
     write_json_safely(os.path.join(SCRIPT_DIR, "urls.json"), {"urls": urls})
     logging.info("📋 已生成 urls.json（%d 条线路，含镜像）", len(urls))
-    logging.info("  ⭐⭐⭐ 推荐 %d 条 | ⭐⭐ 良好 %d 条 | ⭐ 可用 %d 条 | ⚠️ 波动 %d 条",
+    logging.info("  ⭐⭐⭐ 推荐 %d 条 | ⭐⭐ 良好 %d 条 | ⭐ 可用 %d 条 | ⚠️ 波动 %d 条 | ❌ 垫底 %d 条",
                  sum(1 for s, _, _ in ratings.values() if s == "⭐⭐⭐"),
                  sum(1 for s, _, _ in ratings.values() if s == "⭐⭐"),
                  sum(1 for s, _, _ in ratings.values() if s == "⭐"),
-                 sum(1 for s, _, _ in ratings.values() if s == "⚠️"))
+                 sum(1 for s, _, _ in ratings.values() if s == "⚠️"),
+                 sum(1 for s, _, _ in ratings.values() if s == "❌"))
 
     # 3. 并发拉取上游
     upstream_results = fetch_upstream_sources()
@@ -922,11 +923,6 @@ def main():
     # 8. CI 输出 + 完成告警
     write_ci_output("sites", len(deduped))
     write_ci_output("lines", len(active_lines))
-    if removed_lines:
-        notify_telegram(
-            f"⚠️ TVBox 源更新（部分线路移除）\n"
-            f"移除线路: {', '.join(removed_lines)}\n"
-            f"活跃线路: {len(active_lines)} | 站点数: {len(deduped)}")
     logging.info("✅ 更新完成！")
 
 
