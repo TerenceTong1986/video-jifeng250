@@ -5,39 +5,108 @@
  "warningText": "精选单仓(17源+7解析接口)，资源来自网络，仅供学习交流使用。",
  "sites": [
   {
-   "key": "暴風",
-   "name": "暴風(15万)",
+   "key": "虎牙",
+   "name": "虎牙(11万)",
    "type": 1,
-   "api": "https://bfzyapi.com/api.php/provide/vod/?ac=list",
+   "api": "https://www.huyaapi.com/api.php/provide/vod/from/hym3u8",
    "searchable": 1,
-   "changeable": 1,
-   "filterable": 1,
    "quickSearch": 1,
    "categories": [
-    "电影",
-    "电视剧",
-    "综艺",
-    "动漫",
+    "内地剧",
     "动作片",
+    "科幻片",
+    "战争片",
     "喜剧片",
     "爱情片",
-    "科幻片",
     "恐怖片",
+    "犯罪片",
     "剧情片",
-    "国产剧",
-    "欧美剧",
+    "冒险片",
+    "记录片",
+    "韩剧",
     "香港剧",
-    "韩国剧",
-    "日本剧",
     "台湾剧",
-    "国产动漫",
-    "日韩动漫",
-    "欧美动漫",
-    "大陆综艺",
-    "港台综艺",
-    "日韩综艺",
-    "欧美综艺"
-   ]
+    "欧美剧",
+    "日剧",
+    "马泰剧",
+    "体育赛事",
+    "综艺",
+    "动画片",
+    "中国动漫",
+    "日本动漫",
+    "欧美动漫"
+   ],
+   "filterable": 1,
+   "changeable": 1
+  },
+  {
+   "key": "荐片",
+   "name": "荐片(P2P)",
+   "type": 3,
+   "api": "csp_JPJGuard",
+   "timeout": 10,
+   "playerType": 2,
+   "searchable": 1,
+   "quickSearch": 1,
+   "changeable": 0
+  },
+  {
+   "key": "热播",
+   "name": "热播(多线)",
+   "type": 3,
+   "api": "csp_AppTTGuard",
+   "timeout": 10,
+   "playerType": 2,
+   "searchable": 1,
+   "quickSearch": 1,
+   "changeable": 1,
+   "ext": "uqGL1bNENExT7/hGxpSE5qU="
+  },
+  {
+   "key": "玩偶哥哥",
+   "name": "玩偶哥哥(4K弹幕)",
+   "type": 3,
+   "api": "csp_WoGGGuard",
+   "searchable": 1,
+   "quickSearch": 1,
+   "changeable": 0,
+   "playerType": 2,
+   "ext": {
+    "Cloud-drive": "tvfan/Cloud-drive.txt",
+    "from": "4k|auto",
+    "siteUrl": "https://www.wogg.com/",
+    "danMu": "弹"
+   }
+  },
+  {
+   "key": "小雅",
+   "name": "小雅(云盘)",
+   "type": 3,
+   "api": "csp_AList",
+   "searchable": 1,
+   "quickSearch": 1,
+   "changeable": 1,
+   "ext": {
+    "vodPic": "https://up.mediy.cn/033_喜欢_adf390021f221477b26a94f5eaf02643.png",
+    "drives": [
+     {
+      "name": "Ecve",
+      "server": "https://pan.ecve.cn/"
+     },
+     {
+      "name": "小鸭",
+      "server": "https://pan.mediy.cn/"
+     },
+     {
+      "name": "秋雨",
+      "server": "https://share.qiuyu.org/"
+     },
+     {
+      "name": "七米蓝",
+      "server": "https://al.chirmyram.com/"
+     }
+    ]
+   }
   },
   {
    "key": "csp_SNzy",
@@ -75,6 +144,117 @@
     "欧美综艺"
    ],
    "changeable": 1
+  },
+  {
+   "key": "暴風",
+   "name": "暴風(15万)",
+   "type": 1,
+   "api": "https://bfzyapi.com/api.php/provide/vod/?ac=list",
+   "searchable": 1,
+   "changeable": 1,
+   "filterable": 1,
+   "quickSearch": 1,
+   "categories": [
+    "电影",
+    "电视剧",
+    "综艺",
+    "动漫",
+    "动作片",
+    "喜剧片",
+    "爱情片",
+    "科幻片",
+    "恐怖片",
+    "剧情片",
+    "国产剧",
+    "欧美剧",
+    "香港剧",
+    "韩国剧",
+    "日本剧",
+    "台湾剧",
+    "国产动漫",
+    "日韩动漫",
+    "欧美动漫",
+    "大陆综艺",
+    "港台综艺",
+    "日韩综艺",
+    "欧美综艺"
+   ]
+  },
+  {
+   "key": "百度",
+   "name": "百度(4.8万)",
+   "type": 1,
+   "api": "https://api.apibdzy.com/api.php/provide/vod/?ac=list",
+   "searchable": 1,
+   "quickSearch": 1,
+   "filterable": 1,
+   "changeable": 1,
+   "playerType": 0,
+   "categories": [
+    "电影",
+    "电视剧",
+    "综艺",
+    "动漫",
+    "动作片",
+    "喜剧片",
+    "爱情片",
+    "科幻片",
+    "恐怖片",
+    "剧情片",
+    "国产剧",
+    "欧美剧",
+    "香港剧",
+    "韩国剧",
+    "日本剧",
+    "台湾剧",
+    "国产动漫",
+    "日韩动漫",
+    "欧美动漫",
+    "大陆综艺",
+    "港台综艺",
+    "日韩综艺",
+    "欧美综艺"
+   ]
+  },
+  {
+   "key": "天涯采集",
+   "name": "天涯(7万)",
+   "type": 1,
+   "api": "http://tyyszy.com/api.php/provide/vod",
+   "style": {
+    "type": "rect",
+    "ratio": 1.33
+   },
+   "searchable": 1,
+   "quickSearch": 1,
+   "filterable": 1,
+   "changeable": 1,
+   "playerType": 2,
+   "categories": [
+    "电影",
+    "电视剧",
+    "综艺",
+    "动漫",
+    "动作片",
+    "喜剧片",
+    "爱情片",
+    "科幻片",
+    "恐怖片",
+    "剧情片",
+    "国产剧",
+    "欧美剧",
+    "香港剧",
+    "韩国剧",
+    "日本剧",
+    "台湾剧",
+    "国产动漫",
+    "日韩动漫",
+    "欧美动漫",
+    "大陆综艺",
+    "港台综艺",
+    "日韩综艺",
+    "欧美综艺"
+   ]
   },
   {
    "key": "闪电资源",
@@ -217,41 +397,6 @@
     "日韩综艺",
     "欧美综艺"
    ]
-  },
-  {
-   "key": "虎牙",
-   "name": "虎牙(11万)",
-   "type": 1,
-   "api": "https://www.huyaapi.com/api.php/provide/vod/from/hym3u8",
-   "searchable": 1,
-   "quickSearch": 1,
-   "categories": [
-    "内地剧",
-    "动作片",
-    "科幻片",
-    "战争片",
-    "喜剧片",
-    "爱情片",
-    "恐怖片",
-    "犯罪片",
-    "剧情片",
-    "冒险片",
-    "记录片",
-    "韩剧",
-    "香港剧",
-    "台湾剧",
-    "欧美剧",
-    "日剧",
-    "马泰剧",
-    "体育赛事",
-    "综艺",
-    "动画片",
-    "中国动漫",
-    "日本动漫",
-    "欧美动漫"
-   ],
-   "filterable": 1,
-   "changeable": 1
   },
   {
    "key": "极速资源",
@@ -413,151 +558,6 @@
     "日韩综艺",
     "欧美综艺"
    ]
-  },
-  {
-   "key": "天涯采集",
-   "name": "天涯(7万)",
-   "type": 1,
-   "api": "http://tyyszy.com/api.php/provide/vod",
-   "style": {
-    "type": "rect",
-    "ratio": 1.33
-   },
-   "searchable": 1,
-   "quickSearch": 1,
-   "filterable": 1,
-   "changeable": 1,
-   "playerType": 2,
-   "categories": [
-    "电影",
-    "电视剧",
-    "综艺",
-    "动漫",
-    "动作片",
-    "喜剧片",
-    "爱情片",
-    "科幻片",
-    "恐怖片",
-    "剧情片",
-    "国产剧",
-    "欧美剧",
-    "香港剧",
-    "韩国剧",
-    "日本剧",
-    "台湾剧",
-    "国产动漫",
-    "日韩动漫",
-    "欧美动漫",
-    "大陆综艺",
-    "港台综艺",
-    "日韩综艺",
-    "欧美综艺"
-   ]
-  },
-  {
-   "key": "荐片",
-   "name": "荐片(P2P)",
-   "type": 3,
-   "api": "csp_JPJGuard",
-   "timeout": 10,
-   "playerType": 2,
-   "searchable": 1,
-   "quickSearch": 1,
-   "changeable": 0
-  },
-  {
-   "key": "玩偶哥哥",
-   "name": "玩偶哥哥(4K弹幕)",
-   "type": 3,
-   "api": "csp_WoGGGuard",
-   "searchable": 1,
-   "quickSearch": 1,
-   "changeable": 0,
-   "playerType": 2,
-   "ext": {
-    "Cloud-drive": "tvfan/Cloud-drive.txt",
-    "from": "4k|auto",
-    "siteUrl": "https://www.wogg.com/",
-    "danMu": "弹"
-   }
-  },
-  {
-   "key": "小雅",
-   "name": "小雅(云盘)",
-   "type": 3,
-   "api": "csp_AList",
-   "searchable": 1,
-   "quickSearch": 1,
-   "changeable": 1,
-   "ext": {
-    "vodPic": "https://up.mediy.cn/033_喜欢_adf390021f221477b26a94f5eaf02643.png",
-    "drives": [
-     {
-      "name": "Ecve",
-      "server": "https://pan.ecve.cn/"
-     },
-     {
-      "name": "小鸭",
-      "server": "https://pan.mediy.cn/"
-     },
-     {
-      "name": "秋雨",
-      "server": "https://share.qiuyu.org/"
-     },
-     {
-      "name": "七米蓝",
-      "server": "https://al.chirmyram.com/"
-     }
-    ]
-   }
-  },
-  {
-   "key": "百度",
-   "name": "百度(4.8万)",
-   "type": 1,
-   "api": "https://api.apibdzy.com/api.php/provide/vod/?ac=list",
-   "searchable": 1,
-   "quickSearch": 1,
-   "filterable": 1,
-   "changeable": 1,
-   "playerType": 0,
-   "categories": [
-    "电影",
-    "电视剧",
-    "综艺",
-    "动漫",
-    "动作片",
-    "喜剧片",
-    "爱情片",
-    "科幻片",
-    "恐怖片",
-    "剧情片",
-    "国产剧",
-    "欧美剧",
-    "香港剧",
-    "韩国剧",
-    "日本剧",
-    "台湾剧",
-    "国产动漫",
-    "日韩动漫",
-    "欧美动漫",
-    "大陆综艺",
-    "港台综艺",
-    "日韩综艺",
-    "欧美综艺"
-   ]
-  },
-  {
-   "key": "热播",
-   "name": "热播(多线)",
-   "type": 3,
-   "api": "csp_AppTTGuard",
-   "timeout": 10,
-   "playerType": 2,
-   "searchable": 1,
-   "quickSearch": 1,
-   "changeable": 1,
-   "ext": "uqGL1bNENExT7/hGxpSE5qU="
   }
  ],
  "parses": [
