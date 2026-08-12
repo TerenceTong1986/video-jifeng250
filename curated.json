@@ -64,18 +64,14 @@
   },
   {
    "key": "玩偶哥哥",
-   "name": "玩偶哥哥(免4K)🔗jar",
+   "name": "玩偶哥哥(4K网盘)🔗jar",
    "type": 3,
    "api": "csp_WoGGGuard",
    "searchable": 1,
    "quickSearch": 1,
    "changeable": 0,
-   "playerType": 2,
    "ext": {
-    "Cloud-drive": "tvfan/Cloud-drive.txt",
-    "from": "auto",
-    "siteUrl": "https://www.wogg.com/",
-    "danMu": "弹"
+    "Cloud-drive": "tvfan/Cloud-drive.txt"
    }
   },
   {
