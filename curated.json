@@ -86,27 +86,8 @@
    "searchable": 1,
    "quickSearch": 1,
    "changeable": 1,
-   "ext": {
-    "vodPic": "https://up.mediy.cn/033_喜欢_adf390021f221477b26a94f5eaf02643.png",
-    "drives": [
-     {
-      "name": "Ecve",
-      "server": "https://pan.ecve.cn/"
-     },
-     {
-      "name": "小鸭",
-      "server": "https://pan.mediy.cn/"
-     },
-     {
-      "name": "秋雨",
-      "server": "https://share.qiuyu.org/"
-     },
-     {
-      "name": "七米蓝",
-      "server": "https://al.chirmyram.com/"
-     }
-    ]
-   }
+   "ext": "https://gh-proxy.com/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/alist.json",
+   "jar": "https://gh-proxy.com/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/custom_spider.jar;md5;41c87635d7592069884a5dafa12acabe"
   },
   {
    "key": "csp_SNzy",
