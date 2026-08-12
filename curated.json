@@ -75,6 +75,17 @@
    }
   },
   {
+   "key": "MDrive",
+   "name": "🗂我的云盘┃网盘配置",
+   "type": 3,
+   "api": "csp_MyDriveGuard",
+   "changeable": 0,
+   "searchable": 1,
+   "ext": {
+    "Cloud-drive": "tvfan/Cloud-drive.txt"
+   }
+  },
+  {
    "key": "小雅",
    "name": "小雅(云盘)🔗云盘",
    "type": 3,
