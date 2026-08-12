@@ -6,7 +6,7 @@
  "sites": [
   {
    "key": "虎牙",
-   "name": "虎牙(11万)",
+   "name": "虎牙(11万)⚡多线程",
    "type": 1,
    "api": "https://www.huyaapi.com/api.php/provide/vod/from/hym3u8",
    "searchable": 1,
@@ -41,7 +41,7 @@
   },
   {
    "key": "荐片",
-   "name": "荐片(P2P)",
+   "name": "荐片(P2P)🔗P2P",
    "type": 3,
    "api": "csp_JPJGuard",
    "timeout": 10,
@@ -52,7 +52,7 @@
   },
   {
    "key": "热播",
-   "name": "热播(多线)",
+   "name": "热播(多线)🔗jar",
    "type": 3,
    "api": "csp_AppTTGuard",
    "timeout": 10,
@@ -64,7 +64,7 @@
   },
   {
    "key": "玩偶哥哥",
-   "name": "玩偶哥哥(4K弹幕)",
+   "name": "玩偶哥哥(4K弹幕)🔗jar",
    "type": 3,
    "api": "csp_WoGGGuard",
    "searchable": 1,
@@ -80,7 +80,7 @@
   },
   {
    "key": "小雅",
-   "name": "小雅(云盘)",
+   "name": "小雅(云盘)🔗云盘",
    "type": 3,
    "api": "csp_AList",
    "searchable": 1,
@@ -110,7 +110,7 @@
   },
   {
    "key": "csp_SNzy",
-   "name": "索尼(14万)",
+   "name": "索尼(14万)🔒单线程",
    "type": 1,
    "api": "https://suoniapi.com/api.php/provide/vod/?ac=list",
    "searchable": 1,
@@ -147,7 +147,7 @@
   },
   {
    "key": "暴風",
-   "name": "暴風(15万)",
+   "name": "暴風(15万)⚡多线程",
    "type": 1,
    "api": "https://bfzyapi.com/api.php/provide/vod/?ac=list",
    "searchable": 1,
@@ -182,7 +182,7 @@
   },
   {
    "key": "百度",
-   "name": "百度(4.8万)",
+   "name": "百度(4.8万)⚡多线程",
    "type": 1,
    "api": "https://api.apibdzy.com/api.php/provide/vod/?ac=list",
    "searchable": 1,
@@ -218,7 +218,7 @@
   },
   {
    "key": "天涯采集",
-   "name": "天涯(7万)",
+   "name": "天涯(7万)⚡多线程",
    "type": 1,
    "api": "http://tyyszy.com/api.php/provide/vod",
    "style": {
@@ -258,7 +258,7 @@
   },
   {
    "key": "闪电资源",
-   "name": "闪电(12万)",
+   "name": "闪电(12万)⚡多线程",
    "type": 1,
    "api": "http://sdzyapi.com/api.php/provide/vod/",
    "searchable": 1,
@@ -293,7 +293,7 @@
   },
   {
    "key": "新浪资源",
-   "name": "新浪(11万)",
+   "name": "新浪(11万)🌐网页解析",
    "type": 1,
    "api": "http://api.xinlangapi.com/xinlangapi.php/provide/vod/",
    "searchable": 1,
@@ -329,7 +329,7 @@
   },
   {
    "key": "光速资源",
-   "name": "光速(11万)",
+   "name": "光速(11万)🌐网页解析",
    "type": 1,
    "api": "https://api.guangsuapi.com/api.php/provide/vod/",
    "searchable": 1,
@@ -365,7 +365,7 @@
   },
   {
    "key": "红牛资源",
-   "name": "红牛(11万)",
+   "name": "红牛(11万)🌐网页解析",
    "type": 1,
    "api": "https://www.hongniuzy2.com/api.php/provide/vod/",
    "searchable": 1,
@@ -400,7 +400,7 @@
   },
   {
    "key": "极速资源",
-   "name": "极速(11万)",
+   "name": "极速(11万)🌐网页解析",
    "type": 1,
    "api": "https://jszyapi.com/api.php/provide/vod/?ac=list",
    "searchable": 1,
@@ -446,7 +446,7 @@
   },
   {
    "key": "非凡",
-   "name": "非凡(10万)",
+   "name": "非凡(10万)🌐网页解析",
    "type": 1,
    "api": "http://ffzy.tv/api.php/provide/vod/",
    "searchable": 1,
@@ -483,7 +483,7 @@
   },
   {
    "key": "taopian",
-   "name": "淘片(10万)",
+   "name": "淘片(10万)🌐网页解析",
    "type": 1,
    "api": "https://taopianapi.com/cjapi/mc/vod/json.html",
    "searchable": 1,
@@ -525,7 +525,7 @@
   },
   {
    "key": "电影天堂",
-   "name": "电影天堂(8万)",
+   "name": "电影天堂(8万)🌐网页解析",
    "type": 1,
    "api": "http://caiji.dyttzyapi.com/api.php/provide/vod",
    "searchable": 1,
