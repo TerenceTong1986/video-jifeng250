@@ -582,6 +582,119 @@
    "quickSearch": 1,
    "changeable": 1,
    "timeout": 10
+  },
+  {
+   "key": "苹果",
+   "name": "苹果(IJK)🔗jar",
+   "type": 3,
+   "api": "csp_LiteAppleGuard",
+   "searchable": 1,
+   "quickSearch": 1,
+   "changeable": 1,
+   "timeout": 10
+  },
+  {
+   "key": "白白",
+   "name": "白白(秒播)🔗jar",
+   "type": 3,
+   "api": "csp_SbaibaiGuard",
+   "searchable": 1,
+   "quickSearch": 1,
+   "changeable": 1,
+   "timeout": 10
+  },
+  {
+   "key": "文采",
+   "name": "文采(秒播)🔗jar",
+   "type": 3,
+   "api": "csp_JpysGuard",
+   "searchable": 1,
+   "quickSearch": 1,
+   "changeable": 1,
+   "timeout": 10
+  },
+  {
+   "key": "zxzj",
+   "name": "在线之家(秒播)🔗jar",
+   "type": 3,
+   "api": "csp_ZxzjGuard",
+   "searchable": 1,
+   "quickSearch": 1,
+   "changeable": 1,
+   "timeout": 10,
+   "ext": "https://www.zxzjhd.com/"
+  },
+  {
+   "key": "厂长",
+   "name": "厂长(不卡)🔗jar",
+   "type": 3,
+   "api": "csp_NewCzGuard",
+   "searchable": 1,
+   "quickSearch": 1,
+   "changeable": 1,
+   "timeout": 10
+  },
+  {
+   "key": "比特",
+   "name": "比特(手机)🔗jar",
+   "type": 3,
+   "api": "csp_BttwooGuard",
+   "searchable": 1,
+   "quickSearch": 1,
+   "changeable": 1,
+   "timeout": 10
+  },
+  {
+   "key": "低端",
+   "name": "低端(外剧)🔗jar",
+   "type": 3,
+   "api": "csp_DdrkGuard",
+   "searchable": 1,
+   "quickSearch": 1,
+   "changeable": 1,
+   "timeout": 10
+  },
+  {
+   "key": "欢视",
+   "name": "欢视(多线)🔗jar",
+   "type": 3,
+   "api": "csp_AppTTGuard",
+   "searchable": 1,
+   "quickSearch": 1,
+   "changeable": 1,
+   "timeout": 10,
+   "ext": "uqGL1bNENExT9fFAy5mE5qU="
+  },
+  {
+   "key": "奥特",
+   "name": "奥特(多线)🔗jar",
+   "type": 3,
+   "api": "csp_AueteGuard",
+   "searchable": 1,
+   "quickSearch": 1,
+   "changeable": 1,
+   "timeout": 10,
+   "ext": "https://auete.com/"
+  },
+  {
+   "key": "Ysj",
+   "name": "异界(动漫)🔗jar",
+   "type": 3,
+   "api": "csp_YsjGuard",
+   "searchable": 1,
+   "quickSearch": 1,
+   "changeable": 1,
+   "timeout": 10
+  },
+  {
+   "key": "Anime1",
+   "name": "日本(动漫)🔗jar",
+   "type": 3,
+   "api": "csp_Anime1Guard",
+   "searchable": 1,
+   "quickSearch": 1,
+   "changeable": 1,
+   "timeout": 10
   }
  ],
  "parses": [
