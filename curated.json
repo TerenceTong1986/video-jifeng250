@@ -539,7 +539,8 @@
    "ext": {
     "Cloud-drive": "tvfan/Cloud-drive.txt",
     "from": "4k|auto"
-   }
+   },
+   "timeout": 10
   },
   {
    "key": "原创",
@@ -548,7 +549,8 @@
    "api": "csp_YCyzGuard",
    "searchable": 1,
    "quickSearch": 1,
-   "changeable": 1
+   "changeable": 1,
+   "timeout": 10
   },
   {
    "key": "糯米",
@@ -557,7 +559,8 @@
    "api": "csp_NmyswvGuard",
    "searchable": 1,
    "quickSearch": 1,
-   "changeable": 1
+   "changeable": 1,
+   "timeout": 10
   },
   {
    "key": "萌米",
@@ -567,7 +570,8 @@
    "searchable": 1,
    "quickSearch": 1,
    "changeable": 1,
-   "ext": "uqGL1bNENEIVq+dC1p/Y9uWjuA=="
+   "ext": "uqGL1bNENEIVq+dC1p/Y9uWjuA==",
+   "timeout": 10
   },
   {
    "key": "Dm84",
@@ -576,7 +580,8 @@
    "api": "csp_Dm84Guard",
    "searchable": 1,
    "quickSearch": 1,
-   "changeable": 1
+   "changeable": 1,
+   "timeout": 10
   }
  ],
  "parses": [
