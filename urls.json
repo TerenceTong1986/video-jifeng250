@@ -21,8 +21,12 @@
       "url": "http://xmbjm.fh4u.org/dc.txt"
     },
     {
-      "name": "⭐⭐⭐道长",
-      "url": "https://gitlab.com/duomv/dzhipy/-/raw/main/index.json"
+      "name": "⭐⭐⭐OK影视",
+      "url": "https://cdn.jsdelivr.net/gh/2hacc/TVBox@main/oktv.json"
+    },
+    {
+      "name": "🪞OK影视镜像1",
+      "url": "https://fastly.jsdelivr.net/gh/2hacc/TVBox@main/oktv.json"
     },
     {
       "name": "⭐⭐⭐高天流云",
@@ -41,12 +45,8 @@
       "url": "https://6800.kstore.vip/fish.json"
     },
     {
-      "name": "⭐⭐⭐OK影视",
-      "url": "https://cdn.jsdelivr.net/gh/2hacc/TVBox@main/oktv.json"
-    },
-    {
-      "name": "🪞OK影视镜像1",
-      "url": "https://fastly.jsdelivr.net/gh/2hacc/TVBox@main/oktv.json"
+      "name": "⭐⭐⭐道长",
+      "url": "https://gitlab.com/duomv/dzhipy/-/raw/main/index.json"
     },
     {
       "name": "⭐⭐⭐FM影视",
@@ -65,12 +65,12 @@
       "url": "https://jinenge.us.kg/app/tvbox/tvbox.json"
     },
     {
-      "name": "⭐⭐⭐挺好分享多仓",
-      "url": "https://ztha.top/TVBox/GYCK.json"
-    },
-    {
       "name": "⭐⭐⭐嗷呜",
       "url": "http://itv666.cc/aowu/config.webp"
+    },
+    {
+      "name": "⭐⭐⭐挺好分享多仓",
+      "url": "https://ztha.top/TVBox/GYCK.json"
     },
     {
       "name": "⭐⭐⭐饭太硬(ftygit)",
