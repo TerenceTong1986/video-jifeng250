@@ -2,13 +2,6 @@
   "http://xhztv.top/4k.json": {
     "samples": [
       {
-        "ts": "08-14 11:37",
-        "connect": 261.4,
-        "ttfb": 18.7,
-        "total": 280.1,
-        "size": 2856
-      },
-      {
         "ts": "08-14 13:17",
         "connect": 161.1,
         "ttfb": 40.0,
@@ -35,18 +28,18 @@
         "ttfb": 62.9,
         "total": 193.2,
         "size": 4096
+      },
+      {
+        "ts": "08-16 00:27",
+        "connect": 50.9,
+        "ttfb": 3.3,
+        "total": 54.2,
+        "size": 4096
       }
     ]
   },
   "http://xhztv.top/xhz/": {
     "samples": [
-      {
-        "ts": "08-14 11:37",
-        "connect": 261.2,
-        "ttfb": 19.8,
-        "total": 281.0,
-        "size": 4096
-      },
       {
         "ts": "08-14 13:17",
         "connect": 160.8,
@@ -74,18 +67,18 @@
         "ttfb": 64.1,
         "total": 193.9,
         "size": 4096
+      },
+      {
+        "ts": "08-16 00:27",
+        "connect": 50.6,
+        "ttfb": 4.4,
+        "total": 55.0,
+        "size": 4096
       }
     ]
   },
   "https://raw.liucn.cc/box/m.json": {
     "samples": [
-      {
-        "ts": "08-14 11:37",
-        "connect": 221.4,
-        "ttfb": 127.0,
-        "total": 348.4,
-        "size": 704
-      },
       {
         "ts": "08-14 13:17",
         "connect": 278.6,
@@ -113,18 +106,18 @@
         "ttfb": 23.7,
         "total": 218.1,
         "size": 704
+      },
+      {
+        "ts": "08-16 00:27",
+        "connect": 60.3,
+        "ttfb": 89.4,
+        "total": 149.7,
+        "size": 685
       }
     ]
   },
   "https://szyyds.cn/tv/x.json": {
     "samples": [
-      {
-        "ts": "08-14 11:37",
-        "connect": 597.0,
-        "ttfb": 620.0,
-        "total": 1217.0,
-        "size": 4096
-      },
       {
         "ts": "08-14 13:17",
         "connect": 644.9,
@@ -152,18 +145,18 @@
         "ttfb": 755.9,
         "total": 1532.1,
         "size": 4096
+      },
+      {
+        "ts": "08-16 00:27",
+        "connect": 472.5,
+        "ttfb": 602.6,
+        "total": 1075.2,
+        "size": 4096
       }
     ]
   },
   "https://6800.kstore.vip/fish.json": {
     "samples": [
-      {
-        "ts": "08-14 11:37",
-        "connect": 228.1,
-        "ttfb": 109.6,
-        "total": 337.8,
-        "size": 4096
-      },
       {
         "ts": "08-14 13:17",
         "connect": 260.1,
@@ -191,18 +184,18 @@
         "ttfb": 257.1,
         "total": 819.1,
         "size": 3000
+      },
+      {
+        "ts": "08-16 00:27",
+        "connect": 574.0,
+        "ttfb": 75.1,
+        "total": 649.1,
+        "size": 2977
       }
     ]
   },
   "https://jinenge.us.kg/app/tvbox/tvbox.json": {
     "samples": [
-      {
-        "ts": "08-14 11:37",
-        "connect": 459.6,
-        "ttfb": 535.8,
-        "total": 995.3,
-        "size": 4096
-      },
       {
         "ts": "08-14 13:17",
         "connect": 283.6,
@@ -229,6 +222,13 @@
         "connect": 527.1,
         "ttfb": 693.1,
         "total": 1220.2,
+        "size": 4096
+      },
+      {
+        "ts": "08-16 00:27",
+        "connect": 416.8,
+        "ttfb": 499.4,
+        "total": 916.2,
         "size": 4096
       }
     ]
@@ -268,13 +268,6 @@
   "http://肥猫.net/": {
     "samples": [
       {
-        "ts": "08-14 11:37",
-        "connect": 241.6,
-        "ttfb": 547.7,
-        "total": 789.3,
-        "size": 608
-      },
-      {
         "ts": "08-14 13:17",
         "connect": 311.0,
         "ttfb": 553.2,
@@ -301,18 +294,18 @@
         "ttfb": 524.2,
         "total": 787.2,
         "size": 2040
+      },
+      {
+        "ts": "08-16 00:27",
+        "connect": 242.5,
+        "ttfb": 561.9,
+        "total": 804.4,
+        "size": 4096
       }
     ]
   },
   "https://cdn.jsdelivr.net/gh/2hacc/TVBox@main/oktv.json": {
     "samples": [
-      {
-        "ts": "08-14 11:37",
-        "connect": 19.7,
-        "ttfb": 28.0,
-        "total": 47.7,
-        "size": 748
-      },
       {
         "ts": "08-14 13:17",
         "connect": 41.0,
@@ -340,18 +333,18 @@
         "ttfb": 181.3,
         "total": 184.8,
         "size": 746
+      },
+      {
+        "ts": "08-16 00:27",
+        "connect": 3.2,
+        "ttfb": 1116.0,
+        "total": 1119.2,
+        "size": 744
       }
     ]
   },
   "http://itv666.cc/aowu/config.webp": {
     "samples": [
-      {
-        "ts": "08-14 11:37",
-        "connect": 567.9,
-        "ttfb": 688.1,
-        "total": 1256.0,
-        "size": 1029
-      },
       {
         "ts": "08-14 13:17",
         "connect": 621.4,
@@ -379,6 +372,13 @@
         "ttfb": 636.6,
         "total": 1523.2,
         "size": 1029
+      },
+      {
+        "ts": "08-16 00:27",
+        "connect": 768.7,
+        "ttfb": 520.8,
+        "total": 1289.5,
+        "size": 1028
       }
     ]
   },
@@ -424,13 +424,6 @@
   "https://ztha.top/TVBox/GYCK.json": {
     "samples": [
       {
-        "ts": "08-14 11:37",
-        "connect": 427.1,
-        "ttfb": 645.2,
-        "total": 1072.3,
-        "size": 3811
-      },
-      {
         "ts": "08-14 13:17",
         "connect": 466.9,
         "ttfb": 667.8,
@@ -457,18 +450,18 @@
         "ttfb": 776.9,
         "total": 1278.5,
         "size": 3811
+      },
+      {
+        "ts": "08-16 00:27",
+        "connect": 405.0,
+        "ttfb": 612.1,
+        "total": 1017.1,
+        "size": 3811
       }
     ]
   },
   "https://cdn09022024.gitlink.org.cn/api/v1/repos/xxooo/in/raw/in.bmp": {
     "samples": [
-      {
-        "ts": "08-14 11:37",
-        "connect": 469.4,
-        "ttfb": 936.9,
-        "total": 1406.3,
-        "size": 4096
-      },
       {
         "ts": "08-14 13:17",
         "connect": 737.6,
@@ -495,6 +488,13 @@
         "connect": 791.1,
         "ttfb": 1113.5,
         "total": 1904.5,
+        "size": 4096
+      },
+      {
+        "ts": "08-16 00:27",
+        "connect": 621.0,
+        "ttfb": 927.2,
+        "total": 1548.3,
         "size": 4096
       }
     ]
@@ -566,13 +566,6 @@
   "http://xhztv.top/dc": {
     "samples": [
       {
-        "ts": "08-14 11:37",
-        "connect": 51.1,
-        "ttfb": 18.3,
-        "total": 69.4,
-        "size": 491
-      },
-      {
         "ts": "08-14 13:17",
         "connect": 133.7,
         "ttfb": 39.7,
@@ -599,18 +592,18 @@
         "ttfb": 65.1,
         "total": 178.2,
         "size": 491
+      },
+      {
+        "ts": "08-16 00:27",
+        "connect": 4.8,
+        "ttfb": 3.3,
+        "total": 8.1,
+        "size": 491
       }
     ]
   },
   "http://xmbjm.fh4u.org/dc.txt": {
     "samples": [
-      {
-        "ts": "08-14 11:37",
-        "connect": 384.8,
-        "ttfb": 137.1,
-        "total": 521.9,
-        "size": 4096
-      },
       {
         "ts": "08-14 13:17",
         "connect": 394.7,
@@ -638,18 +631,18 @@
         "ttfb": 92.3,
         "total": 699.0,
         "size": 4096
+      },
+      {
+        "ts": "08-16 00:27",
+        "connect": 588.2,
+        "ttfb": 151.1,
+        "total": 739.2,
+        "size": 4096
       }
     ]
   },
   "https://fastly.jsdelivr.net/gh/gaotianliuyun/gao@master/js.json": {
     "samples": [
-      {
-        "ts": "08-14 11:37",
-        "connect": 68.8,
-        "ttfb": 27.2,
-        "total": 96.0,
-        "size": 751
-      },
       {
         "ts": "08-14 13:17",
         "connect": 69.6,
@@ -677,18 +670,18 @@
         "ttfb": 181.1,
         "total": 185.7,
         "size": 751
+      },
+      {
+        "ts": "08-16 00:27",
+        "connect": 5.9,
+        "ttfb": 309.1,
+        "total": 315.0,
+        "size": 744
       }
     ]
   },
   "http://home.jundie.top:81/top98.json": {
     "samples": [
-      {
-        "ts": "08-14 11:37",
-        "connect": 646.2,
-        "ttfb": 219.9,
-        "total": 866.1,
-        "size": 4096
-      },
       {
         "ts": "08-14 13:17",
         "connect": 682.8,
@@ -716,18 +709,18 @@
         "ttfb": 1023.7,
         "total": 2525.0,
         "size": 4096
+      },
+      {
+        "ts": "08-16 00:27",
+        "connect": 477.7,
+        "ttfb": 221.9,
+        "total": 699.6,
+        "size": 4096
       }
     ]
   },
   "https://gitlab.com/duomv/dzhipy/-/raw/main/index.json": {
     "samples": [
-      {
-        "ts": "08-14 11:37",
-        "connect": 14.7,
-        "ttfb": 282.2,
-        "total": 297.0,
-        "size": 4107
-      },
       {
         "ts": "08-14 13:17",
         "connect": 26.9,
@@ -755,18 +748,18 @@
         "ttfb": 182.0,
         "total": 188.8,
         "size": 4107
+      },
+      {
+        "ts": "08-16 00:27",
+        "connect": 4.1,
+        "ttfb": 144.2,
+        "total": 148.3,
+        "size": 4107
       }
     ]
   },
   "http://fmys.top/fmys.json": {
     "samples": [
-      {
-        "ts": "08-14 11:37",
-        "connect": 406.0,
-        "ttfb": 184.2,
-        "total": 590.1,
-        "size": 4096
-      },
       {
         "ts": "08-14 13:17",
         "connect": 466.3,
@@ -794,18 +787,18 @@
         "ttfb": 222.1,
         "total": 703.4,
         "size": 4096
+      },
+      {
+        "ts": "08-16 00:27",
+        "connect": 562.4,
+        "ttfb": 169.0,
+        "total": 731.4,
+        "size": 4096
       }
     ]
   },
   "https://9280.kstore.vip/newwex.json": {
     "samples": [
-      {
-        "ts": "08-14 11:37",
-        "connect": 160.6,
-        "ttfb": 112.1,
-        "total": 272.7,
-        "size": 4096
-      },
       {
         "ts": "08-14 13:17",
         "connect": 519.6,
@@ -833,6 +826,13 @@
         "ttfb": 287.8,
         "total": 615.3,
         "size": 4096
+      },
+      {
+        "ts": "08-16 00:27",
+        "connect": 563.6,
+        "ttfb": 89.8,
+        "total": 653.4,
+        "size": 3000
       }
     ]
   }
