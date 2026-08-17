@@ -1,8 +1,8 @@
 {
  "spider": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/fan.jar;md5;9d90c83bc7504392dd02c2236f08713a",
  "wallpaper": "https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/wallpaper.jpg",
- "updateTime": "2026-08-18 00:45",
- "warningText": "精选单仓(26源+8解析接口)·已剔除8个失效Guard源(异界/欢视/低端/在线之家/白白/苹果/萌米/原创)·FongMi优化版",
+ "updateTime": "2026-08-18 08:30",
+ "warningText": "精选单仓(18源+8解析接口)·FongMi优化版，资源来自网络，仅供学习交流使用。",
  "sites": [
   {
    "key": "虎牙",
@@ -612,6 +612,17 @@
    "quickSearch": 1,
    "changeable": 1,
    "timeout": 10
+  },
+  {
+   "key": "低端",
+   "name": "低端(外剧)🔗jar·新域名",
+   "type": 3,
+   "api": "csp_DdrkGuard",
+   "timeout": 10,
+   "ext": "https://ddys.app/",
+   "searchable": 1,
+   "quickSearch": 1,
+   "changeable": 1
   }
  ],
  "parses": [
