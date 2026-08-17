@@ -1,7 +1,7 @@
 {
  "spider": "./fan.jar",
  "wallpaper": "https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/wallpaper.jpg",
- "updateTime": "2026-08-18 08:30",
+ "updateTime": "2026-08-18 09:00",
  "warningText": "精选单仓·本地版：jar 走本地文件，断网可用。若源加载不出目录，把 jar 改为 file:///绝对路径（见 README）",
  "sites": [
   {
@@ -612,17 +612,6 @@
    "quickSearch": 1,
    "changeable": 1,
    "timeout": 10
-  },
-  {
-   "key": "低端",
-   "name": "低端(外剧)🔗jar·新域名",
-   "type": 3,
-   "api": "csp_DdrkGuard",
-   "timeout": 10,
-   "ext": "https://ddys.app/",
-   "searchable": 1,
-   "quickSearch": 1,
-   "changeable": 1
   }
  ],
  "parses": [
