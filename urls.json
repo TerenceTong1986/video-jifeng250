@@ -17,12 +17,16 @@
       "url": "https://raw.liucn.cc/box/m.json"
     },
     {
-      "name": "⭐⭐⭐无名",
-      "url": "https://6800.kstore.vip/fish.json"
-    },
-    {
       "name": "⭐⭐⭐拾光多仓",
       "url": "http://xmbjm.fh4u.org/dc.txt"
+    },
+    {
+      "name": "⭐⭐⭐OK影视",
+      "url": "https://cdn.jsdelivr.net/gh/2hacc/TVBox@main/oktv.json"
+    },
+    {
+      "name": "🪞OK影视镜像1",
+      "url": "https://fastly.jsdelivr.net/gh/2hacc/TVBox@main/oktv.json"
     },
     {
       "name": "⭐⭐⭐王二小",
@@ -33,16 +37,8 @@
       "url": "https://9280.kstore.vip/wex.json"
     },
     {
-      "name": "⭐⭐⭐道长",
-      "url": "https://gitlab.com/duomv/dzhipy/-/raw/main/index.json"
-    },
-    {
-      "name": "⭐⭐⭐OK影视",
-      "url": "https://cdn.jsdelivr.net/gh/2hacc/TVBox@main/oktv.json"
-    },
-    {
-      "name": "🪞OK影视镜像1",
-      "url": "https://fastly.jsdelivr.net/gh/2hacc/TVBox@main/oktv.json"
+      "name": "⭐⭐⭐无名",
+      "url": "https://6800.kstore.vip/fish.json"
     },
     {
       "name": "⭐⭐⭐FM影视",
@@ -55,6 +51,10 @@
     {
       "name": "⭐⭐⭐俊佬",
       "url": "http://home.jundie.top:81/top98.json"
+    },
+    {
+      "name": "⭐⭐⭐道长",
+      "url": "https://gitlab.com/duomv/dzhipy/-/raw/main/index.json"
     },
     {
       "name": "⭐⭐⭐嗷呜",
