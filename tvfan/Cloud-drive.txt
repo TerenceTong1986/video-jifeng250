@@ -1,0 +1,8 @@
+# Cloud-drive.txt - 网盘Cookie配置（玩偶哥哥4K网盘 / 我的云盘 / 立播网盘分类共用）
+# 每行一个账号，格式: 网盘类型|账号名|Cookie
+#   quark = 夸克网盘, uc = UC网盘, ali = 阿里云盘
+# 示例:
+# quark|我的夸克|xxxxCookie字符串
+# uc|我的UC|xxxxCookie字符串
+# ali|我的阿里|xxxxCookie字符串
+# 留空表示无网盘Cookie，网盘分类不加载，其他分类正常。
