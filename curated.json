@@ -860,9 +860,9 @@
    "type": 0,
    "url": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/live/iptv4-fast.txt",
    "playerType": 2,
-   "epg": "https://epg.112114.xyz/?ch={name}",
+   "epg": "https://epg.51zmt.top:8000/api/diyp/?ch={name}&date={date}",
    "ua": "Mozilla/5.0",
-   "logo": "https://epg.112114.xyz/logo/{name}.png",
+   "logo": "https://wswtv.github.io/tv/{name}.png",
    "timeout": 15
   },
   {
@@ -871,9 +871,10 @@
    "type": 0,
    "url": "https://live.zbds.top/tv/iptv4.m3u",
    "playerType": 2,
-   "epg": "https://epg.112114.xyz/?ch={name}",
+   "epg": "https://epg.51zmt.top:8000/api/diyp/?ch={name}&date={date}",
    "ua": "Mozilla/5.0",
-   "timeout": 15
+   "timeout": 15,
+   "logo": "https://wswtv.github.io/tv/{name}.png"
   }
  ],
  "doh": [
