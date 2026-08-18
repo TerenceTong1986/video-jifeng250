@@ -1,7 +1,7 @@
 {
  "spider": "./fan.jar",
  "wallpaper": "https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/wallpaper.jpg",
- "updateTime": "2026-08-18 11:00",
+ "updateTime": "2026-08-18 17:08",
  "warningText": "精选单仓·本地版：jar 走本地文件，断网可用。若源加载不出目录，把 jar 改为 file:///绝对路径（见 README）",
  "sites": [
   {

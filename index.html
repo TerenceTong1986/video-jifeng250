@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#0f172a">
+<title>TVBox 源包下载</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+         background:linear-gradient(160deg,#0f172a 0%,#1e293b 100%); color:#e2e8f0; min-height:100vh; }
+  .wrap { max-width:480px; margin:0 auto; padding:24px 18px 60px; }
+  header { text-align:center; padding:28px 0 18px; }
+  .logo { width:64px; height:64px; border-radius:16px; background:linear-gradient(135deg,#f59e0b,#ef4444);
+          display:flex; align-items:center; justify-content:center; margin:0 auto 12px;
+          font-size:26px; font-weight:800; color:#fff; box-shadow:0 8px 24px rgba(239,68,68,.35); }
+  h1 { font-size:22px; font-weight:700; letter-spacing:.5px; }
+  .sub { color:#94a3b8; font-size:13px; margin-top:6px; }
+  .card { background:#1e293b; border-radius:16px; padding:18px; margin-top:16px;
+          border:1px solid #334155; box-shadow:0 4px 16px rgba(0,0,0,.25); }
+  .card h2 { font-size:15px; color:#fbbf24; margin-bottom:12px; }
+  .row { display:flex; justify-content:space-between; padding:7px 0; font-size:14px; border-bottom:1px dashed #334155; }
+  .row:last-child { border-bottom:none; }
+  .row .k { color:#94a3b8; }
+  .row .v { font-weight:600; color:#f1f5f9; }
+  .btn { display:block; width:100%; padding:15px; border:none; border-radius:12px; margin-top:14px;
+         font-size:16px; font-weight:700; cursor:pointer; text-align:center; text-decoration:none; }
+  .btn-main { background:linear-gradient(135deg,#f59e0b,#ef4444); color:#fff; box-shadow:0 6px 18px rgba(239,68,68,.35); }
+  .btn-main:active { transform:scale(.97); }
+  .btn-ghost { background:#334155; color:#e2e8f0; }
+  .btn-ghost:active { transform:scale(.97); }
+  .tips { font-size:12.5px; color:#94a3b8; line-height:1.9; margin-top:14px; }
+  .tips b { color:#e2e8f0; }
+  .status { text-align:center; font-size:13px; color:#fbbf24; padding:10px 0 0; min-height:20px; }
+  .steps { counter-reset:step; list-style:none; }
+  .steps li { position:relative; padding:8px 0 8px 34px; font-size:14px; line-height:1.7; color:#cbd5e1; }
+  .steps li::before { counter-increment:step; content:counter(step); position:absolute; left:0; top:8px;
+       width:22px; height:22px; border-radius:50%; background:#334155; color:#fbbf24; font-size:12px;
+       font-weight:700; display:flex; align-items:center; justify-content:center; }
+  footer { text-align:center; color:#64748b; font-size:11px; margin-top:28px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo">TV</div>
+    <h1>TVBox 源包下载</h1>
+    <div class="sub">精选源 · 本地包 · 离线可用</div>
+  </header>
+
+  <div class="status" id="status">加载中…</div>
+
+  <div class="card">
+    <h2>📦 最新本地包</h2>
+    <div class="row"><span class="k">包版本</span><span class="v" id="ver">--</span></div>
+    <div class="row"><span class="k">打包时间</span><span class="v" id="date">--</span></div>
+    <div class="row"><span class="k">大小</span><span class="v" id="size">--</span></div>
+    <div class="row"><span class="k">源数量</span><span class="v" id="sites">--</span></div>
+    <a class="btn btn-main" id="dl" href="#" download>⬇️ 下载最新包</a>
+    <a class="btn btn-ghost" href="https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/curated.json" target="_blank">🌐 在线订阅地址（不发包）</a>
+  </div>
+
+  <div class="card">
+    <h2>📲 使用步骤（手机→电视）</h2>
+    <ol class="steps">
+      <li>点上方「下载最新包」，zip 存到手机< b>Download</b></li>
+      <li>手机装 <b>ES 文件浏览器/小白文件管理器</b>，开「局域网共享」</li>
+      <li>电视端影视仓 → 设置 → 配置管理 → 添加 → <b>本地文件</b></li>
+      <li>选解压后的 <b>curated-local.json</b>（jar 走本地，断网可用）</li>
+    </ol>
+    <div class="tips">
+      提示：日常看电视直接用「在线订阅地址」，自动最新，不用包。
+      本地包是给 <b>GitHub 抽风/没网/电视导入</b> 用的备用方案。
+    </div>
+  </div>
+
+  <footer>jifeng250/tvbox-sources · 每日 16:00 直播源自动更新</footer>
+</div>
+
+<script>
+async function load() {
+  try {
+    const r = await fetch('version.json?t=' + Date.now());
+    const v = await r.json();
+    document.getElementById('ver').textContent = v.version;
+    document.getElementById('date').textContent = v.date;
+    document.getElementById('size').textContent = v.size;
+    document.getElementById('sites').textContent = v.sites + ' 个源';
+    document.getElementById('dl').href = v.url;
+    document.getElementById('status').textContent = '✅ 最新包可用';
+  } catch (e) {
+    document.getElementById('status').textContent = '⚠️ 加载失败，GitHub 可能被墙';
+    document.getElementById('ver').textContent = '--';
+  }
+}
+load();
+</script>
+</body>
+</html>
