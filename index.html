@@ -67,7 +67,7 @@
   <div class="status" id="status">加载中…</div>
 
   <div class="card">
-    <h2>📦 最新本地包 <button id="refresh" onclick="load()" style="float:right;background:#334155;color:#e2e8f0;border:none;border-radius:8px;padding:5px 12px;font-size:13px;font-weight:600;cursor:pointer;">🔄 刷新</button></h2>
+    <h2>📦 最新本地包 <button id="refresh" type="button" onclick="refresh()" style="float:right;background:#334155;color:#e2e8f0;border:none;border-radius:8px;padding:5px 12px;font-size:13px;font-weight:600;cursor:pointer;">🔄 刷新</button></h2>
     <div class="row"><span class="k">包版本</span><span class="v" id="ver">--</span></div>
     <div class="row"><span class="k">打包时间</span><span class="v" id="date">--</span></div>
     <div class="row"><span class="k">大小</span><span class="v" id="size">--</span></div>
@@ -145,22 +145,26 @@
 </div>
 
 <script>
-async function load() {
+async function refresh() {
+  const st = document.getElementById('status');
+  const t0 = Date.now();
+  st.textContent = '🔄 刷新中…';
   try {
-    const r = await fetch('version.json?t=' + Date.now());
+    const r = await fetch('version.json?t=' + Date.now(), { cache: 'no-store' });
+    if (!r.ok) throw new Error('HTTP ' + r.status);
     const v = await r.json();
     document.getElementById('ver').textContent = v.version;
     document.getElementById('date').textContent = v.date;
     document.getElementById('size').textContent = v.size;
     document.getElementById('sites').textContent = v.sites + ' 个源';
     document.getElementById('dl').href = v.url;
-    document.getElementById('status').textContent = '✅ 最新包可用';
+    const ms = Date.now() - t0;
+    st.textContent = '✅ 刷新成功 · ' + new Date().toLocaleTimeString() + ' · ' + ms + 'ms';
   } catch (e) {
-    document.getElementById('status').textContent = '⚠️ 加载失败，GitHub 可能被墙';
-    document.getElementById('ver').textContent = '--';
+    st.textContent = '⚠️ 刷新失败（网络或 GitHub 被墙），请稍后重试';
   }
 }
-load();
+refresh();
 
 function copy(btn) {
   const item = btn.closest('.link-item');
