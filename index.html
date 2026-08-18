@@ -33,6 +33,20 @@
   .btn-ghost:active { transform:scale(.97); }
   .tips { font-size:12.5px; color:#94a3b8; line-height:1.9; margin-top:14px; }
   .tips b { color:#e2e8f0; }
+  .link-item { display:flex; align-items:center; gap:8px; padding:9px 0; border-bottom:1px dashed #334155; font-size:13px; }
+  .link-item:last-child { border-bottom:none; }
+  .link-item a { flex:1; color:#7dd3fc; text-decoration:none; word-break:break-all; line-height:1.5; }
+  .link-item a:active { opacity:.6; }
+  .copy-btn { background:#334155; color:#e2e8f0; border:none; border-radius:8px; padding:5px 10px;
+              font-size:12px; font-weight:600; cursor:pointer; white-space:nowrap; flex-shrink:0; }
+  .copy-btn:active { transform:scale(.93); }
+  .tag { display:inline-block; min-width:52px; padding:2px 6px; border-radius:6px; font-size:11px;
+         font-weight:700; text-align:center; flex-shrink:0; }
+  .tag-gh { background:#166534; color:#86efac; }
+  .tag-gp { background:#1e3a8a; color:#93c5fd; }
+  .tag-js { background:#701a75; color:#f0abfc; }
+  .tag-raw{ background:#57534e; color:#d6d3d1; }
+  .ok-msg { color:#86efac; font-size:12px; text-align:right; min-height:16px; }
   .status { text-align:center; font-size:13px; color:#fbbf24; padding:10px 0 0; min-height:20px; }
   .steps { counter-reset:step; list-style:none; }
   .steps li { position:relative; padding:8px 0 8px 34px; font-size:14px; line-height:1.7; color:#cbd5e1; }
@@ -59,13 +73,64 @@
     <div class="row"><span class="k">大小</span><span class="v" id="size">--</span></div>
     <div class="row"><span class="k">源数量</span><span class="v" id="sites">--</span></div>
     <a class="btn btn-main" id="dl" href="#" download>⬇️ 下载最新包</a>
-    <a class="btn btn-ghost" href="https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/curated.json" target="_blank">🌐 在线订阅地址（不发包）</a>
+  </div>
+
+  <div class="card" id="sub-card">
+    <h2>🌐 在线订阅地址（多加速线路）</h2>
+    <div class="ok-msg"></div>
+    <div class="link-item" data-u="https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/curated.json">
+      <span class="tag tag-gh">ghfast</span>
+      <a href="https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/curated.json" target="_blank">https://ghfast.top/…/curated.json</a>
+      <button class="copy-btn" onclick="copy(this)">复制</button>
+    </div>
+    <div class="link-item" data-u="https://gh-proxy.com/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/curated.json">
+      <span class="tag tag-gp">gh-proxy</span>
+      <a href="https://gh-proxy.com/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/curated.json" target="_blank">https://gh-proxy.com/…/curated.json</a>
+      <button class="copy-btn" onclick="copy(this)">复制</button>
+    </div>
+    <div class="link-item" data-u="https://fastly.jsdelivr.net/gh/jifeng250/tvbox-sources@main/curated.json">
+      <span class="tag tag-js">jsdelivr</span>
+      <a href="https://fastly.jsdelivr.net/gh/jifeng250/tvbox-sources@main/curated.json" target="_blank">https://fastly.jsdelivr.net/…/curated.json</a>
+      <button class="copy-btn" onclick="copy(this)">复制</button>
+    </div>
+    <div class="link-item" data-u="https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/curated.json">
+      <span class="tag tag-raw">直连</span>
+      <a href="https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/curated.json" target="_blank">https://raw.githubusercontent.com/…/curated.json</a>
+      <button class="copy-btn" onclick="copy(this)">复制</button>
+    </div>
+    <div class="tips">电视影视仓→设置→配置管理→添加→<b>粘贴上面任一地址</b>（ghfast 最快，直连被墙时换 gh-proxy/jsdelivr）。</div>
+  </div>
+
+  <div class="card" id="live-card">
+    <h2>📡 直播源加速地址</h2>
+    <div class="ok-msg"></div>
+    <div class="link-item" data-u="https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/live/iptv4-fast.txt">
+      <span class="tag tag-gh">ghfast</span>
+      <a href="https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/live/iptv4-fast.txt" target="_blank">https://ghfast.top/…/iptv4-fast.txt</a>
+      <button class="copy-btn" onclick="copy(this)">复制</button>
+    </div>
+    <div class="link-item" data-u="https://gh-proxy.com/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/live/iptv4-fast.txt">
+      <span class="tag tag-gp">gh-proxy</span>
+      <a href="https://gh-proxy.com/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/live/iptv4-fast.txt" target="_blank">https://gh-proxy.com/…/iptv4-fast.txt</a>
+      <button class="copy-btn" onclick="copy(this)">复制</button>
+    </div>
+    <div class="link-item" data-u="https://fastly.jsdelivr.net/gh/jifeng250/tvbox-sources@main/live/iptv4-fast.txt">
+      <span class="tag tag-js">jsdelivr</span>
+      <a href="https://fastly.jsdelivr.net/gh/jifeng250/tvbox-sources@main/live/iptv4-fast.txt" target="_blank">https://fastly.jsdelivr.net/…/iptv4-fast.txt</a>
+      <button class="copy-btn" onclick="copy(this)">复制</button>
+    </div>
+    <div class="link-item" data-u="https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/live/iptv4-fast.txt">
+      <span class="tag tag-raw">直连</span>
+      <a href="https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/live/iptv4-fast.txt" target="_blank">https://raw.githubusercontent.com/…/iptv4-fast.txt</a>
+      <button class="copy-btn" onclick="copy(this)">复制</button>
+    </div>
+    <div class="tips">每日 16:00 自动测速更新优化线路；电视/手机上把此地址填入直播源（IPTV 播放器或影视仓直播配置）。</div>
   </div>
 
   <div class="card">
     <h2>📲 使用步骤（手机→电视）</h2>
     <ol class="steps">
-      <li>点上方「下载最新包」，zip 存到手机< b>Download</b></li>
+      <li>点上方「下载最新包」，zip 存到手机 <b>Download</b></li>
       <li>手机装 <b>ES 文件浏览器/小白文件管理器</b>，开「局域网共享」</li>
       <li>电视端影视仓 → 设置 → 配置管理 → 添加 → <b>本地文件</b></li>
       <li>选解压后的 <b>curated-local.json</b>（jar 走本地，断网可用）</li>
@@ -96,6 +161,27 @@ async function load() {
   }
 }
 load();
+
+function copy(btn) {
+  const item = btn.closest('.link-item');
+  const url = item.getAttribute('data-u');
+  const msg = item.closest('.card').querySelector('.ok-msg');
+  function done() {
+    if (msg) { msg.textContent = '✅ 已复制'; setTimeout(() => msg.textContent = '', 1600); }
+  }
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(url).then(done).catch(() => fallbackCopy(url, done));
+  } else {
+    fallbackCopy(url, done);
+  }
+}
+function fallbackCopy(text, done) {
+  const ta = document.createElement('textarea');
+  ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+  document.body.appendChild(ta); ta.select();
+  try { document.execCommand('copy'); done(); } catch (e) {}
+  document.body.removeChild(ta);
+}
 </script>
 </body>
 </html>
