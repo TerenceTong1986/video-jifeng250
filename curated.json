@@ -1,7 +1,7 @@
 {
  "spider": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/fan.jar;md5;ea8ab37f3d7bedd2bfa2b4b1e4d1eca4",
  "wallpaper": "https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/wallpaper.jpg",
- "updateTime": "2026-08-18 10:00",
+ "updateTime": "2026-08-18 11:00",
  "warningText": "精选单仓(18源+8解析接口)·FongMi优化版，资源来自网络，仅供学习交流使用。",
  "sites": [
   {
@@ -612,6 +612,116 @@
    "quickSearch": 1,
    "changeable": 1,
    "timeout": 10
+  },
+  {
+   "key": "QuarkPanso",
+   "name": "🅿️夸克盘搜",
+   "type": 3,
+   "api": "csp_QuarkPanso",
+   "jar": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/pg.jar;md5;dffec63fb83a2b31b8606bd4bf6bead9",
+   "timeout": 10,
+   "searchable": 1,
+   "quickSearch": 1,
+   "changeable": 1
+  },
+  {
+   "key": "Panyq",
+   "name": "🅿️盘友圈",
+   "type": 3,
+   "api": "csp_Panyq",
+   "jar": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/pg.jar;md5;dffec63fb83a2b31b8606bd4bf6bead9",
+   "timeout": 10,
+   "searchable": 1,
+   "quickSearch": 1,
+   "changeable": 1
+  },
+  {
+   "key": "EightEight",
+   "name": "🅿️88网盘",
+   "type": 3,
+   "api": "csp_EightEight",
+   "jar": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/pg.jar;md5;dffec63fb83a2b31b8606bd4bf6bead9",
+   "timeout": 10,
+   "searchable": 1,
+   "quickSearch": 1,
+   "changeable": 1
+  },
+  {
+   "key": "PanSou",
+   "name": "🅿️盘搜",
+   "type": 3,
+   "api": "csp_PanSou",
+   "jar": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/pg.jar;md5;dffec63fb83a2b31b8606bd4bf6bead9",
+   "timeout": 10,
+   "searchable": 1,
+   "quickSearch": 1,
+   "changeable": 1
+  },
+  {
+   "key": "MiaoSou",
+   "name": "🅿️秒搜",
+   "type": 3,
+   "api": "csp_MiaoSou",
+   "jar": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/pg.jar;md5;dffec63fb83a2b31b8606bd4bf6bead9",
+   "timeout": 10,
+   "searchable": 1,
+   "quickSearch": 1,
+   "changeable": 1
+  },
+  {
+   "key": "Qianfan",
+   "name": "🅿️千帆盘",
+   "type": 3,
+   "api": "csp_Qianfan",
+   "jar": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/pg.jar;md5;dffec63fb83a2b31b8606bd4bf6bead9",
+   "timeout": 10,
+   "searchable": 1,
+   "quickSearch": 1,
+   "changeable": 1
+  },
+  {
+   "key": "Xpanpan",
+   "name": "🅿️小盘盘",
+   "type": 3,
+   "api": "csp_Xpanpan",
+   "jar": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/pg.jar;md5;dffec63fb83a2b31b8606bd4bf6bead9",
+   "timeout": 10,
+   "searchable": 1,
+   "quickSearch": 1,
+   "changeable": 1
+  },
+  {
+   "key": "YingSo",
+   "name": "🅿️影搜",
+   "type": 3,
+   "api": "csp_YingSo",
+   "jar": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/pg.jar;md5;dffec63fb83a2b31b8606bd4bf6bead9",
+   "timeout": 10,
+   "searchable": 1,
+   "quickSearch": 1,
+   "changeable": 1
+  },
+  {
+   "key": "P115Share",
+   "name": "🅿️115分享",
+   "type": 3,
+   "api": "csp_P115Share",
+   "jar": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/pg.jar;md5;dffec63fb83a2b31b8606bd4bf6bead9",
+   "timeout": 10,
+   "searchable": 1,
+   "quickSearch": 1,
+   "changeable": 1
+  },
+  {
+   "key": "QuarkShare",
+   "name": "🅿️夸克分享",
+   "type": 3,
+   "api": "csp_QuarkShare",
+   "jar": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/pg.jar;md5;dffec63fb83a2b31b8606bd4bf6bead9",
+   "timeout": 10,
+   "searchable": 1,
+   "quickSearch": 1,
+   "changeable": 1
   }
  ],
  "parses": [
