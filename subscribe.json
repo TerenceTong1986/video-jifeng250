@@ -3,10 +3,6 @@
     {
       "name": "精选仓",
       "url": "https://gh-proxy.com/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/curated.json"
-    },
-    {
-      "name": "直播优选",
-      "url": "https://gh-proxy.com/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/live/iptv4-fast.txt"
     }
   ]
 }
