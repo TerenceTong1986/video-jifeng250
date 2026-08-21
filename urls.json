@@ -1,20 +1,24 @@
 {
   "urls": [
     {
-      "name": "⭐⭐⭐小盒子4K",
-      "url": "http://xhztv.top/4k.json"
+      "name": "⭐⭐⭐小盒子单仓",
+      "url": "http://xhztv.top/xhz/"
     },
     {
       "name": "⭐⭐⭐小盒子多仓",
       "url": "http://xhztv.top/dc"
     },
     {
-      "name": "⭐⭐⭐小盒子单仓",
-      "url": "http://xhztv.top/xhz/"
+      "name": "⭐⭐⭐小盒子4K",
+      "url": "http://xhztv.top/4k.json"
     },
     {
       "name": "⭐⭐⭐老刘备",
       "url": "https://raw.liucn.cc/box/m.json"
+    },
+    {
+      "name": "⭐⭐⭐道长",
+      "url": "https://gitlab.com/duomv/dzhipy/-/raw/main/index.json"
     },
     {
       "name": "⭐⭐⭐无名",
@@ -25,24 +29,12 @@
       "url": "http://fmys.top/fmys.json"
     },
     {
-      "name": "⭐⭐⭐道长",
-      "url": "https://gitlab.com/duomv/dzhipy/-/raw/main/index.json"
-    },
-    {
       "name": "⭐⭐⭐王二小",
       "url": "https://9280.kstore.vip/newwex.json"
     },
     {
       "name": "🪞王二小镜像1",
       "url": "https://9280.kstore.vip/wex.json"
-    },
-    {
-      "name": "⭐⭐⭐OK影视",
-      "url": "https://cdn.jsdelivr.net/gh/2hacc/TVBox@main/oktv.json"
-    },
-    {
-      "name": "🪞OK影视镜像1",
-      "url": "https://fastly.jsdelivr.net/gh/2hacc/TVBox@main/oktv.json"
     },
     {
       "name": "⭐⭐⭐高天流云",
@@ -53,8 +45,12 @@
       "url": "http://xmbjm.fh4u.org/dc.txt"
     },
     {
-      "name": "⭐⭐⭐VOX",
-      "url": "http://rihou.cc:88/demo.php"
+      "name": "⭐⭐⭐OK影视",
+      "url": "https://cdn.jsdelivr.net/gh/2hacc/TVBox@main/oktv.json"
+    },
+    {
+      "name": "🪞OK影视镜像1",
+      "url": "https://fastly.jsdelivr.net/gh/2hacc/TVBox@main/oktv.json"
     },
     {
       "name": "⭐⭐⭐肥猫",
@@ -73,16 +69,20 @@
       "url": "http://home.jundie.top:81/top98.json"
     },
     {
-      "name": "⭐⭐⭐嗷呜",
-      "url": "http://itv666.cc/aowu/config.webp"
-    },
-    {
       "name": "⭐⭐⭐小马",
       "url": "https://szyyds.cn/tv/x.json"
     },
     {
+      "name": "⭐⭐⭐嗷呜",
+      "url": "http://itv666.cc/aowu/config.webp"
+    },
+    {
       "name": "⭐⭐⭐饭太硬(ftygit)",
       "url": "https://cdn09022024.gitlink.org.cn/api/v1/repos/xxooo/in/raw/in.bmp"
+    },
+    {
+      "name": "⭐⭐⭐VOX",
+      "url": "http://rihou.cc:88/demo.php"
     },
     {
       "name": "❌摸鱼儿",
