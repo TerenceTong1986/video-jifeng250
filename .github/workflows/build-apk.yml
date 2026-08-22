@@ -1,0 +1,55 @@
+name: 🤖 Build FongMi APK (type= mod)
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/build-apk.yml']
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout FongMi/TV (branch fongmi)
+        uses: actions/checkout@v4
+        with:
+          repository: FongMi/TV
+          ref: fongmi
+          path: fongmi
+
+      - name: Apply mod — CMS category param t= → type=
+        run: |
+          sed -i 's/params.put("t", tid);/params.put("type", tid);/' fongmi/app/src/main/java/com/fongmi/android/tv/api/SiteApi.java
+          echo "=== after patch ==="
+          grep -n 'params.put("type", tid)' fongmi/app/src/main/java/com/fongmi/android/tv/api/SiteApi.java
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Install Android SDK 37
+        run: |
+          export ANDROID_HOME="$ANDROID_HOME"
+          yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses >/dev/null 2>&1 || true
+          "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" "platforms;android-37" "build-tools;36.0.0" >/dev/null 2>&1 || true
+          ls "$ANDROID_HOME/platforms" || true
+
+      - name: Build APK (assembleRelease)
+        working-directory: fongmi
+        env:
+          ANDROID_HOME: ${{ env.ANDROID_HOME }}
+        run: |
+          chmod +x gradlew
+          ./gradlew :app:assembleRelease --no-daemon --stacktrace 2>&1 | tail -40
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: fongmi-mod-apk
+          path: |
+            fongmi/app/build/outputs/apk/release/*.apk
+            fongmi/app/build/outputs/apk/just/*.apk
+          if-no-files-found: error
+          retention-days: 14
