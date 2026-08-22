@@ -1,6 +1,9 @@
 {
     "spider": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/fan.jar;md5;1fb66ff185ea35252d2ae2a07d058ec1",
     "wallpaper": "https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/wallpaper.jpg",
+    "headers": [
+        {"host": "lovedan.net", "header": {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"}}
+    ],
     "updateTime": "2026-08-22 15:48",
     "warningText": "精选单仓(18源+8解析接口)·FongMi优化版，资源来自网络，仅供学习交流使用。",
     "sites": [
