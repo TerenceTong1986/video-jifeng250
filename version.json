@@ -1,7 +1,15 @@
 {
   "version": "20260822",
-  "date": "2026-08-22 20:10",
+  "date": "2026-08-22 21:18",
   "size": "4.00 MB",
   "sites": 37,
-  "url": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/tvbox-sources-20260822.zip"
+  "url": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/tvbox-sources-20260822.zip",
+  "urls": [
+    "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/tvbox-sources-20260822.zip",
+    "https://gh-proxy.com/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/tvbox-sources-20260822.zip",
+    "https://ghproxy.net/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/tvbox-sources-20260822.zip",
+    "https://fastly.jsdelivr.net/gh/jifeng250/tvbox-sources@main/tvbox-sources-20260822.zip",
+    "https://gcore.jsdelivr.net/gh/jifeng250/tvbox-sources@main/tvbox-sources-20260822.zip",
+    "https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/tvbox-sources-20260822.zip"
+  ]
 }

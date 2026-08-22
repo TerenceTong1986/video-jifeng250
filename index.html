@@ -72,8 +72,9 @@
     <div class="row"><span class="k">打包时间</span><span class="v" id="date">--</span></div>
     <div class="row"><span class="k">大小</span><span class="v" id="size">--</span></div>
     <div class="row"><span class="k">源数量</span><span class="v" id="sites">--</span></div>
-    <a class="btn btn-main" id="dl" href="#" download>⬇️ 下载最新包</a>
-  </div>
+    <a class="btn btn-main" id="dl" href="#" download>⬇️ 下载最新包（ghfast）</a>
+        <div class="dl-lines" id="dl-lines" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;"></div>
+      </div>
 
   <div class="card" id="sub-card">
     <h2>🌐 在线订阅地址（多加速线路）</h2>
@@ -176,8 +177,20 @@ async function refresh() {
     document.getElementById('date').textContent = v.date;
     document.getElementById('size').textContent = v.size;
     document.getElementById('sites').textContent = v.sites + ' 个源';
-    document.getElementById('dl').href = v.url;
-    const ms = Date.now() - t0;
+        const urls = (v.urls && v.urls.length ? v.urls : [v.url]);
+        document.getElementById('dl').href = urls[0];
+        const names = ['ghfast', 'gh-proxy', 'ghproxy', 'jsdelivr', 'jsdelivr-gcore', '直连'];
+        const box = document.getElementById('dl-lines');
+        box.innerHTML = '';
+        urls.forEach((u, i) => {
+          const a = document.createElement('a');
+          a.href = u;
+          a.download = 'tvbox-sources-' + (v.version || '') + '.zip';
+          a.textContent = '⬇ ' + (names[i] || '线路' + (i + 1)) + ' 下载';
+          a.style.cssText = 'padding:7px 12px;border-radius:8px;background:#1e293b;color:#a5f3fc;text-decoration:none;font-size:13px;font-weight:600;border:1px solid #334155;';
+          box.appendChild(a);
+        });
+        const ms = Date.now() - t0;
     st.textContent = '✅ 刷新成功 · ' + new Date().toLocaleTimeString() + ' · ' + ms + 'ms';
   } catch (e) {
     st.textContent = '⚠️ 刷新失败（网络或 GitHub 被墙），请稍后重试';
