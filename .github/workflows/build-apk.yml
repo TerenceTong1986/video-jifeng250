@@ -35,6 +35,9 @@ jobs:
           sed -i 's|<string name="app_name">TV</string>|<string name="app_name">疯影视</string>|' fongmi/app/src/main/res/values/strings.xml
           sed -i 's|<string name="app_name">影视</string>|<string name="app_name">疯影视</string>|' fongmi/app/src/main/res/values-zh-rCN/strings.xml
           grep -rn 'app_name' fongmi/app/src/main/res/values/strings.xml fongmi/app/src/main/res/values-zh-rCN/strings.xml
+          # 4) versionName → 5.6.1-feng（源码最新5.6.0，对齐Release线+标识魔改）
+          sed -i 's/versionName "5.6.0"/versionName "5.6.1-feng"/' fongmi/app/build.gradle
+          grep -n 'versionName' fongmi/app/build.gradle
 
       - name: Set up JDK 21
         uses: actions/setup-java@v4
