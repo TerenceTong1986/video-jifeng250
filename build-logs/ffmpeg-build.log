@@ -1,7 +1,8 @@
 FFMPEG_MODULE_PATH is /home/runner/work/tvbox-sources/tvbox-sources/media/libraries/decoder_ffmpeg/src/main
-NDK path is /usr/local/lib/android/sdk/ndk/27.2.12479018
+NDK path is /usr/local/lib/android/sdk/ndk/27.3.13750724/
 Host platform is linux-x86_64
 ANDROID_ABI is 21
 Enabled decoders are aac mp3 opus vorbis flac ac3 eac3 dts h264 hevc mpeg4 vp8 vp9 mjpeg
 Using 4 jobs for make
-Please set correct NDK_PATH, /usr/local/lib/android/sdk/ndk/27.2.12479018 is incorrect
+Unknown option "--disable-postproc".
+See ./configure --help for available options.
