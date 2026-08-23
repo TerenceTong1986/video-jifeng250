@@ -132,7 +132,7 @@ jobs:
           chmod +x gradlew
           set +e
           # release构建（含R8混淆，ReorderingBufferQueue已加keep规则防误删）
-          ./gradlew :app:assembleRelease --no-daemon > "$GITHUB_WORKSPACE/gradle.log" 2>&1
+          ./gradlew :app:assembleRelease --no-daemon --stacktrace > "$GITHUB_WORKSPACE/gradle.log" 2>&1
           ec=$?
           set -e
           echo "GRADLE_EXIT=$ec" >> "$GITHUB_WORKSPACE/gradle.log"
