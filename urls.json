@@ -1,10 +1,6 @@
 {
   "urls": [
     {
-      "name": "⭐⭐⭐高天流云",
-      "url": "https://fastly.jsdelivr.net/gh/gaotianliuyun/gao@master/js.json"
-    },
-    {
       "name": "⭐⭐⭐小盒子4K",
       "url": "http://xhztv.top/4k.json"
     },
@@ -21,6 +17,10 @@
       "url": "https://raw.liucn.cc/box/m.json"
     },
     {
+      "name": "⭐⭐⭐高天流云",
+      "url": "https://fastly.jsdelivr.net/gh/gaotianliuyun/gao@master/js.json"
+    },
+    {
       "name": "⭐⭐⭐OK影视",
       "url": "https://cdn.jsdelivr.net/gh/2hacc/TVBox@main/oktv.json"
     },
@@ -33,8 +33,8 @@
       "url": "http://xmbjm.fh4u.org/dc.txt"
     },
     {
-      "name": "⭐⭐⭐FM影视",
-      "url": "http://fmys.top/fmys.json"
+      "name": "⭐⭐⭐道长",
+      "url": "https://gitlab.com/duomv/dzhipy/-/raw/main/index.json"
     },
     {
       "name": "⭐⭐⭐王二小",
@@ -45,20 +45,20 @@
       "url": "https://9280.kstore.vip/wex.json"
     },
     {
-      "name": "⭐⭐⭐俊佬",
-      "url": "http://home.jundie.top:81/top98.json"
-    },
-    {
-      "name": "⭐⭐⭐VOX",
-      "url": "http://rihou.cc:88/demo.php"
+      "name": "⭐⭐⭐FM影视",
+      "url": "http://fmys.top/fmys.json"
     },
     {
       "name": "⭐⭐⭐无名",
       "url": "https://6800.kstore.vip/fish.json"
     },
     {
-      "name": "⭐⭐⭐道长",
-      "url": "https://gitlab.com/duomv/dzhipy/-/raw/main/index.json"
+      "name": "⭐⭐⭐俊佬",
+      "url": "http://home.jundie.top:81/top98.json"
+    },
+    {
+      "name": "⭐⭐⭐VOX",
+      "url": "http://rihou.cc:88/demo.php"
     },
     {
       "name": "⭐⭐⭐嗷呜",
