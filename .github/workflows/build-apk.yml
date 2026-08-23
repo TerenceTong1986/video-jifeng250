@@ -65,7 +65,14 @@ jobs:
         working-directory: media
         run: |
           chmod +x gradlew
-          ./gradlew :media3-common:release :media3-database:release :media3-datasource:release :media3-datasource-okhttp:release :media3-datasource-rtmp:release :media3-effect:release :media3-exoplayer:release :media3-extractor:release :media3-mpvplayer:release :media3-session:release :media3-ui:release :media3-ui-danmaku:release --no-daemon
+          set +e
+          ./gradlew :media3-common:release :media3-database:release :media3-datasource:release :media3-datasource-okhttp:release :media3-datasource-rtmp:release :media3-effect:release :media3-exoplayer:release :media3-extractor:release :media3-mpvplayer:release :media3-session:release :media3-ui:release :media3-ui-danmaku:release --no-daemon --stacktrace > "$GITHUB_WORKSPACE/media-gradle.log" 2>&1
+          ec=$?
+          set -e
+          echo "MEDIA_GRADLE_EXIT=$ec" >> "$GITHUB_WORKSPACE/media-gradle.log"
+          echo "===== media gradle log tail ====="
+          tail -100 "$GITHUB_WORKSPACE/media-gradle.log"
+          if [ "$ec" != "0" ]; then exit $ec; fi
           echo "=== aars ==="
           find . -path "*/build/outputs/aar/*.aar" -type f
 
@@ -101,12 +108,13 @@ jobs:
         run: |
           mkdir -p "$GITHUB_WORKSPACE/build-logs"
           cp "$GITHUB_WORKSPACE/gradle.log" "$GITHUB_WORKSPACE/build-logs/gradle.log" 2>/dev/null || echo "no gradle.log" > "$GITHUB_WORKSPACE/build-logs/gradle.log"
+          cp "$GITHUB_WORKSPACE/media-gradle.log" "$GITHUB_WORKSPACE/build-logs/media-gradle.log" 2>/dev/null || true
           find "$GITHUB_WORKSPACE/fongmi" -name "*.apk" -type f > "$GITHUB_WORKSPACE/build-logs/apk-files.txt" 2>/dev/null || true
           cd "$GITHUB_WORKSPACE"
           git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/jifeng250/tvbox-sources.git"
           git config user.name "jifeng250 bot"
           git config user.email "bot@users.noreply.github.com"
-          git add build-logs/ gradle.log
+          git add build-logs/ gradle.log media-gradle.log
           git commit -m "📋 build log run ${{ github.run_number }} [skip ci]" || echo "no changes"
           for i in 1 2 3; do
             git pull --rebase origin main >/dev/null 2>&1 || true
