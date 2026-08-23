@@ -37,7 +37,8 @@ jobs:
       - name: Install Android SDK 37
         run: |
           yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses >/dev/null 2>&1 || true
-          "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" "platforms;android-37" "build-tools;36.0.0" >/dev/null 2>&1 || true
+          "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" "platforms;android-37" "build-tools;36.0.0" "ndk;27.2.12479018" >/dev/null 2>&1 || true
+          echo "SDK done"
 
       - name: Cache Gradle
         uses: actions/cache@v4
@@ -57,11 +58,31 @@ jobs:
         working-directory: fongmi
         run: |
           chmod +x gradlew
-          ./gradlew :app:assembleRelease --no-daemon
+          ./gradlew :app:assembleRelease --no-daemon > "$GITHUB_WORKSPACE/gradle.log" 2>&1
+          echo "GRADLE_EXIT=$? (tail of log below)"
+          tail -50 "$GITHUB_WORKSPACE/gradle.log"
           echo "=== APK files ==="
           find . -name "*.apk" -type f
 
+      - name: Commit build log (always)
+        if: always()
+        run: |
+          mkdir -p "$GITHUB_WORKSPACE/build-logs"
+          cp "$GITHUB_WORKSPACE/gradle.log" "$GITHUB_WORKSPACE/build-logs/gradle.log" 2>/dev/null || echo "no gradle.log" > "$GITHUB_WORKSPACE/build-logs/gradle.log"
+          find "$GITHUB_WORKSPACE/fongmi" -name "*.apk" -type f > "$GITHUB_WORKSPACE/build-logs/apk-files.txt" 2>/dev/null || true
+          echo "--- env ---" >> "$GITHUB_WORKSPACE/build-logs/gradle.log"
+          echo "ANDROID_HOME=$ANDROID_HOME" >> "$GITHUB_WORKSPACE/build-logs/gradle.log"
+          ls "$ANDROID_HOME/ndk" 2>/dev/null >> "$GITHUB_WORKSPACE/build-logs/gradle.log" || echo "no ndk dir" >> "$GITHUB_WORKSPACE/build-logs/gradle.log"
+          ls "$ANDROID_HOME/platforms" 2>/dev/null >> "$GITHUB_WORKSPACE/build-logs/gradle.log" || true
+          cd "$GITHUB_WORKSPACE"
+          git config user.name "jifeng250 bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add build-logs/
+          git commit -m "📋 build log ${{ github.run_number }} [skip ci]" || echo "no changes"
+          git push origin main
+
       - name: Publish to GitHub Release
+        if: success()
         uses: softprops/action-gh-release@v2
         with:
           files: fongmi/**/*.apk
@@ -69,7 +90,7 @@ jobs:
           name: FongMi 5.6.1 mod（type=分类参数支持）
           body: |
             - 魔改: SiteApi.java 分类请求参数 t= → type=
-            - 效果: 9源分类浏览全部可用（百度/暴風/索尼/闪电/虎牙/天涯/艾旦/量子/非凡）
+            - 效果: 9源分类浏览全部可用
             - 自动构建: GitHub Actions
           make_latest: true
           overwrite: true
