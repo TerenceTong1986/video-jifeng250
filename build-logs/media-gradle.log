@@ -52,163 +52,496 @@ Daemon will be stopped at the end of the build
 WARNING: BuildType 'debug' is both debuggable and has 'isMinifyEnabled' set to true.
 All code optimizations and obfuscation are disabled for debuggable builds.
 
+> Task :lib-common:preBuild UP-TO-DATE
+> Task :lib-common:preReleaseBuild UP-TO-DATE
+> Task :lib-common:checkReleaseAarMetadata
+> Task :lib-common:mergeReleaseJniLibFolders
+> Task :lib-common:mergeReleaseNativeLibs NO-SOURCE
+> Task :lib-common:stripReleaseDebugSymbols NO-SOURCE
+> Task :lib-common:copyReleaseJniLibsProjectAndLocalJars
+> Task :lib-common:extractDeepLinksForAarRelease
+> Task :lib-common:generateReleaseResources
+> Task :lib-common:packageReleaseResources
+> Task :lib-common:processReleaseNavigationResources
+> Task :lib-common:generateReleaseAssets UP-TO-DATE
+> Task :lib-common:mergeReleaseAssets
+> Task :lib-common:javaPreCompileRelease
+> Task :lib-common:prepareLintJarForPublish
+> Task :lib-common:prepareReleaseArtProfile
+> Task :lib-common:writeReleaseAarMetadata
+> Task :lib-common:parseReleaseLocalResources
+> Task :lib-common:processReleaseManifest
+> Task :lib-common:compileReleaseNavigationResources
+> Task :lib-common:mapReleaseSourceSetPaths
+> Task :lib-common:mergeReleaseResources
+> Task :lib-common:generateReleaseRFile
+> Task :lib-common:verifyReleaseResources
+> Task :lib-common:compileReleaseKotlin NO-SOURCE
+
+> Task :lib-common:compileReleaseJavaWithJavac
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+
+> Task :lib-common:extractReleaseAnnotations
+> Task :lib-common:mergeReleaseGeneratedProguardFiles
+> Task :lib-common:mergeReleaseConsumerProguardFiles
+> Task :lib-common:processReleaseJavaRes NO-SOURCE
+> Task :lib-database:preBuild UP-TO-DATE
+> Task :lib-database:preReleaseBuild UP-TO-DATE
+> Task :lib-database:checkReleaseAarMetadata
+> Task :lib-database:mergeReleaseJniLibFolders
+> Task :lib-database:mergeReleaseNativeLibs NO-SOURCE
+> Task :lib-database:stripReleaseDebugSymbols NO-SOURCE
+> Task :lib-database:extractDeepLinksForAarRelease
+> Task :lib-database:copyReleaseJniLibsProjectAndLocalJars
+> Task :lib-database:generateReleaseResources
+> Task :lib-database:packageReleaseResources
+> Task :lib-database:processReleaseNavigationResources
+> Task :lib-database:generateReleaseAssets UP-TO-DATE
+> Task :lib-common:mergeReleaseJavaResource
+> Task :lib-database:mergeReleaseAssets
+> Task :lib-database:parseReleaseLocalResources
+> Task :lib-common:bundleLibCompileToJarRelease
+> Task :lib-common:syncReleaseLibJars
+> Task :lib-common:bundleReleaseAar
+> Task :lib-common:assembleRelease
+> Task :lib-database:javaPreCompileRelease
+> Task :lib-database:prepareLintJarForPublish
+> Task :lib-database:prepareReleaseArtProfile
+> Task :lib-database:generateReleaseRFile
+> Task :lib-database:processReleaseManifest
+> Task :lib-database:compileReleaseKotlin NO-SOURCE
+> Task :lib-database:extractReleaseAnnotations
+> Task :lib-database:compileReleaseJavaWithJavac
+> Task :lib-database:mergeReleaseGeneratedProguardFiles
+> Task :lib-database:mergeReleaseConsumerProguardFiles
+> Task :lib-database:processReleaseJavaRes NO-SOURCE
+> Task :lib-database:mergeReleaseJavaResource
+> Task :lib-database:writeReleaseAarMetadata
+> Task :lib-database:syncReleaseLibJars
+> Task :lib-database:bundleReleaseAar
+> Task :lib-common:compileReleaseLibraryResources
+> Task :lib-database:compileReleaseNavigationResources
+> Task :lib-database:mapReleaseSourceSetPaths
+> Task :lib-database:mergeReleaseResources
+> Task :lib-datasource:preBuild UP-TO-DATE
+> Task :lib-datasource:preReleaseBuild UP-TO-DATE
+> Task :lib-datasource:checkReleaseAarMetadata
+> Task :lib-datasource:mergeReleaseJniLibFolders
+> Task :lib-datasource:mergeReleaseNativeLibs NO-SOURCE
+> Task :lib-datasource:stripReleaseDebugSymbols NO-SOURCE
+> Task :lib-datasource:copyReleaseJniLibsProjectAndLocalJars
+> Task :lib-datasource:extractDeepLinksForAarRelease
+> Task :lib-database:bundleLibCompileToJarRelease
+> Task :lib-datasource:generateReleaseResources
+> Task :lib-datasource:packageReleaseResources
+> Task :lib-datasource:processReleaseNavigationResources
+> Task :lib-datasource:generateReleaseAssets UP-TO-DATE
+> Task :lib-datasource:mergeReleaseAssets
+> Task :lib-datasource:javaPreCompileRelease
+> Task :lib-datasource:prepareLintJarForPublish
+> Task :lib-datasource:prepareReleaseArtProfile
+> Task :lib-datasource:parseReleaseLocalResources
+> Task :lib-datasource:writeReleaseAarMetadata
+> Task :lib-datasource:processReleaseManifest
+> Task :lib-database:compileReleaseLibraryResources
+> Task :lib-datasource:compileReleaseNavigationResources
+> Task :lib-datasource:generateReleaseRFile
+> Task :lib-datasource:mapReleaseSourceSetPaths
+> Task :lib-database:verifyReleaseResources
+> Task :lib-database:assembleRelease
+> Task :lib-datasource:compileReleaseKotlin NO-SOURCE
+> Task :lib-datasource:extractReleaseAnnotations
+> Task :lib-datasource:compileReleaseJavaWithJavac
+> Task :lib-datasource:mergeReleaseGeneratedProguardFiles
+> Task :lib-datasource:mergeReleaseConsumerProguardFiles
+> Task :lib-datasource:processReleaseJavaRes NO-SOURCE
+> Task :lib-datasource:mergeReleaseJavaResource
+> Task :lib-datasource:mergeReleaseResources
+> Task :lib-datasource:syncReleaseLibJars
+> Task :lib-datasource:bundleReleaseAar
+> Task :lib-datasource-okhttp:preBuild UP-TO-DATE
+> Task :lib-datasource-okhttp:preReleaseBuild UP-TO-DATE
+> Task :lib-datasource-okhttp:checkReleaseAarMetadata
+> Task :lib-datasource-okhttp:mergeReleaseJniLibFolders
+> Task :lib-datasource-okhttp:mergeReleaseNativeLibs NO-SOURCE
+> Task :lib-datasource-okhttp:stripReleaseDebugSymbols NO-SOURCE
+> Task :lib-datasource-okhttp:copyReleaseJniLibsProjectAndLocalJars
+> Task :lib-datasource-okhttp:extractDeepLinksForAarRelease
+> Task :lib-datasource-okhttp:generateReleaseResources
+> Task :lib-datasource:bundleLibCompileToJarRelease
+> Task :lib-datasource-okhttp:packageReleaseResources
+> Task :lib-datasource-okhttp:processReleaseNavigationResources
+> Task :lib-datasource-okhttp:generateReleaseAssets UP-TO-DATE
+> Task :lib-datasource-okhttp:mergeReleaseAssets
+> Task :lib-datasource-okhttp:javaPreCompileRelease
+> Task :lib-datasource-okhttp:prepareLintJarForPublish
+> Task :lib-datasource-okhttp:prepareReleaseArtProfile
+> Task :lib-datasource-okhttp:parseReleaseLocalResources
+> Task :lib-datasource-okhttp:processReleaseManifest
+> Task :lib-datasource-okhttp:writeReleaseAarMetadata
+> Task :lib-datasource:compileReleaseLibraryResources
+> Task :lib-datasource-okhttp:generateReleaseRFile
+> Task :lib-datasource-okhttp:compileReleaseNavigationResources
+> Task :lib-datasource:verifyReleaseResources
+> Task :lib-datasource-okhttp:extractReleaseAnnotations
+> Task :lib-datasource:assembleRelease
+> Task :lib-datasource-okhttp:compileReleaseKotlin NO-SOURCE
+> Task :lib-datasource-okhttp:compileReleaseJavaWithJavac
+> Task :lib-datasource-okhttp:mergeReleaseGeneratedProguardFiles
+> Task :lib-datasource-okhttp:mergeReleaseConsumerProguardFiles
+> Task :lib-datasource-okhttp:processReleaseJavaRes NO-SOURCE
+> Task :lib-datasource-okhttp:mergeReleaseJavaResource
+> Task :lib-datasource-okhttp:mapReleaseSourceSetPaths
+> Task :lib-datasource-okhttp:syncReleaseLibJars
+> Task :lib-datasource-okhttp:bundleReleaseAar
+> Task :lib-datasource-okhttp:mergeReleaseResources
+> Task :lib-datasource-rtmp:preBuild UP-TO-DATE
+> Task :lib-datasource-rtmp:preReleaseBuild UP-TO-DATE
+> Task :lib-datasource-rtmp:checkReleaseAarMetadata
+> Task :lib-datasource-rtmp:mergeReleaseJniLibFolders
+> Task :lib-datasource-rtmp:mergeReleaseNativeLibs NO-SOURCE
+> Task :lib-datasource-rtmp:stripReleaseDebugSymbols NO-SOURCE
+> Task :lib-datasource-rtmp:copyReleaseJniLibsProjectAndLocalJars
+> Task :lib-datasource-rtmp:extractDeepLinksForAarRelease
+> Task :lib-datasource-rtmp:generateReleaseResources
+> Task :lib-datasource-rtmp:packageReleaseResources
+> Task :lib-datasource-rtmp:processReleaseNavigationResources
+> Task :lib-datasource-rtmp:generateReleaseAssets UP-TO-DATE
+> Task :lib-datasource-rtmp:mergeReleaseAssets
+> Task :lib-datasource-okhttp:verifyReleaseResources
+> Task :lib-datasource-rtmp:parseReleaseLocalResources
+> Task :lib-datasource-okhttp:assembleRelease
+> Task :lib-datasource-rtmp:javaPreCompileRelease
+> Task :lib-datasource-rtmp:prepareLintJarForPublish
+> Task :lib-datasource-rtmp:generateReleaseRFile
+> Task :lib-datasource-rtmp:prepareReleaseArtProfile
+> Task :lib-datasource-rtmp:extractReleaseAnnotations
+> Task :lib-datasource-rtmp:compileReleaseKotlin NO-SOURCE
+> Task :lib-datasource-rtmp:compileReleaseJavaWithJavac
+> Task :lib-datasource-rtmp:mergeReleaseGeneratedProguardFiles
+> Task :lib-datasource-rtmp:mergeReleaseConsumerProguardFiles
+> Task :lib-datasource-rtmp:processReleaseJavaRes NO-SOURCE
+> Task :lib-datasource-rtmp:processReleaseManifest
+> Task :lib-datasource-rtmp:mergeReleaseJavaResource
+> Task :lib-datasource-rtmp:writeReleaseAarMetadata
+> Task :lib-datasource-rtmp:syncReleaseLibJars
+> Task :lib-datasource-rtmp:bundleReleaseAar
+> Task :lib-datasource-rtmp:compileReleaseNavigationResources
+> Task :lib-datasource-rtmp:mapReleaseSourceSetPaths
+> Task :lib-datasource-rtmp:mergeReleaseResources
+> Task :lib-effect:preBuild UP-TO-DATE
+> Task :lib-effect:preReleaseBuild UP-TO-DATE
+> Task :lib-effect:checkReleaseAarMetadata
+> Task :lib-effect:mergeReleaseJniLibFolders
+> Task :lib-effect:mergeReleaseNativeLibs NO-SOURCE
+> Task :lib-effect:stripReleaseDebugSymbols NO-SOURCE
+> Task :lib-effect:copyReleaseJniLibsProjectAndLocalJars
+> Task :lib-effect:extractDeepLinksForAarRelease
+> Task :lib-effect:generateReleaseResources
+> Task :lib-effect:packageReleaseResources
+> Task :lib-effect:processReleaseNavigationResources
+> Task :lib-effect:generateReleaseAssets UP-TO-DATE
+> Task :lib-effect:mergeReleaseAssets
+> Task :lib-effect:javaPreCompileRelease
+> Task :lib-effect:prepareLintJarForPublish
+> Task :lib-effect:prepareReleaseArtProfile
+> Task :lib-effect:parseReleaseLocalResources
+> Task :lib-effect:processReleaseManifest
+> Task :lib-effect:writeReleaseAarMetadata
+> Task :lib-effect:generateReleaseRFile
+> Task :lib-effect:compileReleaseNavigationResources
+> Task :lib-effect:mapReleaseSourceSetPaths
+> Task :lib-datasource-rtmp:verifyReleaseResources
+> Task :lib-datasource-rtmp:assembleRelease
+> Task :lib-effect:extractReleaseAnnotations
+> Task :lib-effect:mergeReleaseResources
+> Task :lib-container:preBuild UP-TO-DATE
+> Task :lib-container:preReleaseBuild UP-TO-DATE
+> Task :lib-decoder:preBuild UP-TO-DATE
+> Task :lib-decoder:preReleaseBuild UP-TO-DATE
+> Task :lib-container:writeReleaseAarMetadata
+> Task :lib-exoplayer:preBuild UP-TO-DATE
+> Task :lib-exoplayer:preReleaseBuild UP-TO-DATE
+> Task :lib-extractor:preBuild UP-TO-DATE
+> Task :lib-extractor:preReleaseBuild UP-TO-DATE
+> Task :lib-decoder:writeReleaseAarMetadata
+> Task :lib-extractor:writeReleaseAarMetadata
+> Task :lib-exoplayer:mergeReleaseJniLibFolders
+> Task :lib-exoplayer:checkReleaseAarMetadata
+> Task :lib-exoplayer:mergeReleaseNativeLibs NO-SOURCE
+> Task :lib-exoplayer:stripReleaseDebugSymbols NO-SOURCE
+> Task :lib-exoplayer:copyReleaseJniLibsProjectAndLocalJars
+> Task :lib-exoplayer:extractDeepLinksForAarRelease
+> Task :lib-container:generateReleaseResources
+> Task :lib-container:packageReleaseResources
+> Task :lib-container:processReleaseNavigationResources
+> Task :lib-container:javaPreCompileRelease
+> Task :lib-decoder:generateReleaseResources
+> Task :lib-container:parseReleaseLocalResources
+> Task :lib-decoder:packageReleaseResources
+> Task :lib-effect:verifyReleaseResources
+> Task :lib-decoder:processReleaseNavigationResources
+> Task :lib-container:generateReleaseRFile
+> Task :lib-container:compileReleaseKotlin NO-SOURCE
+> Task :lib-decoder:parseReleaseLocalResources
+> Task :lib-container:compileReleaseJavaWithJavac
+> Task :lib-container:bundleLibCompileToJarRelease
+> Task :lib-decoder:javaPreCompileRelease
+> Task :lib-decoder:generateReleaseRFile
+> Task :lib-exoplayer:generateReleaseResources
+> Task :lib-decoder:compileReleaseKotlin NO-SOURCE
+> Task :lib-decoder:compileReleaseJavaWithJavac
+> Task :lib-decoder:bundleLibCompileToJarRelease
+> Task :lib-exoplayer:packageReleaseResources
+> Task :lib-exoplayer:processReleaseNavigationResources
+> Task :lib-extractor:generateReleaseResources
+> Task :lib-exoplayer:parseReleaseLocalResources
+> Task :lib-extractor:packageReleaseResources
+> Task :lib-extractor:processReleaseNavigationResources
+> Task :lib-exoplayer:generateReleaseRFile
+> Task :lib-exoplayer:generateReleaseAssets UP-TO-DATE
+> Task :lib-extractor:javaPreCompileRelease
+> Task :lib-exoplayer:mergeReleaseAssets
+> Task :lib-exoplayer:prepareLintJarForPublish
+> Task :lib-exoplayer:javaPreCompileRelease
+> Task :lib-exoplayer:prepareReleaseArtProfile
+> Task :lib-extractor:parseReleaseLocalResources
+> Task :lib-exoplayer:writeReleaseAarMetadata
+> Task :lib-container:compileReleaseLibraryResources
+> Task :lib-extractor:generateReleaseRFile
+> Task :lib-exoplayer:processReleaseManifest
+> Task :lib-extractor:compileReleaseKotlin NO-SOURCE
+
+> Task :lib-extractor:compileReleaseJavaWithJavac
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+
+> Task :lib-decoder:compileReleaseLibraryResources
+> Task :lib-exoplayer:compileReleaseNavigationResources
+> Task :lib-exoplayer:mapReleaseSourceSetPaths
+> Task :lib-extractor:bundleLibCompileToJarRelease
+> Task :lib-exoplayer:mergeReleaseResources
+> Task :lib-exoplayer:compileReleaseKotlin NO-SOURCE
+> Task :lib-exoplayer:extractReleaseAnnotations
+
+> Task :lib-exoplayer:compileReleaseJavaWithJavac
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+
+> Task :lib-exoplayer:mergeReleaseGeneratedProguardFiles
+> Task :lib-exoplayer:mergeReleaseConsumerProguardFiles
+> Task :lib-exoplayer:processReleaseJavaRes NO-SOURCE
+> Task :lib-exoplayer:mergeReleaseJavaResource
+> Task :lib-extractor:compileReleaseLibraryResources
+> Task :lib-exoplayer:syncReleaseLibJars
+> Task :lib-exoplayer:bundleReleaseAar
+> Task :lib-extractor:checkReleaseAarMetadata
+> Task :lib-extractor:mergeReleaseJniLibFolders
+> Task :lib-extractor:mergeReleaseNativeLibs NO-SOURCE
+> Task :lib-extractor:stripReleaseDebugSymbols NO-SOURCE
+> Task :lib-extractor:extractDeepLinksForAarRelease
+> Task :lib-extractor:copyReleaseJniLibsProjectAndLocalJars
+> Task :lib-extractor:generateReleaseAssets UP-TO-DATE
+> Task :lib-extractor:mergeReleaseAssets
+> Task :lib-extractor:mergeReleaseGeneratedProguardFiles
+> Task :lib-extractor:mergeReleaseConsumerProguardFiles
+> Task :lib-extractor:prepareLintJarForPublish
+> Task :lib-extractor:prepareReleaseArtProfile
+> Task :lib-extractor:processReleaseManifest
+> Task :lib-extractor:processReleaseJavaRes NO-SOURCE
+> Task :lib-extractor:mergeReleaseJavaResource
+> Task :lib-extractor:compileReleaseNavigationResources
+> Task :lib-extractor:mapReleaseSourceSetPaths
+> Task :lib-extractor:mergeReleaseResources
+> Task :lib-exoplayer:verifyReleaseResources
+> Task :lib-exoplayer:assembleRelease
+> Task :lib-decoder-ffmpeg:preBuild UP-TO-DATE
+> Task :lib-decoder-ffmpeg:preReleaseBuild UP-TO-DATE
+> Task :lib-decoder-ffmpeg:writeReleaseAarMetadata
+> Task :lib-mpvplayer:preBuild UP-TO-DATE
+> Task :lib-mpvplayer:preReleaseBuild UP-TO-DATE
+> Task :lib-mpvplayer:checkReleaseAarMetadata
+> Task :lib-extractor:verifyReleaseResources
+> Task :lib-mpvplayer:mergeReleaseJniLibFolders
+> Task :lib-mpvplayer:extractDeepLinksForAarRelease
+> Task :lib-decoder-ffmpeg:generateReleaseResources
+> Task :lib-decoder-ffmpeg:packageReleaseResources
+> Task :lib-decoder-ffmpeg:processReleaseNavigationResources
+> Task :lib-decoder-ffmpeg:parseReleaseLocalResources
+> Task :lib-decoder-ffmpeg:generateReleaseRFile
+> Task :lib-exoplayer:bundleLibCompileToJarRelease
+> Task :lib-decoder-ffmpeg:compileReleaseKotlin NO-SOURCE
+> Task :lib-decoder-ffmpeg:javaPreCompileRelease
+> Task :lib-mpvplayer:mergeReleaseNativeLibs
+> Task :lib-extractor:extractReleaseAnnotations
+> Task :lib-decoder-ffmpeg:compileReleaseJavaWithJavac
+> Task :lib-extractor:syncReleaseLibJars
+> Task :lib-extractor:bundleReleaseAar
+> Task :lib-extractor:assembleRelease
+> Task :lib-decoder-ffmpeg:bundleLibCompileToJarRelease
+> Task :lib-mpvplayer:generateReleaseResources
+> Task :lib-mpvplayer:packageReleaseResources
+> Task :lib-mpvplayer:processReleaseNavigationResources
+> Task :lib-mpvplayer:generateReleaseAssets UP-TO-DATE
+> Task :lib-mpvplayer:mergeReleaseAssets
+> Task :lib-mpvplayer:parseReleaseLocalResources
+> Task :lib-mpvplayer:javaPreCompileRelease
+> Task :lib-mpvplayer:generateReleaseRFile
+> Task :lib-mpvplayer:prepareLintJarForPublish
+> Task :lib-mpvplayer:stripReleaseDebugSymbols
+> Task :lib-mpvplayer:compileReleaseKotlin NO-SOURCE
+> Task :lib-mpvplayer:copyReleaseJniLibsProjectAndLocalJars
+> Task :lib-mpvplayer:extractReleaseAnnotations
+> Task :lib-mpvplayer:compileReleaseJavaWithJavac
+> Task :lib-mpvplayer:mergeReleaseGeneratedProguardFiles
+> Task :lib-effect:compileReleaseKotlin
+> Task :lib-mpvplayer:mergeReleaseConsumerProguardFiles
+
+> Task :lib-effect:compileReleaseJavaWithJavac
+Note: /home/runner/work/tvbox-sources/tvbox-sources/media/libraries/effect/src/main/java/androidx/media3/effect/TimestampAdjustmentShaderProgram.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+
+> Task :lib-effect:mergeReleaseGeneratedProguardFiles
+> Task :lib-effect:mergeReleaseConsumerProguardFiles
+> Task :lib-effect:processReleaseJavaRes
+> Task :lib-mpvplayer:prepareReleaseArtProfile
+> Task :lib-mpvplayer:processReleaseJavaRes NO-SOURCE
+> Task :lib-mpvplayer:mergeReleaseJavaResource
+> Task :lib-mpvplayer:writeReleaseAarMetadata
+> Task :lib-mpvplayer:processReleaseManifest
+> Task :lib-effect:mergeReleaseJavaResource
+> Task :lib-mpvplayer:syncReleaseLibJars
+> Task :lib-effect:syncReleaseLibJars
+> Task :lib-effect:bundleReleaseAar
+> Task :lib-effect:assembleRelease
+> Task :lib-mpvplayer:bundleReleaseAar
+> Task :lib-decoder-ffmpeg:compileReleaseLibraryResources
+> Task :lib-exoplayer:compileReleaseLibraryResources
+> Task :lib-mpvplayer:compileReleaseNavigationResources
+> Task :lib-mpvplayer:mapReleaseSourceSetPaths
+> Task :lib-mpvplayer:mergeReleaseResources
+> Task :lib-session:preBuild UP-TO-DATE
+> Task :lib-session:preReleaseBuild UP-TO-DATE
+> Task :lib-mpvplayer:verifyReleaseResources
+> Task :lib-mpvplayer:assembleRelease
+> Task :lib-session:checkReleaseAarMetadata
+> Task :lib-session:mergeReleaseJniLibFolders
+> Task :lib-session:mergeReleaseNativeLibs NO-SOURCE
+> Task :lib-session:stripReleaseDebugSymbols NO-SOURCE
+> Task :lib-session:copyReleaseJniLibsProjectAndLocalJars
+> Task :lib-session:extractDeepLinksForAarRelease
+> Task :lib-session:generateReleaseResources
+> Task :lib-session:packageReleaseResources
+> Task :lib-session:processReleaseNavigationResources
+> Task :lib-session:generateReleaseAssets UP-TO-DATE
+> Task :lib-session:mergeReleaseAssets
+> Task :lib-session:prepareLintJarForPublish
+> Task :lib-session:javaPreCompileRelease
+> Task :lib-session:prepareReleaseArtProfile
+> Task :lib-session:writeReleaseAarMetadata
+> Task :lib-session:processReleaseManifest
+> Task :lib-session:compileReleaseNavigationResources
+> Task :lib-session:parseReleaseLocalResources
+> Task :lib-session:mapReleaseSourceSetPaths
+> Task :lib-session:generateReleaseRFile
+> Task :lib-session:mergeReleaseResources
+> Task :lib-ui:preBuild UP-TO-DATE
+> Task :lib-ui:preReleaseBuild UP-TO-DATE
+> Task :lib-ui-danmaku:preBuild UP-TO-DATE
+> Task :lib-ui-danmaku:preReleaseBuild UP-TO-DATE
+> Task :lib-ui-danmaku:writeReleaseAarMetadata
+> Task :lib-session:compileReleaseAidl
+> Task :lib-ui:checkReleaseAarMetadata
+> Task :lib-session:verifyReleaseResources
+> Task :lib-session:compileReleaseKotlin NO-SOURCE
+> Task :lib-session:extractReleaseAnnotations
+
+> Task :lib-session:compileReleaseJavaWithJavac
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+
+> Task :lib-session:mergeReleaseGeneratedProguardFiles
+> Task :lib-session:mergeReleaseConsumerProguardFiles
+> Task :lib-session:processReleaseJavaRes NO-SOURCE
+> Task :lib-session:mergeReleaseJavaResource
+> Task :lib-ui:mergeReleaseJniLibFolders
+> Task :lib-session:syncReleaseLibJars
+> Task :lib-session:bundleReleaseAar
+> Task :lib-session:assembleRelease
+> Task :lib-ui:mergeReleaseNativeLibs NO-SOURCE
+> Task :lib-ui:stripReleaseDebugSymbols NO-SOURCE
+> Task :lib-ui:copyReleaseJniLibsProjectAndLocalJars
+> Task :lib-ui:extractDeepLinksForAarRelease
+> Task :lib-ui:generateReleaseResources
+> Task :lib-ui:packageReleaseResources
+> Task :lib-ui:processReleaseNavigationResources
+> Task :lib-ui-danmaku:generateReleaseResources
+> Task :lib-datasource-okhttp:bundleLibCompileToJarRelease
+> Task :lib-ui-danmaku:packageReleaseResources
+> Task :lib-ui-danmaku:processReleaseNavigationResources
+> Task :lib-ui:generateReleaseAssets UP-TO-DATE
+> Task :lib-ui-danmaku:javaPreCompileRelease
+> Task :lib-ui:mergeReleaseAssets
+> Task :lib-ui-danmaku:parseReleaseLocalResources
+> Task :lib-ui:javaPreCompileRelease
+> Task :lib-ui:prepareLintJarForPublish
+> Task :lib-ui:prepareReleaseArtProfile
+> Task :lib-ui-danmaku:generateReleaseRFile
+> Task :lib-ui:parseReleaseLocalResources
+> Task :lib-ui:processReleaseManifest
+> Task :lib-ui-danmaku:compileReleaseKotlin NO-SOURCE
+> Task :lib-ui:generateReleaseRFile
+> Task :lib-ui-danmaku:compileReleaseJavaWithJavac
+> Task :lib-ui:writeReleaseAarMetadata
+> Task :lib-datasource-okhttp:compileReleaseLibraryResources
+> Task :lib-ui:compileReleaseNavigationResources
+> Task :lib-ui-danmaku:bundleLibCompileToJarRelease
+> Task :lib-ui:mapReleaseSourceSetPaths
+> Task :lib-ui:compileReleaseKotlin NO-SOURCE
+> Task :lib-ui:extractReleaseAnnotations
+
+> Task :lib-ui:compileReleaseJavaWithJavac
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+
+> Task :lib-ui:mergeReleaseGeneratedProguardFiles
+> Task :lib-ui:mergeReleaseConsumerProguardFiles
+> Task :lib-ui:processReleaseJavaRes NO-SOURCE
+> Task :lib-ui:mergeReleaseJavaResource
+> Task :lib-ui:mergeReleaseResources
+> Task :lib-ui:syncReleaseLibJars
+> Task :lib-ui:bundleReleaseAar
+> Task :lib-ui-danmaku:compileReleaseLibraryResources
+> Task :lib-ui-danmaku:checkReleaseAarMetadata
+> Task :lib-ui-danmaku:mergeReleaseJniLibFolders
+> Task :lib-ui-danmaku:mergeReleaseNativeLibs NO-SOURCE
+> Task :lib-ui-danmaku:stripReleaseDebugSymbols NO-SOURCE
+> Task :lib-ui-danmaku:extractDeepLinksForAarRelease
+> Task :lib-ui-danmaku:generateReleaseAssets UP-TO-DATE
+> Task :lib-ui-danmaku:copyReleaseJniLibsProjectAndLocalJars
+> Task :lib-ui-danmaku:mergeReleaseAssets
+> Task :lib-ui-danmaku:mergeReleaseGeneratedProguardFiles
+> Task :lib-ui-danmaku:mergeReleaseConsumerProguardFiles
+> Task :lib-ui-danmaku:prepareReleaseArtProfile
+> Task :lib-ui-danmaku:prepareLintJarForPublish
+> Task :lib-ui-danmaku:processReleaseJavaRes NO-SOURCE
+> Task :lib-ui-danmaku:processReleaseManifest
+> Task :lib-ui-danmaku:compileReleaseNavigationResources
+> Task :lib-ui-danmaku:mergeReleaseJavaResource
+> Task :lib-ui-danmaku:mapReleaseSourceSetPaths
+> Task :lib-ui-danmaku:mergeReleaseResources
+> Task :lib-ui-danmaku:extractReleaseAnnotations
+> Task :lib-ui-danmaku:syncReleaseLibJars
+> Task :lib-ui-danmaku:bundleReleaseAar
+> Task :lib-ui-danmaku:verifyReleaseResources
+> Task :lib-ui-danmaku:assembleRelease
+> Task :lib-ui:verifyReleaseResources
+> Task :lib-ui:assembleRelease
+
 [Incubating] Problems report is available at: file:///home/runner/work/tvbox-sources/tvbox-sources/media/buildout/reports/problems/problems-report.html
 
-FAILURE: Build failed with an exception.
-
-* What went wrong:
-Cannot locate tasks that match ':lib-common:release' as task 'release' not found in project ':lib-common'.
-
-* Try:
-> Run gradlew tasks to get a list of available tasks.
-> For more on name expansion, please refer to https://docs.gradle.org/9.1.0/userguide/command_line_interface.html#sec:name_abbreviation in the Gradle documentation.
-> Run with --info or --debug option to get more log output.
-> Run with --scan to generate a Build Scan (Powered by Develocity).
-> Get more help at https://help.gradle.org.
-
-* Exception is:
-org.gradle.execution.TaskSelectionException: Cannot locate tasks that match ':lib-common:release' as task 'release' not found in project ':lib-common'.
-	at org.gradle.execution.DefaultTaskSelector.throwTaskSelectionException(DefaultTaskSelector.java:107)
-	at org.gradle.execution.DefaultTaskSelector.getSelection(DefaultTaskSelector.java:88)
-	at org.gradle.execution.selection.DefaultBuildTaskSelector.resolveTaskName(DefaultBuildTaskSelector.java:109)
-	at org.gradle.execution.commandline.CommandLineTaskParser.parseTasks(CommandLineTaskParser.java:49)
-	at org.gradle.execution.TaskNameResolvingBuildTaskScheduler.scheduleRequestedTasks(TaskNameResolvingBuildTaskScheduler.java:66)
-	at org.gradle.execution.DefaultTasksBuildTaskScheduler.scheduleRequestedTasks(DefaultTasksBuildTaskScheduler.java:72)
-	at org.gradle.initialization.DefaultTaskExecutionPreparer.lambda$scheduleRequestedTasks$0(DefaultTaskExecutionPreparer.java:47)
-	at org.gradle.internal.Factories$1.create(Factories.java:31)
-	at org.gradle.internal.work.DefaultWorkerLeaseService.withReplacedLocks(DefaultWorkerLeaseService.java:359)
-	at org.gradle.api.internal.project.DefaultProjectStateRegistry$DefaultBuildProjectRegistry.withMutableStateOfAllProjects(DefaultProjectStateRegistry.java:246)
-	at org.gradle.api.internal.project.DefaultProjectStateRegistry$DefaultBuildProjectRegistry.withMutableStateOfAllProjects(DefaultProjectStateRegistry.java:239)
-	at org.gradle.initialization.DefaultTaskExecutionPreparer.scheduleRequestedTasks(DefaultTaskExecutionPreparer.java:46)
-	at org.gradle.initialization.VintageBuildModelController.lambda$scheduleRequestedTasks$0(VintageBuildModelController.java:75)
-	at org.gradle.internal.model.StateTransitionController.lambda$inState$1(StateTransitionController.java:99)
-	at org.gradle.internal.model.StateTransitionController.lambda$inState$2(StateTransitionController.java:114)
-	at org.gradle.internal.work.DefaultSynchronizer.withLock(DefaultSynchronizer.java:45)
-	at org.gradle.internal.model.StateTransitionController.inState(StateTransitionController.java:110)
-	at org.gradle.internal.model.StateTransitionController.inState(StateTransitionController.java:98)
-	at org.gradle.initialization.VintageBuildModelController.scheduleRequestedTasks(VintageBuildModelController.java:75)
-	at org.gradle.internal.build.DefaultBuildLifecycleController$DefaultWorkGraphBuilder.addRequestedTasks(DefaultBuildLifecycleController.java:404)
-	at org.gradle.internal.buildtree.DefaultBuildTreeWorkPreparer.lambda$scheduleRequestedTasks$0(DefaultBuildTreeWorkPreparer.java:40)
-	at org.gradle.internal.build.DefaultBuildLifecycleController.lambda$populateWorkGraph$7(DefaultBuildLifecycleController.java:189)
-	at org.gradle.internal.build.DefaultBuildWorkPreparer.populateWorkGraph(DefaultBuildWorkPreparer.java:42)
-	at org.gradle.internal.build.BuildOperationFiringBuildWorkPreparer$PopulateWorkGraph.populateTaskGraph(BuildOperationFiringBuildWorkPreparer.java:106)
-	at org.gradle.internal.build.BuildOperationFiringBuildWorkPreparer$PopulateWorkGraph.run(BuildOperationFiringBuildWorkPreparer.java:92)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:29)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:26)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:166)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner.run(DefaultBuildOperationRunner.java:47)
-	at org.gradle.internal.build.BuildOperationFiringBuildWorkPreparer.populateWorkGraph(BuildOperationFiringBuildWorkPreparer.java:67)
-	at org.gradle.internal.build.DefaultBuildLifecycleController.lambda$populateWorkGraph$8(DefaultBuildLifecycleController.java:189)
-	at org.gradle.internal.model.StateTransitionController.lambda$inState$1(StateTransitionController.java:99)
-	at org.gradle.internal.model.StateTransitionController.lambda$inState$2(StateTransitionController.java:114)
-	at org.gradle.internal.work.DefaultSynchronizer.withLock(DefaultSynchronizer.java:45)
-	at org.gradle.internal.model.StateTransitionController.inState(StateTransitionController.java:110)
-	at org.gradle.internal.model.StateTransitionController.inState(StateTransitionController.java:98)
-	at org.gradle.internal.build.DefaultBuildLifecycleController.populateWorkGraph(DefaultBuildLifecycleController.java:189)
-	at org.gradle.internal.build.DefaultBuildWorkGraphController$DefaultBuildWorkGraph.populateWorkGraph(DefaultBuildWorkGraphController.java:169)
-	at org.gradle.composite.internal.DefaultBuildController.populateWorkGraph(DefaultBuildController.java:76)
-	at org.gradle.composite.internal.DefaultIncludedBuildTaskGraph$DefaultBuildTreeWorkGraphBuilder.withWorkGraph(DefaultIncludedBuildTaskGraph.java:155)
-	at org.gradle.internal.buildtree.DefaultBuildTreeWorkPreparer.lambda$scheduleRequestedTasks$1(DefaultBuildTreeWorkPreparer.java:40)
-	at org.gradle.composite.internal.DefaultIncludedBuildTaskGraph$DefaultBuildTreeWorkGraph$1.run(DefaultIncludedBuildTaskGraph.java:211)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:29)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:26)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:166)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner.run(DefaultBuildOperationRunner.java:47)
-	at org.gradle.composite.internal.DefaultIncludedBuildTaskGraph$DefaultBuildTreeWorkGraph.scheduleWork(DefaultIncludedBuildTaskGraph.java:206)
-	at org.gradle.internal.buildtree.DefaultBuildTreeWorkPreparer.scheduleRequestedTasks(DefaultBuildTreeWorkPreparer.java:36)
-	at org.gradle.internal.cc.impl.barrier.BarrierAwareBuildTreeWorkPreparer.scheduleRequestedTasks$lambda$0(BarrierAwareBuildTreeWorkPreparer.kt:34)
-	at org.gradle.internal.cc.impl.barrier.VintageConfigurationTimeActionRunner.runConfigurationTimeAction(VintageConfigurationTimeActionRunner.kt:48)
-	at org.gradle.internal.cc.impl.barrier.BarrierAwareBuildTreeWorkPreparer.scheduleRequestedTasks(BarrierAwareBuildTreeWorkPreparer.kt:33)
-	at org.gradle.internal.cc.impl.VintageBuildTreeWorkController$scheduleAndRunRequestedTasks$1.apply(VintageBuildTreeWorkController.kt:36)
-	at org.gradle.internal.cc.impl.VintageBuildTreeWorkController$scheduleAndRunRequestedTasks$1.apply(VintageBuildTreeWorkController.kt:35)
-	at org.gradle.composite.internal.DefaultIncludedBuildTaskGraph.withNewWorkGraph(DefaultIncludedBuildTaskGraph.java:114)
-	at org.gradle.internal.cc.impl.VintageBuildTreeWorkController.scheduleAndRunRequestedTasks(VintageBuildTreeWorkController.kt:35)
-	at org.gradle.internal.buildtree.DefaultBuildTreeLifecycleController.lambda$scheduleAndRunTasks$1(DefaultBuildTreeLifecycleController.java:77)
-	at org.gradle.internal.buildtree.DefaultBuildTreeLifecycleController.lambda$runBuild$4(DefaultBuildTreeLifecycleController.java:120)
-	at org.gradle.internal.model.StateTransitionController.lambda$transition$6(StateTransitionController.java:169)
-	at org.gradle.internal.model.StateTransitionController.doTransition(StateTransitionController.java:266)
-	at org.gradle.internal.model.StateTransitionController.lambda$transition$7(StateTransitionController.java:169)
-	at org.gradle.internal.work.DefaultSynchronizer.withLock(DefaultSynchronizer.java:45)
-	at org.gradle.internal.model.StateTransitionController.transition(StateTransitionController.java:169)
-	at org.gradle.internal.buildtree.DefaultBuildTreeLifecycleController.runBuild(DefaultBuildTreeLifecycleController.java:117)
-	at org.gradle.internal.buildtree.DefaultBuildTreeLifecycleController.scheduleAndRunTasks(DefaultBuildTreeLifecycleController.java:77)
-	at org.gradle.internal.buildtree.DefaultBuildTreeLifecycleController.scheduleAndRunTasks(DefaultBuildTreeLifecycleController.java:72)
-	at org.gradle.tooling.internal.provider.ExecuteBuildActionRunner.run(ExecuteBuildActionRunner.java:31)
-	at org.gradle.launcher.exec.ChainingBuildActionRunner.run(ChainingBuildActionRunner.java:35)
-	at org.gradle.internal.buildtree.ProblemReportingBuildActionRunner.run(ProblemReportingBuildActionRunner.java:54)
-	at org.gradle.launcher.exec.BuildOutcomeReportingBuildActionRunner.run(BuildOutcomeReportingBuildActionRunner.java:83)
-	at org.gradle.tooling.internal.provider.FileSystemWatchingBuildActionRunner.run(FileSystemWatchingBuildActionRunner.java:135)
-	at org.gradle.launcher.exec.BuildCompletionNotifyingBuildActionRunner.run(BuildCompletionNotifyingBuildActionRunner.java:54)
-	at org.gradle.launcher.exec.RootBuildLifecycleBuildActionExecutor.lambda$execute$0(RootBuildLifecycleBuildActionExecutor.java:56)
-	at org.gradle.composite.internal.DefaultRootBuildState.run(DefaultRootBuildState.java:131)
-	at org.gradle.launcher.exec.RootBuildLifecycleBuildActionExecutor.execute(RootBuildLifecycleBuildActionExecutor.java:56)
-	at org.gradle.internal.buildtree.InitDeprecationLoggingActionExecutor.execute(InitDeprecationLoggingActionExecutor.java:62)
-	at org.gradle.internal.buildtree.InitProblems.execute(InitProblems.java:36)
-	at org.gradle.internal.buildtree.DefaultBuildTreeContext.execute(DefaultBuildTreeContext.java:40)
-	at org.gradle.launcher.exec.BuildTreeLifecycleBuildActionExecutor.lambda$execute$0(BuildTreeLifecycleBuildActionExecutor.java:71)
-	at org.gradle.internal.buildtree.BuildTreeState.run(BuildTreeState.java:60)
-	at org.gradle.launcher.exec.BuildTreeLifecycleBuildActionExecutor.execute(BuildTreeLifecycleBuildActionExecutor.java:71)
-	at org.gradle.launcher.exec.RunAsBuildOperationBuildActionExecutor$2.call(RunAsBuildOperationBuildActionExecutor.java:65)
-	at org.gradle.launcher.exec.RunAsBuildOperationBuildActionExecutor$2.call(RunAsBuildOperationBuildActionExecutor.java:61)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:209)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:166)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
-	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
-	at org.gradle.launcher.exec.RunAsBuildOperationBuildActionExecutor.execute(RunAsBuildOperationBuildActionExecutor.java:61)
-	at org.gradle.launcher.exec.RunAsWorkerThreadBuildActionExecutor.lambda$execute$0(RunAsWorkerThreadBuildActionExecutor.java:36)
-	at org.gradle.internal.work.DefaultWorkerLeaseService.withLocks(DefaultWorkerLeaseService.java:263)
-	at org.gradle.internal.work.DefaultWorkerLeaseService.runAsWorkerThread(DefaultWorkerLeaseService.java:127)
-	at org.gradle.launcher.exec.RunAsWorkerThreadBuildActionExecutor.execute(RunAsWorkerThreadBuildActionExecutor.java:36)
-	at org.gradle.tooling.internal.provider.continuous.ContinuousBuildActionExecutor.execute(ContinuousBuildActionExecutor.java:110)
-	at org.gradle.tooling.internal.provider.SubscribableBuildActionExecutor.execute(SubscribableBuildActionExecutor.java:64)
-	at org.gradle.internal.session.DefaultBuildSessionContext.execute(DefaultBuildSessionContext.java:46)
-	at org.gradle.internal.buildprocess.execution.BuildSessionLifecycleBuildActionExecutor$ActionImpl.apply(BuildSessionLifecycleBuildActionExecutor.java:92)
-	at org.gradle.internal.buildprocess.execution.BuildSessionLifecycleBuildActionExecutor$ActionImpl.apply(BuildSessionLifecycleBuildActionExecutor.java:80)
-	at org.gradle.internal.session.BuildSessionState.run(BuildSessionState.java:73)
-	at org.gradle.internal.buildprocess.execution.BuildSessionLifecycleBuildActionExecutor.execute(BuildSessionLifecycleBuildActionExecutor.java:62)
-	at org.gradle.internal.buildprocess.execution.BuildSessionLifecycleBuildActionExecutor.execute(BuildSessionLifecycleBuildActionExecutor.java:41)
-	at org.gradle.internal.buildprocess.execution.StartParamsValidatingActionExecutor.execute(StartParamsValidatingActionExecutor.java:57)
-	at org.gradle.internal.buildprocess.execution.StartParamsValidatingActionExecutor.execute(StartParamsValidatingActionExecutor.java:32)
-	at org.gradle.internal.buildprocess.execution.SessionFailureReportingActionExecutor.execute(SessionFailureReportingActionExecutor.java:51)
-	at org.gradle.internal.buildprocess.execution.SessionFailureReportingActionExecutor.execute(SessionFailureReportingActionExecutor.java:39)
-	at org.gradle.internal.buildprocess.execution.SetupLoggingActionExecutor.execute(SetupLoggingActionExecutor.java:47)
-	at org.gradle.internal.buildprocess.execution.SetupLoggingActionExecutor.execute(SetupLoggingActionExecutor.java:31)
-	at org.gradle.launcher.daemon.server.exec.ExecuteBuild.doBuild(ExecuteBuild.java:70)
-	at org.gradle.launcher.daemon.server.exec.BuildCommandOnly.execute(BuildCommandOnly.java:37)
-	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
-	at org.gradle.launcher.daemon.server.exec.WatchForDisconnection.execute(WatchForDisconnection.java:39)
-	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
-	at org.gradle.launcher.daemon.server.exec.ResetDeprecationLogger.execute(ResetDeprecationLogger.java:29)
-	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
-	at org.gradle.launcher.daemon.server.exec.RequestStopIfSingleUsedDaemon.execute(RequestStopIfSingleUsedDaemon.java:35)
-	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
-	at org.gradle.launcher.daemon.server.exec.ForwardClientInput.lambda$execute$0(ForwardClientInput.java:40)
-	at org.gradle.internal.daemon.clientinput.ClientInputForwarder.forwardInput(ClientInputForwarder.java:80)
-	at org.gradle.launcher.daemon.server.exec.ForwardClientInput.execute(ForwardClientInput.java:37)
-	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
-	at org.gradle.launcher.daemon.server.exec.LogAndCheckHealth.execute(LogAndCheckHealth.java:53)
-	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
-	at org.gradle.launcher.daemon.server.exec.LogToClient.doBuild(LogToClient.java:63)
-	at org.gradle.launcher.daemon.server.exec.BuildCommandOnly.execute(BuildCommandOnly.java:37)
-	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
-	at org.gradle.launcher.daemon.server.exec.EstablishBuildEnvironment.doBuild(EstablishBuildEnvironment.java:84)
-	at org.gradle.launcher.daemon.server.exec.BuildCommandOnly.execute(BuildCommandOnly.java:37)
-	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
-	at org.gradle.launcher.daemon.server.exec.StartBuildOrRespondWithBusy$1.run(StartBuildOrRespondWithBusy.java:52)
-	at org.gradle.launcher.daemon.server.DaemonStateCoordinator.lambda$runCommand$0(DaemonStateCoordinator.java:321)
-	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
-	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:47)
-
-
-BUILD FAILED in 2m 22s
-20 actionable tasks: 20 executed
-MEDIA_GRADLE_EXIT=1
+BUILD SUCCESSFUL in 3m 5s
+381 actionable tasks: 381 executed
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.1.0/userguide/configuration_cache_enabling.html
+MEDIA_GRADLE_EXIT=0
