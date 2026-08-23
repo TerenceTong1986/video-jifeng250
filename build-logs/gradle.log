@@ -54,7 +54,7 @@ Chaquopy: Installing for arm64-v8a
 Looking in indexes: https://pypi.org/simple, https://chaquo.com/pypi-13.1
 Collecting lxml (from -r requirements.txt (line 1))
   Downloading https://chaquo.com/pypi-13.1/lxml/lxml-5.3.0-0-cp310-cp310-android_24_arm64_v8a.whl (1.4 MB)
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.4/1.4 MB 2.6 MB/s  0:00:00
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.4/1.4 MB 2.7 MB/s  0:00:00
 Collecting ujson (from -r requirements.txt (line 2))
   Downloading https://chaquo.com/pypi-13.1/ujson/ujson-5.11.0-0-cp310-cp310-android_24_arm64_v8a.whl (79 kB)
 Collecting pyquery (from -r requirements.txt (line 3))
@@ -65,12 +65,12 @@ Collecting cachetools (from -r requirements.txt (line 5))
   Downloading cachetools-7.1.7-py3-none-any.whl.metadata (5.5 kB)
 Collecting pycryptodome (from -r requirements.txt (line 6))
   Downloading https://chaquo.com/pypi-13.1/pycryptodome/pycryptodome-3.21.0-0-cp310-cp310-android_24_arm64_v8a.whl (1.6 MB)
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.6/1.6 MB 6.9 MB/s  0:00:00
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.6/1.6 MB 7.6 MB/s  0:00:00
 Collecting beautifulsoup4 (from -r requirements.txt (line 7))
   Downloading beautifulsoup4-4.15.0-py3-none-any.whl.metadata (3.8 kB)
 Collecting chaquopy-libxml2>=2.9.8 (from lxml->-r requirements.txt (line 1))
   Downloading https://chaquo.com/pypi-13.1/chaquopy-libxml2/chaquopy_libxml2-2.9.8-2-py3-none-android_21_arm64_v8a.whl (773 kB)
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 773.4/773.4 kB 151.7 MB/s  0:00:00
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 773.4/773.4 kB 138.6 MB/s  0:00:00
 Collecting chaquopy-libxslt>=1.1.32 (from lxml->-r requirements.txt (line 1))
   Downloading https://chaquo.com/pypi-13.1/chaquopy-libxslt/chaquopy_libxslt-1.1.32-2-py3-none-android_21_arm64_v8a.whl (178 kB)
 Collecting chaquopy-libcxx>=180000 (from ujson->-r requirements.txt (line 2))
@@ -115,8 +115,8 @@ Successfully installed beautifulsoup4-4.15.0 cachetools-7.1.7 certifi-2026.7.22 
 > Task :chaquo:javaPreCompileArm64_v8aRelease FROM-CACHE
 > Task :chaquo:compileArm64_v8aReleaseJavaWithJavac FROM-CACHE
 > Task :chaquo:mergeArm64_v8aReleaseGeneratedProguardFiles
-> Task :quickjs:generateReleaseResources FROM-CACHE
 > Task :chaquo:exportArm64_v8aReleaseConsumerProguardFiles
+> Task :quickjs:generateReleaseResources FROM-CACHE
 > Task :quickjs:packageReleaseResources FROM-CACHE
 > Task :quickjs:processReleaseNavigationResources FROM-CACHE
 > Task :quickjs:parseReleaseLocalResources FROM-CACHE
@@ -192,15 +192,15 @@ Note: Recompile with -Xlint:unchecked for details.
 > Task :chaquo:generateArm64_v8aReleasePythonBuildAssets
 > Task :chaquo:mergeArm64_v8aReleaseAssets
 > Task :quickjs:generateReleaseAssets UP-TO-DATE
-> Task :quickjs:mergeReleaseAssets
 > Task :app:mergeLeanbackArm64_v8aReleaseJavaResource
-> Task :app:processLeanbackArm64_v8aReleaseResources
+> Task :quickjs:mergeReleaseAssets
 > Task :app:mergeLeanbackArm64_v8aReleaseAssets
-> Task :app:mergeLeanbackArm64_v8aReleaseGeneratedProguardFiles
 > Task :app:extractLeanbackArm64_v8aReleaseVersionControlInfo
 > Task :catvod:createFullJarRelease
 > Task :catvod:extractProguardFiles
+> Task :app:processLeanbackArm64_v8aReleaseResources
 > Task :catvod:generateReleaseLintModel
+> Task :app:mergeLeanbackArm64_v8aReleaseGeneratedProguardFiles
 > Task :catvod:prepareLintJarForPublish
 > Task :chaquo:createFullJarArm64_v8aRelease
 > Task :chaquo:extractProguardFiles
@@ -208,21 +208,21 @@ Note: Recompile with -Xlint:unchecked for details.
 > Task :chaquo:prepareLintJarForPublish
 > Task :quickjs:createFullJarRelease
 > Task :quickjs:extractProguardFiles
-> Task :app:expandLeanbackArm64_v8aReleaseArtProfileWildcards
 > Task :quickjs:generateReleaseLintModel
-> Task :app:compressLeanbackArm64_v8aReleaseAssets
 > Task :quickjs:prepareLintJarForPublish
 > Task :chaquo:checkArm64_v8aReleaseAarMetadata
+> Task :app:compressLeanbackArm64_v8aReleaseAssets
+> Task :app:expandLeanbackArm64_v8aReleaseArtProfileWildcards
 > Task :app:generateLeanbackArm64_v8aReleaseLintVitalReportModel
 > Task :chaquo:extractArm64_v8aReleaseAnnotations FROM-CACHE
 > Task :chaquo:extractDeepLinksForAarArm64_v8aRelease FROM-CACHE
 > Task :chaquo:mergeArm64_v8aReleaseConsumerProguardFiles
-> Task :quickjs:extractDeepLinksForAarRelease FROM-CACHE
-> Task :quickjs:checkReleaseAarMetadata
 > Task :chaquo:mergeArm64_v8aReleaseJavaResource
-> Task :quickjs:extractReleaseAnnotations FROM-CACHE
+> Task :quickjs:checkReleaseAarMetadata
 > Task :chaquo:syncArm64_v8aReleaseLibJars FROM-CACHE
 > Task :chaquo:bundleArm64_v8aReleaseLocalLintAar
+> Task :quickjs:extractDeepLinksForAarRelease FROM-CACHE
+> Task :quickjs:extractReleaseAnnotations FROM-CACHE
 > Task :quickjs:mergeReleaseConsumerProguardFiles
 > Task :quickjs:mergeReleaseJavaResource
 > Task :quickjs:syncReleaseLibJars FROM-CACHE
@@ -234,12 +234,12 @@ Note: Recompile with -Xlint:unchecked for details.
 > Task :catvod:mergeReleaseJavaResource
 > Task :catvod:syncReleaseLibJars FROM-CACHE
 > Task :catvod:bundleReleaseLocalLintAar
-> Task :catvod:lintVitalAnalyzeRelease FROM-CACHE
 > Task :catvod:writeReleaseLintModelMetadata
-> Task :chaquo:lintVitalAnalyzeArm64_v8aRelease FROM-CACHE
 > Task :chaquo:writeArm64_v8aReleaseLintModelMetadata
-> Task :quickjs:lintVitalAnalyzeRelease FROM-CACHE
+> Task :chaquo:lintVitalAnalyzeArm64_v8aRelease
+> Task :quickjs:lintVitalAnalyzeRelease
 > Task :quickjs:writeReleaseLintModelMetadata
+> Task :catvod:lintVitalAnalyzeRelease
 > Task :catvod:generateReleaseLintVitalModel
 > Task :chaquo:generateArm64_v8aReleaseLintVitalModel
 > Task :quickjs:generateReleaseLintVitalModel
@@ -266,7 +266,7 @@ Chaquopy: Installing for armeabi-v7a
 Looking in indexes: https://pypi.org/simple, https://chaquo.com/pypi-13.1
 Collecting lxml (from -r requirements.txt (line 1))
   Downloading https://chaquo.com/pypi-13.1/lxml/lxml-5.3.0-0-cp310-cp310-android_24_armeabi_v7a.whl (1.3 MB)
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 2.2 MB/s  0:00:00
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 2.4 MB/s  0:00:00
 Collecting ujson (from -r requirements.txt (line 2))
   Downloading https://chaquo.com/pypi-13.1/ujson/ujson-5.11.0-0-cp310-cp310-android_24_armeabi_v7a.whl (62 kB)
 Collecting pyquery (from -r requirements.txt (line 3))
@@ -277,14 +277,14 @@ Collecting cachetools (from -r requirements.txt (line 5))
   Using cached cachetools-7.1.7-py3-none-any.whl.metadata (5.5 kB)
 Collecting pycryptodome (from -r requirements.txt (line 6))
   Downloading https://chaquo.com/pypi-13.1/pycryptodome/pycryptodome-3.21.0-0-cp310-cp310-android_24_armeabi_v7a.whl (1.6 MB)
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.6/1.6 MB 6.6 MB/s  0:00:00
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.6/1.6 MB 5.0 MB/s  0:00:00
 Collecting beautifulsoup4 (from -r requirements.txt (line 7))
   Using cached beautifulsoup4-4.15.0-py3-none-any.whl.metadata (3.8 kB)
 Collecting chaquopy-libxslt>=1.1.32 (from lxml->-r requirements.txt (line 1))
   Downloading https://chaquo.com/pypi-13.1/chaquopy-libxslt/chaquopy_libxslt-1.1.32-2-py3-none-android_16_armeabi_v7a.whl (170 kB)
 Collecting chaquopy-libxml2>=2.9.8 (from lxml->-r requirements.txt (line 1))
   Downloading https://chaquo.com/pypi-13.1/chaquopy-libxml2/chaquopy_libxml2-2.9.8-2-py3-none-android_16_armeabi_v7a.whl (705 kB)
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 705.4/705.4 kB 46.5 MB/s  0:00:00
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 705.4/705.4 kB 27.1 MB/s  0:00:00
 Collecting chaquopy-libcxx>=180000 (from ujson->-r requirements.txt (line 2))
   Downloading https://chaquo.com/pypi-13.1/chaquopy-libcxx/chaquopy_libcxx-180000-0-py3-none-android_24_armeabi_v7a.whl (355 kB)
 Collecting cssselect>=1.5.0 (from pyquery->-r requirements.txt (line 3))
@@ -356,9 +356,9 @@ Note: Recompile with -Xlint:unchecked for details.
 
 > Task :chaquo:writeArmeabi_v7aReleaseAarMetadata
 > Task :app:mapLeanbackArmeabi_v7aReleaseSourceSetPaths
-> Task :app:checkLeanbackArmeabi_v7aReleaseAarMetadata
 > Task :app:compileLeanbackArmeabi_v7aReleaseNavigationResources FROM-CACHE
 > Task :app:createLeanbackArmeabi_v7aReleaseCompatibleScreenManifests
+> Task :app:checkLeanbackArmeabi_v7aReleaseAarMetadata
 > Task :app:extractDeepLinksLeanbackArmeabi_v7aRelease FROM-CACHE
 > Task :chaquo:extractDeepLinksArmeabi_v7aRelease FROM-CACHE
 > Task :chaquo:processArmeabi_v7aReleaseManifest FROM-CACHE
@@ -376,15 +376,17 @@ Note: Recompile with -Xlint:unchecked for details.
 > Task :app:generateLeanbackArmeabi_v7aReleaseAssets UP-TO-DATE
 > Task :chaquo:generateArmeabi_v7aReleaseAssets UP-TO-DATE
 > Task :chaquo:generateArmeabi_v7aReleasePythonMiscAssets
-> Task :app:mergeLeanbackArmeabi_v7aReleaseJavaResource
 > Task :chaquo:generateArmeabi_v7aReleasePythonRequirementsAssets
 > Task :chaquo:generateArmeabi_v7aReleasePythonSourceAssets
+> Task :app:mergeLeanbackArmeabi_v7aReleaseJavaResource
 > Task :chaquo:generateArmeabi_v7aReleasePythonBuildAssets
 > Task :chaquo:mergeArmeabi_v7aReleaseAssets
 > Task :app:mergeLeanbackArmeabi_v7aReleaseAssets
 > Task :app:extractLeanbackArmeabi_v7aReleaseVersionControlInfo
 > Task :chaquo:createFullJarArmeabi_v7aRelease
+> Task :app:processLeanbackArmeabi_v7aReleaseResources
 > Task :chaquo:generateArmeabi_v7aReleaseLintModel
+> Task :app:mergeLeanbackArmeabi_v7aReleaseGeneratedProguardFiles
 > Task :app:generateLeanbackArmeabi_v7aReleaseLintVitalReportModel
 > Task :chaquo:checkArmeabi_v7aReleaseAarMetadata
 > Task :chaquo:extractArmeabi_v7aReleaseAnnotations FROM-CACHE
@@ -393,12 +395,11 @@ Note: Recompile with -Xlint:unchecked for details.
 > Task :chaquo:mergeArmeabi_v7aReleaseJavaResource
 > Task :chaquo:syncArmeabi_v7aReleaseLibJars FROM-CACHE
 > Task :chaquo:bundleArmeabi_v7aReleaseLocalLintAar
-> Task :chaquo:lintVitalAnalyzeArmeabi_v7aRelease FROM-CACHE
+> Task :app:expandLeanbackArmeabi_v7aReleaseArtProfileWildcards
 > Task :chaquo:writeArmeabi_v7aReleaseLintModelMetadata
-> Task :app:processLeanbackArmeabi_v7aReleaseResources
-> Task :app:compressLeanbackArmeabi_v7aReleaseAssets
-> Task :app:mergeLeanbackArmeabi_v7aReleaseGeneratedProguardFiles
 > Task :chaquo:generateArmeabi_v7aReleaseLintVitalModel
+> Task :chaquo:lintVitalAnalyzeArmeabi_v7aRelease
+> Task :app:compressLeanbackArmeabi_v7aReleaseAssets
 > Task :app:collectLeanbackArmeabi_v7aReleaseDependencies
 > Task :app:sdkLeanbackArmeabi_v7aReleaseDependencyData
 > Task :app:validateSigningLeanbackArmeabi_v7aRelease
@@ -406,14 +407,13 @@ Note: Recompile with -Xlint:unchecked for details.
 > Task :app:writeLeanbackArmeabi_v7aReleaseSigningConfigVersions
 > Task :app:preMobileArm64_v8aReleaseBuild UP-TO-DATE
 > Task :app:mergeMobileArm64_v8aReleaseJniLibFolders
-> Task :app:expandLeanbackArmeabi_v7aReleaseArtProfileWildcards
 > Task :app:mergeMobileArm64_v8aReleaseArtProfile
 > Task :app:expandMobileArm64_v8aReleaseL8ArtProfileWildcards FROM-CACHE
 > Task :app:checkMobileArm64_v8aReleaseDuplicateClasses
 > Task :app:dataBindingMergeDependencyArtifactsMobileArm64_v8aRelease
 > Task :app:generateMobileArm64_v8aReleaseResources FROM-CACHE
-> Task :app:mergeMobileArm64_v8aReleaseNativeLibs
 > Task :app:mergeMobileArm64_v8aReleaseResources FROM-CACHE
+> Task :app:mergeMobileArm64_v8aReleaseNativeLibs
 > Task :app:packageMobileArm64_v8aReleaseResources FROM-CACHE
 > Task :app:processMobileArm64_v8aReleaseNavigationResources FROM-CACHE
 > Task :app:parseMobileArm64_v8aReleaseLocalResources FROM-CACHE
@@ -438,8 +438,8 @@ Note: Recompile with -Xlint:unchecked for details.
 > Task :app:extractMobileArm64_v8aReleaseNativeSymbolTables FROM-CACHE
 > Task :app:mergeMobileArm64_v8aReleaseNativeDebugMetadata NO-SOURCE
 > Task :app:mapMobileArm64_v8aReleaseSourceSetPaths
-> Task :app:compileMobileArm64_v8aReleaseNavigationResources FROM-CACHE
 > Task :app:checkMobileArm64_v8aReleaseAarMetadata
+> Task :app:compileMobileArm64_v8aReleaseNavigationResources FROM-CACHE
 > Task :app:createMobileArm64_v8aReleaseCompatibleScreenManifests
 > Task :app:extractDeepLinksMobileArm64_v8aRelease FROM-CACHE
 > Task :app:lintVitalReportLeanbackArmeabi_v7aRelease
@@ -462,19 +462,19 @@ Note: Recompile with -Xlint:unchecked for details.
 > Task :app:writeMobileArm64_v8aReleaseSigningConfigVersions
 > Task :app:preMobileArmeabi_v7aReleaseBuild UP-TO-DATE
 > Task :app:mergeMobileArmeabi_v7aReleaseJniLibFolders
-> Task :app:mergeMobileArmeabi_v7aReleaseNativeLibs
 > Task :app:processMobileArm64_v8aReleaseResources
-> Task :app:stripMobileArmeabi_v7aReleaseDebugSymbols
+> Task :app:mergeMobileArmeabi_v7aReleaseNativeLibs
 > Task :app:mergeMobileArm64_v8aReleaseGeneratedProguardFiles
-> Task :app:extractMobileArmeabi_v7aReleaseNativeSymbolTables FROM-CACHE
-> Task :app:mergeMobileArmeabi_v7aReleaseNativeDebugMetadata
+> Task :app:expandMobileArm64_v8aReleaseArtProfileWildcards
 > Task :app:mergeMobileArmeabi_v7aReleaseArtProfile
 > Task :app:expandMobileArmeabi_v7aReleaseL8ArtProfileWildcards FROM-CACHE
 > Task :app:checkMobileArmeabi_v7aReleaseDuplicateClasses
 > Task :app:dataBindingMergeDependencyArtifactsMobileArmeabi_v7aRelease
 > Task :app:generateMobileArmeabi_v7aReleaseResources FROM-CACHE
-> Task :app:expandMobileArm64_v8aReleaseArtProfileWildcards
+> Task :app:stripMobileArmeabi_v7aReleaseDebugSymbols
 > Task :app:mergeMobileArmeabi_v7aReleaseResources FROM-CACHE
+> Task :app:extractMobileArmeabi_v7aReleaseNativeSymbolTables FROM-CACHE
+> Task :app:mergeMobileArmeabi_v7aReleaseNativeDebugMetadata
 > Task :app:packageMobileArmeabi_v7aReleaseResources FROM-CACHE
 > Task :app:processMobileArmeabi_v7aReleaseNavigationResources FROM-CACHE
 > Task :app:parseMobileArmeabi_v7aReleaseLocalResources FROM-CACHE
@@ -529,21 +529,35 @@ Note: Recompile with -Xlint:unchecked for details.
 > Task :app:l8DexDesugarLibLeanbackArm64_v8aRelease
 > Task :app:compileLeanbackArm64_v8aReleaseArtProfile
 > Task :app:minifyLeanbackArmeabi_v7aReleaseWithR8
-> Task :app:packageLeanbackArm64_v8aRelease FAILED
+> Task :app:packageLeanbackArm64_v8aRelease
+> Task :app:createLeanbackArm64_v8aReleaseApkListingFileRedirect
+> Task :app:assembleLeanbackArm64_v8aRelease
+> Task :app:convertShrunkResourcesToBinaryLeanbackArmeabi_v7aRelease FROM-CACHE
+> Task :app:optimizeLeanbackArmeabi_v7aReleaseResources FROM-CACHE
+> Task :app:l8DexDesugarLibLeanbackArmeabi_v7aRelease
+> Task :app:compileLeanbackArmeabi_v7aReleaseArtProfile
+> Task :app:packageLeanbackArmeabi_v7aRelease
+> Task :app:createLeanbackArmeabi_v7aReleaseApkListingFileRedirect
+> Task :app:assembleLeanbackArmeabi_v7aRelease
+> Task :app:minifyMobileArm64_v8aReleaseWithR8
+> Task :app:convertShrunkResourcesToBinaryMobileArm64_v8aRelease FROM-CACHE
+> Task :app:optimizeMobileArm64_v8aReleaseResources FROM-CACHE
+> Task :app:l8DexDesugarLibMobileArm64_v8aRelease
+> Task :app:compileMobileArm64_v8aReleaseArtProfile
+> Task :app:packageMobileArm64_v8aRelease
+> Task :app:createMobileArm64_v8aReleaseApkListingFileRedirect
+> Task :app:assembleMobileArm64_v8aRelease
+> Task :app:minifyMobileArmeabi_v7aReleaseWithR8
+> Task :app:convertShrunkResourcesToBinaryMobileArmeabi_v7aRelease FROM-CACHE
+> Task :app:optimizeMobileArmeabi_v7aReleaseResources FROM-CACHE
+> Task :app:l8DexDesugarLibMobileArmeabi_v7aRelease
+> Task :app:compileMobileArmeabi_v7aReleaseArtProfile
+> Task :app:packageMobileArmeabi_v7aRelease
+> Task :app:createMobileArmeabi_v7aReleaseApkListingFileRedirect
+> Task :app:assembleMobileArmeabi_v7aRelease
+> Task :app:assembleRelease
 
 [Incubating] Problems report is available at: file:///home/runner/work/tvbox-sources/tvbox-sources/fongmi/build/reports/problems/problems-report.html
-
-FAILURE: Build failed with an exception.
-
-* What went wrong:
-Execution failed for task ':app:packageLeanbackArm64_v8aRelease' (registered by plugin 'com.android.internal.application').
-> A failure occurred while executing com.android.build.gradle.tasks.PackageAndroidArtifact$IncrementalSplitterRunnable
-
-* Try:
-> Run with --stacktrace option to get the stack trace.
-> Run with --info or --debug option to get more log output.
-> Run with --scan to get full insights from a Build Scan (powered by Develocity).
-> Get more help at https://help.gradle.org.
 
 Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
 
@@ -551,6 +565,6 @@ You can use '--warning-mode all' to show the individual deprecation warnings and
 
 For more on this, please refer to https://docs.gradle.org/9.6.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
 
-BUILD FAILED in 5m 49s
-340 actionable tasks: 222 executed, 118 from cache
-GRADLE_EXIT=1
+BUILD SUCCESSFUL in 8m 36s
+365 actionable tasks: 245 executed, 120 from cache
+GRADLE_EXIT=0
