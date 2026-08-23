@@ -34,6 +34,12 @@ jobs:
           distribution: temurin
           java-version: '21'
 
+      - name: Set up Python 3.10 (chaquopy)
+        uses: actions/setup-python@v5
+        id: python
+        with:
+          python-version: '3.10'
+
       - name: Install Android SDK 37 + NDK 27
         run: |
           yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses >/dev/null 2>&1 || true
