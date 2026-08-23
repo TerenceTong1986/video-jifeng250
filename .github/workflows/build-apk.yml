@@ -6,6 +6,9 @@ on:
     branches: [main]
     paths: ['.github/workflows/build-apk.yml']
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -46,14 +49,19 @@ jobs:
         working-directory: fongmi
         run: |
           chmod +x gradlew
-          ./gradlew :app:assembleRelease --no-daemon --stacktrace 2>&1 | tail -40
+          ./gradlew :app:assembleRelease --no-daemon 2>&1 | tail -30
           echo "=== APK files ==="
-          find . -name "*.apk" -type f
+          find . -name "*.apk" -type f | head -20
 
-      - name: Upload APK
-        uses: actions/upload-artifact@v4
+      - name: Publish to GitHub Release
+        uses: softprops/action-gh-release@v2
         with:
-          name: fongmi-mod-apk
-          path: fongmi/**/*.apk
-          if-no-files-found: error
-          retention-days: 14
+          files: fongmi/**/*.apk
+          tag_name: fongmi-mod-${{ github.run_number }}
+          name: FongMi 5.6.1 mod（type=分类参数支持）
+          body: |
+            - 魔改: SiteApi.java 分类请求参数 t= → type=
+            - 效果: 百度/暴風/索尼/闪电/虎牙/天涯/艾旦/量子/非凡 9源分类浏览全部可用
+            - 构建: GitHub Actions 自动生成
+          make_latest: true
+          overwrite: true
