@@ -1,0 +1,53 @@
+name: 🤖 Build LiveSpeedTest
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['LiveSpeedTest/**']
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+
+      - name: Generate Gradle Wrapper
+        run: |
+          cd LiveSpeedTest
+          gradle wrapper --gradle-version=8.7
+
+      - name: Build APK
+        run: |
+          cd LiveSpeedTest
+          chmod +x gradlew
+          ./gradlew assembleRelease --no-daemon
+          echo "===== APK files ====="
+          find . -name "*.apk" -type f
+
+      - name: Publish to GitHub Release
+        if: success()
+        uses: softprops/action-gh-release@v2
+        with:
+          files: LiveSpeedTest/app/build/outputs/apk/release/*.apk
+          tag_name: livespeedtest-${{ github.run_number }}
+          name: 直播源测速工具 v${{ github.run_number }}
+          body: |
+            - 手机端直播源测速工具
+            - 支持 txt/m3u 格式文件
+            - 并发 10 线程测速，5 秒超时
+            - 自动导出最优源
+          make_latest: false
