@@ -1,4 +1,0 @@
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/build/outputs/apk/leanbackArm64_v8a/debug/app-leanback-arm64_v8a-debug.apk
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/build/outputs/apk/mobileArm64_v8a/debug/app-mobile-arm64_v8a-debug.apk
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/build/outputs/apk/leanbackArmeabi_v7a/debug/app-leanback-armeabi_v7a-debug.apk
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/build/outputs/apk/mobileArmeabi_v7a/debug/app-mobile-armeabi_v7a-debug.apk
