@@ -13,6 +13,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout tvbox-sources (self)
+        uses: actions/checkout@v4
+
       - name: Checkout FongMi/TV (branch fongmi)
         uses: actions/checkout@v4
         with:
@@ -23,7 +26,6 @@ jobs:
       - name: Apply mod — CMS category param t= → type=
         run: |
           sed -i 's/params.put("t", tid);/params.put("type", tid);/' fongmi/app/src/main/java/com/fongmi/android/tv/api/SiteApi.java
-          echo "=== after patch ==="
           grep -n 'params.put("type", tid)' fongmi/app/src/main/java/com/fongmi/android/tv/api/SiteApi.java
 
       - name: Set up JDK 21
@@ -45,13 +47,19 @@ jobs:
             ~/.gradle/wrapper
           key: gradle-${{ runner.os }}-${{ hashFiles('fongmi/gradle/libs.versions.toml', 'fongmi/**/build.gradle') }}
 
+      - name: Generate keystore & local.properties
+        run: |
+          keytool -genkeypair -v -keystore "$GITHUB_WORKSPACE/fongmi/app/release.keystore" -alias fongmi -keyalg RSA -keysize 2048 -validity 10000 -storepass fongmi123 -keypass fongmi123 -dname "CN=FongMi Mod, OU=TV, O=jifeng250, L=CN, ST=CN, C=CN" >/dev/null 2>&1
+          printf 'storeFile=release.keystore\nkeyAlias=fongmi\nstorePassword=fongmi123\n' > "$GITHUB_WORKSPACE/fongmi/local.properties"
+          echo "keystore + local.properties OK"
+
       - name: Build APK (assembleRelease)
         working-directory: fongmi
         run: |
           chmod +x gradlew
-          ./gradlew :app:assembleRelease --no-daemon 2>&1 | tail -30
+          ./gradlew :app:assembleRelease --no-daemon
           echo "=== APK files ==="
-          find . -name "*.apk" -type f | head -20
+          find . -name "*.apk" -type f
 
       - name: Publish to GitHub Release
         uses: softprops/action-gh-release@v2
@@ -61,7 +69,7 @@ jobs:
           name: FongMi 5.6.1 mod（type=分类参数支持）
           body: |
             - 魔改: SiteApi.java 分类请求参数 t= → type=
-            - 效果: 百度/暴風/索尼/闪电/虎牙/天涯/艾旦/量子/非凡 9源分类浏览全部可用
-            - 构建: GitHub Actions 自动生成
+            - 效果: 9源分类浏览全部可用（百度/暴風/索尼/闪电/虎牙/天涯/艾旦/量子/非凡）
+            - 自动构建: GitHub Actions
           make_latest: true
           overwrite: true
