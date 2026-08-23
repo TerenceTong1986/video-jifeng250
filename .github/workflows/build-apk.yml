@@ -31,15 +31,12 @@ jobs:
 
       - name: Install Android SDK 37
         run: |
-          export ANDROID_HOME="$ANDROID_HOME"
           yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses >/dev/null 2>&1 || true
           "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" "platforms;android-37" "build-tools;36.0.0" >/dev/null 2>&1 || true
-          ls "$ANDROID_HOME/platforms" || true
+          ls "$ANDROID_HOME/platforms" >/dev/null 2>&1 || true
 
       - name: Build APK (assembleRelease)
         working-directory: fongmi
-        env:
-          ANDROID_HOME: ${{ env.ANDROID_HOME }}
         run: |
           chmod +x gradlew
           ./gradlew :app:assembleRelease --no-daemon --stacktrace 2>&1 | tail -40
@@ -48,8 +45,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: fongmi-mod-apk
-          path: |
-            fongmi/app/build/outputs/apk/release/*.apk
-            fongmi/app/build/outputs/apk/just/*.apk
+          path: fongmi/app/build/outputs/apk/**/*.apk
           if-no-files-found: error
           retention-days: 14
