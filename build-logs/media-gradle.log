@@ -64,28 +64,28 @@ All code optimizations and obfuscation are disabled for debuggable builds.
 > Task :lib-common:generateReleaseAssets UP-TO-DATE
 > Task :lib-common:mergeReleaseAssets
 > Task :lib-common:javaPreCompileRelease
-> Task :lib-common:prepareLintJarForPublish
 > Task :lib-common:prepareReleaseArtProfile
+> Task :lib-common:prepareLintJarForPublish
 > Task :lib-common:writeReleaseAarMetadata
 > Task :lib-common:parseReleaseLocalResources
 > Task :lib-common:compileReleaseNavigationResources
 > Task :lib-common:mapReleaseSourceSetPaths
-> Task :lib-common:processReleaseManifest
 > Task :lib-common:generateReleaseRFile
 > Task :lib-common:mergeReleaseResources
+> Task :lib-common:processReleaseManifest
 > Task :lib-common:compileReleaseKotlin NO-SOURCE
-> Task :lib-common:extractReleaseAnnotations
 
 > Task :lib-common:compileReleaseJavaWithJavac
 Note: Some input files use or override a deprecated API.
 Note: Recompile with -Xlint:deprecation for details.
 
+> Task :lib-common:extractReleaseAnnotations
 > Task :lib-common:mergeReleaseGeneratedProguardFiles
 > Task :lib-common:mergeReleaseConsumerProguardFiles
 > Task :lib-common:processReleaseJavaRes NO-SOURCE
 > Task :lib-common:mergeReleaseJavaResource
-> Task :lib-common:syncReleaseLibJars
 > Task :lib-common:verifyReleaseResources
+> Task :lib-common:syncReleaseLibJars
 > Task :lib-common:bundleReleaseAar
 > Task :lib-common:assembleRelease
 > Task :lib-database:preBuild UP-TO-DATE
@@ -98,30 +98,30 @@ Note: Recompile with -Xlint:deprecation for details.
 > Task :lib-database:extractDeepLinksForAarRelease
 > Task :lib-database:generateReleaseResources
 > Task :lib-database:packageReleaseResources
-> Task :lib-database:processReleaseNavigationResources
 > Task :lib-common:bundleLibCompileToJarRelease
+> Task :lib-database:processReleaseNavigationResources
 > Task :lib-database:generateReleaseAssets UP-TO-DATE
 > Task :lib-database:mergeReleaseAssets
-> Task :lib-database:javaPreCompileRelease
-> Task :lib-database:parseReleaseLocalResources
 > Task :lib-database:prepareLintJarForPublish
+> Task :lib-database:javaPreCompileRelease
 > Task :lib-database:prepareReleaseArtProfile
-> Task :lib-database:generateReleaseRFile
+> Task :lib-database:parseReleaseLocalResources
 > Task :lib-database:processReleaseManifest
+> Task :lib-database:writeReleaseAarMetadata
+> Task :lib-database:generateReleaseRFile
+> Task :lib-common:compileReleaseLibraryResources
+> Task :lib-database:compileReleaseNavigationResources
 > Task :lib-database:compileReleaseKotlin NO-SOURCE
-> Task :lib-database:extractReleaseAnnotations
 > Task :lib-database:compileReleaseJavaWithJavac
 > Task :lib-database:mergeReleaseGeneratedProguardFiles
 > Task :lib-database:mergeReleaseConsumerProguardFiles
 > Task :lib-database:processReleaseJavaRes NO-SOURCE
-> Task :lib-database:writeReleaseAarMetadata
 > Task :lib-database:mergeReleaseJavaResource
-> Task :lib-common:compileReleaseLibraryResources
+> Task :lib-database:mapReleaseSourceSetPaths
+> Task :lib-database:extractReleaseAnnotations
+> Task :lib-database:mergeReleaseResources
 > Task :lib-database:syncReleaseLibJars
 > Task :lib-database:bundleReleaseAar
-> Task :lib-database:compileReleaseNavigationResources
-> Task :lib-database:mapReleaseSourceSetPaths
-> Task :lib-database:mergeReleaseResources
 > Task :lib-datasource:preBuild UP-TO-DATE
 > Task :lib-datasource:preReleaseBuild UP-TO-DATE
 > Task :lib-datasource:checkReleaseAarMetadata
@@ -130,17 +130,19 @@ Note: Recompile with -Xlint:deprecation for details.
 > Task :lib-datasource:stripReleaseDebugSymbols NO-SOURCE
 > Task :lib-datasource:copyReleaseJniLibsProjectAndLocalJars
 > Task :lib-datasource:extractDeepLinksForAarRelease
-> Task :lib-database:bundleLibCompileToJarRelease
 > Task :lib-datasource:generateReleaseResources
+> Task :lib-database:bundleLibCompileToJarRelease
 > Task :lib-datasource:packageReleaseResources
 > Task :lib-datasource:processReleaseNavigationResources
 > Task :lib-datasource:generateReleaseAssets UP-TO-DATE
 > Task :lib-datasource:mergeReleaseAssets
+> Task :lib-datasource:javaPreCompileRelease
 > Task :lib-datasource:parseReleaseLocalResources
 > Task :lib-datasource:prepareLintJarForPublish
-> Task :lib-datasource:javaPreCompileRelease
 > Task :lib-datasource:prepareReleaseArtProfile
+> Task :lib-datasource:writeReleaseAarMetadata
 > Task :lib-datasource:generateReleaseRFile
+> Task :lib-datasource:processReleaseManifest
 > Task :lib-database:verifyReleaseResources
 > Task :lib-database:assembleRelease
 > Task :lib-datasource:compileReleaseKotlin NO-SOURCE
@@ -150,12 +152,10 @@ Note: Recompile with -Xlint:deprecation for details.
 > Task :lib-datasource:mergeReleaseConsumerProguardFiles
 > Task :lib-datasource:processReleaseJavaRes NO-SOURCE
 > Task :lib-datasource:mergeReleaseJavaResource
-> Task :lib-datasource:writeReleaseAarMetadata
 > Task :lib-database:compileReleaseLibraryResources
-> Task :lib-datasource:processReleaseManifest
+> Task :lib-datasource:compileReleaseNavigationResources
 > Task :lib-datasource:syncReleaseLibJars
 > Task :lib-datasource:bundleReleaseAar
-> Task :lib-datasource:compileReleaseNavigationResources
 > Task :lib-datasource:mapReleaseSourceSetPaths
 > Task :lib-datasource:mergeReleaseResources
 > Task :lib-datasource-okhttp:preBuild UP-TO-DATE
@@ -164,34 +164,34 @@ Note: Recompile with -Xlint:deprecation for details.
 > Task :lib-datasource-okhttp:mergeReleaseJniLibFolders
 > Task :lib-datasource-okhttp:mergeReleaseNativeLibs NO-SOURCE
 > Task :lib-datasource-okhttp:stripReleaseDebugSymbols NO-SOURCE
-> Task :lib-datasource-okhttp:extractDeepLinksForAarRelease
 > Task :lib-datasource-okhttp:copyReleaseJniLibsProjectAndLocalJars
+> Task :lib-datasource-okhttp:extractDeepLinksForAarRelease
 > Task :lib-datasource-okhttp:generateReleaseResources
-> Task :lib-datasource:bundleLibCompileToJarRelease
 > Task :lib-datasource-okhttp:packageReleaseResources
+> Task :lib-datasource:bundleLibCompileToJarRelease
 > Task :lib-datasource-okhttp:processReleaseNavigationResources
 > Task :lib-datasource-okhttp:generateReleaseAssets UP-TO-DATE
 > Task :lib-datasource-okhttp:mergeReleaseAssets
-> Task :lib-datasource-okhttp:javaPreCompileRelease
-> Task :lib-datasource-okhttp:prepareLintJarForPublish
-> Task :lib-datasource-okhttp:prepareReleaseArtProfile
 > Task :lib-datasource-okhttp:parseReleaseLocalResources
-> Task :lib-datasource-okhttp:processReleaseManifest
-> Task :lib-datasource-okhttp:writeReleaseAarMetadata
+> Task :lib-datasource-okhttp:javaPreCompileRelease
 > Task :lib-datasource-okhttp:generateReleaseRFile
-> Task :lib-datasource:compileReleaseLibraryResources
+> Task :lib-datasource-okhttp:prepareLintJarForPublish
 > Task :lib-datasource-okhttp:extractReleaseAnnotations
-> Task :lib-datasource:verifyReleaseResources
 > Task :lib-datasource-okhttp:compileReleaseKotlin NO-SOURCE
-> Task :lib-datasource:assembleRelease
+> Task :lib-datasource:verifyReleaseResources
 > Task :lib-datasource-okhttp:compileReleaseJavaWithJavac
+> Task :lib-datasource:assembleRelease
 > Task :lib-datasource-okhttp:mergeReleaseGeneratedProguardFiles
 > Task :lib-datasource-okhttp:mergeReleaseConsumerProguardFiles
+> Task :lib-datasource-okhttp:prepareReleaseArtProfile
 > Task :lib-datasource-okhttp:processReleaseJavaRes NO-SOURCE
+> Task :lib-datasource-okhttp:processReleaseManifest
 > Task :lib-datasource-okhttp:mergeReleaseJavaResource
-> Task :lib-datasource-okhttp:compileReleaseNavigationResources
+> Task :lib-datasource-okhttp:writeReleaseAarMetadata
+> Task :lib-datasource:compileReleaseLibraryResources
 > Task :lib-datasource-okhttp:syncReleaseLibJars
 > Task :lib-datasource-okhttp:bundleReleaseAar
+> Task :lib-datasource-okhttp:compileReleaseNavigationResources
 > Task :lib-datasource-okhttp:mapReleaseSourceSetPaths
 > Task :lib-datasource-okhttp:mergeReleaseResources
 > Task :lib-datasource-rtmp:preBuild UP-TO-DATE
@@ -206,10 +206,10 @@ Note: Recompile with -Xlint:deprecation for details.
 > Task :lib-datasource-rtmp:packageReleaseResources
 > Task :lib-datasource-rtmp:processReleaseNavigationResources
 > Task :lib-datasource-rtmp:generateReleaseAssets UP-TO-DATE
-> Task :lib-datasource-rtmp:mergeReleaseAssets
-> Task :lib-datasource-rtmp:javaPreCompileRelease
-> Task :lib-datasource-rtmp:prepareLintJarForPublish
 > Task :lib-datasource-rtmp:parseReleaseLocalResources
+> Task :lib-datasource-rtmp:mergeReleaseAssets
+> Task :lib-datasource-rtmp:prepareLintJarForPublish
+> Task :lib-datasource-rtmp:javaPreCompileRelease
 > Task :lib-datasource-rtmp:prepareReleaseArtProfile
 > Task :lib-datasource-rtmp:generateReleaseRFile
 > Task :lib-datasource-rtmp:processReleaseManifest
@@ -245,28 +245,27 @@ Note: Recompile with -Xlint:deprecation for details.
 > Task :lib-effect:prepareLintJarForPublish
 > Task :lib-effect:prepareReleaseArtProfile
 > Task :lib-effect:writeReleaseAarMetadata
-> Task :lib-effect:processReleaseManifest
 > Task :lib-effect:compileReleaseNavigationResources
+> Task :lib-effect:processReleaseManifest
 > Task :lib-effect:mapReleaseSourceSetPaths
 > Task :lib-effect:parseReleaseLocalResources
 > Task :lib-datasource-rtmp:verifyReleaseResources
+> Task :lib-effect:generateReleaseRFile
 > Task :lib-effect:mergeReleaseResources
 > Task :lib-datasource-rtmp:assembleRelease
-> Task :lib-effect:generateReleaseRFile
 > Task :lib-container:preBuild UP-TO-DATE
-> Task :lib-effect:verifyReleaseResources
 > Task :lib-container:preReleaseBuild UP-TO-DATE
 > Task :lib-container:writeReleaseAarMetadata
 > Task :lib-decoder:preBuild UP-TO-DATE
 > Task :lib-decoder:preReleaseBuild UP-TO-DATE
+> Task :lib-decoder:writeReleaseAarMetadata
 > Task :lib-exoplayer:preBuild UP-TO-DATE
 > Task :lib-exoplayer:preReleaseBuild UP-TO-DATE
 > Task :lib-extractor:preBuild UP-TO-DATE
 > Task :lib-extractor:preReleaseBuild UP-TO-DATE
-> Task :lib-decoder:writeReleaseAarMetadata
 > Task :lib-extractor:writeReleaseAarMetadata
-> Task :lib-exoplayer:mergeReleaseJniLibFolders
 > Task :lib-exoplayer:checkReleaseAarMetadata
+> Task :lib-exoplayer:mergeReleaseJniLibFolders
 > Task :lib-exoplayer:mergeReleaseNativeLibs NO-SOURCE
 > Task :lib-exoplayer:stripReleaseDebugSymbols NO-SOURCE
 > Task :lib-exoplayer:copyReleaseJniLibsProjectAndLocalJars
@@ -275,13 +274,14 @@ Note: Recompile with -Xlint:deprecation for details.
 > Task :lib-container:packageReleaseResources
 > Task :lib-container:processReleaseNavigationResources
 > Task :lib-container:parseReleaseLocalResources
-> Task :lib-container:javaPreCompileRelease
-> Task :lib-decoder:generateReleaseResources
 > Task :lib-container:generateReleaseRFile
-> Task :lib-decoder:packageReleaseResources
 > Task :lib-container:compileReleaseKotlin NO-SOURCE
+> Task :lib-container:javaPreCompileRelease
+> Task :lib-effect:verifyReleaseResources
 > Task :lib-container:compileReleaseJavaWithJavac
 > Task :lib-container:bundleLibCompileToJarRelease
+> Task :lib-decoder:generateReleaseResources
+> Task :lib-decoder:packageReleaseResources
 > Task :lib-decoder:processReleaseNavigationResources
 > Task :lib-decoder:javaPreCompileRelease
 > Task :lib-decoder:parseReleaseLocalResources
@@ -290,8 +290,8 @@ Note: Recompile with -Xlint:deprecation for details.
 > Task :lib-exoplayer:packageReleaseResources
 > Task :lib-decoder:compileReleaseKotlin NO-SOURCE
 > Task :lib-decoder:compileReleaseJavaWithJavac
-> Task :lib-decoder:bundleLibCompileToJarRelease
 > Task :lib-exoplayer:processReleaseNavigationResources
+> Task :lib-decoder:bundleLibCompileToJarRelease
 > Task :lib-extractor:generateReleaseResources
 > Task :lib-extractor:packageReleaseResources
 > Task :lib-extractor:processReleaseNavigationResources
@@ -301,6 +301,7 @@ Note: Recompile with -Xlint:deprecation for details.
 > Task :lib-extractor:compileReleaseKotlin NO-SOURCE
 > Task :lib-extractor:javaPreCompileRelease
 > Task :lib-exoplayer:generateReleaseRFile
+> Task :lib-effect:extractReleaseAnnotations
 
 > Task :lib-extractor:compileReleaseJavaWithJavac
 Note: Some input files use or override a deprecated API.
@@ -311,11 +312,13 @@ Note: Recompile with -Xlint:deprecation for details.
 > Task :lib-exoplayer:javaPreCompileRelease
 > Task :lib-exoplayer:prepareLintJarForPublish
 > Task :lib-exoplayer:prepareReleaseArtProfile
-> Task :lib-exoplayer:processReleaseManifest
 > Task :lib-exoplayer:writeReleaseAarMetadata
-> Task :lib-extractor:bundleLibCompileToJarRelease
+> Task :lib-exoplayer:processReleaseManifest
 > Task :lib-container:compileReleaseLibraryResources
-> Task :lib-effect:extractReleaseAnnotations
+> Task :lib-decoder:compileReleaseLibraryResources
+> Task :lib-exoplayer:compileReleaseNavigationResources
+> Task :lib-extractor:bundleLibCompileToJarRelease
+> Task :lib-exoplayer:mapReleaseSourceSetPaths
 > Task :lib-exoplayer:compileReleaseKotlin NO-SOURCE
 > Task :lib-exoplayer:extractReleaseAnnotations
 
@@ -327,13 +330,138 @@ Note: Recompile with -Xlint:deprecation for details.
 > Task :lib-exoplayer:mergeReleaseConsumerProguardFiles
 > Task :lib-exoplayer:processReleaseJavaRes NO-SOURCE
 > Task :lib-exoplayer:mergeReleaseJavaResource
-> Task :lib-decoder:compileReleaseLibraryResources
+> Task :lib-exoplayer:mergeReleaseResources
 > Task :lib-exoplayer:syncReleaseLibJars
 > Task :lib-exoplayer:bundleReleaseAar
-> Task :lib-exoplayer:compileReleaseNavigationResources
-> Task :lib-exoplayer:mapReleaseSourceSetPaths
-> Task :lib-exoplayer:mergeReleaseResources
+> Task :lib-exoplayer-hls:preBuild UP-TO-DATE
 > Task :lib-extractor:compileReleaseLibraryResources
+> Task :lib-exoplayer-hls:preReleaseBuild UP-TO-DATE
+> Task :lib-exoplayer-hls:checkReleaseAarMetadata
+> Task :lib-exoplayer-hls:mergeReleaseJniLibFolders
+> Task :lib-exoplayer-hls:mergeReleaseNativeLibs NO-SOURCE
+> Task :lib-exoplayer-hls:stripReleaseDebugSymbols NO-SOURCE
+> Task :lib-exoplayer-hls:extractDeepLinksForAarRelease
+> Task :lib-exoplayer-hls:copyReleaseJniLibsProjectAndLocalJars
+> Task :lib-exoplayer-hls:generateReleaseResources
+> Task :lib-exoplayer-hls:packageReleaseResources
+> Task :lib-exoplayer-hls:processReleaseNavigationResources
+> Task :lib-exoplayer:bundleLibCompileToJarRelease
+> Task :lib-exoplayer-hls:generateReleaseAssets UP-TO-DATE
+> Task :lib-exoplayer-hls:mergeReleaseAssets
+> Task :lib-exoplayer-hls:parseReleaseLocalResources
+> Task :lib-exoplayer-hls:javaPreCompileRelease
+> Task :lib-exoplayer-hls:prepareLintJarForPublish
+> Task :lib-exoplayer-hls:prepareReleaseArtProfile
+> Task :lib-exoplayer-hls:generateReleaseRFile
+> Task :lib-exoplayer-hls:processReleaseManifest
+> Task :lib-exoplayer:verifyReleaseResources
+> Task :lib-exoplayer:assembleRelease
+> Task :lib-exoplayer-hls:compileReleaseKotlin NO-SOURCE
+> Task :lib-exoplayer-hls:extractReleaseAnnotations
+> Task :lib-effect:compileReleaseKotlin
+
+> Task :lib-exoplayer-hls:compileReleaseJavaWithJavac
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+
+> Task :lib-effect:compileReleaseJavaWithJavac
+Note: /home/runner/work/tvbox-sources/tvbox-sources/media/libraries/effect/src/main/java/androidx/media3/effect/TimestampAdjustmentShaderProgram.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+
+> Task :lib-effect:mergeReleaseGeneratedProguardFiles
+> Task :lib-effect:mergeReleaseConsumerProguardFiles
+> Task :lib-effect:processReleaseJavaRes
+> Task :lib-exoplayer-hls:mergeReleaseGeneratedProguardFiles
+> Task :lib-exoplayer-hls:mergeReleaseConsumerProguardFiles
+> Task :lib-exoplayer-hls:processReleaseJavaRes NO-SOURCE
+> Task :lib-exoplayer-hls:mergeReleaseJavaResource
+> Task :lib-exoplayer-hls:writeReleaseAarMetadata
+> Task :lib-effect:mergeReleaseJavaResource
+> Task :lib-exoplayer-hls:syncReleaseLibJars
+> Task :lib-effect:syncReleaseLibJars
+> Task :lib-effect:bundleReleaseAar
+> Task :lib-effect:assembleRelease
+> Task :lib-exoplayer-hls:bundleReleaseAar
+> Task :lib-exoplayer:compileReleaseLibraryResources
+> Task :lib-exoplayer-hls:compileReleaseNavigationResources
+> Task :lib-exoplayer-hls:mapReleaseSourceSetPaths
+> Task :lib-exoplayer-hls:mergeReleaseResources
+> Task :lib-exoplayer-dash:preBuild UP-TO-DATE
+> Task :lib-exoplayer-dash:preReleaseBuild UP-TO-DATE
+> Task :lib-exoplayer-dash:checkReleaseAarMetadata
+> Task :lib-exoplayer-dash:mergeReleaseJniLibFolders
+> Task :lib-exoplayer-dash:mergeReleaseNativeLibs NO-SOURCE
+> Task :lib-exoplayer-dash:stripReleaseDebugSymbols NO-SOURCE
+> Task :lib-exoplayer-dash:copyReleaseJniLibsProjectAndLocalJars
+> Task :lib-exoplayer-dash:extractDeepLinksForAarRelease
+> Task :lib-exoplayer-dash:generateReleaseResources
+> Task :lib-exoplayer-dash:packageReleaseResources
+> Task :lib-exoplayer-dash:processReleaseNavigationResources
+> Task :lib-exoplayer-dash:generateReleaseAssets UP-TO-DATE
+> Task :lib-exoplayer-dash:mergeReleaseAssets
+> Task :lib-exoplayer-dash:parseReleaseLocalResources
+> Task :lib-exoplayer-dash:javaPreCompileRelease
+> Task :lib-exoplayer-dash:prepareLintJarForPublish
+> Task :lib-exoplayer-dash:prepareReleaseArtProfile
+> Task :lib-exoplayer-dash:generateReleaseRFile
+> Task :lib-exoplayer-dash:processReleaseManifest
+> Task :lib-exoplayer-dash:compileReleaseKotlin NO-SOURCE
+> Task :lib-exoplayer-hls:verifyReleaseResources
+> Task :lib-exoplayer-dash:extractReleaseAnnotations
+
+> Task :lib-exoplayer-dash:compileReleaseJavaWithJavac
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+
+> Task :lib-exoplayer-hls:assembleRelease
+> Task :lib-exoplayer-dash:mergeReleaseGeneratedProguardFiles
+> Task :lib-exoplayer-dash:mergeReleaseConsumerProguardFiles
+> Task :lib-exoplayer-dash:processReleaseJavaRes NO-SOURCE
+> Task :lib-exoplayer-dash:writeReleaseAarMetadata
+> Task :lib-exoplayer-dash:mergeReleaseJavaResource
+> Task :lib-exoplayer-dash:compileReleaseNavigationResources
+> Task :lib-exoplayer-dash:syncReleaseLibJars
+> Task :lib-exoplayer-dash:bundleReleaseAar
+> Task :lib-exoplayer-dash:mapReleaseSourceSetPaths
+> Task :lib-exoplayer-dash:mergeReleaseResources
+> Task :lib-exoplayer-rtsp:preBuild UP-TO-DATE
+> Task :lib-exoplayer-rtsp:preReleaseBuild UP-TO-DATE
+> Task :lib-exoplayer-rtsp:checkReleaseAarMetadata
+> Task :lib-exoplayer-rtsp:mergeReleaseJniLibFolders
+> Task :lib-exoplayer-rtsp:mergeReleaseNativeLibs NO-SOURCE
+> Task :lib-exoplayer-rtsp:stripReleaseDebugSymbols NO-SOURCE
+> Task :lib-exoplayer-rtsp:extractDeepLinksForAarRelease
+> Task :lib-exoplayer-rtsp:copyReleaseJniLibsProjectAndLocalJars
+> Task :lib-exoplayer-rtsp:generateReleaseResources
+> Task :lib-exoplayer-rtsp:packageReleaseResources
+> Task :lib-exoplayer-rtsp:processReleaseNavigationResources
+> Task :lib-exoplayer-rtsp:generateReleaseAssets UP-TO-DATE
+> Task :lib-exoplayer-rtsp:mergeReleaseAssets
+> Task :lib-exoplayer-rtsp:parseReleaseLocalResources
+> Task :lib-exoplayer-rtsp:prepareLintJarForPublish
+> Task :lib-exoplayer-rtsp:javaPreCompileRelease
+> Task :lib-exoplayer-rtsp:generateReleaseRFile
+> Task :lib-exoplayer-rtsp:prepareReleaseArtProfile
+> Task :lib-exoplayer-rtsp:compileReleaseKotlin NO-SOURCE
+> Task :lib-exoplayer-dash:verifyReleaseResources
+> Task :lib-exoplayer-rtsp:extractReleaseAnnotations
+
+> Task :lib-exoplayer-rtsp:compileReleaseJavaWithJavac
+Note: /home/runner/work/tvbox-sources/tvbox-sources/media/libraries/exoplayer_rtsp/src/main/java/androidx/media3/exoplayer/rtsp/RtspMediaSource.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+
+> Task :lib-exoplayer-dash:assembleRelease
+> Task :lib-exoplayer-rtsp:mergeReleaseGeneratedProguardFiles
+> Task :lib-exoplayer-rtsp:mergeReleaseConsumerProguardFiles
+> Task :lib-exoplayer-rtsp:processReleaseJavaRes NO-SOURCE
+> Task :lib-exoplayer-rtsp:processReleaseManifest
+> Task :lib-exoplayer-rtsp:mergeReleaseJavaResource
+> Task :lib-exoplayer-rtsp:writeReleaseAarMetadata
+> Task :lib-exoplayer-rtsp:syncReleaseLibJars
+> Task :lib-exoplayer-rtsp:bundleReleaseAar
+> Task :lib-exoplayer-rtsp:compileReleaseNavigationResources
+> Task :lib-exoplayer-rtsp:mapReleaseSourceSetPaths
+> Task :lib-exoplayer-rtsp:mergeReleaseResources
 > Task :lib-extractor:checkReleaseAarMetadata
 > Task :lib-extractor:mergeReleaseJniLibFolders
 > Task :lib-extractor:mergeReleaseNativeLibs NO-SOURCE
@@ -346,83 +474,68 @@ Note: Recompile with -Xlint:deprecation for details.
 > Task :lib-extractor:mergeReleaseConsumerProguardFiles
 > Task :lib-extractor:prepareLintJarForPublish
 > Task :lib-extractor:prepareReleaseArtProfile
-> Task :lib-extractor:processReleaseManifest
 > Task :lib-extractor:processReleaseJavaRes NO-SOURCE
+> Task :lib-extractor:processReleaseManifest
 > Task :lib-extractor:mergeReleaseJavaResource
 > Task :lib-extractor:compileReleaseNavigationResources
 > Task :lib-extractor:mapReleaseSourceSetPaths
 > Task :lib-extractor:mergeReleaseResources
-> Task :lib-exoplayer:verifyReleaseResources
-> Task :lib-exoplayer:assembleRelease
 > Task :lib-decoder-ffmpeg:preBuild UP-TO-DATE
 > Task :lib-decoder-ffmpeg:preReleaseBuild UP-TO-DATE
 > Task :lib-decoder-ffmpeg:writeReleaseAarMetadata
 > Task :lib-mpvplayer:preBuild UP-TO-DATE
 > Task :lib-mpvplayer:preReleaseBuild UP-TO-DATE
 > Task :lib-mpvplayer:checkReleaseAarMetadata
+> Task :lib-exoplayer-rtsp:verifyReleaseResources
 > Task :lib-extractor:verifyReleaseResources
 > Task :lib-mpvplayer:mergeReleaseJniLibFolders
+> Task :lib-exoplayer-rtsp:assembleRelease
 > Task :lib-mpvplayer:extractDeepLinksForAarRelease
 > Task :lib-decoder-ffmpeg:generateReleaseResources
 > Task :lib-decoder-ffmpeg:packageReleaseResources
 > Task :lib-decoder-ffmpeg:processReleaseNavigationResources
-> Task :lib-decoder-ffmpeg:parseReleaseLocalResources
-> Task :lib-mpvplayer:mergeReleaseNativeLibs
-> Task :lib-decoder-ffmpeg:generateReleaseRFile
-> Task :lib-exoplayer:bundleLibCompileToJarRelease
-> Task :lib-decoder-ffmpeg:compileReleaseKotlin NO-SOURCE
 > Task :lib-decoder-ffmpeg:javaPreCompileRelease
-> Task :lib-mpvplayer:stripReleaseDebugSymbols
-> Task :lib-extractor:extractReleaseAnnotations
+> Task :lib-decoder-ffmpeg:parseReleaseLocalResources
+> Task :lib-mpvplayer:generateReleaseResources
+> Task :lib-decoder-ffmpeg:generateReleaseRFile
+> Task :lib-mpvplayer:packageReleaseResources
+> Task :lib-decoder-ffmpeg:compileReleaseKotlin NO-SOURCE
+> Task :lib-mpvplayer:mergeReleaseNativeLibs
 > Task :lib-decoder-ffmpeg:compileReleaseJavaWithJavac
+> Task :lib-mpvplayer:processReleaseNavigationResources
+> Task :lib-decoder-ffmpeg:bundleLibCompileToJarRelease
+> Task :lib-mpvplayer:generateReleaseAssets UP-TO-DATE
+> Task :lib-mpvplayer:parseReleaseLocalResources
+> Task :lib-extractor:extractReleaseAnnotations
+> Task :lib-mpvplayer:mergeReleaseAssets
+> Task :lib-mpvplayer:stripReleaseDebugSymbols
 > Task :lib-extractor:syncReleaseLibJars
 > Task :lib-extractor:bundleReleaseAar
 > Task :lib-extractor:assembleRelease
-> Task :lib-decoder-ffmpeg:bundleLibCompileToJarRelease
-> Task :lib-mpvplayer:generateReleaseResources
-> Task :lib-mpvplayer:copyReleaseJniLibsProjectAndLocalJars
-> Task :lib-mpvplayer:packageReleaseResources
-> Task :lib-mpvplayer:processReleaseNavigationResources
-> Task :lib-mpvplayer:generateReleaseAssets UP-TO-DATE
-> Task :lib-mpvplayer:mergeReleaseAssets
-> Task :lib-mpvplayer:prepareLintJarForPublish
-> Task :lib-mpvplayer:javaPreCompileRelease
-> Task :lib-mpvplayer:parseReleaseLocalResources
-> Task :lib-mpvplayer:prepareReleaseArtProfile
 > Task :lib-mpvplayer:generateReleaseRFile
-> Task :lib-mpvplayer:processReleaseManifest
+> Task :lib-mpvplayer:javaPreCompileRelease
+> Task :lib-mpvplayer:prepareLintJarForPublish
 > Task :lib-mpvplayer:compileReleaseKotlin NO-SOURCE
+> Task :lib-mpvplayer:copyReleaseJniLibsProjectAndLocalJars
 > Task :lib-mpvplayer:extractReleaseAnnotations
 > Task :lib-mpvplayer:compileReleaseJavaWithJavac
 > Task :lib-mpvplayer:mergeReleaseGeneratedProguardFiles
 > Task :lib-mpvplayer:mergeReleaseConsumerProguardFiles
+> Task :lib-mpvplayer:prepareReleaseArtProfile
 > Task :lib-mpvplayer:processReleaseJavaRes NO-SOURCE
+> Task :lib-mpvplayer:processReleaseManifest
 > Task :lib-mpvplayer:mergeReleaseJavaResource
 > Task :lib-mpvplayer:writeReleaseAarMetadata
-> Task :lib-decoder-ffmpeg:compileReleaseLibraryResources
 > Task :lib-mpvplayer:syncReleaseLibJars
-> Task :lib-effect:compileReleaseKotlin
 > Task :lib-mpvplayer:bundleReleaseAar
-
-> Task :lib-effect:compileReleaseJavaWithJavac
-Note: /home/runner/work/tvbox-sources/tvbox-sources/media/libraries/effect/src/main/java/androidx/media3/effect/TimestampAdjustmentShaderProgram.java uses or overrides a deprecated API.
-Note: Recompile with -Xlint:deprecation for details.
-
-> Task :lib-effect:mergeReleaseGeneratedProguardFiles
-> Task :lib-effect:mergeReleaseConsumerProguardFiles
-> Task :lib-effect:processReleaseJavaRes
-> Task :lib-exoplayer:compileReleaseLibraryResources
+> Task :lib-decoder-ffmpeg:compileReleaseLibraryResources
 > Task :lib-mpvplayer:compileReleaseNavigationResources
 > Task :lib-mpvplayer:mapReleaseSourceSetPaths
-> Task :lib-effect:mergeReleaseJavaResource
 > Task :lib-mpvplayer:mergeReleaseResources
-> Task :lib-effect:syncReleaseLibJars
-> Task :lib-effect:bundleReleaseAar
-> Task :lib-effect:assembleRelease
-> Task :lib-decoder:checkReleaseAarMetadata
 > Task :lib-decoder:mergeReleaseJniLibFolders
 > Task :lib-decoder:mergeReleaseNativeLibs NO-SOURCE
 > Task :lib-decoder:stripReleaseDebugSymbols NO-SOURCE
+> Task :lib-decoder:checkReleaseAarMetadata
 > Task :lib-decoder:extractDeepLinksForAarRelease
 > Task :lib-decoder:copyReleaseJniLibsProjectAndLocalJars
 > Task :lib-decoder:generateReleaseAssets UP-TO-DATE
@@ -437,14 +550,14 @@ Note: Recompile with -Xlint:deprecation for details.
 > Task :lib-decoder:compileReleaseNavigationResources
 > Task :lib-decoder:mapReleaseSourceSetPaths
 > Task :lib-decoder:mergeReleaseResources
-> Task :lib-decoder:extractReleaseAnnotations
 > Task :lib-decoder-ffmpeg:checkReleaseAarMetadata
-> Task :lib-decoder:syncReleaseLibJars
-> Task :lib-decoder:bundleReleaseAar
+> Task :lib-decoder:extractReleaseAnnotations
 > Task :lib-mpvplayer:verifyReleaseResources
 > Task :lib-decoder:verifyReleaseResources
 > Task :lib-decoder-ffmpeg:configureCMakeRelWithDebInfo[arm64-v8a]
 > Task :lib-mpvplayer:assembleRelease
+> Task :lib-decoder:syncReleaseLibJars
+> Task :lib-decoder:bundleReleaseAar
 > Task :lib-decoder:assembleRelease
 > Task :lib-decoder-ffmpeg:buildCMakeRelWithDebInfo[arm64-v8a]
 > Task :lib-decoder-ffmpeg:configureCMakeRelWithDebInfo[armeabi-v7a]
@@ -468,25 +581,24 @@ Note: Recompile with -Xlint:deprecation for details.
 > Task :lib-decoder-ffmpeg:syncReleaseLibJars
 > Task :lib-decoder-mpegh:preBuild UP-TO-DATE
 > Task :lib-decoder-mpegh:preReleaseBuild UP-TO-DATE
-> Task :lib-decoder-mpegh:checkReleaseAarMetadata
 > Task :lib-decoder-mpegh:mergeReleaseJniLibFolders
-> Task :lib-decoder-mpegh:extractDeepLinksForAarRelease
 > Task :lib-decoder-mpegh:mergeReleaseNativeLibs
+> Task :lib-decoder-mpegh:stripReleaseDebugSymbols
+> Task :lib-decoder-mpegh:checkReleaseAarMetadata
 > Task :lib-decoder-ffmpeg:stripReleaseDebugSymbols
+> Task :lib-decoder-mpegh:extractDeepLinksForAarRelease
+> Task :lib-decoder-mpegh:copyReleaseJniLibsProjectAndLocalJars
 > Task :lib-decoder-mpegh:generateReleaseResources
-> Task :lib-decoder-ffmpeg:verifyReleaseResources
 > Task :lib-decoder-mpegh:packageReleaseResources
 > Task :lib-decoder-mpegh:processReleaseNavigationResources
+> Task :lib-decoder-ffmpeg:verifyReleaseResources
 > Task :lib-decoder-mpegh:generateReleaseAssets UP-TO-DATE
 > Task :lib-decoder-mpegh:mergeReleaseAssets
 > Task :lib-decoder-mpegh:javaPreCompileRelease
-> Task :lib-decoder-mpegh:stripReleaseDebugSymbols
 > Task :lib-decoder-mpegh:parseReleaseLocalResources
 > Task :lib-decoder-mpegh:prepareLintJarForPublish
-> Task :lib-decoder-mpegh:prepareReleaseArtProfile
 > Task :lib-decoder-mpegh:generateReleaseRFile
-> Task :lib-decoder-mpegh:copyReleaseJniLibsProjectAndLocalJars
-> Task :lib-decoder-mpegh:processReleaseManifest
+> Task :lib-decoder-mpegh:prepareReleaseArtProfile
 > Task :lib-decoder-ffmpeg:copyReleaseJniLibsProjectAndLocalJars
 > Task :lib-decoder-mpegh:extractReleaseAnnotations
 > Task :lib-decoder-ffmpeg:bundleReleaseAar
@@ -497,6 +609,7 @@ Note: Recompile with -Xlint:deprecation for details.
 > Task :lib-decoder-mpegh:mergeReleaseConsumerProguardFiles
 > Task :lib-decoder-mpegh:processReleaseJavaRes NO-SOURCE
 > Task :lib-decoder-mpegh:mergeReleaseJavaResource
+> Task :lib-decoder-mpegh:processReleaseManifest
 > Task :lib-decoder-mpegh:writeReleaseAarMetadata
 > Task :lib-decoder-mpegh:syncReleaseLibJars
 > Task :lib-decoder-mpegh:bundleReleaseAar
@@ -518,23 +631,24 @@ Note: Recompile with -Xlint:deprecation for details.
 > Task :lib-session:processReleaseNavigationResources
 > Task :lib-session:generateReleaseAssets UP-TO-DATE
 > Task :lib-session:mergeReleaseAssets
-> Task :lib-session:prepareLintJarForPublish
 > Task :lib-session:javaPreCompileRelease
+> Task :lib-session:prepareLintJarForPublish
 > Task :lib-session:prepareReleaseArtProfile
 > Task :lib-session:writeReleaseAarMetadata
 > Task :lib-session:compileReleaseNavigationResources
 > Task :lib-session:processReleaseManifest
-> Task :lib-session:mapReleaseSourceSetPaths
 > Task :lib-session:parseReleaseLocalResources
+> Task :lib-session:mapReleaseSourceSetPaths
 > Task :lib-session:mergeReleaseResources
 > Task :lib-session:generateReleaseRFile
 > Task :lib-ui:preBuild UP-TO-DATE
 > Task :lib-ui:preReleaseBuild UP-TO-DATE
 > Task :lib-ui-danmaku:preBuild UP-TO-DATE
 > Task :lib-ui-danmaku:preReleaseBuild UP-TO-DATE
-> Task :lib-session:compileReleaseAidl
-> Task :lib-ui:mergeReleaseJniLibFolders
 > Task :lib-ui-danmaku:writeReleaseAarMetadata
+> Task :lib-ui:mergeReleaseJniLibFolders
+> Task :lib-session:compileReleaseAidl
+> Task :lib-ui:checkReleaseAarMetadata
 > Task :lib-session:compileReleaseKotlin NO-SOURCE
 > Task :lib-session:verifyReleaseResources
 > Task :lib-session:extractReleaseAnnotations
@@ -546,15 +660,14 @@ Note: Recompile with -Xlint:deprecation for details.
 > Task :lib-session:mergeReleaseGeneratedProguardFiles
 > Task :lib-session:mergeReleaseConsumerProguardFiles
 > Task :lib-session:processReleaseJavaRes NO-SOURCE
+> Task :lib-ui:mergeReleaseNativeLibs NO-SOURCE
 > Task :lib-session:mergeReleaseJavaResource
-> Task :lib-ui:checkReleaseAarMetadata
 > Task :lib-session:syncReleaseLibJars
 > Task :lib-session:bundleReleaseAar
 > Task :lib-session:assembleRelease
-> Task :lib-ui:mergeReleaseNativeLibs NO-SOURCE
 > Task :lib-ui:stripReleaseDebugSymbols NO-SOURCE
-> Task :lib-ui:copyReleaseJniLibsProjectAndLocalJars
 > Task :lib-ui:extractDeepLinksForAarRelease
+> Task :lib-ui:copyReleaseJniLibsProjectAndLocalJars
 > Task :lib-ui:generateReleaseResources
 > Task :lib-ui:packageReleaseResources
 > Task :lib-ui:processReleaseNavigationResources
@@ -563,20 +676,20 @@ Note: Recompile with -Xlint:deprecation for details.
 > Task :lib-ui-danmaku:packageReleaseResources
 > Task :lib-ui-danmaku:processReleaseNavigationResources
 > Task :lib-ui:generateReleaseAssets UP-TO-DATE
-> Task :lib-ui-danmaku:parseReleaseLocalResources
 > Task :lib-ui-danmaku:javaPreCompileRelease
+> Task :lib-ui-danmaku:parseReleaseLocalResources
 > Task :lib-ui:mergeReleaseAssets
-> Task :lib-ui:prepareLintJarForPublish
-> Task :lib-ui-danmaku:generateReleaseRFile
 > Task :lib-ui:javaPreCompileRelease
+> Task :lib-ui:prepareLintJarForPublish
+> Task :lib-ui:prepareReleaseArtProfile
+> Task :lib-ui-danmaku:generateReleaseRFile
 > Task :lib-ui-danmaku:compileReleaseKotlin NO-SOURCE
+> Task :lib-ui:processReleaseManifest
 > Task :lib-ui:parseReleaseLocalResources
 > Task :lib-ui-danmaku:compileReleaseJavaWithJavac
-> Task :lib-ui:prepareReleaseArtProfile
 > Task :lib-ui-danmaku:bundleLibCompileToJarRelease
 > Task :lib-ui:writeReleaseAarMetadata
 > Task :lib-datasource-okhttp:compileReleaseLibraryResources
-> Task :lib-ui:processReleaseManifest
 > Task :lib-ui:generateReleaseRFile
 > Task :lib-ui:compileReleaseNavigationResources
 > Task :lib-ui:compileReleaseKotlin NO-SOURCE
@@ -599,18 +712,18 @@ Note: Recompile with -Xlint:deprecation for details.
 > Task :lib-ui-danmaku:mergeReleaseJniLibFolders
 > Task :lib-ui-danmaku:mergeReleaseNativeLibs NO-SOURCE
 > Task :lib-ui-danmaku:stripReleaseDebugSymbols NO-SOURCE
+> Task :lib-ui-danmaku:copyReleaseJniLibsProjectAndLocalJars
 > Task :lib-ui-danmaku:extractDeepLinksForAarRelease
 > Task :lib-ui-danmaku:generateReleaseAssets UP-TO-DATE
 > Task :lib-ui-danmaku:mergeReleaseAssets
 > Task :lib-ui-danmaku:mergeReleaseGeneratedProguardFiles
 > Task :lib-ui-danmaku:mergeReleaseConsumerProguardFiles
-> Task :lib-ui-danmaku:copyReleaseJniLibsProjectAndLocalJars
 > Task :lib-ui-danmaku:prepareLintJarForPublish
 > Task :lib-ui-danmaku:prepareReleaseArtProfile
 > Task :lib-ui-danmaku:processReleaseJavaRes NO-SOURCE
 > Task :lib-ui-danmaku:processReleaseManifest
-> Task :lib-ui-danmaku:mergeReleaseJavaResource
 > Task :lib-ui-danmaku:compileReleaseNavigationResources
+> Task :lib-ui-danmaku:mergeReleaseJavaResource
 > Task :lib-ui-danmaku:mapReleaseSourceSetPaths
 > Task :lib-ui-danmaku:mergeReleaseResources
 > Task :lib-ui-danmaku:extractReleaseAnnotations
@@ -623,7 +736,7 @@ Note: Recompile with -Xlint:deprecation for details.
 
 [Incubating] Problems report is available at: file:///home/runner/work/tvbox-sources/tvbox-sources/media/buildout/reports/problems/problems-report.html
 
-BUILD SUCCESSFUL in 1m 44s
-452 actionable tasks: 452 executed
+BUILD SUCCESSFUL in 1m 52s
+530 actionable tasks: 530 executed
 Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.1.0/userguide/configuration_cache_enabling.html
 MEDIA_GRADLE_EXIT=0
