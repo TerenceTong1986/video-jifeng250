@@ -30,18 +30,18 @@ Daemon will be stopped at the end of the build
 > Task :quickjs:mergeReleaseNativeLibs NO-SOURCE
 > Task :quickjs:copyReleaseJniLibsProjectOnly
 > Task :catvod:prepareReleaseArtProfile
+> Task :chaquo:mergeArm64_v8aReleaseNativeLibs
 > Task :chaquo:prepareArm64_v8aReleaseArtProfile
 > Task :quickjs:prepareReleaseArtProfile
-> Task :chaquo:mergeArm64_v8aReleaseNativeLibs
-> Task :app:mergeLeanbackArm64_v8aReleaseArtProfile
 > Task :chaquo:copyArm64_v8aReleaseJniLibsProjectOnly
-> Task :app:expandLeanbackArm64_v8aReleaseL8ArtProfileWildcards
+> Task :app:mergeLeanbackArm64_v8aReleaseArtProfile
+> Task :app:mergeLeanbackArm64_v8aReleaseNativeLibs
 > Task :catvod:generateReleaseResources
+> Task :app:expandLeanbackArm64_v8aReleaseL8ArtProfileWildcards
 > Task :catvod:packageReleaseResources
 > Task :catvod:processReleaseNavigationResources
-> Task :app:mergeLeanbackArm64_v8aReleaseNativeLibs
-> Task :catvod:parseReleaseLocalResources
 > Task :catvod:javaPreCompileRelease
+> Task :catvod:parseReleaseLocalResources
 > Task :app:stripLeanbackArm64_v8aReleaseDebugSymbols
 > Task :chaquo:extractArm64_v8aReleasePythonBuildPackages
 > Task :app:extractLeanbackArm64_v8aReleaseNativeSymbolTables
@@ -52,7 +52,7 @@ Chaquopy: Installing for arm64-v8a
 Looking in indexes: https://pypi.org/simple, https://chaquo.com/pypi-13.1
 Collecting lxml (from -r requirements.txt (line 1))
   Downloading https://chaquo.com/pypi-13.1/lxml/lxml-5.3.0-0-cp310-cp310-android_24_arm64_v8a.whl (1.4 MB)
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.4/1.4 MB 2.4 MB/s  0:00:00
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.4/1.4 MB 1.1 MB/s  0:00:01
 Collecting ujson (from -r requirements.txt (line 2))
   Downloading https://chaquo.com/pypi-13.1/ujson/ujson-5.11.0-0-cp310-cp310-android_24_arm64_v8a.whl (79 kB)
 Collecting pyquery (from -r requirements.txt (line 3))
@@ -63,12 +63,12 @@ Collecting cachetools (from -r requirements.txt (line 5))
   Downloading cachetools-7.1.7-py3-none-any.whl.metadata (5.5 kB)
 Collecting pycryptodome (from -r requirements.txt (line 6))
   Downloading https://chaquo.com/pypi-13.1/pycryptodome/pycryptodome-3.21.0-0-cp310-cp310-android_24_arm64_v8a.whl (1.6 MB)
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.6/1.6 MB 6.9 MB/s  0:00:00
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.6/1.6 MB 3.3 MB/s  0:00:00
 Collecting beautifulsoup4 (from -r requirements.txt (line 7))
   Downloading beautifulsoup4-4.15.0-py3-none-any.whl.metadata (3.8 kB)
 Collecting chaquopy-libxml2>=2.9.8 (from lxml->-r requirements.txt (line 1))
   Downloading https://chaquo.com/pypi-13.1/chaquopy-libxml2/chaquopy_libxml2-2.9.8-2-py3-none-android_21_arm64_v8a.whl (773 kB)
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 773.4/773.4 kB 132.8 MB/s  0:00:00
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 773.4/773.4 kB 5.6 MB/s  0:00:00
 Collecting chaquopy-libxslt>=1.1.32 (from lxml->-r requirements.txt (line 1))
   Downloading https://chaquo.com/pypi-13.1/chaquopy-libxslt/chaquopy_libxslt-1.1.32-2-py3-none-android_21_arm64_v8a.whl (178 kB)
 Collecting chaquopy-libcxx>=180000 (from ujson->-r requirements.txt (line 2))
@@ -115,12 +115,11 @@ Note: Recompile with -Xlint:deprecation for details.
 > Task :chaquo:generateArm64_v8aReleaseResources
 > Task :chaquo:packageArm64_v8aReleaseResources
 > Task :chaquo:processArm64_v8aReleaseNavigationResources
-> Task :chaquo:javaPreCompileArm64_v8aRelease FROM-CACHE
 > Task :chaquo:parseArm64_v8aReleaseLocalResources
+> Task :chaquo:javaPreCompileArm64_v8aRelease FROM-CACHE
 > Task :quickjs:generateReleaseResources
-> Task :quickjs:packageReleaseResources
 > Task :chaquo:generateArm64_v8aReleaseRFile
-> Task :quickjs:processReleaseNavigationResources
+> Task :quickjs:packageReleaseResources
 > Task :chaquo:compileArm64_v8aReleaseKotlin NO-SOURCE
 
 > Task :chaquo:compileArm64_v8aReleaseJavaWithJavac
@@ -129,14 +128,15 @@ Note: Recompile with -Xlint:deprecation for details.
 
 > Task :chaquo:mergeArm64_v8aReleaseGeneratedProguardFiles
 > Task :chaquo:exportArm64_v8aReleaseConsumerProguardFiles
+> Task :quickjs:processReleaseNavigationResources
 > Task :quickjs:parseReleaseLocalResources FROM-CACHE
-> Task :quickjs:generateReleaseRFile
 > Task :quickjs:javaPreCompileRelease FROM-CACHE
+> Task :quickjs:generateReleaseRFile
+> Task :catvod:mergeReleaseGeneratedProguardFiles
 > Task :quickjs:compileReleaseKotlin NO-SOURCE
 > Task :quickjs:compileReleaseJavaWithJavac
 > Task :quickjs:mergeReleaseGeneratedProguardFiles
 > Task :quickjs:exportReleaseConsumerProguardFiles
-> Task :catvod:mergeReleaseGeneratedProguardFiles
 > Task :catvod:exportReleaseConsumerProguardFiles
 > Task :app:checkLeanbackArm64_v8aReleaseDuplicateClasses
 > Task :app:dataBindingMergeDependencyArtifactsLeanbackArm64_v8aRelease
@@ -221,789 +221,607 @@ Note: Recompile with -Xlint:deprecation for details.
 
 > Task :app:compileLeanbackArm64_v8aReleaseJavaWithJavac
 Note: [1] Wrote GeneratedAppGlideModule with: [com.bumptech.glide.integration.okhttp3.OkHttpLibraryGlideModule, com.bumptech.glide.integration.avif.AvifGlideModule]
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:12: error: package androidx.media3.common does not exist
-import androidx.media3.common.C;
-                             ^
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:13: error: package androidx.media3.common does not exist
-import androidx.media3.common.ForwardingPlayer;
-                             ^
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:14: error: package androidx.media3.common does not exist
-import androidx.media3.common.MediaItem;
-                             ^
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:15: error: package androidx.media3.common does not exist
-import androidx.media3.common.Player;
-                             ^
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:16: error: package androidx.media3.session does not exist
-import androidx.media3.session.CommandButton;
-                              ^
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:17: error: package androidx.media3.session does not exist
-import androidx.media3.session.DefaultMediaNotificationProvider;
-                              ^
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:18: error: package androidx.media3.session does not exist
-import androidx.media3.session.LibraryResult;
-                              ^
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:19: error: package androidx.media3.session does not exist
-import androidx.media3.session.MediaLibraryService;
-                              ^
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:20: error: package androidx.media3.session.MediaLibraryService does not exist
-import androidx.media3.session.MediaLibraryService.MediaLibrarySession;
-                                                  ^
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:21: error: package androidx.media3.session does not exist
-import androidx.media3.session.MediaSession;
-                              ^
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:22: error: package androidx.media3.session does not exist
-import androidx.media3.session.SessionCommand;
-                              ^
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:23: error: package androidx.media3.session does not exist
-import androidx.media3.session.SessionCommands;
-                              ^
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:24: error: package androidx.media3.session does not exist
-import androidx.media3.session.SessionError;
-                              ^
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:25: error: package androidx.media3.session does not exist
-import androidx.media3.session.SessionResult;
-                              ^
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:26: error: package androidx.media3.ui.danmaku does not exist
-import androidx.media3.ui.danmaku.DanmakuConfig;
-                                 ^
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:51: error: cannot find symbol
-public class PlaybackService extends MediaLibraryService implements MediaLibrarySession.Callback, PlayerManager.Callback {
-                                     ^
-  symbol: class MediaLibraryService
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:51: error: package MediaLibrarySession does not exist
-public class PlaybackService extends MediaLibraryService implements MediaLibrarySession.Callback, PlayerManager.Callback {
-                                                                                       ^
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/player/PlayerManager.java:8: error: package androidx.media3.common does not exist
-import androidx.media3.common.C;
-                             ^
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/player/PlayerManager.java:9: error: package androidx.media3.common does not exist
-import androidx.media3.common.Format;
-                             ^
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/player/PlayerManager.java:10: error: package androidx.media3.common does not exist
-import androidx.media3.common.MediaChapter;
-                             ^
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/player/PlayerManager.java:11: error: package androidx.media3.common does not exist
-import androidx.media3.common.MediaEdition;
-                             ^
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/player/PlayerManager.java:12: error: package androidx.media3.common does not exist
-import androidx.media3.common.MediaItem;
-                             ^
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/player/PlayerManager.java:13: error: package androidx.media3.common does not exist
-import androidx.media3.common.MediaMetadata;
-                             ^
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/player/PlayerManager.java:14: error: package androidx.media3.common does not exist
-import androidx.media3.common.PlaybackException;
-                             ^
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/player/PlayerManager.java:15: error: package androidx.media3.common does not exist
-import androidx.media3.common.PlaybackParameters;
-                             ^
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/player/PlayerManager.java:16: error: package androidx.media3.common does not exist
-import androidx.media3.common.Player;
-                             ^
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/player/PlayerManager.java:17: error: package androidx.media3.common does not exist
-import androidx.media3.common.Tracks;
-                             ^
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/player/PlayerManager.java:18: error: package androidx.media3.common does not exist
-import androidx.media3.common.VideoSize;
-                             ^
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/player/PlayerManager.java:19: error: package androidx.media3.ui.danmaku does not exist
-import androidx.media3.ui.danmaku.DanmakuConfig;
-                                 ^
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:55: error: cannot find symbol
-    private static final SessionCommand COMMAND_REPEAT = new SessionCommand(ActionEvent.REPEAT, Bundle.EMPTY);
-                         ^
-  symbol:   class SessionCommand
-  location: class PlaybackService
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/MediaClients.java:4: error: package androidx.media3.session does not exist
-import androidx.media3.session.MediaSession;
-                              ^
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:65: error: cannot find symbol
-    private MediaLibrarySession session;
-            ^
-  symbol:   class MediaLibrarySession
-  location: class PlaybackService
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:69: error: cannot find symbol
-    private Player sessionPlayer;
-            ^
-  symbol:   class Player
-  location: class PlaybackService
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:127: error: cannot find symbol
-    private CommandButton buildStopButton() {
-            ^
-  symbol:   class CommandButton
-  location: class PlaybackService
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:131: error: cannot find symbol
-    private CommandButton buildRepeatButton() {
-            ^
-  symbol:   class CommandButton
-  location: class PlaybackService
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:180: error: cannot find symbol
-    public void onDisconnected(@NonNull MediaSession session, @NonNull MediaSession.ControllerInfo controller) {
-                                        ^
-  symbol:   class MediaSession
-  location: class PlaybackService
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:180: error: package MediaSession does not exist
-    public void onDisconnected(@NonNull MediaSession session, @NonNull MediaSession.ControllerInfo controller) {
-                                                                                   ^
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:224: error: package MediaSession does not exist
-    private void releaseController(@NonNull MediaSession.ControllerInfo controller) {
-                                                        ^
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:267: error: package MediaSession does not exist
-    public MediaLibrarySession onGetSession(@NonNull MediaSession.ControllerInfo controllerInfo) {
-                                                                 ^
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:267: error: cannot find symbol
-    public MediaLibrarySession onGetSession(@NonNull MediaSession.ControllerInfo controllerInfo) {
-           ^
-  symbol:   class MediaLibrarySession
-  location: class PlaybackService
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:273: error: cannot find symbol
-    public MediaSession.ConnectionResult onConnect(@NonNull MediaSession session, @NonNull MediaSession.ControllerInfo controller) {
-                                                            ^
-  symbol:   class MediaSession
-  location: class PlaybackService
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:273: error: package MediaSession does not exist
-    public MediaSession.ConnectionResult onConnect(@NonNull MediaSession session, @NonNull MediaSession.ControllerInfo controller) {
-                                                                                                       ^
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:273: error: package MediaSession does not exist
-    public MediaSession.ConnectionResult onConnect(@NonNull MediaSession session, @NonNull MediaSession.ControllerInfo controller) {
-                       ^
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:279: error: package MediaSession does not exist
-    private boolean isAppController(@NonNull MediaSession.ControllerInfo controller) {
-                                                         ^
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:285: error: cannot find symbol
-    public ListenableFuture<SessionResult> onCustomCommand(@NonNull MediaSession session, @NonNull MediaSession.ControllerInfo controller, @NonNull SessionCommand customCommand, @NonNull Bundle args) {
-                                                                    ^
-  symbol:   class MediaSession
-  location: class PlaybackService
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:285: error: package MediaSession does not exist
-    public ListenableFuture<SessionResult> onCustomCommand(@NonNull MediaSession session, @NonNull MediaSession.ControllerInfo controller, @NonNull SessionCommand customCommand, @NonNull Bundle args) {
-                                                                                                               ^
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:285: error: cannot find symbol
-    public ListenableFuture<SessionResult> onCustomCommand(@NonNull MediaSession session, @NonNull MediaSession.ControllerInfo controller, @NonNull SessionCommand customCommand, @NonNull Bundle args) {
-                                                                                                                                                    ^
-  symbol:   class SessionCommand
-  location: class PlaybackService
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:285: error: cannot find symbol
-    public ListenableFuture<SessionResult> onCustomCommand(@NonNull MediaSession session, @NonNull MediaSession.ControllerInfo controller, @NonNull SessionCommand customCommand, @NonNull Bundle args) {
-                            ^
-  symbol:   class SessionResult
-  location: class PlaybackService
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:384: error: cannot find symbol
-    private boolean isSameItem(MediaItem item) {
-                               ^
-  symbol:   class MediaItem
-  location: class PlaybackService
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:389: error: cannot find symbol
-    private void interceptItem(@NonNull MediaItem item, long startPositionMs) {
-                                        ^
-  symbol:   class MediaItem
-  location: class PlaybackService
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:394: error: cannot find symbol
-    private void interceptItems(@NonNull List<MediaItem> items, int startIndex, long startPositionMs) {
-                                              ^
-  symbol:   class MediaItem
-  location: class PlaybackService
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:400: error: cannot find symbol
-    private ForwardingPlayer wrap(Player base) {
-                                  ^
-  symbol:   class Player
-  location: class PlaybackService
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:400: error: cannot find symbol
-    private ForwardingPlayer wrap(Player base) {
-            ^
-  symbol:   class ForwardingPlayer
-  location: class PlaybackService
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:465: error: cannot find symbol
-    private void playViaManager(MediaItem item, long startPositionMs) {
-                                ^
-  symbol:   class MediaItem
-  location: class PlaybackService
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:471: error: cannot find symbol
-    private void startBrowse(MediaItem item, Result result, long startPositionMs) {
-                             ^
-  symbol:   class MediaItem
-  location: class PlaybackService
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:501: error: cannot find symbol
-    public void onPlayerRebuild(Player newPlayer) {
-                                ^
-  symbol:   class Player
-  location: class PlaybackService
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:515: error: cannot find symbol
-    public void onDanmakuConfigChanged(DanmakuConfig config) {
-                                       ^
-  symbol:   class DanmakuConfig
-  location: class PlaybackService
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:529: error: package Player does not exist
-    private final Player.Listener listener = new Player.Listener() {
-                        ^
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:543: error: cannot find symbol
-    public ListenableFuture<LibraryResult<MediaItem>> onGetLibraryRoot(@NonNull MediaLibrarySession session, @NonNull MediaSession.ControllerInfo browser, @Nullable MediaLibraryService.LibraryParams params) {
-                                                                                ^
-  symbol:   class MediaLibrarySession
-  location: class PlaybackService
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:543: error: package MediaSession does not exist
-    public ListenableFuture<LibraryResult<MediaItem>> onGetLibraryRoot(@NonNull MediaLibrarySession session, @NonNull MediaSession.ControllerInfo browser, @Nullable MediaLibraryService.LibraryParams params) {
-                                                                                                                                  ^
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:543: error: package MediaLibraryService does not exist
-    public ListenableFuture<LibraryResult<MediaItem>> onGetLibraryRoot(@NonNull MediaLibrarySession session, @NonNull MediaSession.ControllerInfo browser, @Nullable MediaLibraryService.LibraryParams params) {
-                                                                                                                                                                                        ^
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:543: error: cannot find symbol
-    public ListenableFuture<LibraryResult<MediaItem>> onGetLibraryRoot(@NonNull MediaLibrarySession session, @NonNull MediaSession.ControllerInfo browser, @Nullable MediaLibraryService.LibraryParams params) {
-                            ^
-  symbol:   class LibraryResult
-  location: class PlaybackService
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:543: error: cannot find symbol
-    public ListenableFuture<LibraryResult<MediaItem>> onGetLibraryRoot(@NonNull MediaLibrarySession session, @NonNull MediaSession.ControllerInfo browser, @Nullable MediaLibraryService.LibraryParams params) {
-                                          ^
-  symbol:   class MediaItem
-  location: class PlaybackService
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:549: error: cannot find symbol
-    public ListenableFuture<LibraryResult<ImmutableList<MediaItem>>> onGetChildren(@NonNull MediaLibrarySession session, @NonNull MediaSession.ControllerInfo browser, @NonNull String parentId, int page, int pageSize, @Nullable MediaLibraryService.LibraryParams params) {
-                                                                                            ^
-  symbol:   class MediaLibrarySession
-  location: class PlaybackService
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:549: error: package MediaSession does not exist
-    public ListenableFuture<LibraryResult<ImmutableList<MediaItem>>> onGetChildren(@NonNull MediaLibrarySession session, @NonNull MediaSession.ControllerInfo browser, @NonNull String parentId, int page, int pageSize, @Nullable MediaLibraryService.LibraryParams params) {
-                                                                                                                                              ^
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:549: error: package MediaLibraryService does not exist
-    public ListenableFuture<LibraryResult<ImmutableList<MediaItem>>> onGetChildren(@NonNull MediaLibrarySession session, @NonNull MediaSession.ControllerInfo browser, @NonNull String parentId, int page, int pageSize, @Nullable MediaLibraryService.LibraryParams params) {
-                                                                                                                                                                                                                                                      ^
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:549: error: cannot find symbol
-    public ListenableFuture<LibraryResult<ImmutableList<MediaItem>>> onGetChildren(@NonNull MediaLibrarySession session, @NonNull MediaSession.ControllerInfo browser, @NonNull String parentId, int page, int pageSize, @Nullable MediaLibraryService.LibraryParams params) {
-                            ^
-  symbol:   class LibraryResult
-  location: class PlaybackService
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:549: error: cannot find symbol
-    public ListenableFuture<LibraryResult<ImmutableList<MediaItem>>> onGetChildren(@NonNull MediaLibrarySession session, @NonNull MediaSession.ControllerInfo browser, @NonNull String parentId, int page, int pageSize, @Nullable MediaLibraryService.LibraryParams params) {
-                                                        ^
-  symbol:   class MediaItem
-  location: class PlaybackService
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:555: error: cannot find symbol
-    public ListenableFuture<LibraryResult<Void>> onSearch(@NonNull MediaLibrarySession session, @NonNull MediaSession.ControllerInfo browser, @NonNull String query, @Nullable MediaLibraryService.LibraryParams params) {
-                                                                   ^
-  symbol:   class MediaLibrarySession
-  location: class PlaybackService
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:555: error: package MediaSession does not exist
-    public ListenableFuture<LibraryResult<Void>> onSearch(@NonNull MediaLibrarySession session, @NonNull MediaSession.ControllerInfo browser, @NonNull String query, @Nullable MediaLibraryService.LibraryParams params) {
-                                                                                                                     ^
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:555: error: package MediaLibraryService does not exist
-    public ListenableFuture<LibraryResult<Void>> onSearch(@NonNull MediaLibrarySession session, @NonNull MediaSession.ControllerInfo browser, @NonNull String query, @Nullable MediaLibraryService.LibraryParams params) {
-                                                                                                                                                                                                  ^
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:555: error: cannot find symbol
-    public ListenableFuture<LibraryResult<Void>> onSearch(@NonNull MediaLibrarySession session, @NonNull MediaSession.ControllerInfo browser, @NonNull String query, @Nullable MediaLibraryService.LibraryParams params) {
-                            ^
-  symbol:   class LibraryResult
-  location: class PlaybackService
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:565: error: cannot find symbol
-    public ListenableFuture<LibraryResult<ImmutableList<MediaItem>>> onGetSearchResult(@NonNull MediaLibrarySession session, @NonNull MediaSession.ControllerInfo browser, @NonNull String query, int page, int pageSize, @Nullable MediaLibraryService.LibraryParams params) {
-                                                                                                ^
-  symbol:   class MediaLibrarySession
-  location: class PlaybackService
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:565: error: package MediaSession does not exist
-    public ListenableFuture<LibraryResult<ImmutableList<MediaItem>>> onGetSearchResult(@NonNull MediaLibrarySession session, @NonNull MediaSession.ControllerInfo browser, @NonNull String query, int page, int pageSize, @Nullable MediaLibraryService.LibraryParams params) {
-                                                                                                                                                  ^
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:565: error: package MediaLibraryService does not exist
-    public ListenableFuture<LibraryResult<ImmutableList<MediaItem>>> onGetSearchResult(@NonNull MediaLibrarySession session, @NonNull MediaSession.ControllerInfo browser, @NonNull String query, int page, int pageSize, @Nullable MediaLibraryService.LibraryParams params) {
-                                                                                                                                                                                                                                                       ^
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:565: error: cannot find symbol
-    public ListenableFuture<LibraryResult<ImmutableList<MediaItem>>> onGetSearchResult(@NonNull MediaLibrarySession session, @NonNull MediaSession.ControllerInfo browser, @NonNull String query, int page, int pageSize, @Nullable MediaLibraryService.LibraryParams params) {
-                            ^
-  symbol:   class LibraryResult
-  location: class PlaybackService
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:565: error: cannot find symbol
-    public ListenableFuture<LibraryResult<ImmutableList<MediaItem>>> onGetSearchResult(@NonNull MediaLibrarySession session, @NonNull MediaSession.ControllerInfo browser, @NonNull String query, int page, int pageSize, @Nullable MediaLibraryService.LibraryParams params) {
-                                                        ^
-  symbol:   class MediaItem
-  location: class PlaybackService
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:571: error: cannot find symbol
-    public ListenableFuture<LibraryResult<MediaItem>> onGetItem(@NonNull MediaLibrarySession session, @NonNull MediaSession.ControllerInfo browser, @NonNull String mediaId) {
-                                                                         ^
-  symbol:   class MediaLibrarySession
-  location: class PlaybackService
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:571: error: package MediaSession does not exist
-    public ListenableFuture<LibraryResult<MediaItem>> onGetItem(@NonNull MediaLibrarySession session, @NonNull MediaSession.ControllerInfo browser, @NonNull String mediaId) {
-                                                                                                                           ^
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:571: error: cannot find symbol
-    public ListenableFuture<LibraryResult<MediaItem>> onGetItem(@NonNull MediaLibrarySession session, @NonNull MediaSession.ControllerInfo browser, @NonNull String mediaId) {
-                            ^
-  symbol:   class LibraryResult
-  location: class PlaybackService
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:571: error: cannot find symbol
-    public ListenableFuture<LibraryResult<MediaItem>> onGetItem(@NonNull MediaLibrarySession session, @NonNull MediaSession.ControllerInfo browser, @NonNull String mediaId) {
-                                          ^
-  symbol:   class MediaItem
-  location: class PlaybackService
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:580: error: cannot find symbol
-    public ListenableFuture<MediaSession.MediaItemsWithStartPosition> onSetMediaItems(@NonNull MediaSession session, @NonNull MediaSession.ControllerInfo controller, @NonNull List<MediaItem> mediaItems, int startIndex, long startPositionMs) {
-                                                                                               ^
-  symbol:   class MediaSession
-  location: class PlaybackService
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:580: error: package MediaSession does not exist
-    public ListenableFuture<MediaSession.MediaItemsWithStartPosition> onSetMediaItems(@NonNull MediaSession session, @NonNull MediaSession.ControllerInfo controller, @NonNull List<MediaItem> mediaItems, int startIndex, long startPositionMs) {
-                                                                                                                                          ^
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:580: error: cannot find symbol
-    public ListenableFuture<MediaSession.MediaItemsWithStartPosition> onSetMediaItems(@NonNull MediaSession session, @NonNull MediaSession.ControllerInfo controller, @NonNull List<MediaItem> mediaItems, int startIndex, long startPositionMs) {
-                                                                                                                                                                                    ^
-  symbol:   class MediaItem
-  location: class PlaybackService
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:580: error: package MediaSession does not exist
-    public ListenableFuture<MediaSession.MediaItemsWithStartPosition> onSetMediaItems(@NonNull MediaSession session, @NonNull MediaSession.ControllerInfo controller, @NonNull List<MediaItem> mediaItems, int startIndex, long startPositionMs) {
-                                        ^
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/bean/Sub.java:8: error: package androidx.media3.common does not exist
-import androidx.media3.common.C;
-                             ^
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/bean/Drm.java:6: error: package androidx.media3.common does not exist
-import androidx.media3.common.C;
-                             ^
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/MediaClients.java:22: error: package MediaSession does not exist
-    void connect(@NonNull MediaSession.ControllerInfo controller, @NonNull String packageName) {
-                                      ^
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/MediaClients.java:26: error: package MediaSession does not exist
-    void disconnect(@NonNull MediaSession.ControllerInfo controller) {
-                                         ^
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/MediaClients.java:34: error: package MediaSession does not exist
-    boolean isSelf(@NonNull MediaSession.ControllerInfo controller, @NonNull String packageName) {
-                                        ^
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:608: error: cannot find symbol
-        default void onPlayerRebuild(Player player) {
-                                     ^
-  symbol:   class Player
-  location: interface PlayerCallback
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:614: error: cannot find symbol
-        default void onDanmakuConfigChanged(DanmakuConfig config) {
-                                            ^
-  symbol:   class DanmakuConfig
-  location: interface PlayerCallback
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/player/media/PlaySpec.java:6: error: package androidx.media3.common does not exist
-import androidx.media3.common.C;
-                             ^
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/player/media/PlaySpec.java:7: error: package androidx.media3.common does not exist
-import androidx.media3.common.MediaMetadata;
-                             ^
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/player/engine/PlayerEngine.java:3: error: package androidx.media3.common does not exist
-import androidx.media3.common.C;
-                             ^
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/player/engine/PlayerEngine.java:4: error: package androidx.media3.common does not exist
-import androidx.media3.common.PlaybackException;
-                             ^
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/player/engine/PlayerEngine.java:5: error: package androidx.media3.common does not exist
-import androidx.media3.common.Player;
-                             ^
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/player/PlayerManager.java:56: error: cannot find symbol
-    private VideoSize videoSize;
-            ^
-  symbol:   class VideoSize
-  location: class PlayerManager
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/player/PlayerManager.java:59: error: cannot find symbol
-    private Player player;
-            ^
-  symbol:   class Player
-  location: class PlayerManager
-/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/player/PlayerManager.java:61: error: cannot find symbol
-    private DanmakuConfig danmakuConfig;
-            ^
-  symbol:   class DanmakuConfig
-  location: class PlayerManager
-100 errors
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
 
-> Task :app:compileLeanbackArm64_v8aReleaseJavaWithJavac FAILED
+> Task :chaquo:writeArm64_v8aReleaseAarMetadata
+> Task :quickjs:writeReleaseAarMetadata
+> Task :app:mapLeanbackArm64_v8aReleaseSourceSetPaths
+> Task :app:checkLeanbackArm64_v8aReleaseAarMetadata
+> Task :app:compileLeanbackArm64_v8aReleaseNavigationResources
+> Task :app:createLeanbackArm64_v8aReleaseCompatibleScreenManifests
+> Task :app:extractDeepLinksLeanbackArm64_v8aRelease
+> Task :catvod:extractDeepLinksRelease
+> Task :chaquo:extractDeepLinksArm64_v8aRelease FROM-CACHE
+> Task :quickjs:extractDeepLinksRelease FROM-CACHE
+> Task :catvod:mapReleaseSourceSetPaths
+> Task :catvod:compileReleaseLibraryResources
+> Task :chaquo:mapArm64_v8aReleaseSourceSetPaths
+> Task :chaquo:compileArm64_v8aReleaseLibraryResources
+> Task :quickjs:mapReleaseSourceSetPaths
+> Task :chaquo:processArm64_v8aReleaseManifest
+> Task :catvod:processReleaseManifest
+> Task :quickjs:processReleaseManifest
+> Task :quickjs:compileReleaseLibraryResources FROM-CACHE
+> Task :app:processLeanbackArm64_v8aReleaseMainManifest
+> Task :app:processLeanbackArm64_v8aReleaseManifest
+> Task :catvod:bundleLibRuntimeToJarRelease
+> Task :chaquo:bundleLibRuntimeToJarArm64_v8aRelease
+> Task :quickjs:bundleLibRuntimeToJarRelease
+> Task :app:extractProguardFiles
+> Task :app:processLeanbackArm64_v8aReleaseJavaRes
+> Task :catvod:processReleaseJavaRes NO-SOURCE
+> Task :chaquo:processArm64_v8aReleaseJavaRes NO-SOURCE
+> Task :quickjs:processReleaseJavaRes NO-SOURCE
+> Task :app:mergeLeanbackArm64_v8aReleaseStartupProfile
+> Task :app:generateLeanbackArm64_v8aReleaseAssets UP-TO-DATE
+> Task :catvod:generateReleaseAssets UP-TO-DATE
+> Task :catvod:mergeReleaseAssets
+> Task :chaquo:generateArm64_v8aReleaseAssets UP-TO-DATE
+> Task :app:mergeLeanbackArm64_v8aReleaseJavaResource
+> Task :chaquo:generateArm64_v8aReleasePythonMiscAssets
+> Task :chaquo:generateArm64_v8aReleasePythonRequirementsAssets
+> Task :chaquo:generateArm64_v8aReleasePythonSourceAssets
+> Task :chaquo:generateArm64_v8aReleasePythonBuildAssets
+> Task :chaquo:mergeArm64_v8aReleaseAssets
+> Task :quickjs:generateReleaseAssets UP-TO-DATE
+> Task :quickjs:mergeReleaseAssets
+> Task :app:mergeLeanbackArm64_v8aReleaseAssets
+> Task :app:processLeanbackArm64_v8aReleaseManifestForPackage
+> Task :app:compressLeanbackArm64_v8aReleaseAssets
+> Task :app:extractLeanbackArm64_v8aReleaseVersionControlInfo
+> Task :catvod:createFullJarRelease
+> Task :catvod:extractProguardFiles
+> Task :app:processLeanbackArm64_v8aReleaseResources
+> Task :catvod:generateReleaseLintModel
+> Task :app:mergeLeanbackArm64_v8aReleaseGeneratedProguardFiles
+> Task :catvod:prepareLintJarForPublish
+> Task :chaquo:createFullJarArm64_v8aRelease
+> Task :chaquo:extractProguardFiles
+> Task :chaquo:generateArm64_v8aReleaseLintModel
+> Task :chaquo:prepareLintJarForPublish
+> Task :quickjs:createFullJarRelease
+> Task :quickjs:extractProguardFiles
+> Task :quickjs:generateReleaseLintModel
+> Task :quickjs:prepareLintJarForPublish
+> Task :chaquo:checkArm64_v8aReleaseAarMetadata
+> Task :app:expandLeanbackArm64_v8aReleaseArtProfileWildcards
+> Task :app:generateLeanbackArm64_v8aReleaseLintVitalReportModel
+> Task :chaquo:extractArm64_v8aReleaseAnnotations
+> Task :chaquo:extractDeepLinksForAarArm64_v8aRelease
+> Task :chaquo:mergeArm64_v8aReleaseConsumerProguardFiles
+> Task :chaquo:mergeArm64_v8aReleaseJavaResource
+> Task :quickjs:checkReleaseAarMetadata
+> Task :chaquo:syncArm64_v8aReleaseLibJars
+> Task :chaquo:bundleArm64_v8aReleaseLocalLintAar
+> Task :quickjs:extractDeepLinksForAarRelease FROM-CACHE
+> Task :quickjs:extractReleaseAnnotations
+> Task :quickjs:mergeReleaseConsumerProguardFiles
+> Task :quickjs:mergeReleaseJavaResource
+> Task :quickjs:syncReleaseLibJars
+> Task :quickjs:bundleReleaseLocalLintAar
+> Task :catvod:checkReleaseAarMetadata
+> Task :catvod:extractDeepLinksForAarRelease FROM-CACHE
+> Task :catvod:extractReleaseAnnotations
+> Task :catvod:mergeReleaseConsumerProguardFiles
+> Task :catvod:mergeReleaseJavaResource
+> Task :catvod:syncReleaseLibJars
+> Task :catvod:bundleReleaseLocalLintAar
+> Task :catvod:writeReleaseLintModelMetadata
+> Task :chaquo:writeArm64_v8aReleaseLintModelMetadata
+> Task :chaquo:lintVitalAnalyzeArm64_v8aRelease
+> Task :quickjs:lintVitalAnalyzeRelease
+> Task :quickjs:writeReleaseLintModelMetadata
+> Task :catvod:lintVitalAnalyzeRelease
+> Task :catvod:generateReleaseLintVitalModel
+> Task :chaquo:generateArm64_v8aReleaseLintVitalModel
+> Task :quickjs:generateReleaseLintVitalModel
+> Task :app:collectLeanbackArm64_v8aReleaseDependencies
+> Task :app:sdkLeanbackArm64_v8aReleaseDependencyData
+> Task :app:validateSigningLeanbackArm64_v8aRelease
+> Task :app:writeLeanbackArm64_v8aReleaseAppMetadata
+> Task :app:writeLeanbackArm64_v8aReleaseSigningConfigVersions
+> Task :app:preLeanbackArmeabi_v7aReleaseBuild UP-TO-DATE
+> Task :app:mergeLeanbackArmeabi_v7aReleaseJniLibFolders
+> Task :chaquo:generateArmeabi_v7aReleasePythonJniLibs
+> Task :chaquo:preArmeabi_v7aReleaseBuild UP-TO-DATE
+> Task :chaquo:mergeArmeabi_v7aReleaseJniLibFolders
+> Task :chaquo:prepareArmeabi_v7aReleaseArtProfile
+> Task :chaquo:mergeArmeabi_v7aReleaseNativeLibs
+> Task :app:mergeLeanbackArmeabi_v7aReleaseArtProfile
+> Task :app:expandLeanbackArmeabi_v7aReleaseL8ArtProfileWildcards FROM-CACHE
+> Task :chaquo:copyArmeabi_v7aReleaseJniLibsProjectOnly
+> Task :chaquo:extractArmeabi_v7aReleasePythonBuildPackages
+> Task :app:mergeLeanbackArmeabi_v7aReleaseNativeLibs
+
+> Task :chaquo:installArmeabi_v7aReleasePythonRequirements
+Chaquopy: Installing for armeabi-v7a
+Looking in indexes: https://pypi.org/simple, https://chaquo.com/pypi-13.1
+Collecting lxml (from -r requirements.txt (line 1))
+  Downloading https://chaquo.com/pypi-13.1/lxml/lxml-5.3.0-0-cp310-cp310-android_24_armeabi_v7a.whl (1.3 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 936.9 kB/s  0:00:01
+Collecting ujson (from -r requirements.txt (line 2))
+  Downloading https://chaquo.com/pypi-13.1/ujson/ujson-5.11.0-0-cp310-cp310-android_24_armeabi_v7a.whl (62 kB)
+Collecting pyquery (from -r requirements.txt (line 3))
+  Using cached pyquery-2.1.0-py3-none-any.whl.metadata (9.5 kB)
+Collecting requests (from -r requirements.txt (line 4))
+  Using cached requests-2.34.2-py3-none-any.whl.metadata (4.8 kB)
+Collecting cachetools (from -r requirements.txt (line 5))
+  Using cached cachetools-7.1.7-py3-none-any.whl.metadata (5.5 kB)
+Collecting pycryptodome (from -r requirements.txt (line 6))
+  Downloading https://chaquo.com/pypi-13.1/pycryptodome/pycryptodome-3.21.0-0-cp310-cp310-android_24_armeabi_v7a.whl (1.6 MB)
+
+> Task :app:minifyLeanbackArm64_v8aReleaseWithR8
+
+> Task :chaquo:installArmeabi_v7aReleasePythonRequirements
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.6/1.6 MB 2.9 MB/s  0:00:00
+Collecting beautifulsoup4 (from -r requirements.txt (line 7))
+  Using cached beautifulsoup4-4.15.0-py3-none-any.whl.metadata (3.8 kB)
+Collecting chaquopy-libxslt>=1.1.32 (from lxml->-r requirements.txt (line 1))
+  Downloading https://chaquo.com/pypi-13.1/chaquopy-libxslt/chaquopy_libxslt-1.1.32-2-py3-none-android_16_armeabi_v7a.whl (170 kB)
+Collecting chaquopy-libxml2>=2.9.8 (from lxml->-r requirements.txt (line 1))
+  Downloading https://chaquo.com/pypi-13.1/chaquopy-libxml2/chaquopy_libxml2-2.9.8-2-py3-none-android_16_armeabi_v7a.whl (705 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 705.4/705.4 kB 2.3 MB/s  0:00:00
+Collecting chaquopy-libcxx>=180000 (from ujson->-r requirements.txt (line 2))
+  Downloading https://chaquo.com/pypi-13.1/chaquopy-libcxx/chaquopy_libcxx-180000-0-py3-none-android_24_armeabi_v7a.whl (355 kB)
+Collecting cssselect>=1.5.0 (from pyquery->-r requirements.txt (line 3))
+  Using cached cssselect-1.5.0-py3-none-any.whl.metadata (2.4 kB)
+Collecting charset_normalizer<4,>=2 (from requests->-r requirements.txt (line 4))
+  Using cached charset_normalizer-3.5.1-py3-none-any.whl.metadata (45 kB)
+Collecting idna<4,>=2.5 (from requests->-r requirements.txt (line 4))
+  Using cached idna-3.19-py3-none-any.whl.metadata (9.2 kB)
+Collecting urllib3<3,>=1.26 (from requests->-r requirements.txt (line 4))
+  Using cached urllib3-2.7.0-py3-none-any.whl.metadata (6.9 kB)
+Collecting certifi>=2023.5.7 (from requests->-r requirements.txt (line 4))
+  Using cached certifi-2026.7.22-py3-none-any.whl.metadata (2.5 kB)
+Collecting soupsieve>=1.6.1 (from beautifulsoup4->-r requirements.txt (line 7))
+  Using cached soupsieve-2.9.2-py3-none-any.whl.metadata (4.6 kB)
+Collecting typing-extensions>=4.0.0 (from beautifulsoup4->-r requirements.txt (line 7))
+  Using cached typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+Using cached pyquery-2.1.0-py3-none-any.whl (22 kB)
+Using cached requests-2.34.2-py3-none-any.whl (73 kB)
+Using cached charset_normalizer-3.5.1-py3-none-any.whl (68 kB)
+Using cached idna-3.19-py3-none-any.whl (68 kB)
+Using cached urllib3-2.7.0-py3-none-any.whl (131 kB)
+Using cached cachetools-7.1.7-py3-none-any.whl (16 kB)
+Using cached beautifulsoup4-4.15.0-py3-none-any.whl (109 kB)
+Using cached certifi-2026.7.22-py3-none-any.whl (136 kB)
+Using cached cssselect-1.5.0-py3-none-any.whl (20 kB)
+Using cached soupsieve-2.9.2-py3-none-any.whl (37 kB)
+Using cached typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+Installing collected packages: chaquopy-libxml2, chaquopy-libcxx, urllib3, ujson, typing-extensions, soupsieve, pycryptodome, idna, cssselect, charset_normalizer, chaquopy-libxslt, certifi, cachetools, requests, lxml, beautifulsoup4, pyquery
+
+Successfully installed beautifulsoup4-4.15.0 cachetools-7.1.7 certifi-2026.7.22 chaquopy-libcxx-180000 chaquopy-libxml2-2.9.8 chaquopy-libxslt-1.1.32 charset_normalizer-3.5.1 cssselect-1.5.0 idna-3.19 lxml-5.3.0 pycryptodome-3.21.0 pyquery-2.1.0 requests-2.34.2 soupsieve-2.9.2 typing-extensions-4.16.0 ujson-5.11.0 urllib3-2.7.0
+
+> Task :chaquo:mergeArmeabi_v7aReleasePythonSources
+> Task :chaquo:generateArmeabi_v7aReleasePythonProxies
+> Task :chaquo:generateArmeabi_v7aReleaseResources FROM-CACHE
+> Task :chaquo:packageArmeabi_v7aReleaseResources
+> Task :chaquo:processArmeabi_v7aReleaseNavigationResources FROM-CACHE
+> Task :chaquo:parseArmeabi_v7aReleaseLocalResources FROM-CACHE
+> Task :chaquo:generateArmeabi_v7aReleaseRFile FROM-CACHE
+> Task :chaquo:compileArmeabi_v7aReleaseKotlin NO-SOURCE
+> Task :chaquo:javaPreCompileArmeabi_v7aRelease FROM-CACHE
+> Task :chaquo:compileArmeabi_v7aReleaseJavaWithJavac FROM-CACHE
+> Task :chaquo:mergeArmeabi_v7aReleaseGeneratedProguardFiles
+> Task :chaquo:exportArmeabi_v7aReleaseConsumerProguardFiles
+> Task :app:checkLeanbackArmeabi_v7aReleaseDuplicateClasses
+> Task :app:dataBindingMergeDependencyArtifactsLeanbackArmeabi_v7aRelease
+> Task :app:generateLeanbackArmeabi_v7aReleaseResources FROM-CACHE
+> Task :app:stripLeanbackArmeabi_v7aReleaseDebugSymbols
+> Task :app:lintVitalAnalyzeLeanbackArm64_v8aRelease
+
+> Task :app:mergeLeanbackArmeabi_v7aReleaseResources
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values/strings.xml:367:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values/strings.xml:14:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values/strings.xml:18:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values/strings.xml:19:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values/strings.xml:12:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values/strings.xml:11:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values/strings.xml:15:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values/strings.xml:15:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values/strings.xml:15:4: Multiple substitutions specified in non-positional format of string resource string/detail_title. Did you mean to add the formatted="false" attribute?
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values/strings.xml:13:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values/strings.xml:329:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values/strings.xml:339:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values/strings.xml:6:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values/strings.xml:245:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values/strings.xml:37:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values/strings.xml:36:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values/strings.xml:62:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values/strings.xml:61:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values/strings.xml:45:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/.gradle/caches/9.6.1/transforms/183dc6be8bbd76827d4af42a08b5c42d/transformed/materialdesigncolors-1.0.0/res/values/values.xml:280:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/.gradle/caches/9.6.1/transforms/7990358aead75d2fc8375f83285d0917/transformed/preference-1.2.1/res/values/values.xml:23:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rTW/strings.xml:367:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rTW/strings.xml:14:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rTW/strings.xml:18:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rTW/strings.xml:19:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rTW/strings.xml:12:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rTW/strings.xml:11:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rTW/strings.xml:15:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rTW/strings.xml:15:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rTW/strings.xml:15:4: Multiple substitutions specified in non-positional format of string resource string/detail_title. Did you mean to add the formatted="false" attribute?
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rTW/strings.xml:13:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rTW/strings.xml:328:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rTW/strings.xml:338:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rTW/strings.xml:6:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rTW/strings.xml:245:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rTW/strings.xml:37:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rTW/strings.xml:36:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rTW/strings.xml:62:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rTW/strings.xml:61:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rTW/strings.xml:45:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rTW/strings.xml:275:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/.gradle/caches/9.6.1/transforms/7990358aead75d2fc8375f83285d0917/transformed/preference-1.2.1/res/values-zh-rTW/values-zh-rTW.xml:7:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rCN/strings.xml:367:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rCN/strings.xml:14:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rCN/strings.xml:18:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rCN/strings.xml:19:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rCN/strings.xml:12:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rCN/strings.xml:11:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rCN/strings.xml:15:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rCN/strings.xml:15:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rCN/strings.xml:15:4: Multiple substitutions specified in non-positional format of string resource string/detail_title. Did you mean to add the formatted="false" attribute?
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rCN/strings.xml:13:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rCN/strings.xml:328:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rCN/strings.xml:338:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rCN/strings.xml:6:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rCN/strings.xml:245:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rCN/strings.xml:37:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rCN/strings.xml:36:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rCN/strings.xml:62:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rCN/strings.xml:61:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+
+> Task :app:extractLeanbackArmeabi_v7aReleaseNativeSymbolTables
+> Task :app:lintVitalReportLeanbackArm64_v8aRelease
+> Task :app:lintVitalLeanbackArm64_v8aRelease
+> Task :app:mergeLeanbackArmeabi_v7aReleaseNativeDebugMetadata
+> Task :app:packageLeanbackArmeabi_v7aReleaseResources
+> Task :app:processLeanbackArmeabi_v7aReleaseNavigationResources FROM-CACHE
+> Task :app:parseLeanbackArmeabi_v7aReleaseLocalResources FROM-CACHE
+> Task :app:generateLeanbackArmeabi_v7aReleaseBuildConfig
+> Task :app:generateLeanbackArmeabi_v7aReleaseRFile FROM-CACHE
+> Task :chaquo:bundleLibCompileToJarArmeabi_v7aRelease
+> Task :app:javaPreCompileLeanbackArmeabi_v7aRelease FROM-CACHE
+> Task :app:mapLeanbackArmeabi_v7aReleaseSourceSetPaths
+> Task :chaquo:writeArmeabi_v7aReleaseAarMetadata
+> Task :app:compileLeanbackArmeabi_v7aReleaseNavigationResources FROM-CACHE
+> Task :app:checkLeanbackArmeabi_v7aReleaseAarMetadata
+> Task :app:createLeanbackArmeabi_v7aReleaseCompatibleScreenManifests
+> Task :app:extractDeepLinksLeanbackArmeabi_v7aRelease FROM-CACHE
+> Task :chaquo:extractDeepLinksArmeabi_v7aRelease FROM-CACHE
+> Task :chaquo:processArmeabi_v7aReleaseManifest FROM-CACHE
+> Task :app:processLeanbackArmeabi_v7aReleaseMainManifest FROM-CACHE
+> Task :app:processLeanbackArmeabi_v7aReleaseManifest
+> Task :chaquo:mapArmeabi_v7aReleaseSourceSetPaths
+> Task :app:processLeanbackArmeabi_v7aReleaseManifestForPackage
+> Task :chaquo:compileArmeabi_v7aReleaseLibraryResources FROM-CACHE
+> Task :chaquo:processArmeabi_v7aReleaseJavaRes NO-SOURCE
+> Task :chaquo:bundleLibRuntimeToJarArmeabi_v7aRelease
+> Task :app:mergeLeanbackArmeabi_v7aReleaseStartupProfile
+> Task :app:generateLeanbackArmeabi_v7aReleaseAssets UP-TO-DATE
+> Task :chaquo:generateArmeabi_v7aReleaseAssets UP-TO-DATE
+
+> Task :app:mergeLeanbackArmeabi_v7aReleaseResources
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rCN/strings.xml:45:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rCN/strings.xml:275:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/.gradle/caches/9.6.1/transforms/7990358aead75d2fc8375f83285d0917/transformed/preference-1.2.1/res/values-zh-rCN/values-zh-rCN.xml:7:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+
+> Task :chaquo:generateArmeabi_v7aReleasePythonMiscAssets
+> Task :app:dataBindingGenBaseClassesLeanbackArmeabi_v7aRelease FROM-CACHE
+> Task :app:compileLeanbackArmeabi_v7aReleaseKotlin NO-SOURCE
+
+> Task :app:compileLeanbackArmeabi_v7aReleaseJavaWithJavac
+Note: [1] Wrote GeneratedAppGlideModule with: [com.bumptech.glide.integration.okhttp3.OkHttpLibraryGlideModule, com.bumptech.glide.integration.avif.AvifGlideModule]
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+
+> Task :app:processLeanbackArmeabi_v7aReleaseJavaRes
+> Task :chaquo:generateArmeabi_v7aReleasePythonRequirementsAssets
+> Task :chaquo:generateArmeabi_v7aReleasePythonSourceAssets
+> Task :chaquo:generateArmeabi_v7aReleasePythonBuildAssets
+> Task :chaquo:mergeArmeabi_v7aReleaseAssets
+> Task :app:mergeLeanbackArmeabi_v7aReleaseAssets
+> Task :app:mergeLeanbackArmeabi_v7aReleaseJavaResource
+> Task :app:extractLeanbackArmeabi_v7aReleaseVersionControlInfo
+> Task :chaquo:createFullJarArmeabi_v7aRelease
+> Task :chaquo:generateArmeabi_v7aReleaseLintModel
+> Task :app:generateLeanbackArmeabi_v7aReleaseLintVitalReportModel
+> Task :chaquo:checkArmeabi_v7aReleaseAarMetadata
+> Task :chaquo:extractArmeabi_v7aReleaseAnnotations FROM-CACHE
+> Task :chaquo:extractDeepLinksForAarArmeabi_v7aRelease FROM-CACHE
+> Task :chaquo:mergeArmeabi_v7aReleaseConsumerProguardFiles
+> Task :chaquo:mergeArmeabi_v7aReleaseJavaResource
+> Task :chaquo:syncArmeabi_v7aReleaseLibJars FROM-CACHE
+> Task :chaquo:bundleArmeabi_v7aReleaseLocalLintAar
+> Task :app:processLeanbackArmeabi_v7aReleaseResources
+> Task :app:compressLeanbackArmeabi_v7aReleaseAssets
+> Task :app:mergeLeanbackArmeabi_v7aReleaseGeneratedProguardFiles
+> Task :chaquo:writeArmeabi_v7aReleaseLintModelMetadata
+> Task :chaquo:generateArmeabi_v7aReleaseLintVitalModel
+> Task :chaquo:lintVitalAnalyzeArmeabi_v7aRelease
+> Task :app:collectLeanbackArmeabi_v7aReleaseDependencies
+> Task :app:sdkLeanbackArmeabi_v7aReleaseDependencyData
+> Task :app:validateSigningLeanbackArmeabi_v7aRelease
+> Task :app:writeLeanbackArmeabi_v7aReleaseAppMetadata
+> Task :app:writeLeanbackArmeabi_v7aReleaseSigningConfigVersions
+> Task :app:preMobileArm64_v8aReleaseBuild UP-TO-DATE
+> Task :app:mergeMobileArm64_v8aReleaseJniLibFolders
+> Task :app:expandLeanbackArmeabi_v7aReleaseArtProfileWildcards
+> Task :app:mergeMobileArm64_v8aReleaseArtProfile
+> Task :app:expandMobileArm64_v8aReleaseL8ArtProfileWildcards
+> Task :app:mergeMobileArm64_v8aReleaseNativeLibs
+> Task :app:checkMobileArm64_v8aReleaseDuplicateClasses
+> Task :app:dataBindingMergeDependencyArtifactsMobileArm64_v8aRelease
+> Task :app:generateMobileArm64_v8aReleaseResources
+> Task :app:stripMobileArm64_v8aReleaseDebugSymbols
+
+> Task :app:mergeMobileArm64_v8aReleaseResources
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values/strings.xml:14:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/mobile/res/values/strings.xml:25:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/mobile/res/values/strings.xml:23:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values/strings.xml:12:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values/strings.xml:11:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values/strings.xml:15:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values/strings.xml:15:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values/strings.xml:15:4: Multiple substitutions specified in non-positional format of string resource string/detail_title. Did you mean to add the formatted="false" attribute?
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values/strings.xml:13:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/mobile/res/values/strings.xml:30:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values/strings.xml:339:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values/strings.xml:6:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values/strings.xml:245:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values/strings.xml:37:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values/strings.xml:36:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values/strings.xml:62:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values/strings.xml:61:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values/strings.xml:45:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/.gradle/caches/9.6.1/transforms/7990358aead75d2fc8375f83285d0917/transformed/preference-1.2.1/res/values/values.xml:23:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rTW/strings.xml:14:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/mobile/res/values-zh-rTW/strings.xml:25:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/mobile/res/values-zh-rTW/strings.xml:23:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rTW/strings.xml:12:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rTW/strings.xml:11:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rTW/strings.xml:15:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rTW/strings.xml:15:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rTW/strings.xml:15:4: Multiple substitutions specified in non-positional format of string resource string/detail_title. Did you mean to add the formatted="false" attribute?
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rTW/strings.xml:13:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/mobile/res/values-zh-rTW/strings.xml:30:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rTW/strings.xml:338:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rTW/strings.xml:6:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rTW/strings.xml:245:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rTW/strings.xml:37:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rTW/strings.xml:36:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rTW/strings.xml:62:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rTW/strings.xml:61:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rTW/strings.xml:45:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/.gradle/caches/9.6.1/transforms/7990358aead75d2fc8375f83285d0917/transformed/preference-1.2.1/res/values-zh-rTW/values-zh-rTW.xml:7:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rCN/strings.xml:14:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/mobile/res/values-zh-rCN/strings.xml:25:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/mobile/res/values-zh-rCN/strings.xml:23:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rCN/strings.xml:12:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rCN/strings.xml:11:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rCN/strings.xml:15:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rCN/strings.xml:15:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rCN/strings.xml:15:4: Multiple substitutions specified in non-positional format of string resource string/detail_title. Did you mean to add the formatted="false" attribute?
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rCN/strings.xml:13:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/mobile/res/values-zh-rCN/strings.xml:30:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rCN/strings.xml:338:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rCN/strings.xml:6:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rCN/strings.xml:245:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rCN/strings.xml:37:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rCN/strings.xml:36:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rCN/strings.xml:62:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rCN/strings.xml:61:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rCN/strings.xml:45:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/.gradle/caches/9.6.1/transforms/7990358aead75d2fc8375f83285d0917/transformed/preference-1.2.1/res/values-zh-rCN/values-zh-rCN.xml:7:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+
+> Task :app:extractMobileArm64_v8aReleaseNativeSymbolTables FROM-CACHE
+> Task :app:mergeMobileArm64_v8aReleaseNativeDebugMetadata NO-SOURCE
+> Task :app:packageMobileArm64_v8aReleaseResources
+> Task :app:processMobileArm64_v8aReleaseNavigationResources
+> Task :app:parseMobileArm64_v8aReleaseLocalResources
+> Task :app:generateMobileArm64_v8aReleaseBuildConfig
+> Task :app:generateMobileArm64_v8aReleaseRFile
+> Task :app:javaPreCompileMobileArm64_v8aRelease FROM-CACHE
+> Task :app:checkMobileArm64_v8aReleaseAarMetadata
+> Task :app:mapMobileArm64_v8aReleaseSourceSetPaths
+> Task :app:compileMobileArm64_v8aReleaseNavigationResources FROM-CACHE
+> Task :app:createMobileArm64_v8aReleaseCompatibleScreenManifests
+> Task :app:extractDeepLinksMobileArm64_v8aRelease FROM-CACHE
+> Task :app:processMobileArm64_v8aReleaseMainManifest
+> Task :app:processMobileArm64_v8aReleaseManifest
+> Task :app:processMobileArm64_v8aReleaseManifestForPackage
+> Task :app:mergeMobileArm64_v8aReleaseStartupProfile
+> Task :app:generateMobileArm64_v8aReleaseAssets UP-TO-DATE
+> Task :app:mergeMobileArm64_v8aReleaseAssets
+> Task :app:dataBindingGenBaseClassesMobileArm64_v8aRelease
+> Task :app:compileMobileArm64_v8aReleaseKotlin NO-SOURCE
+
+> Task :app:compileMobileArm64_v8aReleaseJavaWithJavac
+Note: [1] Wrote GeneratedAppGlideModule with: [com.bumptech.glide.integration.okhttp3.OkHttpLibraryGlideModule, com.bumptech.glide.integration.avif.AvifGlideModule]
+
+> Task :app:lintVitalAnalyzeLeanbackArmeabi_v7aRelease
+
+> Task :app:compileMobileArm64_v8aReleaseJavaWithJavac
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+
+> Task :app:lintVitalReportLeanbackArmeabi_v7aRelease
+> Task :app:lintVitalLeanbackArmeabi_v7aRelease
+> Task :app:processMobileArm64_v8aReleaseJavaRes
+> Task :app:compressMobileArm64_v8aReleaseAssets FROM-CACHE
+> Task :app:extractMobileArm64_v8aReleaseVersionControlInfo
+> Task :app:generateMobileArm64_v8aReleaseLintVitalReportModel
+> Task :app:mergeMobileArm64_v8aReleaseJavaResource
+> Task :app:collectMobileArm64_v8aReleaseDependencies
+> Task :app:sdkMobileArm64_v8aReleaseDependencyData
+> Task :app:validateSigningMobileArm64_v8aRelease
+> Task :app:writeMobileArm64_v8aReleaseAppMetadata
+> Task :app:writeMobileArm64_v8aReleaseSigningConfigVersions
+> Task :app:preMobileArmeabi_v7aReleaseBuild UP-TO-DATE
+> Task :app:mergeMobileArmeabi_v7aReleaseJniLibFolders
+> Task :app:mergeMobileArmeabi_v7aReleaseNativeLibs
+> Task :app:processMobileArm64_v8aReleaseResources
+> Task :app:stripMobileArmeabi_v7aReleaseDebugSymbols
+> Task :app:mergeMobileArm64_v8aReleaseGeneratedProguardFiles
+> Task :app:extractMobileArmeabi_v7aReleaseNativeSymbolTables FROM-CACHE
+> Task :app:mergeMobileArmeabi_v7aReleaseNativeDebugMetadata
+> Task :app:mergeMobileArmeabi_v7aReleaseArtProfile
+> Task :app:expandMobileArmeabi_v7aReleaseL8ArtProfileWildcards FROM-CACHE
+> Task :app:checkMobileArmeabi_v7aReleaseDuplicateClasses
+> Task :app:dataBindingMergeDependencyArtifactsMobileArmeabi_v7aRelease
+> Task :app:generateMobileArmeabi_v7aReleaseResources FROM-CACHE
+> Task :app:expandMobileArm64_v8aReleaseArtProfileWildcards
+
+> Task :app:mergeMobileArmeabi_v7aReleaseResources
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values/strings.xml:14:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/mobile/res/values/strings.xml:25:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/mobile/res/values/strings.xml:23:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values/strings.xml:12:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values/strings.xml:11:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values/strings.xml:15:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values/strings.xml:15:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values/strings.xml:15:4: Multiple substitutions specified in non-positional format of string resource string/detail_title. Did you mean to add the formatted="false" attribute?
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values/strings.xml:13:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/mobile/res/values/strings.xml:30:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values/strings.xml:339:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values/strings.xml:6:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values/strings.xml:245:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values/strings.xml:37:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values/strings.xml:36:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values/strings.xml:62:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values/strings.xml:61:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values/strings.xml:45:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/.gradle/caches/9.6.1/transforms/7990358aead75d2fc8375f83285d0917/transformed/preference-1.2.1/res/values/values.xml:23:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rCN/strings.xml:14:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/mobile/res/values-zh-rCN/strings.xml:25:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/mobile/res/values-zh-rCN/strings.xml:23:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rCN/strings.xml:12:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rCN/strings.xml:11:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rCN/strings.xml:15:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rCN/strings.xml:15:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rCN/strings.xml:15:4: Multiple substitutions specified in non-positional format of string resource string/detail_title. Did you mean to add the formatted="false" attribute?
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rCN/strings.xml:13:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/mobile/res/values-zh-rCN/strings.xml:30:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rCN/strings.xml:338:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rCN/strings.xml:6:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rCN/strings.xml:245:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rCN/strings.xml:37:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rCN/strings.xml:36:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rCN/strings.xml:62:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rCN/strings.xml:61:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rCN/strings.xml:45:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/.gradle/caches/9.6.1/transforms/7990358aead75d2fc8375f83285d0917/transformed/preference-1.2.1/res/values-zh-rCN/values-zh-rCN.xml:7:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rTW/strings.xml:14:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/mobile/res/values-zh-rTW/strings.xml:25:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/mobile/res/values-zh-rTW/strings.xml:23:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rTW/strings.xml:12:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rTW/strings.xml:11:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rTW/strings.xml:15:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rTW/strings.xml:15:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rTW/strings.xml:15:4: Multiple substitutions specified in non-positional format of string resource string/detail_title. Did you mean to add the formatted="false" attribute?
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rTW/strings.xml:13:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/mobile/res/values-zh-rTW/strings.xml:30:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rTW/strings.xml:338:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rTW/strings.xml:6:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rTW/strings.xml:245:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rTW/strings.xml:37:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rTW/strings.xml:36:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rTW/strings.xml:62:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rTW/strings.xml:61:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/res/values-zh-rTW/strings.xml:45:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+/home/runner/.gradle/caches/9.6.1/transforms/7990358aead75d2fc8375f83285d0917/transformed/preference-1.2.1/res/values-zh-rTW/values-zh-rTW.xml:7:4: Ignoring element '{http://schemas.android.com/apk/res-auto}g' with unknown namespace 'http://schemas.android.com/apk/res-auto'.
+
+> Task :app:packageMobileArmeabi_v7aReleaseResources
+> Task :app:processMobileArmeabi_v7aReleaseNavigationResources FROM-CACHE
+> Task :app:parseMobileArmeabi_v7aReleaseLocalResources FROM-CACHE
+> Task :app:generateMobileArmeabi_v7aReleaseBuildConfig
+> Task :app:generateMobileArmeabi_v7aReleaseRFile FROM-CACHE
+> Task :app:javaPreCompileMobileArmeabi_v7aRelease FROM-CACHE
+> Task :app:checkMobileArmeabi_v7aReleaseAarMetadata
+> Task :app:mapMobileArmeabi_v7aReleaseSourceSetPaths
+> Task :app:compileMobileArmeabi_v7aReleaseNavigationResources FROM-CACHE
+> Task :app:createMobileArmeabi_v7aReleaseCompatibleScreenManifests
+> Task :app:extractDeepLinksMobileArmeabi_v7aRelease FROM-CACHE
+> Task :app:processMobileArmeabi_v7aReleaseMainManifest FROM-CACHE
+> Task :app:processMobileArmeabi_v7aReleaseManifest
+> Task :app:processMobileArmeabi_v7aReleaseManifestForPackage
+> Task :app:mergeMobileArmeabi_v7aReleaseStartupProfile
+> Task :app:generateMobileArmeabi_v7aReleaseAssets UP-TO-DATE
+> Task :app:mergeMobileArmeabi_v7aReleaseAssets
+> Task :app:compressMobileArmeabi_v7aReleaseAssets FROM-CACHE
+> Task :app:extractMobileArmeabi_v7aReleaseVersionControlInfo
+> Task :app:collectMobileArmeabi_v7aReleaseDependencies
+> Task :app:sdkMobileArmeabi_v7aReleaseDependencyData
+> Task :app:validateSigningMobileArmeabi_v7aRelease
+> Task :app:writeMobileArmeabi_v7aReleaseAppMetadata
+> Task :app:writeMobileArmeabi_v7aReleaseSigningConfigVersions
+> Task :app:dataBindingGenBaseClassesMobileArmeabi_v7aRelease FROM-CACHE
+> Task :app:compileMobileArmeabi_v7aReleaseKotlin NO-SOURCE
+
+> Task :app:compileMobileArmeabi_v7aReleaseJavaWithJavac
+Note: [1] Wrote GeneratedAppGlideModule with: [com.bumptech.glide.integration.okhttp3.OkHttpLibraryGlideModule, com.bumptech.glide.integration.avif.AvifGlideModule]
+
+> Task :app:lintVitalAnalyzeMobileArm64_v8aRelease
+
+> Task :app:compileMobileArmeabi_v7aReleaseJavaWithJavac
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+
+> Task :app:processMobileArmeabi_v7aReleaseJavaRes
+> Task :app:lintVitalReportMobileArm64_v8aRelease
+> Task :app:lintVitalMobileArm64_v8aRelease
+> Task :app:generateMobileArmeabi_v7aReleaseLintVitalReportModel
+> Task :app:mergeMobileArmeabi_v7aReleaseJavaResource
+> Task :app:processMobileArmeabi_v7aReleaseResources
+> Task :app:mergeMobileArmeabi_v7aReleaseGeneratedProguardFiles
+> Task :app:expandMobileArmeabi_v7aReleaseArtProfileWildcards
+> Task :app:lintVitalAnalyzeMobileArmeabi_v7aRelease
+> Task :app:lintVitalReportMobileArmeabi_v7aRelease
+> Task :app:lintVitalMobileArmeabi_v7aRelease
+> Task :app:convertShrunkResourcesToBinaryLeanbackArm64_v8aRelease
+> Task :app:optimizeLeanbackArm64_v8aReleaseResources
+> Task :app:l8DexDesugarLibLeanbackArm64_v8aRelease
+> Task :app:compileLeanbackArm64_v8aReleaseArtProfile
+> Task :app:packageLeanbackArm64_v8aRelease
+> Task :app:createLeanbackArm64_v8aReleaseApkListingFileRedirect
+> Task :app:assembleLeanbackArm64_v8aRelease
+> Task :app:minifyLeanbackArmeabi_v7aReleaseWithR8
+> Task :app:convertShrunkResourcesToBinaryLeanbackArmeabi_v7aRelease
+> Task :app:optimizeLeanbackArmeabi_v7aReleaseResources
+> Task :app:l8DexDesugarLibLeanbackArmeabi_v7aRelease
+> Task :app:compileLeanbackArmeabi_v7aReleaseArtProfile
+> Task :app:packageLeanbackArmeabi_v7aRelease
+> Task :app:createLeanbackArmeabi_v7aReleaseApkListingFileRedirect
+> Task :app:assembleLeanbackArmeabi_v7aRelease
+> Task :app:minifyMobileArm64_v8aReleaseWithR8
+> Task :app:convertShrunkResourcesToBinaryMobileArm64_v8aRelease
+> Task :app:optimizeMobileArm64_v8aReleaseResources
+> Task :app:l8DexDesugarLibMobileArm64_v8aRelease
+> Task :app:compileMobileArm64_v8aReleaseArtProfile
+> Task :app:packageMobileArm64_v8aRelease
+> Task :app:createMobileArm64_v8aReleaseApkListingFileRedirect
+> Task :app:assembleMobileArm64_v8aRelease
+> Task :app:minifyMobileArmeabi_v7aReleaseWithR8
+> Task :app:convertShrunkResourcesToBinaryMobileArmeabi_v7aRelease
+> Task :app:optimizeMobileArmeabi_v7aReleaseResources
+> Task :app:l8DexDesugarLibMobileArmeabi_v7aRelease
+> Task :app:compileMobileArmeabi_v7aReleaseArtProfile
+> Task :app:packageMobileArmeabi_v7aRelease
+> Task :app:createMobileArmeabi_v7aReleaseApkListingFileRedirect
+> Task :app:assembleMobileArmeabi_v7aRelease
+> Task :app:assembleRelease
 
 [Incubating] Problems report is available at: file:///home/runner/work/tvbox-sources/tvbox-sources/fongmi/build/reports/problems/problems-report.html
-
-FAILURE: Build failed with an exception.
-
-* What went wrong:
-Execution failed for task ':app:compileLeanbackArm64_v8aReleaseJavaWithJavac' (registered by plugin 'com.android.internal.application').
-> Compilation failed; see the compiler output below.
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:55: error: cannot find symbol
-      private static final SessionCommand COMMAND_REPEAT = new SessionCommand(ActionEvent.REPEAT, Bundle.EMPTY);
-                           ^
-    symbol:   class SessionCommand
-    location: class PlaybackService
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:65: error: cannot find symbol
-      private MediaLibrarySession session;
-              ^
-    symbol:   class MediaLibrarySession
-    location: class PlaybackService
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:69: error: cannot find symbol
-      private Player sessionPlayer;
-              ^
-    symbol:   class Player
-    location: class PlaybackService
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:127: error: cannot find symbol
-      private CommandButton buildStopButton() {
-              ^
-    symbol:   class CommandButton
-    location: class PlaybackService
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:131: error: cannot find symbol
-      private CommandButton buildRepeatButton() {
-              ^
-    symbol:   class CommandButton
-    location: class PlaybackService
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:180: error: cannot find symbol
-      public void onDisconnected(@NonNull MediaSession session, @NonNull MediaSession.ControllerInfo controller) {
-                                          ^
-    symbol:   class MediaSession
-    location: class PlaybackService
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:267: error: cannot find symbol
-      public MediaLibrarySession onGetSession(@NonNull MediaSession.ControllerInfo controllerInfo) {
-             ^
-    symbol:   class MediaLibrarySession
-    location: class PlaybackService
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:273: error: cannot find symbol
-      public MediaSession.ConnectionResult onConnect(@NonNull MediaSession session, @NonNull MediaSession.ControllerInfo controller) {
-                                                              ^
-    symbol:   class MediaSession
-    location: class PlaybackService
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:285: error: cannot find symbol
-      public ListenableFuture<SessionResult> onCustomCommand(@NonNull MediaSession session, @NonNull MediaSession.ControllerInfo controller, @NonNull SessionCommand customCommand, @NonNull Bundle args) {
-                                                                      ^
-    symbol:   class MediaSession
-    location: class PlaybackService
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:285: error: cannot find symbol
-      public ListenableFuture<SessionResult> onCustomCommand(@NonNull MediaSession session, @NonNull MediaSession.ControllerInfo controller, @NonNull SessionCommand customCommand, @NonNull Bundle args) {
-                                                                                                                                                      ^
-    symbol:   class SessionCommand
-    location: class PlaybackService
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:285: error: cannot find symbol
-      public ListenableFuture<SessionResult> onCustomCommand(@NonNull MediaSession session, @NonNull MediaSession.ControllerInfo controller, @NonNull SessionCommand customCommand, @NonNull Bundle args) {
-                              ^
-    symbol:   class SessionResult
-    location: class PlaybackService
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:384: error: cannot find symbol
-      private boolean isSameItem(MediaItem item) {
-                                 ^
-    symbol:   class MediaItem
-    location: class PlaybackService
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:389: error: cannot find symbol
-      private void interceptItem(@NonNull MediaItem item, long startPositionMs) {
-                                          ^
-    symbol:   class MediaItem
-    location: class PlaybackService
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:394: error: cannot find symbol
-      private void interceptItems(@NonNull List<MediaItem> items, int startIndex, long startPositionMs) {
-                                                ^
-    symbol:   class MediaItem
-    location: class PlaybackService
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:400: error: cannot find symbol
-      private ForwardingPlayer wrap(Player base) {
-                                    ^
-    symbol:   class Player
-    location: class PlaybackService
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:400: error: cannot find symbol
-      private ForwardingPlayer wrap(Player base) {
-              ^
-    symbol:   class ForwardingPlayer
-    location: class PlaybackService
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:465: error: cannot find symbol
-      private void playViaManager(MediaItem item, long startPositionMs) {
-                                  ^
-    symbol:   class MediaItem
-    location: class PlaybackService
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:471: error: cannot find symbol
-      private void startBrowse(MediaItem item, Result result, long startPositionMs) {
-                               ^
-    symbol:   class MediaItem
-    location: class PlaybackService
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:501: error: cannot find symbol
-      public void onPlayerRebuild(Player newPlayer) {
-                                  ^
-    symbol:   class Player
-    location: class PlaybackService
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:515: error: cannot find symbol
-      public void onDanmakuConfigChanged(DanmakuConfig config) {
-                                         ^
-    symbol:   class DanmakuConfig
-    location: class PlaybackService
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:543: error: cannot find symbol
-      public ListenableFuture<LibraryResult<MediaItem>> onGetLibraryRoot(@NonNull MediaLibrarySession session, @NonNull MediaSession.ControllerInfo browser, @Nullable MediaLibraryService.LibraryParams params) {
-                                                                                  ^
-    symbol:   class MediaLibrarySession
-    location: class PlaybackService
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:543: error: cannot find symbol
-      public ListenableFuture<LibraryResult<MediaItem>> onGetLibraryRoot(@NonNull MediaLibrarySession session, @NonNull MediaSession.ControllerInfo browser, @Nullable MediaLibraryService.LibraryParams params) {
-                              ^
-    symbol:   class LibraryResult
-    location: class PlaybackService
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:543: error: cannot find symbol
-      public ListenableFuture<LibraryResult<MediaItem>> onGetLibraryRoot(@NonNull MediaLibrarySession session, @NonNull MediaSession.ControllerInfo browser, @Nullable MediaLibraryService.LibraryParams params) {
-                                            ^
-    symbol:   class MediaItem
-    location: class PlaybackService
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:549: error: cannot find symbol
-      public ListenableFuture<LibraryResult<ImmutableList<MediaItem>>> onGetChildren(@NonNull MediaLibrarySession session, @NonNull MediaSession.ControllerInfo browser, @NonNull String parentId, int page, int pageSize, @Nullable MediaLibraryService.LibraryParams params) {
-                                                                                              ^
-    symbol:   class MediaLibrarySession
-    location: class PlaybackService
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:549: error: cannot find symbol
-      public ListenableFuture<LibraryResult<ImmutableList<MediaItem>>> onGetChildren(@NonNull MediaLibrarySession session, @NonNull MediaSession.ControllerInfo browser, @NonNull String parentId, int page, int pageSize, @Nullable MediaLibraryService.LibraryParams params) {
-                              ^
-    symbol:   class LibraryResult
-    location: class PlaybackService
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:549: error: cannot find symbol
-      public ListenableFuture<LibraryResult<ImmutableList<MediaItem>>> onGetChildren(@NonNull MediaLibrarySession session, @NonNull MediaSession.ControllerInfo browser, @NonNull String parentId, int page, int pageSize, @Nullable MediaLibraryService.LibraryParams params) {
-                                                          ^
-    symbol:   class MediaItem
-    location: class PlaybackService
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:555: error: cannot find symbol
-      public ListenableFuture<LibraryResult<Void>> onSearch(@NonNull MediaLibrarySession session, @NonNull MediaSession.ControllerInfo browser, @NonNull String query, @Nullable MediaLibraryService.LibraryParams params) {
-                                                                     ^
-    symbol:   class MediaLibrarySession
-    location: class PlaybackService
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:555: error: cannot find symbol
-      public ListenableFuture<LibraryResult<Void>> onSearch(@NonNull MediaLibrarySession session, @NonNull MediaSession.ControllerInfo browser, @NonNull String query, @Nullable MediaLibraryService.LibraryParams params) {
-                              ^
-    symbol:   class LibraryResult
-    location: class PlaybackService
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:565: error: cannot find symbol
-      public ListenableFuture<LibraryResult<ImmutableList<MediaItem>>> onGetSearchResult(@NonNull MediaLibrarySession session, @NonNull MediaSession.ControllerInfo browser, @NonNull String query, int page, int pageSize, @Nullable MediaLibraryService.LibraryParams params) {
-                                                                                                  ^
-    symbol:   class MediaLibrarySession
-    location: class PlaybackService
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:565: error: cannot find symbol
-      public ListenableFuture<LibraryResult<ImmutableList<MediaItem>>> onGetSearchResult(@NonNull MediaLibrarySession session, @NonNull MediaSession.ControllerInfo browser, @NonNull String query, int page, int pageSize, @Nullable MediaLibraryService.LibraryParams params) {
-                              ^
-    symbol:   class LibraryResult
-    location: class PlaybackService
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:565: error: cannot find symbol
-      public ListenableFuture<LibraryResult<ImmutableList<MediaItem>>> onGetSearchResult(@NonNull MediaLibrarySession session, @NonNull MediaSession.ControllerInfo browser, @NonNull String query, int page, int pageSize, @Nullable MediaLibraryService.LibraryParams params) {
-                                                          ^
-    symbol:   class MediaItem
-    location: class PlaybackService
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:571: error: cannot find symbol
-      public ListenableFuture<LibraryResult<MediaItem>> onGetItem(@NonNull MediaLibrarySession session, @NonNull MediaSession.ControllerInfo browser, @NonNull String mediaId) {
-                                                                           ^
-    symbol:   class MediaLibrarySession
-    location: class PlaybackService
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:571: error: cannot find symbol
-      public ListenableFuture<LibraryResult<MediaItem>> onGetItem(@NonNull MediaLibrarySession session, @NonNull MediaSession.ControllerInfo browser, @NonNull String mediaId) {
-                              ^
-    symbol:   class LibraryResult
-    location: class PlaybackService
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:571: error: cannot find symbol
-      public ListenableFuture<LibraryResult<MediaItem>> onGetItem(@NonNull MediaLibrarySession session, @NonNull MediaSession.ControllerInfo browser, @NonNull String mediaId) {
-                                            ^
-    symbol:   class MediaItem
-    location: class PlaybackService
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:580: error: cannot find symbol
-      public ListenableFuture<MediaSession.MediaItemsWithStartPosition> onSetMediaItems(@NonNull MediaSession session, @NonNull MediaSession.ControllerInfo controller, @NonNull List<MediaItem> mediaItems, int startIndex, long startPositionMs) {
-                                                                                                 ^
-    symbol:   class MediaSession
-    location: class PlaybackService
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:580: error: cannot find symbol
-      public ListenableFuture<MediaSession.MediaItemsWithStartPosition> onSetMediaItems(@NonNull MediaSession session, @NonNull MediaSession.ControllerInfo controller, @NonNull List<MediaItem> mediaItems, int startIndex, long startPositionMs) {
-                                                                                                                                                                                      ^
-    symbol:   class MediaItem
-    location: class PlaybackService
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:608: error: cannot find symbol
-          default void onPlayerRebuild(Player player) {
-                                       ^
-    symbol:   class Player
-    location: interface PlayerCallback
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:614: error: cannot find symbol
-          default void onDanmakuConfigChanged(DanmakuConfig config) {
-                                              ^
-    symbol:   class DanmakuConfig
-    location: interface PlayerCallback
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/player/PlayerManager.java:56: error: cannot find symbol
-      private VideoSize videoSize;
-              ^
-    symbol:   class VideoSize
-    location: class PlayerManager
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/player/PlayerManager.java:59: error: cannot find symbol
-      private Player player;
-              ^
-    symbol:   class Player
-    location: class PlayerManager
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/player/PlayerManager.java:61: error: cannot find symbol
-      private DanmakuConfig danmakuConfig;
-              ^
-    symbol:   class DanmakuConfig
-    location: class PlayerManager
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:51: error: cannot find symbol
-  public class PlaybackService extends MediaLibraryService implements MediaLibrarySession.Callback, PlayerManager.Callback {
-                                       ^
-    symbol: class MediaLibraryService
-  Note: [1] Wrote GeneratedAppGlideModule with: [com.bumptech.glide.integration.okhttp3.OkHttpLibraryGlideModule, com.bumptech.glide.integration.avif.AvifGlideModule]
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:12: error: package androidx.media3.common does not exist
-  import androidx.media3.common.C;
-                               ^
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:13: error: package androidx.media3.common does not exist
-  import androidx.media3.common.ForwardingPlayer;
-                               ^
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:14: error: package androidx.media3.common does not exist
-  import androidx.media3.common.MediaItem;
-                               ^
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:15: error: package androidx.media3.common does not exist
-  import androidx.media3.common.Player;
-                               ^
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:16: error: package androidx.media3.session does not exist
-  import androidx.media3.session.CommandButton;
-                                ^
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:17: error: package androidx.media3.session does not exist
-  import androidx.media3.session.DefaultMediaNotificationProvider;
-                                ^
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:18: error: package androidx.media3.session does not exist
-  import androidx.media3.session.LibraryResult;
-                                ^
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:19: error: package androidx.media3.session does not exist
-  import androidx.media3.session.MediaLibraryService;
-                                ^
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:20: error: package androidx.media3.session.MediaLibraryService does not exist
-  import androidx.media3.session.MediaLibraryService.MediaLibrarySession;
-                                                    ^
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:21: error: package androidx.media3.session does not exist
-  import androidx.media3.session.MediaSession;
-                                ^
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:22: error: package androidx.media3.session does not exist
-  import androidx.media3.session.SessionCommand;
-                                ^
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:23: error: package androidx.media3.session does not exist
-  import androidx.media3.session.SessionCommands;
-                                ^
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:24: error: package androidx.media3.session does not exist
-  import androidx.media3.session.SessionError;
-                                ^
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:25: error: package androidx.media3.session does not exist
-  import androidx.media3.session.SessionResult;
-                                ^
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:26: error: package androidx.media3.ui.danmaku does not exist
-  import androidx.media3.ui.danmaku.DanmakuConfig;
-                                   ^
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:51: error: package MediaLibrarySession does not exist
-  public class PlaybackService extends MediaLibraryService implements MediaLibrarySession.Callback, PlayerManager.Callback {
-                                                                                         ^
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/player/PlayerManager.java:8: error: package androidx.media3.common does not exist
-  import androidx.media3.common.C;
-                               ^
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/player/PlayerManager.java:9: error: package androidx.media3.common does not exist
-  import androidx.media3.common.Format;
-                               ^
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/player/PlayerManager.java:10: error: package androidx.media3.common does not exist
-  import androidx.media3.common.MediaChapter;
-                               ^
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/player/PlayerManager.java:11: error: package androidx.media3.common does not exist
-  import androidx.media3.common.MediaEdition;
-                               ^
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/player/PlayerManager.java:12: error: package androidx.media3.common does not exist
-  import androidx.media3.common.MediaItem;
-                               ^
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/player/PlayerManager.java:13: error: package androidx.media3.common does not exist
-  import androidx.media3.common.MediaMetadata;
-                               ^
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/player/PlayerManager.java:14: error: package androidx.media3.common does not exist
-  import androidx.media3.common.PlaybackException;
-                               ^
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/player/PlayerManager.java:15: error: package androidx.media3.common does not exist
-  import androidx.media3.common.PlaybackParameters;
-                               ^
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/player/PlayerManager.java:16: error: package androidx.media3.common does not exist
-  import androidx.media3.common.Player;
-                               ^
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/player/PlayerManager.java:17: error: package androidx.media3.common does not exist
-  import androidx.media3.common.Tracks;
-                               ^
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/player/PlayerManager.java:18: error: package androidx.media3.common does not exist
-  import androidx.media3.common.VideoSize;
-                               ^
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/player/PlayerManager.java:19: error: package androidx.media3.ui.danmaku does not exist
-  import androidx.media3.ui.danmaku.DanmakuConfig;
-                                   ^
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/MediaClients.java:4: error: package androidx.media3.session does not exist
-  import androidx.media3.session.MediaSession;
-                                ^
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:180: error: package MediaSession does not exist
-      public void onDisconnected(@NonNull MediaSession session, @NonNull MediaSession.ControllerInfo controller) {
-                                                                                     ^
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:224: error: package MediaSession does not exist
-      private void releaseController(@NonNull MediaSession.ControllerInfo controller) {
-                                                          ^
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:267: error: package MediaSession does not exist
-      public MediaLibrarySession onGetSession(@NonNull MediaSession.ControllerInfo controllerInfo) {
-                                                                   ^
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:273: error: package MediaSession does not exist
-      public MediaSession.ConnectionResult onConnect(@NonNull MediaSession session, @NonNull MediaSession.ControllerInfo controller) {
-                                                                                                         ^
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:273: error: package MediaSession does not exist
-      public MediaSession.ConnectionResult onConnect(@NonNull MediaSession session, @NonNull MediaSession.ControllerInfo controller) {
-                         ^
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:279: error: package MediaSession does not exist
-      private boolean isAppController(@NonNull MediaSession.ControllerInfo controller) {
-                                                           ^
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:285: error: package MediaSession does not exist
-      public ListenableFuture<SessionResult> onCustomCommand(@NonNull MediaSession session, @NonNull MediaSession.ControllerInfo controller, @NonNull SessionCommand customCommand, @NonNull Bundle args) {
-                                                                                                                 ^
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:529: error: package Player does not exist
-      private final Player.Listener listener = new Player.Listener() {
-                          ^
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:543: error: package MediaSession does not exist
-      public ListenableFuture<LibraryResult<MediaItem>> onGetLibraryRoot(@NonNull MediaLibrarySession session, @NonNull MediaSession.ControllerInfo browser, @Nullable MediaLibraryService.LibraryParams params) {
-                                                                                                                                    ^
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:543: error: package MediaLibraryService does not exist
-      public ListenableFuture<LibraryResult<MediaItem>> onGetLibraryRoot(@NonNull MediaLibrarySession session, @NonNull MediaSession.ControllerInfo browser, @Nullable MediaLibraryService.LibraryParams params) {
-                                                                                                                                                                                          ^
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:549: error: package MediaSession does not exist
-      public ListenableFuture<LibraryResult<ImmutableList<MediaItem>>> onGetChildren(@NonNull MediaLibrarySession session, @NonNull MediaSession.ControllerInfo browser, @NonNull String parentId, int page, int pageSize, @Nullable MediaLibraryService.LibraryParams params) {
-                                                                                                                                                ^
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:549: error: package MediaLibraryService does not exist
-      public ListenableFuture<LibraryResult<ImmutableList<MediaItem>>> onGetChildren(@NonNull MediaLibrarySession session, @NonNull MediaSession.ControllerInfo browser, @NonNull String parentId, int page, int pageSize, @Nullable MediaLibraryService.LibraryParams params) {
-                                                                                                                                                                                                                                                        ^
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:555: error: package MediaSession does not exist
-      public ListenableFuture<LibraryResult<Void>> onSearch(@NonNull MediaLibrarySession session, @NonNull MediaSession.ControllerInfo browser, @NonNull String query, @Nullable MediaLibraryService.LibraryParams params) {
-                                                                                                                       ^
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:555: error: package MediaLibraryService does not exist
-      public ListenableFuture<LibraryResult<Void>> onSearch(@NonNull MediaLibrarySession session, @NonNull MediaSession.ControllerInfo browser, @NonNull String query, @Nullable MediaLibraryService.LibraryParams params) {
-                                                                                                                                                                                                    ^
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:565: error: package MediaSession does not exist
-      public ListenableFuture<LibraryResult<ImmutableList<MediaItem>>> onGetSearchResult(@NonNull MediaLibrarySession session, @NonNull MediaSession.ControllerInfo browser, @NonNull String query, int page, int pageSize, @Nullable MediaLibraryService.LibraryParams params) {
-                                                                                                                                                    ^
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:565: error: package MediaLibraryService does not exist
-      public ListenableFuture<LibraryResult<ImmutableList<MediaItem>>> onGetSearchResult(@NonNull MediaLibrarySession session, @NonNull MediaSession.ControllerInfo browser, @NonNull String query, int page, int pageSize, @Nullable MediaLibraryService.LibraryParams params) {
-                                                                                                                                                                                                                                                         ^
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:571: error: package MediaSession does not exist
-      public ListenableFuture<LibraryResult<MediaItem>> onGetItem(@NonNull MediaLibrarySession session, @NonNull MediaSession.ControllerInfo browser, @NonNull String mediaId) {
-                                                                                                                             ^
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:580: error: package MediaSession does not exist
-      public ListenableFuture<MediaSession.MediaItemsWithStartPosition> onSetMediaItems(@NonNull MediaSession session, @NonNull MediaSession.ControllerInfo controller, @NonNull List<MediaItem> mediaItems, int startIndex, long startPositionMs) {
-                                                                                                                                            ^
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/PlaybackService.java:580: error: package MediaSession does not exist
-      public ListenableFuture<MediaSession.MediaItemsWithStartPosition> onSetMediaItems(@NonNull MediaSession session, @NonNull MediaSession.ControllerInfo controller, @NonNull List<MediaItem> mediaItems, int startIndex, long startPositionMs) {
-                                          ^
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/bean/Sub.java:8: error: package androidx.media3.common does not exist
-  import androidx.media3.common.C;
-                               ^
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/bean/Drm.java:6: error: package androidx.media3.common does not exist
-  import androidx.media3.common.C;
-                               ^
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/MediaClients.java:22: error: package MediaSession does not exist
-      void connect(@NonNull MediaSession.ControllerInfo controller, @NonNull String packageName) {
-                                        ^
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/MediaClients.java:26: error: package MediaSession does not exist
-      void disconnect(@NonNull MediaSession.ControllerInfo controller) {
-                                           ^
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/service/MediaClients.java:34: error: package MediaSession does not exist
-      boolean isSelf(@NonNull MediaSession.ControllerInfo controller, @NonNull String packageName) {
-                                          ^
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/player/media/PlaySpec.java:6: error: package androidx.media3.common does not exist
-  import androidx.media3.common.C;
-                               ^
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/player/media/PlaySpec.java:7: error: package androidx.media3.common does not exist
-  import androidx.media3.common.MediaMetadata;
-                               ^
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/player/engine/PlayerEngine.java:3: error: package androidx.media3.common does not exist
-  import androidx.media3.common.C;
-                               ^
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/player/engine/PlayerEngine.java:4: error: package androidx.media3.common does not exist
-  import androidx.media3.common.PlaybackException;
-                               ^
-  /home/runner/work/tvbox-sources/tvbox-sources/fongmi/app/src/main/java/com/fongmi/android/tv/player/engine/PlayerEngine.java:5: error: package androidx.media3.common does not exist
-  import androidx.media3.common.Player;
-                               ^
-  100 errors
-
-* Try:
-> Check your code and dependencies to fix the compilation error(s)
-> Run with --scan to get full insights from a Build Scan (powered by Develocity).
 
 Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
 
@@ -1011,6 +829,6 @@ You can use '--warning-mode all' to show the individual deprecation warnings and
 
 For more on this, please refer to https://docs.gradle.org/9.6.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
 
-BUILD FAILED in 1m 39s
-64 actionable tasks: 61 executed, 3 from cache
-GRADLE_EXIT=1
+BUILD SUCCESSFUL in 8m 56s
+365 actionable tasks: 318 executed, 47 from cache
+GRADLE_EXIT=0
