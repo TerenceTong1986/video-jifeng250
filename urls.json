@@ -33,16 +33,16 @@
       "url": "https://fastly.jsdelivr.net/gh/gaotianliuyun/gao@master/js.json"
     },
     {
-      "name": "⭐⭐⭐FM影视",
-      "url": "http://fmys.top/fmys.json"
-    },
-    {
       "name": "⭐⭐⭐王二小",
       "url": "https://9280.kstore.vip/newwex.json"
     },
     {
       "name": "🪞王二小镜像1",
       "url": "https://9280.kstore.vip/wex.json"
+    },
+    {
+      "name": "⭐⭐⭐FM影视",
+      "url": "http://fmys.top/fmys.json"
     },
     {
       "name": "⭐⭐⭐无名",
@@ -55,6 +55,10 @@
     {
       "name": "⭐⭐⭐道长",
       "url": "https://gitlab.com/duomv/dzhipy/-/raw/main/index.json"
+    },
+    {
+      "name": "⭐⭐⭐VOX",
+      "url": "http://rihou.cc:88/demo.php"
     },
     {
       "name": "⭐⭐⭐嗷呜",
@@ -79,10 +83,6 @@
     {
       "name": "⭐⭐⭐饭太硬(ftygit)",
       "url": "https://cdn09022024.gitlink.org.cn/api/v1/repos/xxooo/in/raw/in.bmp"
-    },
-    {
-      "name": "⭐⭐⭐VOX",
-      "url": "http://rihou.cc:88/demo.php"
     },
     {
       "name": "❌摸鱼儿",
