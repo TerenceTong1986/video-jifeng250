@@ -187,8 +187,8 @@ AS	libavcodec/arm/vp9mc_neon.o
 CC	libavcodec/atsc_a53.o
 CC	libavcodec/avcodec.o
 CC	libavcodec/avdct.o
-CC	libavcodec/avfft.o
 CC	libavcodec/avpacket.o
+CC	libavcodec/avfft.o
 CC	libavcodec/bitstream.o
 CC	libavcodec/bitstream_filters.o
 CC	libavcodec/blockdsp.o
@@ -211,10 +211,10 @@ CC	libavcodec/dynamic_hdr_vivid.o
 CC	libavcodec/eac3_data.o
 CC	libavcodec/encode.o
 CC	libavcodec/error_resilience.o
+CC	libavcodec/exif.o
 libavcodec/error_resilience.c:396:12: warning: variable 'depth' set but not used [-Wunused-but-set-variable]
   396 |     int i, depth, num_avail;
       |            ^
-CC	libavcodec/exif.o
 CC	libavcodec/faandct.o
 CC	libavcodec/faanidct.o
 CC	libavcodec/fdctdsp.o
@@ -239,8 +239,8 @@ CC	libavcodec/h2645_vui.o
 CC	libavcodec/h2645data.o
 CC	libavcodec/h264_cabac.o
 CC	libavcodec/h264_cavlc.o
-1 warning generated.
 CC	libavcodec/h264_direct.o
+1 warning generated.
 CC	libavcodec/h264_loopfilter.o
 CC	libavcodec/h264_mb.o
 CC	libavcodec/h264_parse.o
@@ -293,10 +293,10 @@ CC	libavcodec/mpeg4audio_sample_rates.o
 CC	libavcodec/mpeg4video.o
 CC	libavcodec/mpeg4video_parser.o
 CC	libavcodec/mpeg4videodec.o
+CC	libavcodec/mpeg4videodsp.o
 libavcodec/mpeg4videodec.c:737:13: warning: variable 'time_incr' set but not used [-Wunused-but-set-variable]
   737 |         int time_incr = 0;
       |             ^
-CC	libavcodec/mpeg4videodsp.o
 CC	libavcodec/mpeg_er.o
 CC	libavcodec/mpegaudio.o
 CC	libavcodec/mpegaudiodata.o
@@ -315,7 +315,9 @@ CC	libavcodec/mpegvideo_dec.o
 CC	libavcodec/mpegvideo_motion.o
 CC	libavcodec/mpegvideodata.o
 CC	libavcodec/neon/mpegvideo.o
+1 warning generated.
 CC	libavcodec/options.o
+CC	libavcodec/opus_celt.o
 In file included from libavcodec/options.c:38:
 libavcodec/options_table.h:273:116: warning: implicit conversion from 'unsigned long long' to 'double' changes value from 18446744073709551615 to 18446744073709551616 [-Wimplicit-const-int-float-conversion]
   273 | {"request_channel_layout", NULL, OFFSET(request_channel_layout), AV_OPT_TYPE_CHANNEL_LAYOUT, {.i64 = DEFAULT }, 0, UINT64_MAX, A|D, "request_channel_layout"},
@@ -355,10 +357,8 @@ libavcodec/options_table.h:48:110: warning: implicit conversion from 'long long'
 <scratch space>:32:1: note: expanded from here
    32 | 9223372036854775807LL
       | ^~~~~~~~~~~~~~~~~~~~~
-1 warning generated.
-CC	libavcodec/opus_celt.o
-3 warnings generated.
 CC	libavcodec/opus_parse.o
+3 warnings generated.
 CC	libavcodec/opus_pvq.o
 CC	libavcodec/opus_rc.o
 CC	libavcodec/opus_silk.o
@@ -426,8 +426,8 @@ CC	libavcodec/vp9block.o
 CC	libavcodec/vp9data.o
 CC	libavcodec/vp9dsp.o
 CC	libavcodec/vp9dsp_10bpp.o
-CC	libavcodec/vp9dsp_12bpp.o
 2 warnings generated.
+CC	libavcodec/vp9dsp_12bpp.o
 CC	libavcodec/vp9dsp_8bpp.o
 CC	libavcodec/vp9lpf.o
 CC	libavcodec/vp9mvs.o
@@ -556,8 +556,8 @@ libavutil/cpu.c:116:76: warning: implicit conversion from 'long long' to 'double
 <scratch space>:41:1: note: expanded from here
    41 | 9223372036854775807LL
       | ^~~~~~~~~~~~~~~~~~~~~
-1 warning generated.
 CC	libavutil/crc.o
+1 warning generated.
 CC	libavutil/csp.o
 CC	libavutil/des.o
 CC	libavutil/detection_bbox.o
@@ -569,6 +569,7 @@ CC	libavutil/encryption_info.o
 CC	libavutil/error.o
 CC	libavutil/eval.o
 CC	libavutil/fifo.o
+CC	libavutil/file.o
 libavutil/eval.c:237:41: warning: implicit conversion from 'unsigned long long' to 'double' changes value from 18446744073709551615 to 18446744073709551616 [-Wimplicit-const-int-float-conversion]
   237 |             return e->value * (r * (1.0/UINT64_MAX));
       |                                        ~^~~~~~~~~~
@@ -581,13 +582,12 @@ libavutil/eval.c:237:41: warning: implicit conversion from 'unsigned long long' 
 <scratch space>:26:1: note: expanded from here
    26 | 18446744073709551615ULL
       | ^~~~~~~~~~~~~~~~~~~~~~~
-CC	libavutil/file.o
 CC	libavutil/file_open.o
 CC	libavutil/film_grain_params.o
 CC	libavutil/fixed_dsp.o
 CC	libavutil/float_dsp.o
-CC	libavutil/frame.o
 1 warning generated.
+CC	libavutil/frame.o
 CC	libavutil/hash.o
 CC	libavutil/hdr_dynamic_metadata.o
 CC	libavutil/hdr_dynamic_vivid_metadata.o
@@ -843,9 +843,9 @@ CC	libavcodec/get_buffer.o
 CC	libavcodec/golomb.o
 CC	libavcodec/h263.o
 CC	libavcodec/h263_parser.o
+1 warning generated.
 CC	libavcodec/h263data.o
 CC	libavcodec/h263dec.o
-1 warning generated.
 CC	libavcodec/h263dsp.o
 CC	libavcodec/h2645_parse.o
 CC	libavcodec/h2645_sei.o
@@ -871,13 +871,13 @@ CC	libavcodec/h264pred.o
 CC	libavcodec/h264qpel.o
 CC	libavcodec/h274.o
 CC	libavcodec/hevc_cabac.o
-CC	libavcodec/hevc_data.o
 libavcodec/hevc_cabac.c:37:21: warning: variable 'num_bins_in_se' is not needed and will not be emitted [-Wunneeded-internal-declaration]
    37 | static const int8_t num_bins_in_se[] = {
       |                     ^~~~~~~~~~~~~~
+CC	libavcodec/hevc_data.o
 CC	libavcodec/hevc_filter.o
-CC	libavcodec/hevc_mvs.o
 1 warning generated.
+CC	libavcodec/hevc_mvs.o
 CC	libavcodec/hevc_parse.o
 CC	libavcodec/hevc_ps.o
 CC	libavcodec/hevc_refs.o
@@ -1167,6 +1167,7 @@ CC	libavutil/downmix_info.o
 CC	libavutil/encryption_info.o
 CC	libavutil/error.o
 CC	libavutil/eval.o
+CC	libavutil/fifo.o
 libavutil/eval.c:237:41: warning: implicit conversion from 'unsigned long' to 'double' changes value from 18446744073709551615 to 18446744073709551616 [-Wimplicit-const-int-float-conversion]
   237 |             return e->value * (r * (1.0/UINT64_MAX));
       |                                        ~^~~~~~~~~~
@@ -1179,7 +1180,6 @@ libavutil/eval.c:237:41: warning: implicit conversion from 'unsigned long' to 'd
 <scratch space>:26:1: note: expanded from here
    26 | 18446744073709551615UL
       | ^~~~~~~~~~~~~~~~~~~~~~
-CC	libavutil/fifo.o
 CC	libavutil/file.o
 CC	libavutil/file_open.o
 CC	libavutil/film_grain_params.o
@@ -1516,8 +1516,8 @@ libavcodec/options_table.h:48:110: warning: implicit conversion from 'long long'
 <scratch space>:32:1: note: expanded from here
    32 | 9223372036854775807LL
       | ^~~~~~~~~~~~~~~~~~~~~
-3 warnings generated.
 CC	libavcodec/opus_celt.o
+3 warnings generated.
 CC	libavcodec/opus_parse.o
 CC	libavcodec/opus_pvq.o
 CC	libavcodec/opus_rc.o
@@ -1706,7 +1706,6 @@ CC	libavutil/encryption_info.o
 CC	libavutil/error.o
 CC	libavutil/eval.o
 CC	libavutil/fifo.o
-CC	libavutil/file.o
 libavutil/eval.c:237:41: warning: implicit conversion from 'unsigned long long' to 'double' changes value from 18446744073709551615 to 18446744073709551616 [-Wimplicit-const-int-float-conversion]
   237 |             return e->value * (r * (1.0/UINT64_MAX));
       |                                        ~^~~~~~~~~~
@@ -1719,6 +1718,7 @@ libavutil/eval.c:237:41: warning: implicit conversion from 'unsigned long long' 
 <scratch space>:26:1: note: expanded from here
    26 | 18446744073709551615ULL
       | ^~~~~~~~~~~~~~~~~~~~~~~
+CC	libavutil/file.o
 CC	libavutil/file_open.o
 CC	libavutil/film_grain_params.o
 CC	libavutil/fixed_dsp.o
@@ -2011,8 +2011,8 @@ CC	libavcodec/mpegaudiotabs.o
 CC	libavcodec/mpegpicture.o
 CC	libavcodec/mpegutils.o
 CC	libavcodec/mpegvideo.o
-1 warning generated.
 CC	libavcodec/mpegvideo_dec.o
+1 warning generated.
 CC	libavcodec/mpegvideo_motion.o
 CC	libavcodec/mpegvideodata.o
 CC	libavcodec/options.o
@@ -2064,8 +2064,8 @@ CC	libavcodec/opus_silk.o
 CC	libavcodec/opusdec.o
 CC	libavcodec/opusdec_celt.o
 CC	libavcodec/opusdsp.o
-CC	libavcodec/opustab.o
 CC	libavcodec/parser.o
+CC	libavcodec/opustab.o
 CC	libavcodec/parsers.o
 CC	libavcodec/profiles.o
 CC	libavcodec/pthread.o
@@ -2263,8 +2263,8 @@ CC	libavutil/film_grain_params.o
 CC	libavutil/fixed_dsp.o
 CC	libavutil/float_dsp.o
 CC	libavutil/frame.o
-1 warning generated.
 CC	libavutil/hash.o
+1 warning generated.
 CC	libavutil/hdr_dynamic_metadata.o
 CC	libavutil/hdr_dynamic_vivid_metadata.o
 CC	libavutil/hmac.o
