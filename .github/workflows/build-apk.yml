@@ -66,7 +66,7 @@ jobs:
         run: |
           chmod +x gradlew
           set +e
-          ./gradlew :media3-common:release :media3-database:release :media3-datasource:release :media3-datasource-okhttp:release :media3-datasource-rtmp:release :media3-effect:release :media3-exoplayer:release :media3-extractor:release :media3-mpvplayer:release :media3-session:release :media3-ui:release :media3-ui-danmaku:release --no-daemon --stacktrace > "$GITHUB_WORKSPACE/media-gradle.log" 2>&1
+          ./gradlew :lib-common:release :lib-database:release :lib-datasource:release :lib-datasource-okhttp:release :lib-datasource-rtmp:release :lib-effect:release :lib-exoplayer:release :lib-extractor:release :lib-mpvplayer:release :lib-session:release :lib-ui:release :lib-ui-danmaku:release --no-daemon --stacktrace > "$GITHUB_WORKSPACE/media-gradle.log" 2>&1
           ec=$?
           set -e
           echo "MEDIA_GRADLE_EXIT=$ec" >> "$GITHUB_WORKSPACE/media-gradle.log"
