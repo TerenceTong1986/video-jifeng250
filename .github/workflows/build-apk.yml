@@ -38,6 +38,9 @@ jobs:
           # 4) versionName → 5.6.1-feng（源码最新5.6.0，对齐Release线+标识魔改）
           sed -i 's/versionName "5.6.0"/versionName "5.6.1-feng"/' fongmi/app/build.gradle
           grep -n 'versionName' fongmi/app/build.gradle
+          # 5) R8 keep 规则：保 ReorderingBufferQueue（lib-container），防止混淆误删导致 NoClassDefFoundError
+          echo '-keep class androidx.media3.container.ReorderingBufferQueue { *; }' >> fongmi/app/proguard-rules-media.pro
+          tail -3 fongmi/app/proguard-rules-media.pro
 
       - name: Set up JDK 21
         uses: actions/setup-java@v4
@@ -128,8 +131,8 @@ jobs:
         run: |
           chmod +x gradlew
           set +e
-          # debug构建(无混淆)用于定位闪退；release在混淆规则修复后再启用
-          ./gradlew :app:assembleDebug --no-daemon > "$GITHUB_WORKSPACE/gradle.log" 2>&1
+          # release构建（含R8混淆，ReorderingBufferQueue已加keep规则防误删）
+          ./gradlew :app:assembleRelease --no-daemon > "$GITHUB_WORKSPACE/gradle.log" 2>&1
           ec=$?
           set -e
           echo "GRADLE_EXIT=$ec" >> "$GITHUB_WORKSPACE/gradle.log"
@@ -169,7 +172,7 @@ jobs:
           body: |
             - 魔改: SiteApi.java 分类请求参数 t= → type=
             - 效果: 9源分类浏览全部可用
-            - 构建:  (debug版-闪退定位)
+            - 构建: release版（含R8混淆，ReorderingBufferQueue已加keep规则）
             - 自动构建: GitHub Actions
           make_latest: true
           overwrite: true
