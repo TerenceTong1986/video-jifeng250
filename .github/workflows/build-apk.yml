@@ -23,10 +23,18 @@ jobs:
           ref: fongmi
           path: fongmi
 
-      - name: Apply mod — CMS category param t= → type=
+      - name: Apply mod — type= + 共存改名(疯影视)
         run: |
+          # 1) CMS分类参数 t= → type=（9源分类复活）
           sed -i 's/params.put("t", tid);/params.put("type", tid);/' fongmi/app/src/main/java/com/fongmi/android/tv/api/SiteApi.java
           grep -n 'params.put("type", tid)' fongmi/app/src/main/java/com/fongmi/android/tv/api/SiteApi.java
+          # 2) applicationId 加后缀 → 与原版共存安装
+          sed -i 's/applicationId "com.fongmi.android.tv"/applicationId "com.fongmi.android.tv.feng"/' fongmi/app/build.gradle
+          grep -n 'applicationId' fongmi/app/build.gradle
+          # 3) 改名 疯影视
+          sed -i 's|<string name="app_name">TV</string>|<string name="app_name">疯影视</string>|' fongmi/app/src/main/res/values/strings.xml
+          sed -i 's|<string name="app_name">影视</string>|<string name="app_name">疯影视</string>|' fongmi/app/src/main/res/values-zh-rCN/strings.xml
+          grep -rn 'app_name' fongmi/app/src/main/res/values/strings.xml fongmi/app/src/main/res/values-zh-rCN/strings.xml
 
       - name: Set up JDK 21
         uses: actions/setup-java@v4
