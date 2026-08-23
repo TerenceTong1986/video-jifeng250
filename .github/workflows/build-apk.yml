@@ -74,12 +74,14 @@ jobs:
           tail -100 "$GITHUB_WORKSPACE/media-gradle.log"
           if [ "$ec" != "0" ]; then exit $ec; fi
           echo "=== aars ==="
-          find . -path "*/build/outputs/aar/*.aar" -type f
+          find . -path "*/build*/outputs/aar/*.aar" -type f
 
       - name: Copy aars to TV app/libs
         run: |
           mkdir -p "$GITHUB_WORKSPACE/fongmi/app/libs"
-          find "$GITHUB_WORKSPACE/media" -path "*/build/outputs/aar/*.aar" -type f -exec cp {} "$GITHUB_WORKSPACE/fongmi/app/libs/" \;
+          find "$GITHUB_WORKSPACE/media" -path "*/build*/outputs/aar/*.aar" -type f -exec cp {} "$GITHUB_WORKSPACE/fongmi/app/libs/" \;
+          echo "=== copied aars ==="
+          ls -la "$GITHUB_WORKSPACE/fongmi/app/libs/"
           ls -la "$GITHUB_WORKSPACE/fongmi/app/libs/"
 
       - name: Generate keystore & local.properties
