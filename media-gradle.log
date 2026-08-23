@@ -57,20 +57,20 @@ All code optimizations and obfuscation are disabled for debuggable builds.
 FAILURE: Build failed with an exception.
 
 * What went wrong:
-Cannot locate tasks that match ':media3-common:release' as project 'media3-common' not found in root project 'androidx.media3'.
+Cannot locate tasks that match ':lib-common:release' as task 'release' not found in project ':lib-common'.
 
 * Try:
-> Run gradlew projects to get a list of available projects.
+> Run gradlew tasks to get a list of available tasks.
 > For more on name expansion, please refer to https://docs.gradle.org/9.1.0/userguide/command_line_interface.html#sec:name_abbreviation in the Gradle documentation.
 > Run with --info or --debug option to get more log output.
 > Run with --scan to generate a Build Scan (Powered by Develocity).
 > Get more help at https://help.gradle.org.
 
 * Exception is:
-org.gradle.execution.ProjectSelectionException: Cannot locate tasks that match ':media3-common:release' as project 'media3-common' not found in root project 'androidx.media3'.
-	at org.gradle.execution.selection.DefaultBuildTaskSelector.selectProject(DefaultBuildTaskSelector.java:179)
-	at org.gradle.execution.selection.DefaultBuildTaskSelector.resolveProject(DefaultBuildTaskSelector.java:136)
-	at org.gradle.execution.selection.DefaultBuildTaskSelector.resolveTaskName(DefaultBuildTaskSelector.java:108)
+org.gradle.execution.TaskSelectionException: Cannot locate tasks that match ':lib-common:release' as task 'release' not found in project ':lib-common'.
+	at org.gradle.execution.DefaultTaskSelector.throwTaskSelectionException(DefaultTaskSelector.java:107)
+	at org.gradle.execution.DefaultTaskSelector.getSelection(DefaultTaskSelector.java:88)
+	at org.gradle.execution.selection.DefaultBuildTaskSelector.resolveTaskName(DefaultBuildTaskSelector.java:109)
 	at org.gradle.execution.commandline.CommandLineTaskParser.parseTasks(CommandLineTaskParser.java:49)
 	at org.gradle.execution.TaskNameResolvingBuildTaskScheduler.scheduleRequestedTasks(TaskNameResolvingBuildTaskScheduler.java:66)
 	at org.gradle.execution.DefaultTasksBuildTaskScheduler.scheduleRequestedTasks(DefaultTasksBuildTaskScheduler.java:72)
@@ -209,6 +209,6 @@ org.gradle.execution.ProjectSelectionException: Cannot locate tasks that match '
 	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:47)
 
 
-BUILD FAILED in 2m 16s
+BUILD FAILED in 2m 22s
 20 actionable tasks: 20 executed
 MEDIA_GRADLE_EXIT=1
