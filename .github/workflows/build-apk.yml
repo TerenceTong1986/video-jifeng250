@@ -106,7 +106,8 @@ jobs:
         run: |
           chmod +x gradlew
           set +e
-          ./gradlew :app:assembleRelease --no-daemon > "$GITHUB_WORKSPACE/gradle.log" 2>&1
+          # debug构建(无混淆)用于定位闪退；release在混淆规则修复后再启用
+          ./gradlew :app:assembleDebug --no-daemon > "$GITHUB_WORKSPACE/gradle.log" 2>&1
           ec=$?
           set -e
           echo "GRADLE_EXIT=$ec" >> "$GITHUB_WORKSPACE/gradle.log"
@@ -145,6 +146,7 @@ jobs:
           body: |
             - 魔改: SiteApi.java 分类请求参数 t= → type=
             - 效果: 9源分类浏览全部可用
+            - 构建:  (debug版-闪退定位)
             - 自动构建: GitHub Actions
           make_latest: true
           overwrite: true
