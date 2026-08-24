@@ -16,6 +16,7 @@ h1{font-size:22px;margin-bottom:16px;color:#58A6FF}
 .btn-blue:disabled{background:#144a9e;color:#666}
 .btn-purple{background:#8957E5;color:#fff}
 .btn-purple:disabled{background:#5a3a94;color:#666}
+.btn-ghost{background:transparent;color:#58A6FF;border:1px solid #30363D;margin-top:6px;font-size:13px;padding:8px}
 .info{font-size:13px;color:#8B949E;margin-top:6px}
 .progress{height:6px;background:#21262D;border-radius:3px;margin:8px 0;overflow:hidden}
 .progress-bar{height:100%;background:#238636;border-radius:3px;transition:width .3s;width:0%}
@@ -35,9 +36,12 @@ h1{font-size:22px;margin-bottom:16px;color:#58A6FF}
 .header-row span:nth-child(1){width:20px;text-align:center}
 .header-row span:nth-child(2){flex:1}
 .header-row span:nth-child(3){width:55px;text-align:right}
-#fileName{font-size:12px;color:#8B949E;margin-top:4px}
 #sourceCount{font-size:14px;font-weight:600;color:#E6EDF3}
+#sourceInfo{font-size:12px;color:#8B949E;margin-top:4px}
+select{width:100%;padding:10px;background:#0D1117;color:#E6EDF3;border:1px solid #30363D;border-radius:6px;font-size:14px;margin-bottom:6px;appearance:auto}
 .hidden{display:none}
+.loading-dots::after{content:'';animation:dots 1.5s steps(4,end) infinite}
+@keyframes dots{0%{content:''}25%{content:'.'}50%{content:'..'}75%{content:'...'}}
 </style>
 </head>
 <body>
@@ -45,14 +49,19 @@ h1{font-size:22px;margin-bottom:16px;color:#58A6FF}
 <h1>📡 直播源测速</h1>
 
 <div class="card">
+  <label style="font-size:13px;color:#8B949E;display:block;margin-bottom:4px">选择直播源</label>
+  <select id="sourceSelect" onchange="onSourceChange()">
+    <option value="internal">📺 优选直播(本网测速) — iptv4-fast.txt</option>
+    <option value="m3u">📺 IPTV4直播M3U(带台标EPG) — live.zbds.top</option>
+    <option value="manual">📁 手动选择文件</option>
+  </select>
   <input type="file" id="fileInput" accept=".txt,.m3u,.m3u8" style="display:none">
-  <button class="btn btn-blue" onclick="document.getElementById('fileInput').click()">📁 选择直播源文件</button>
-  <div id="fileName" class="info">未选择文件</div>
+  <div id="sourceInfo">正在加载直播源列表...</div>
   <div id="sourceCount">源数量: 0</div>
 </div>
 
 <div class="card">
-  <button class="btn btn-primary" id="btnStart" onclick="startTest()" disabled>▶ 开始测速</button>
+  <button class="btn btn-primary" id="btnStart" onclick="startTest()" disabled>▶ 一键测速</button>
   <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
   <div id="tvProgress" class="info">准备就绪</div>
 </div>
@@ -75,28 +84,64 @@ h1{font-size:22px;margin-bottom:16px;color:#58A6FF}
 <button class="btn btn-purple" id="btnExport" onclick="exportBest()" disabled>💾 导出最优源</button>
 
 <script>
+const SOURCE_URLS = {
+  internal: 'https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/live/iptv4-fast.txt',
+  m3u: 'https://live.zbds.top/tv/iptv4.m3u'
+};
+const TIMEOUT = 5000;
+const CONCURRENCY = 10;
+
 let sources = [];
 let results = [];
 let isTesting = false;
-const TIMEOUT = 5000;
-const CONCURRENCY = 10;
+
+// On page load, auto-fetch default source
+document.addEventListener('DOMContentLoaded', async () => {
+  await fetchSource('internal');
+});
+
+async function onSourceChange() {
+  const val = document.getElementById('sourceSelect').value;
+  if (val === 'manual') {
+    document.getElementById('fileInput').click();
+    return;
+  }
+  await fetchSource(val);
+}
 
 document.getElementById('fileInput').addEventListener('change', async function(e) {
   const file = e.target.files[0];
   if (!file) return;
-  document.getElementById('fileName').textContent = '已选: ' + file.name;
+  document.getElementById('sourceInfo').textContent = '已选文件: ' + file.name;
   const text = await file.text();
-  sources = parseSources(text);
-  document.getElementById('sourceCount').textContent = '源数量: ' + sources.length;
-  document.getElementById('btnStart').disabled = sources.length === 0;
+  parseAndSetSources(text);
+});
+
+async function fetchSource(key) {
+  const url = SOURCE_URLS[key];
+  if (!url) return;
+  document.getElementById('sourceInfo').textContent = '正在拉取直播源...';
+  document.getElementById('btnStart').disabled = true;
   document.getElementById('resultContainer').innerHTML = '';
   results = [];
   updateStats();
   document.getElementById('btnExport').disabled = true;
-  document.getElementById('tvProgress').textContent = '准备就绪，点击开始测速';
-});
 
-function parseSources(text) {
+  try {
+    const resp = await fetch(url);
+    if (!resp.ok) throw new Error('HTTP ' + resp.status);
+    const text = await resp.text();
+    document.getElementById('sourceInfo').textContent = '✅ 已拉取: ' + url.split('/').pop();
+    parseAndSetSources(text);
+  } catch (e) {
+    document.getElementById('sourceInfo').textContent = '❌ 拉取失败: ' + e.message;
+    if (key === 'm3u') {
+      document.getElementById('sourceInfo').textContent = '❌ 外部源拉取失败，试试切换为"优选直播"';
+    }
+  }
+}
+
+function parseAndSetSources(text) {
   const lines = text.split('\n');
   const urls = [];
   for (let i = 0; i < lines.length; i++) {
@@ -105,18 +150,30 @@ function parseSources(text) {
       i++;
       if (i < lines.length) {
         let next = lines[i].trim();
-        if (next.startsWith('http')) urls.push(next);
+        if (next.startsWith('http') || next.startsWith('rtmp') || next.startsWith('rtsp')) urls.push(next);
       }
     } else if (line.startsWith('http') || line.startsWith('rtmp') || line.startsWith('rtsp')) {
-      urls.push(line);
+      if (line.includes('#') && !line.startsWith('http#')) {
+        // Multiple URLs separated by # — take the first one
+        const parts = line.split('#');
+        parts.forEach(p => { if (p.startsWith('http')) urls.push(p); });
+      } else {
+        urls.push(line);
+      }
     }
   }
-  return urls;
+  sources = urls;
+  document.getElementById('sourceCount').textContent = '源数量: ' + sources.length;
+  document.getElementById('btnStart').disabled = sources.length === 0;
+  document.getElementById('tvProgress').textContent = sources.length > 0 ? '准备就绪，点击"一键测速"开始' : '未找到有效源';
+}
+
+function parseSources(text) {
+  return parseAndSetSources(text);
 }
 
 async function startTest() {
-  if (isTesting) return;
-  if (sources.length === 0) return;
+  if (isTesting || sources.length === 0) return;
   isTesting = true;
   results = [];
   document.getElementById('btnStart').disabled = true;
@@ -145,7 +202,7 @@ async function startTest() {
   document.getElementById('btnStart').textContent = '▶ 重新测速';
   const avail = results.filter(r => r.ok).length;
   document.getElementById('tvProgress').textContent = `✅ 完成！${avail}/${total} 可用`;
-  document.getElementById('btnExport').disabled = avail > 0;
+  document.getElementById('btnExport').disabled = avail === 0;
 }
 
 async function testUrl(url) {
