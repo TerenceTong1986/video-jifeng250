@@ -1,16 +1,16 @@
 {
   "urls": [
     {
+      "name": "⭐⭐⭐小盒子多仓",
+      "url": "http://xhztv.top/dc"
+    },
+    {
       "name": "⭐⭐⭐小盒子单仓",
       "url": "http://xhztv.top/xhz/"
     },
     {
       "name": "⭐⭐⭐小盒子4K",
       "url": "http://xhztv.top/4k.json"
-    },
-    {
-      "name": "⭐⭐⭐小盒子多仓",
-      "url": "http://xhztv.top/dc"
     },
     {
       "name": "⭐⭐⭐老刘备",
@@ -29,6 +29,10 @@
       "url": "https://fastly.jsdelivr.net/gh/2hacc/TVBox@main/oktv.json"
     },
     {
+      "name": "⭐⭐⭐道长",
+      "url": "https://gitlab.com/duomv/dzhipy/-/raw/main/index.json"
+    },
+    {
       "name": "⭐⭐⭐拾光多仓",
       "url": "http://xmbjm.fh4u.org/dc.txt"
     },
@@ -39,10 +43,6 @@
     {
       "name": "🪞王二小镜像1",
       "url": "https://9280.kstore.vip/wex.json"
-    },
-    {
-      "name": "⭐⭐⭐道长",
-      "url": "https://gitlab.com/duomv/dzhipy/-/raw/main/index.json"
     },
     {
       "name": "⭐⭐⭐无名",
@@ -69,12 +69,12 @@
       "url": "http://itv666.cc/aowu/config.webp"
     },
     {
-      "name": "⭐⭐⭐小马",
-      "url": "https://szyyds.cn/tv/x.json"
-    },
-    {
       "name": "⭐⭐⭐挺好分享多仓",
       "url": "https://ztha.top/TVBox/GYCK.json"
+    },
+    {
+      "name": "⭐⭐⭐小马",
+      "url": "https://szyyds.cn/tv/x.json"
     },
     {
       "name": "⭐⭐⭐饭太硬(ftygit)",
