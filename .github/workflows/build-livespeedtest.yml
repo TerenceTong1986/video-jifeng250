@@ -17,24 +17,18 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Set up JDK 21
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: '21'
 
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v3
-
-      - name: Generate Gradle Wrapper
-        run: |
-          cd LiveSpeedTest
-          gradle wrapper --gradle-version=8.7
-
       - name: Build APK
         run: |
+          set -e
           cd LiveSpeedTest
+          gradle wrapper --gradle-version=8.7
           chmod +x gradlew
-          ./gradlew assembleRelease --no-daemon
+          ./gradlew assembleRelease --no-daemon --stacktrace
           echo "===== APK files ====="
           find . -name "*.apk" -type f
 
@@ -51,3 +45,4 @@ jobs:
             - 并发 10 线程测速，5 秒超时
             - 自动导出最优源
           make_latest: false
+          overwrite: true
