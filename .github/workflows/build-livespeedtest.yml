@@ -21,18 +21,18 @@ jobs:
           distribution: temurin
           java-version: '21'
 
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+        with:
+          gradle-version: 8.7
+
       - name: Build APK
         run: |
           set -e
           cd LiveSpeedTest
-          # Download Gradle and generate wrapper
-          GRADLE_VERSION=8.7
-          curl -sL -o /tmp/gradle-bin.zip \
-            "https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip"
-          unzip -q /tmp/gradle-bin.zip -d /tmp/
-          /tmp/gradle-${GRADLE_VERSION}/bin/gradle wrapper --gradle-version=${GRADLE_VERSION}
+          gradle wrapper --gradle-version=8.7
           chmod +x gradlew
-          ./gradlew assembleRelease --no-daemon --stacktrace 2>&1
+          ./gradlew assembleRelease --no-daemon --stacktrace
           echo "===== APK files ====="
           find . -name "*.apk" -type f
 
