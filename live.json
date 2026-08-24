@@ -12,17 +12,6 @@
       "timeout": 15
     },
     {
-      "key": "IPTV6-央视卫视",
-      "name": "📡 IPv6央视卫视(官方CDN)",
-      "type": 0,
-      "url": "https://fastly.jsdelivr.net/gh/jifeng250/tvbox-sources@main/live/iptv6-fast.txt",
-      "playerType": 2,
-      "epg": "https://epg.51zmt.top:8000/api/diyp/?ch={name}&date={date}",
-      "ua": "Mozilla/5.0",
-      "logo": "https://wswtv.github.io/tv/{name}.png",
-      "timeout": 15
-    },
-    {
       "key": "IPTV4-M3U",
       "name": "📺 IPTV4直播M3U(带台标EPG)",
       "type": 0,
