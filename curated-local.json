@@ -150,7 +150,7 @@
       "type": 3,
       "api": "csp_AList",
       "searchable": 1,
-      "quickSearch": 1,
+      "quickSearch": 0,
       "changeable": 1,
       "ext": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/alist.json",
       "jar": "./custom_spider.jar",
@@ -802,7 +802,7 @@
       "jar": "./pg.jar",
       "timeout": 10,
       "searchable": 1,
-      "quickSearch": 1,
+      "quickSearch": 0,
       "changeable": 1,
       "ext": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/lib/token.json"
     },
@@ -826,7 +826,7 @@
       "jar": "./pg.jar",
       "timeout": 10,
       "searchable": 1,
-      "quickSearch": 1,
+      "quickSearch": 0,
       "changeable": 1,
       "ext": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/lib/token.json$$$https://662688.xyz"
     },
@@ -838,7 +838,7 @@
       "jar": "./pg.jar",
       "timeout": 10,
       "searchable": 1,
-      "quickSearch": 1,
+      "quickSearch": 0,
       "changeable": 1,
       "ext": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/lib/token.json"
     },
@@ -850,7 +850,7 @@
       "jar": "./pg.jar",
       "timeout": 10,
       "searchable": 1,
-      "quickSearch": 1,
+      "quickSearch": 0,
       "changeable": 1,
       "ext": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/lib/token.json"
     },
@@ -874,7 +874,7 @@
       "jar": "./pg.jar",
       "timeout": 10,
       "searchable": 1,
-      "quickSearch": 1,
+      "quickSearch": 0,
       "changeable": 1,
       "ext": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/lib/token.json$$$https://xpanpan.site$$$null$$$1"
     },
@@ -886,7 +886,7 @@
       "jar": "./pg.jar",
       "timeout": 10,
       "searchable": 1,
-      "quickSearch": 1,
+      "quickSearch": 0,
       "changeable": 1,
       "ext": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/lib/token.json$$$1"
     },
@@ -898,7 +898,7 @@
       "jar": "./pg.jar",
       "timeout": 10,
       "searchable": 1,
-      "quickSearch": 1,
+      "quickSearch": 0,
       "changeable": 1,
       "ext": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/lib/token.json$$$https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/json/115share.txt$$$db$$$1"
     },
@@ -910,7 +910,7 @@
       "jar": "./pg.jar",
       "timeout": 10,
       "searchable": 1,
-      "quickSearch": 1,
+      "quickSearch": 0,
       "changeable": 1,
       "ext": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/lib/token.json$$$https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/json/quarkshare.txt"
     }
