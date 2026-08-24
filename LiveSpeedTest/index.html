@@ -51,14 +51,20 @@ select{width:100%;padding:10px;background:#0D1117;color:#E6EDF3;border:1px solid
 <div class="card">
   <label style="font-size:13px;color:#8B949E;display:block;margin-bottom:4px">选择直播源</label>
   <select id="sourceSelect" onchange="onSourceChange()">
-    <option value="internal">📺 优选直播(本网测速) — iptv4-fast.txt</option>
-    <option value="m3u">📺 IPTV4直播M3U(带台标EPG) — live.zbds.top</option>
-    <option value="manual">📁 手动选择文件</option>
-  </select>
-  <input type="file" id="fileInput" accept=".txt,.m3u,.m3u8" style="display:none">
-  <div id="sourceInfo">正在加载直播源列表...</div>
-  <div id="sourceCount">频道: 0</div>
-</div>
+      <option value="raw">📺 原始多地址源(每频道多线路) — live.zbds.top</option>
+      <option value="internal">🖥️ 电脑优选源(精简,备用) — iptv4-fast.txt</option>
+      <option value="manual">📁 手动选择文件</option>
+      <option value="custom">🔗 自定义源地址</option>
+    </select>
+    <input type="file" id="fileInput" accept=".txt,.m3u,.m3u8" style="display:none">
+    <div id="customUrlBox" style="display:none;margin-top:4px">
+      <input type="url" id="customUrl" placeholder="粘贴 txt/m3u 源地址" style="width:100%;padding:8px;background:#0D1117;color:#E6EDF3;border:1px solid #30363D;border-radius:6px;font-size:13px">
+      <button class="btn btn-ghost" onclick="loadCustomUrl()" style="margin-top:4px">加载</button>
+      <div class="info">注: 源需支持浏览器跨域访问(CORS)，GitHub raw 和 live.zbds.top 可以</div>
+    </div>
+    <div id="sourceInfo">正在加载直播源列表...</div>
+    <div id="sourceCount">频道: 0</div>
+  </div>
 
 <div class="card">
   <button class="btn btn-primary" id="btnStart" onclick="startTest()" disabled>▶ 一键测速</button>
@@ -86,8 +92,8 @@ select{width:100%;padding:10px;background:#0D1117;color:#E6EDF3;border:1px solid
 
 <script>
 const SOURCE_URLS = {
-  internal: 'https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/live/iptv4-fast.txt',
-  m3u: 'https://live.zbds.top/tv/iptv4.m3u'
+  raw: 'https://live.zbds.top/tv/iptv4.txt',
+  internal: 'https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/live/iptv4-fast.txt'
 };
 const TIMEOUT = 5000;
 const CONCURRENCY = 10;
@@ -99,7 +105,7 @@ let results = {};  // url -> {ok, latency}
 let isTesting = false;
 
 document.addEventListener('DOMContentLoaded', async () => {
-  await fetchSource('internal');
+  await fetchSource('raw');
 });
 
 async function onSourceChange() {
@@ -108,7 +114,18 @@ async function onSourceChange() {
     document.getElementById('fileInput').click();
     return;
   }
+  if (val === 'custom') {
+    document.getElementById('customUrlBox').style.display = 'block';
+    return;
+  }
+  document.getElementById('customUrlBox').style.display = 'none';
   await fetchSource(val);
+}
+
+async function loadCustomUrl() {
+  const url = document.getElementById('customUrl').value.trim();
+  if (!url) return;
+  await fetchSource('custom', url);
 }
 
 document.getElementById('fileInput').addEventListener('change', async function(e) {
@@ -119,8 +136,8 @@ document.getElementById('fileInput').addEventListener('change', async function(e
   parseAndSetSources(text);
 });
 
-async function fetchSource(key) {
-  const url = SOURCE_URLS[key];
+async function fetchSource(key, urlOverride) {
+  const url = urlOverride || SOURCE_URLS[key];
   if (!url) return;
   document.getElementById('sourceInfo').textContent = '正在拉取直播源...';
   document.getElementById('btnStart').disabled = true;
@@ -137,8 +154,8 @@ async function fetchSource(key) {
     parseAndSetSources(text);
   } catch (e) {
     document.getElementById('sourceInfo').textContent = '❌ 拉取失败: ' + e.message;
-    if (key === 'm3u') {
-      document.getElementById('sourceInfo').textContent = '❌ 外部源拉取失败，试试切换为"优选直播"';
+    if (key === 'raw') {
+      document.getElementById('sourceInfo').textContent = '❌ 原始源拉取失败，试试"电脑优选源"或自定义源';
     }
   }
 }
