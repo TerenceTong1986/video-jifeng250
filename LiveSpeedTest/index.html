@@ -347,11 +347,14 @@ function exportBest() {
     }
   }
   const blob = new Blob([out], { type: 'text/plain' });
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = '最优直播源.txt';
-  a.click();
-  URL.revokeObjectURL(a.href);
+    const a = document.createElement('a');
+    const now = new Date();
+    const pad = n => String(n).padStart(2, '0');
+    const ts = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}_${pad(now.getHours())}${pad(now.getMinutes())}`;
+    a.href = URL.createObjectURL(blob);
+    a.download = `最优直播源_${ts}.txt`;
+    a.click();
+    URL.revokeObjectURL(a.href);
   const availChannels = channels.filter(c => c.urls.some(u => results[u] && results[u].ok)).length;
   document.getElementById('tvProgress').textContent = `✅ 已导出 ${availChannels} 个频道的最优直播源`;
 }
