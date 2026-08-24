@@ -25,23 +25,23 @@ h1{font-size:22px;margin-bottom:16px;color:#58A6FF}
 .result-row{display:flex;align-items:center;padding:6px 4px;font-size:12px;border-bottom:1px solid #21262D;gap:8px}
 .result-row:last-child{border:none}
 .result-status{width:20px;text-align:center;font-size:14px}
-.result-url{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#C9D1D9}
-.result-latency{width:55px;text-align:right;font-weight:600;font-size:12px}
+.result-name{width:110px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#C9D1D9;font-weight:600}
+.result-url{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#8B949E}
+.result-latency{width:60px;text-align:right;font-weight:600;font-size:12px}
 .latency-fast{color:#238636}
 .latency-mid{color:#D29922}
 .latency-slow{color:#F85149}
 .latency-dead{color:#484F58}
 #resultContainer{max-height:60vh;overflow-y:auto;margin-top:8px}
-.header-row{display:flex;font-size:11px;color:#484F58;padding:4px;font-weight:600;gap:8px;margin-top:8px}
+.header-row{display:flex;font-size:11px;color:#484F58;padding:4px;font-weight:600;gap:8px;margin-top:8px;padding-bottom:0}
 .header-row span:nth-child(1){width:20px;text-align:center}
-.header-row span:nth-child(2){flex:1}
-.header-row span:nth-child(3){width:55px;text-align:right}
+.header-row span:nth-child(2){width:110px}
+.header-row span:nth-child(3){flex:1}
+.header-row span:nth-child(4){width:60px;text-align:right}
 #sourceCount{font-size:14px;font-weight:600;color:#E6EDF3}
 #sourceInfo{font-size:12px;color:#8B949E;margin-top:4px}
 select{width:100%;padding:10px;background:#0D1117;color:#E6EDF3;border:1px solid #30363D;border-radius:6px;font-size:14px;margin-bottom:6px;appearance:auto}
-.hidden{display:none}
-.loading-dots::after{content:'';animation:dots 1.5s steps(4,end) infinite}
-@keyframes dots{0%{content:''}25%{content:'.'}50%{content:'..'}75%{content:'...'}}
+.genre-header{font-size:11px;color:#58A6FF;font-weight:700;padding:8px 4px 4px;background:#0D1117;border-bottom:1px solid #21262D}
 </style>
 </head>
 <body>
@@ -57,7 +57,7 @@ select{width:100%;padding:10px;background:#0D1117;color:#E6EDF3;border:1px solid
   </select>
   <input type="file" id="fileInput" accept=".txt,.m3u,.m3u8" style="display:none">
   <div id="sourceInfo">正在加载直播源列表...</div>
-  <div id="sourceCount">源数量: 0</div>
+  <div id="sourceCount">频道: 0</div>
 </div>
 
 <div class="card">
@@ -68,14 +68,15 @@ select{width:100%;padding:10px;background:#0D1117;color:#E6EDF3;border:1px solid
 
 <div class="card">
   <div class="status-bar">
-    <span>可用: <b id="availCount">0</b></span>
-    <span>不可用: <b id="deadCount">0</b></span>
-    <span>总计: <b id="totalCount">0</b></span>
+    <span>频道可用: <b id="availCount">0</b></span>
+    <span>地址不可用: <b id="deadCount">0</b></span>
+    <span>地址总计: <b id="totalCount">0</b></span>
   </div>
 
   <div class="header-row">
     <span>状态</span>
-    <span>地址</span>
+    <span>频道</span>
+    <span>最优地址</span>
     <span>延迟</span>
   </div>
   <div id="resultContainer"></div>
@@ -91,11 +92,12 @@ const SOURCE_URLS = {
 const TIMEOUT = 5000;
 const CONCURRENCY = 10;
 
-let sources = [];
-let results = [];
+// parsed structure: [{type:'genre', name}, {type:'channel', name, urls:[...]}]
+let structure = [];
+let channels = [];
+let results = {};  // url -> {ok, latency}
 let isTesting = false;
 
-// On page load, auto-fetch default source
 document.addEventListener('DOMContentLoaded', async () => {
   await fetchSource('internal');
 });
@@ -123,7 +125,7 @@ async function fetchSource(key) {
   document.getElementById('sourceInfo').textContent = '正在拉取直播源...';
   document.getElementById('btnStart').disabled = true;
   document.getElementById('resultContainer').innerHTML = '';
-  results = [];
+  results = {};
   updateStats();
   document.getElementById('btnExport').disabled = true;
 
@@ -141,68 +143,117 @@ async function fetchSource(key) {
   }
 }
 
+// Parse both TVBox format (频道名,url#url#url) and M3U (#EXTINF + url)
 function parseAndSetSources(text) {
   const lines = text.split('\n');
-  const urls = [];
+  structure = [];
+  let currentGenre = '未分类';
+  const seenUrls = new Set();
+
   for (let i = 0; i < lines.length; i++) {
     let line = lines[i].trim();
+    if (!line) continue;
+
+    // M3U genre header
+    if (line.startsWith('#EXTGRP:')) {
+      currentGenre = line.substring(8).trim();
+      structure.push({ type: 'genre', name: currentGenre });
+      continue;
+    }
+    // M3U channel line
     if (line.startsWith('#EXTINF:')) {
-      i++;
-      if (i < lines.length) {
-        let next = lines[i].trim();
-        if (next.startsWith('http') || next.startsWith('rtmp') || next.startsWith('rtsp')) urls.push(next);
+      let name = '未知频道';
+      const im = line.indexOf('tvg-name="');
+      if (im >= 0) {
+        const after = line.substring(im + 10);
+        name = after.substring(0, after.indexOf('"'));
       }
-    } else if (line.startsWith('http') || line.startsWith('rtmp') || line.startsWith('rtsp')) {
-      if (line.includes('#') && !line.startsWith('http#')) {
-        // Multiple URLs separated by # — take the first one
-        const parts = line.split('#');
-        parts.forEach(p => { if (p.startsWith('http')) urls.push(p); });
-      } else {
-        urls.push(line);
+      let urlLine = '';
+      while (!urlLine && i + 1 < lines.length) {
+        i++;
+        urlLine = lines[i].trim();
+      }
+      if (urlLine.startsWith('http') || urlLine.startsWith('rtmp') || urlLine.startsWith('rtsp')) {
+        structure.push({ type: 'channel', name: name, urls: [urlLine] });
+      }
+      continue;
+    }
+    // TVBox format: 频道名,url1#url2#url3
+    if (line.endsWith('#genre#')) {
+      currentGenre = line.substring(0, line.length - 7).trim();
+      structure.push({ type: 'genre', name: currentGenre });
+      continue;
+    }
+    if (line.includes(',')) {
+      const idx = line.indexOf(',');
+      const name = line.substring(0, idx).trim();
+      const urlsPart = line.substring(idx + 1);
+      if (urlsPart.startsWith('http') || urlsPart.startsWith('rtmp') || urlsPart.startsWith('rtsp')) {
+        const urls = urlsPart.split('#').filter(u => u && (u.startsWith('http') || u.startsWith('rtmp') || u.startsWith('rtsp')));
+        structure.push({ type: 'channel', name: name, urls: urls });
+        continue;
+      }
+    }
+    // bare URL lines (plain txt)
+    if (line.startsWith('http') || line.startsWith('rtmp') || line.startsWith('rtsp')) {
+      structure.push({ type: 'channel', name: '未命名', urls: [line] });
+    }
+  }
+
+  channels = structure.filter(s => s.type === 'channel');
+  const totalUrls = channels.reduce((sum, c) => sum + c.urls.length, 0);
+  document.getElementById('sourceCount').textContent = '频道: ' + channels.length + ' / 地址: ' + totalUrls;
+  document.getElementById('btnStart').disabled = channels.length === 0;
+  document.getElementById('tvProgress').textContent = channels.length > 0 ? '准备就绪，点击"一键测速"开始' : '未找到有效源';
+}
+
+function allUrls() {
+  const seen = new Set();
+  const list = [];
+  for (const c of channels) {
+    for (const u of c.urls) {
+      if (!seen.has(u)) {
+        seen.add(u);
+        list.push(u);
       }
     }
   }
-  sources = urls;
-  document.getElementById('sourceCount').textContent = '源数量: ' + sources.length;
-  document.getElementById('btnStart').disabled = sources.length === 0;
-  document.getElementById('tvProgress').textContent = sources.length > 0 ? '准备就绪，点击"一键测速"开始' : '未找到有效源';
-}
-
-function parseSources(text) {
-  return parseAndSetSources(text);
+  return list;
 }
 
 async function startTest() {
-  if (isTesting || sources.length === 0) return;
+  if (isTesting || channels.length === 0) return;
   isTesting = true;
-  results = [];
+  results = {};
   document.getElementById('btnStart').disabled = true;
   document.getElementById('btnStart').textContent = '⏳ 测速中...';
   document.getElementById('btnExport').disabled = true;
   const bar = document.getElementById('progressBar');
   bar.style.width = '0%';
 
+  const urls = allUrls();
+  const total = urls.length;
   let done = 0;
-  const total = sources.length;
 
   for (let i = 0; i < total; i += CONCURRENCY) {
-    const batch = sources.slice(i, i + CONCURRENCY);
-    const batchPromises = batch.map(url => testUrl(url));
-    const batchResults = await Promise.all(batchPromises);
-    results.push(...batchResults);
+    const batch = urls.slice(i, i + CONCURRENCY);
+    const batchResults = await Promise.all(batch.map(u => testUrl(u)));
+    batch.forEach((u, j) => { results[u] = batchResults[j]; });
     done += batch.length;
     bar.style.width = (done / total * 100) + '%';
     document.getElementById('tvProgress').textContent = `测速中: ${done}/${total}`;
     displayResults();
     updateStats();
+    await new Promise(r => setTimeout(r, 10));
   }
 
   isTesting = false;
   document.getElementById('btnStart').disabled = false;
   document.getElementById('btnStart').textContent = '▶ 重新测速';
-  const avail = results.filter(r => r.ok).length;
-  document.getElementById('tvProgress').textContent = `✅ 完成！${avail}/${total} 可用`;
-  document.getElementById('btnExport').disabled = avail === 0;
+  const availUrls = Object.values(results).filter(r => r.ok).length;
+  const availChannels = channels.filter(c => c.urls.some(u => results[u] && results[u].ok)).length;
+  document.getElementById('tvProgress').textContent = `✅ 完成！${availChannels}/${channels.length} 频道可用，${availUrls}/${total} 地址通`;
+  document.getElementById('btnExport').disabled = availChannels === 0;
 }
 
 async function testUrl(url) {
@@ -217,56 +268,92 @@ async function testUrl(url) {
     });
     clearTimeout(timer);
     const elapsed = Math.round(performance.now() - start);
-    return { url, ok: true, latency: elapsed };
+    return { ok: true, latency: elapsed };
   } catch (e) {
     const elapsed = Math.round(performance.now() - start);
-    return { url, ok: false, latency: elapsed >= TIMEOUT ? TIMEOUT : elapsed };
+    return { ok: false, latency: elapsed >= TIMEOUT ? TIMEOUT : elapsed };
   }
+}
+
+function bestResultFor(channel) {
+  let best = null;
+  for (const u of channel.urls) {
+    const r = results[u];
+    if (r && r.ok && (!best || r.latency < best.latency)) best = { url: u, latency: r.latency };
+  }
+  return best;
 }
 
 function displayResults() {
   const container = document.getElementById('resultContainer');
-  const sorted = [...results].sort((a, b) => {
-    if (a.ok !== b.ok) return a.ok ? -1 : 1;
-    return a.latency - b.latency;
-  });
-  const show = sorted.slice(0, 200);
-  container.innerHTML = show.map(r => {
-    const status = r.ok ? '✅' : '❌';
-    const latClass = r.ok
-      ? (r.latency < 200 ? 'latency-fast' : r.latency < 500 ? 'latency-mid' : 'latency-slow')
-      : 'latency-dead';
-    const latText = r.ok ? r.latency + 'ms' : '超时';
-    return `<div class="result-row">
-      <span class="result-status">${status}</span>
-      <span class="result-url" title="${r.url}">${r.url}</span>
-      <span class="result-latency ${latClass}">${latText}</span>
-    </div>`;
-  }).join('');
-  if (sorted.length > 200) {
-    container.innerHTML += `<div style="text-align:center;padding:8px;font-size:11px;color:#484F58">... 还有 ${sorted.length - 200} 个源</div>`;
+  let html = '';
+  let genreOrder = [];
+  const seenGenres = new Set();
+
+  // Preserve original structure order, group channels under genres
+  for (const s of structure) {
+    if (s.type === 'genre') {
+      html += `<div class="genre-header">${escapeHtml(s.name)}</div>`;
+    } else {
+      const best = bestResultFor(s);
+      if (!best) {
+        html += `<div class="result-row">
+          <span class="result-status">❌</span>
+          <span class="result-name" title="${escapeHtml(s.name)}">${escapeHtml(s.name)}</span>
+          <span class="result-url">全部不可用</span>
+          <span class="result-latency latency-dead">超时</span>
+        </div>`;
+        continue;
+      }
+      const latClass = best.latency < 200 ? 'latency-fast' : best.latency < 500 ? 'latency-mid' : 'latency-slow';
+      html += `<div class="result-row">
+        <span class="result-status">✅</span>
+        <span class="result-name" title="${escapeHtml(s.name)}">${escapeHtml(s.name)}</span>
+        <span class="result-url" title="${escapeHtml(best.url)}">${escapeHtml(best.url)}</span>
+        <span class="result-latency ${latClass}">${best.latency}ms</span>
+      </div>`;
+    }
   }
+  container.innerHTML = html;
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 }
 
 function updateStats() {
-  const avail = results.filter(r => r.ok).length;
-  const dead = results.filter(r => !r.ok).length;
-  document.getElementById('availCount').textContent = avail;
+  const availUrls = Object.values(results).filter(r => r.ok).length;
+  const dead = Object.values(results).filter(r => !r.ok).length;
+  const availChannels = channels.filter(c => c.urls.some(u => results[u] && results[u].ok)).length;
+  document.getElementById('availCount').textContent = availChannels;
   document.getElementById('deadCount').textContent = dead;
-  document.getElementById('totalCount').textContent = results.length;
+  document.getElementById('totalCount').textContent = Object.keys(results).length;
 }
 
 function exportBest() {
-  const avail = results.filter(r => r.ok).sort((a, b) => a.latency - b.latency);
-  if (avail.length === 0) return;
-  const content = avail.map(r => r.url).join('\n');
-  const blob = new Blob([content], { type: 'text/plain' });
+  // Export in TVBox format: keep genre headers, each channel = name,fastest_ok_url
+  // If a channel has multiple OK urls, keep all sorted by latency joined with #
+  let out = '';
+  for (const s of structure) {
+    if (s.type === 'genre') {
+      out += `${s.name},#genre#\n`;
+    } else {
+      const okUrls = s.urls
+        .filter(u => results[u] && results[u].ok)
+        .sort((a, b) => results[a].latency - results[b].latency);
+      if (okUrls.length > 0) {
+        out += `${s.name},${okUrls.join('#')}\n`;
+      }
+    }
+  }
+  const blob = new Blob([out], { type: 'text/plain' });
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
   a.download = '最优直播源.txt';
   a.click();
   URL.revokeObjectURL(a.href);
-  document.getElementById('tvProgress').textContent = `✅ 已导出 ${avail.length} 个最优源`;
+  const availChannels = channels.filter(c => c.urls.some(u => results[u] && results[u].ok)).length;
+  document.getElementById('tvProgress').textContent = `✅ 已导出 ${availChannels} 个频道的最优直播源`;
 }
 </script>
 </body>
