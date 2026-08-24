@@ -25,9 +25,14 @@ jobs:
         run: |
           set -e
           cd LiveSpeedTest
-          gradle wrapper --gradle-version=8.7
+          # Download Gradle and generate wrapper
+          GRADLE_VERSION=8.7
+          curl -sL -o /tmp/gradle-bin.zip \
+            "https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip"
+          unzip -q /tmp/gradle-bin.zip -d /tmp/
+          /tmp/gradle-${GRADLE_VERSION}/bin/gradle wrapper --gradle-version=${GRADLE_VERSION}
           chmod +x gradlew
-          ./gradlew assembleRelease --no-daemon --stacktrace
+          ./gradlew assembleRelease --no-daemon --stacktrace 2>&1
           echo "===== APK files ====="
           find . -name "*.apk" -type f
 
