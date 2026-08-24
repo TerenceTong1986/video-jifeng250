@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>直播源测速</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0D1117;color:#E6EDF3;font-family:-apple-system,BlinkMacSystemFont,sans-serif;padding:16px;padding-bottom:80px}
+h1{font-size:22px;margin-bottom:16px;color:#58A6FF}
+.card{background:#161B22;border-radius:8px;padding:12px;margin-bottom:12px}
+.btn{display:block;width:100%;padding:12px;border:none;border-radius:6px;font-size:15px;font-weight:600;cursor:pointer;text-align:center}
+.btn-primary{background:#238636;color:#fff}
+.btn-primary:disabled{background:#1a5f2a;color:#666}
+.btn-blue{background:#1F6FEB;color:#fff}
+.btn-blue:disabled{background:#144a9e;color:#666}
+.btn-purple{background:#8957E5;color:#fff}
+.btn-purple:disabled{background:#5a3a94;color:#666}
+.info{font-size:13px;color:#8B949E;margin-top:6px}
+.progress{height:6px;background:#21262D;border-radius:3px;margin:8px 0;overflow:hidden}
+.progress-bar{height:100%;background:#238636;border-radius:3px;transition:width .3s;width:0%}
+#tvProgress{font-size:12px;color:#8B949E;margin-bottom:4px}
+.status-bar{display:flex;justify-content:space-between;font-size:12px;color:#8B949E;margin-bottom:8px}
+.result-row{display:flex;align-items:center;padding:6px 4px;font-size:12px;border-bottom:1px solid #21262D;gap:8px}
+.result-row:last-child{border:none}
+.result-status{width:20px;text-align:center;font-size:14px}
+.result-url{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#C9D1D9}
+.result-latency{width:55px;text-align:right;font-weight:600;font-size:12px}
+.latency-fast{color:#238636}
+.latency-mid{color:#D29922}
+.latency-slow{color:#F85149}
+.latency-dead{color:#484F58}
+#resultContainer{max-height:60vh;overflow-y:auto;margin-top:8px}
+.header-row{display:flex;font-size:11px;color:#484F58;padding:4px;font-weight:600;gap:8px;margin-top:8px}
+.header-row span:nth-child(1){width:20px;text-align:center}
+.header-row span:nth-child(2){flex:1}
+.header-row span:nth-child(3){width:55px;text-align:right}
+#fileName{font-size:12px;color:#8B949E;margin-top:4px}
+#sourceCount{font-size:14px;font-weight:600;color:#E6EDF3}
+.hidden{display:none}
+</style>
+</head>
+<body>
+
+<h1>📡 直播源测速</h1>
+
+<div class="card">
+  <input type="file" id="fileInput" accept=".txt,.m3u,.m3u8" style="display:none">
+  <button class="btn btn-blue" onclick="document.getElementById('fileInput').click()">📁 选择直播源文件</button>
+  <div id="fileName" class="info">未选择文件</div>
+  <div id="sourceCount">源数量: 0</div>
+</div>
+
+<div class="card">
+  <button class="btn btn-primary" id="btnStart" onclick="startTest()" disabled>▶ 开始测速</button>
+  <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
+  <div id="tvProgress" class="info">准备就绪</div>
+</div>
+
+<div class="card">
+  <div class="status-bar">
+    <span>可用: <b id="availCount">0</b></span>
+    <span>不可用: <b id="deadCount">0</b></span>
+    <span>总计: <b id="totalCount">0</b></span>
+  </div>
+
+  <div class="header-row">
+    <span>状态</span>
+    <span>地址</span>
+    <span>延迟</span>
+  </div>
+  <div id="resultContainer"></div>
+</div>
+
+<button class="btn btn-purple" id="btnExport" onclick="exportBest()" disabled>💾 导出最优源</button>
+
+<script>
+let sources = [];
+let results = [];
+let isTesting = false;
+const TIMEOUT = 5000;
+const CONCURRENCY = 10;
+
+document.getElementById('fileInput').addEventListener('change', async function(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  document.getElementById('fileName').textContent = '已选: ' + file.name;
+  const text = await file.text();
+  sources = parseSources(text);
+  document.getElementById('sourceCount').textContent = '源数量: ' + sources.length;
+  document.getElementById('btnStart').disabled = sources.length === 0;
+  document.getElementById('resultContainer').innerHTML = '';
+  results = [];
+  updateStats();
+  document.getElementById('btnExport').disabled = true;
+  document.getElementById('tvProgress').textContent = '准备就绪，点击开始测速';
+});
+
+function parseSources(text) {
+  const lines = text.split('\n');
+  const urls = [];
+  for (let i = 0; i < lines.length; i++) {
+    let line = lines[i].trim();
+    if (line.startsWith('#EXTINF:')) {
+      i++;
+      if (i < lines.length) {
+        let next = lines[i].trim();
+        if (next.startsWith('http')) urls.push(next);
+      }
+    } else if (line.startsWith('http') || line.startsWith('rtmp') || line.startsWith('rtsp')) {
+      urls.push(line);
+    }
+  }
+  return urls;
+}
+
+async function startTest() {
+  if (isTesting) return;
+  if (sources.length === 0) return;
+  isTesting = true;
+  results = [];
+  document.getElementById('btnStart').disabled = true;
+  document.getElementById('btnStart').textContent = '⏳ 测速中...';
+  document.getElementById('btnExport').disabled = true;
+  const bar = document.getElementById('progressBar');
+  bar.style.width = '0%';
+
+  let done = 0;
+  const total = sources.length;
+
+  for (let i = 0; i < total; i += CONCURRENCY) {
+    const batch = sources.slice(i, i + CONCURRENCY);
+    const batchPromises = batch.map(url => testUrl(url));
+    const batchResults = await Promise.all(batchPromises);
+    results.push(...batchResults);
+    done += batch.length;
+    bar.style.width = (done / total * 100) + '%';
+    document.getElementById('tvProgress').textContent = `测速中: ${done}/${total}`;
+    displayResults();
+    updateStats();
+  }
+
+  isTesting = false;
+  document.getElementById('btnStart').disabled = false;
+  document.getElementById('btnStart').textContent = '▶ 重新测速';
+  const avail = results.filter(r => r.ok).length;
+  document.getElementById('tvProgress').textContent = `✅ 完成！${avail}/${total} 可用`;
+  document.getElementById('btnExport').disabled = avail > 0;
+}
+
+async function testUrl(url) {
+  const start = performance.now();
+  try {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), TIMEOUT);
+    const resp = await fetch(url, {
+      method: 'HEAD',
+      mode: 'no-cors',
+      signal: controller.signal
+    });
+    clearTimeout(timer);
+    const elapsed = Math.round(performance.now() - start);
+    return { url, ok: true, latency: elapsed };
+  } catch (e) {
+    const elapsed = Math.round(performance.now() - start);
+    return { url, ok: false, latency: elapsed >= TIMEOUT ? TIMEOUT : elapsed };
+  }
+}
+
+function displayResults() {
+  const container = document.getElementById('resultContainer');
+  const sorted = [...results].sort((a, b) => {
+    if (a.ok !== b.ok) return a.ok ? -1 : 1;
+    return a.latency - b.latency;
+  });
+  const show = sorted.slice(0, 200);
+  container.innerHTML = show.map(r => {
+    const status = r.ok ? '✅' : '❌';
+    const latClass = r.ok
+      ? (r.latency < 200 ? 'latency-fast' : r.latency < 500 ? 'latency-mid' : 'latency-slow')
+      : 'latency-dead';
+    const latText = r.ok ? r.latency + 'ms' : '超时';
+    return `<div class="result-row">
+      <span class="result-status">${status}</span>
+      <span class="result-url" title="${r.url}">${r.url}</span>
+      <span class="result-latency ${latClass}">${latText}</span>
+    </div>`;
+  }).join('');
+  if (sorted.length > 200) {
+    container.innerHTML += `<div style="text-align:center;padding:8px;font-size:11px;color:#484F58">... 还有 ${sorted.length - 200} 个源</div>`;
+  }
+}
+
+function updateStats() {
+  const avail = results.filter(r => r.ok).length;
+  const dead = results.filter(r => !r.ok).length;
+  document.getElementById('availCount').textContent = avail;
+  document.getElementById('deadCount').textContent = dead;
+  document.getElementById('totalCount').textContent = results.length;
+}
+
+function exportBest() {
+  const avail = results.filter(r => r.ok).sort((a, b) => a.latency - b.latency);
+  if (avail.length === 0) return;
+  const content = avail.map(r => r.url).join('\n');
+  const blob = new Blob([content], { type: 'text/plain' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = '最优直播源.txt';
+  a.click();
+  URL.revokeObjectURL(a.href);
+  document.getElementById('tvProgress').textContent = `✅ 已导出 ${avail.length} 个最优源`;
+}
+</script>
+</body>
+</html>
