@@ -1,24 +1,24 @@
 {
   "urls": [
     {
-      "name": "⭐⭐⭐小盒子多仓",
-      "url": "http://xhztv.top/dc"
+      "name": "⭐⭐⭐小盒子4K",
+      "url": "http://xhztv.top/4k.json"
     },
     {
       "name": "⭐⭐⭐小盒子单仓",
       "url": "http://xhztv.top/xhz/"
     },
     {
-      "name": "⭐⭐⭐小盒子4K",
-      "url": "http://xhztv.top/4k.json"
-    },
-    {
-      "name": "⭐⭐⭐高天流云",
-      "url": "https://fastly.jsdelivr.net/gh/gaotianliuyun/gao@master/js.json"
+      "name": "⭐⭐⭐小盒子多仓",
+      "url": "http://xhztv.top/dc"
     },
     {
       "name": "⭐⭐⭐拾光多仓",
       "url": "http://xmbjm.fh4u.org/dc.txt"
+    },
+    {
+      "name": "⭐⭐⭐高天流云",
+      "url": "https://fastly.jsdelivr.net/gh/gaotianliuyun/gao@master/js.json"
     },
     {
       "name": "⭐⭐⭐老刘备",
@@ -65,12 +65,12 @@
       "url": "https://jinenge.us.kg/app/tvbox/tvbox.json"
     },
     {
-      "name": "⭐⭐⭐小马",
-      "url": "https://szyyds.cn/tv/x.json"
-    },
-    {
       "name": "⭐⭐⭐嗷呜",
       "url": "http://itv666.cc/aowu/config.webp"
+    },
+    {
+      "name": "⭐⭐⭐小马",
+      "url": "https://szyyds.cn/tv/x.json"
     },
     {
       "name": "⭐⭐⭐挺好分享多仓",
