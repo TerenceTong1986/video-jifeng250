@@ -21,6 +21,33 @@
       "ua": "Mozilla/5.0",
       "timeout": 15,
       "logo": "https://wswtv.github.io/tv/{name}.png"
+    },
+    {
+      "key": "OTT-虎牙一起看",
+      "name": "🎮 虎牙一起看(赛事/游戏)",
+      "type": 0,
+      "url": "https://sub.ottiptv.cc/huyayqk.m3u",
+      "playerType": 2,
+      "timeout": 10,
+      "ua": "okHttp/Mod-1.5.0.0"
+    },
+    {
+      "key": "OTT-斗鱼一起看",
+      "name": "🎮 斗鱼一起看(赛事/游戏)",
+      "type": 0,
+      "url": "https://sub.ottiptv.cc/douyuyqk.m3u",
+      "playerType": 2,
+      "timeout": 10,
+      "ua": "okHttp/Mod-1.5.0.0"
+    },
+    {
+      "key": "OTT-B站直播",
+      "name": "📺 B站直播(875频道)",
+      "type": 0,
+      "url": "https://sub.ottiptv.cc/bililive.m3u",
+      "playerType": 2,
+      "timeout": 10,
+      "ua": "okHttp/Mod-1.5.0.0"
     }
   ]
 }
