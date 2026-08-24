@@ -1,5 +1,5 @@
 {
-  "spider": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/fan.jar;md5;1fb66ff185ea35252d2ae2a07d058ec1",
+  "spider": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/fan.jar;md5;1ac25ccd1b5ac56fd19eb91c6f7daf4d",
   "wallpaper": "https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/wallpaper.jpg",
   "headers": [
     {
@@ -105,7 +105,8 @@
       "timeout": 10,
       "searchable": 1,
       "quickSearch": 1,
-      "changeable": 0
+      "changeable": 0,
+      "playerType": 2
     },
     {
       "key": "热播",
@@ -116,7 +117,8 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 1,
-      "ext": "uqGL1bNENExT7/hGxpSE5qU="
+      "ext": "uqGL1bNENExT7/hGxpSE5qU=",
+      "playerType": 2
     },
     {
       "key": "玩偶哥哥",
@@ -129,7 +131,7 @@
       "ext": {
         "Cloud-drive": "tvfan/Cloud-drive.txt"
       },
-      "timeout": 15
+      "timeout": 30
     },
     {
       "key": "MDrive",
@@ -731,7 +733,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 1,
-      "timeout": 10
+      "timeout": 15
     },
     {
       "key": "Dm84",
@@ -751,7 +753,8 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 1,
-      "timeout": 10
+      "timeout": 10,
+      "playerType": 2
     },
     {
       "key": "厂长",
@@ -761,7 +764,8 @@
       "searchable": 1,
       "quickSearch": 1,
       "changeable": 1,
-      "timeout": 10
+      "timeout": 10,
+      "playerType": 2
     },
     {
       "key": "比特",
