@@ -27,10 +27,13 @@ jobs:
           gradle-version: 8.7
 
       - name: Build APK
+        shell: bash
         run: |
           set -e
           cd LiveSpeedTest
-          gradle wrapper --gradle-version=8.7
+          GRADLE_CMD="${GRADLE_HOME}/bin/gradle"
+          echo "Using Gradle: ${GRADLE_CMD}"
+          ${GRADLE_CMD} wrapper --gradle-version=8.7
           chmod +x gradlew
           ./gradlew assembleRelease --no-daemon --stacktrace
           echo "===== APK files ====="
