@@ -76,12 +76,24 @@ def main():
 
     # 生成 version.json（PWA 页面读取）
     cfg = json.load(open(os.path.join(SRC, 'curated.json'), encoding='utf-8'))
+    filename = os.path.basename(dst)
+    raw = f"https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/{filename}"
+    urls = [
+        f"https://ghfast.top/{raw}",
+        f"https://gh-proxy.com/{raw}",
+        f"https://ghproxy.net/{raw}",
+        f"https://cdn.jsdelivr.net/gh/jifeng250/tvbox-sources@main/{filename}",
+        f"https://fastly.jsdelivr.net/gh/jifeng250/tvbox-sources@main/{filename}",
+        f"https://gcore.jsdelivr.net/gh/jifeng250/tvbox-sources@main/{filename}",
+        raw,
+    ]
     ver = {
         "version": date_str,
         "date": datetime.now().strftime('%Y-%m-%d %H:%M'),
         "size": f"{size_kb / 1024:.2f} MB",
         "sites": len(cfg.get('sites', [])),
-        "url": f"https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/{os.path.basename(dst)}",
+        "url": urls[0],
+        "urls": urls,
     }
     with open(os.path.join(SRC, 'version.json'), 'w', encoding='utf-8') as f:
         json.dump(ver, f, ensure_ascii=False, indent=2)
