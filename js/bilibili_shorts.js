@@ -1,16 +1,17 @@
 /**
  * B站短剧/漫剧源 (免cookie)
- * - 搜索: wbi search/type?search_type=video (带wbi签名)
+ * - 搜索: wbi search/type?search_type=video (可搜UP主搬运的短剧/漫剧全集)
  * - 详情: x/web-interface/view (分P列表)
- * - 播放: x/player/playurl?qn=64&fnval=1 (mp4直链)
- * 2026-08-27 免cookie验证通过
+ * - 播放: x/player/playurl?qn=64&fnval=1 (mp4直链, 免cookie已验证)
+ * 2026-08-27 免cookie验证通过; 
+ * 注意: 旧接口 x/web-interface/search/type 会被412, 必须用 wbi 接口
  */
 var rule = {
     title: 'B站短剧',
     host: 'https://api.bilibili.com',
-    url: '/x/web-interface/search/type?search_type=video&keyword=fyclass&page=fypage',
+    url: '/x/web-interface/wbi/search/type?search_type=video&keyword=fyclass&page=fypage',
     detailUrl: '/x/web-interface/view?bvid=fyid',
-    searchUrl: '/x/web-interface/search/type?search_type=video&keyword=**&page=fypage',
+    searchUrl: '/x/web-interface/wbi/search/type?search_type=video&keyword=**&page=fypage',
     searchable: 2,
     quickSearch: 1,
     filterable: 0,
@@ -23,11 +24,9 @@ var rule = {
     class_url: '短剧&漫剧&AI漫剧&动漫&沙雕动画&科幻动漫&玄幻动漫&都市动漫&战神&神医&赘婿&逆袭&重生&穿越&甜宠&总裁&玄幻&都市&搞笑&B站热门',
     limit: 5,
     一级: `js:
-    let c = input.split('fypage=')[1];
-    let page = c ? c.split('&')[0] : '1';
-    let kw = input.split('keyword=')[1].split('&')[0];
-    let url = 'https://api.bilibili.com/x/web-interface/wbi/search/type?search_type=video&keyword=' + kw + '&page=' + page;
-    let html = request(url);
+    // input 已是完整URL: https://api.bilibili.com/x/web-interface/wbi/search/type?search_type=video&keyword=%E7%9F%AD%E5%89%A7&page=1
+    let u = input.indexOf('http') === 0 ? input : 'https://api.bilibili.com' + input;
+    let html = request(u);
     let jo = JSON.parse(html);
     let videos = [];
     if (jo.code === 0 && jo.data && jo.data.result) {
@@ -64,9 +63,9 @@ var rule = {
     };
     `,
     搜索: `js:
-    let key = input.split('keyword=')[1].split('&')[0];
-    let url = 'https://api.bilibili.com/x/web-interface/wbi/search/type?search_type=video&keyword=' + key + '&page=1';
-    let html = request(url);
+    // input 形如: https://api.bilibili.com/x/web-interface/wbi/search/type?search_type=video&keyword=某某&page=1
+    let u = input.indexOf('http') === 0 ? input : 'https://api.bilibili.com' + input;
+    let html = request(u);
     let jo = JSON.parse(html);
     let videos = [];
     if (jo.code === 0 && jo.data && jo.data.result) {
@@ -83,6 +82,7 @@ var rule = {
     VODS = videos;
     `,
     lazy: `js:
+    // input: bvid+cid, 如 BV1Pogf6vEhQ+40347242275
     let ids = input.split('+');
     let bvid = ids[0];
     let cid = ids[1];
@@ -91,12 +91,7 @@ var rule = {
     let jo = JSON.parse(html);
     if (jo.code === 0 && jo.data && jo.data.durl) {
         let durl = jo.data.durl;
-        // 取最大分片
-        let max = 0;
-        for (let i = 0; i < durl.length; i++) {
-            if (parseInt(durl[i].size) > max) { max = parseInt(durl[i].size); }
-        }
-        let urls = durl.map(function (u) { return u.url; }).join(',' + url + '|');
+        let urls = durl.map(function (u) { return u.url; }).join(',');
         input = {
             parse: 0,
             url: urls,
