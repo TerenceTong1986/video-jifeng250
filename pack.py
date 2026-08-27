@@ -18,7 +18,7 @@ REQUIRED = ['curated.json', 'fan.jar', 'custom_spider.jar', 'pg.jar', 'tvfan/Clo
 
 
 def make_local_config():
-    """生成 curated-local.json：jar/js 字段指向包内相对路径"""
+    """生成 curated-local.json：仅 jar 字段指向包内相对路径；js源保持在线URL(影视仓本地js源不可靠,曾致全源崩溃)"""
     src = os.path.join(SRC, 'curated.json')
     dst = os.path.join(SRC, 'curated-local.json')
     cfg = json.load(open(src, encoding='utf-8'))
@@ -29,15 +29,9 @@ def make_local_config():
                 if jn in s['jar']:
                     s['jar'] = './' + jn
                     break
-        # js 源(drpy2/drpy): api=引擎js, ext=规则js, 都重写为包内相对路径
-        if s.get('type') == 3 and s.get('api', '').endswith('.js'):
-            jsname = s['api'].split('/')[-1]
-            s['api'] = './js/' + jsname
-            if s.get('ext', '').endswith('.js'):
-                extname = s['ext'].split('/')[-1]
-                s['ext'] = './js/' + extname
+    # 注: 不要改写 type=3 的 js 源 api/ext 为本地路径 —— 影视仓本地包加载 js 源会失败并拖垮整个配置
     cfg['updateTime'] = datetime.now().strftime('%Y-%m-%d %H:%M')
-    cfg['warningText'] = '精选单仓·本地版：jar 走本地文件，断网可用。若源加载不出目录，把 jar 改为 file:///绝对路径（见 README）'
+    cfg['warningText'] = '精选单仓·本地版：jar 走本地文件,断网可用;js源(如B站短剧)需联网加载'
     with open(dst, 'w', encoding='utf-8') as f:
         json.dump(cfg, f, ensure_ascii=False, indent=1)
     return dst
