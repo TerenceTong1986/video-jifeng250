@@ -1,5 +1,5 @@
 {
-  "spider": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/fan.jar;md5;608d621640f5ed5ae8c78158ca61bff7",
+  "spider": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/fan.jar;md5;608d621640f5ed5ae8c78158ca61bff7$https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/XBPQ_upgraded.jar;md5;c10ebfca316c4ac51cb00547bfdd2389",
   "wallpaper": "https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/wallpaper.jpg",
   "headers": [
     {
@@ -917,6 +917,79 @@
       "quickSearch": 0,
       "changeable": 1,
       "ext": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/lib/token.json$$$https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/json/quarkshare.txt"
+    },
+    {
+      "key": "csp_XBPQ_红果短剧",
+      "name": "✨红果短剧✨",
+      "type": 3,
+      "api": "csp_XBPQ",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "ext": {
+        "分类url": "https://www.jinyanw.com/type/{cateId}-{catePg}.html",
+        "分类": "有声动漫$youshengdongman#女频恋爱$nvpinlianai#翻转爽剧$fanzhuanshuangju#古装仙侠$guzhuangxianxia#年代穿越$niandaichuanyue#脑洞悬疑$naodongxuanyi#现代都市$xiandaidushi"
+      }
+    },
+    {
+      "key": "csp_XBPQ_影梦短剧",
+      "name": "✨影梦短剧✨",
+      "type": 3,
+      "api": "csp_XBPQ",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "ext": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/json/影梦短剧.json"
+    },
+    {
+      "key": "csp_XBPQ_猎手短剧",
+      "name": "✨猎手短剧✨",
+      "type": 3,
+      "api": "csp_XBPQ",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "ext": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/json/猎手短剧.json"
+    },
+    {
+      "key": "csp_XBPQ_555短剧",
+      "name": "✨555短剧✨",
+      "type": 3,
+      "api": "csp_XBPQ",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "ext": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/json/555短剧.json"
+    },
+    {
+      "key": "csp_XBPQ_胖虎短剧",
+      "name": "✨胖虎短剧✨",
+      "type": 3,
+      "api": "csp_XBPQ",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "ext": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/json/胖虎短剧.json"
+    },
+    {
+      "key": "csp_XBPQ_一个短剧",
+      "name": "✨一个短剧✨",
+      "type": 3,
+      "api": "csp_XBPQ",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "ext": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/json/一个短剧.json"
+    },
+    {
+      "key": "csp_XBPQ_短剧大全",
+      "name": "✨短剧大全✨",
+      "type": 3,
+      "api": "csp_XBPQ",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "ext": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/json/短剧大全.json"
     }
   ],
   "parses": [
