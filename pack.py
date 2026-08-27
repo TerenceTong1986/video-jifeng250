@@ -6,15 +6,17 @@
 并存回仓库根，使 PWA 下载页始终显示最新包。
 
 打包内容：curated.json + curated-local.json + 3 个 jar + 直播源 + 台标/EPG 配置等
-排除：.git / __pycache__ / 其它 tvbox-sources-*.zip / version.json
+排除：.git / __pycache__ / 其它 tvbox-sources-*.zip / version.json / sync.bat / 调试jar
 """
-import zipfile, os, sys, json, shutil
+import zipfile, os, sys, json
 from datetime import datetime
 
 SRC = os.getcwd()  # GitHub Actions checkout 目录
 # apk/.github 不打进配置包（apk 在网页「影视软件」区块单独下载，避免包膨胀到~100MB）
 EXCLUDE_DIRS = {'.git', '__pycache__', 'apk', '.github'}
 REQUIRED = ['curated.json', 'fan.jar', 'custom_spider.jar', 'pg.jar', 'tvfan/Cloud-drive.txt']
+# 这些文件不应打进 TV 包（本地维护脚本/调试遗留）
+EXCLUDE_FILES = {'sync.bat', 'XBPQ_upgraded.jar', 'update.log', 'HCCX.jar', 'curated-bak-unsafe.json'}
 
 
 def make_local_config():
@@ -31,7 +33,7 @@ def make_local_config():
                     break
     # 注: 不要改写 type=3 的 js 源 api/ext 为本地路径 —— 影视仓本地包加载 js 源会失败并拖垮整个配置
     cfg['updateTime'] = datetime.now().strftime('%Y-%m-%d %H:%M')
-    cfg['warningText'] = '精选单仓·本地版：jar 走本地文件,断网可用;js源(如B站短剧)需联网加载'
+    cfg['warningText'] = '精选单仓·本地版：jar 走本地文件，断网可用。若源加载不出目录，把 jar 改为 file:///绝对路径（见 README）'
     with open(dst, 'w', encoding='utf-8') as f:
         json.dump(cfg, f, ensure_ascii=False, indent=1)
     return dst
@@ -64,7 +66,7 @@ def main():
         for root, dirs, files in os.walk(SRC):
             dirs[:] = [d for d in dirs if d not in EXCLUDE_DIRS]
             for f in files:
-                if f.endswith('.zip') or f == 'version.json':
+                if f.endswith('.zip') or f == 'version.json' or f in EXCLUDE_FILES:
                     continue
                 full = os.path.join(root, f)
                 arc = os.path.join('tvbox-sources', os.path.relpath(full, SRC))
@@ -80,13 +82,13 @@ def main():
     filename = os.path.basename(dst)
     raw = f"https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/{filename}"
     urls = [
-            f"https://gh-proxy.com/{raw}",
-            f"https://ghproxy.net/{raw}",
-            f"https://cdn.jsdelivr.net/gh/jifeng250/tvbox-sources@main/{filename}",
-            f"https://fastly.jsdelivr.net/gh/jifeng250/tvbox-sources@main/{filename}",
-            f"https://gcore.jsdelivr.net/gh/jifeng250/tvbox-sources@main/{filename}",
-            raw,
-        ]
+        f"https://gh-proxy.com/{raw}",
+        f"https://ghproxy.net/{raw}",
+        f"https://cdn.jsdelivr.net/gh/jifeng250/tvbox-sources@main/{filename}",
+        f"https://fastly.jsdelivr.net/gh/jifeng250/tvbox-sources@main/{filename}",
+        f"https://gcore.jsdelivr.net/gh/jifeng250/tvbox-sources@main/{filename}",
+        raw,
+    ]
     ver = {
         "version": date_str,
         "date": datetime.now().strftime('%Y-%m-%d %H:%M'),

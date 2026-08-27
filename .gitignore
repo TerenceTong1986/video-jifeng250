@@ -4,3 +4,4 @@ update.log.*
 
 __pycache__/
 *.pyc
+sync.bat
