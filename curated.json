@@ -736,19 +736,6 @@
    "timeout": 15
   },
   {
-   "key": "BiliShorts",
-   "name": "🅱️B站短剧(漫剧)🔍搜",
-   "type": 3,
-   "api": "https://fastly.jsdelivr.net/gh/jifeng250/tvbox-sources@main/js/drpy2.min.js",
-   "ext": "https://fastly.jsdelivr.net/gh/jifeng250/tvbox-sources@main/js/bilibili_shorts.js",
-   "searchable": 1,
-   "quickSearch": 1,
-   "filterable": 1,
-   "playerType": 2,
-   "changeable": 0,
-   "timeout": 20
-  },
-  {
    "key": "Dm84",
    "name": "巴士(动漫)🔗jar",
    "type": 3,
