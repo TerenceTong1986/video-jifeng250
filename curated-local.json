@@ -9,7 +9,7 @@
    }
   }
  ],
- "updateTime": "2026-08-27 23:44",
+ "updateTime": "2026-08-28 00:20",
  "warningText": "精选单仓·本地版：jar 走本地文件，断网可用。若源加载不出目录，把 jar 改为 file:///绝对路径（见 README）",
  "sites": [
   {
@@ -739,14 +739,14 @@
    "key": "BiliShorts",
    "name": "🅱️B站短剧(漫剧)🔍搜",
    "type": 3,
-   "api": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/js/drpy2.min.js",
-   "ext": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/js/bilibili_shorts.js",
+   "api": "./js/drpy2.min.js",
+   "ext": "./js/bilibili_shorts.js",
    "searchable": 1,
    "quickSearch": 1,
    "filterable": 1,
    "playerType": 2,
    "changeable": 0,
-   "timeout": 15
+   "timeout": 20
   },
   {
    "key": "Dm84",
