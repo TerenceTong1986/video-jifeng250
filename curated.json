@@ -1,5 +1,5 @@
 {
- "spider": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/fan.jar;md5;608d621640f5ed5ae8c78158ca61bff7",
+ "spider": "https://gh-proxy.com/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/fan.jar;md5;608d621640f5ed5ae8c78158ca61bff7",
  "wallpaper": "https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/wallpaper.jpg",
  "headers": [
   {
@@ -154,8 +154,8 @@
    "searchable": 1,
    "quickSearch": 0,
    "changeable": 1,
-   "ext": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/alist.json",
-   "jar": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/custom_spider.jar;md5;41c87635d7592069884a5dafa12acabe",
+   "ext": "https://gh-proxy.com/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/alist.json",
+   "jar": "https://gh-proxy.com/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/custom_spider.jar;md5;41c87635d7592069884a5dafa12acabe",
    "timeout": 15
   },
   {
@@ -803,120 +803,120 @@
    "name": "🅿️夸克盘搜",
    "type": 3,
    "api": "csp_QuarkPanso",
-   "jar": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/pg.jar;md5;dffec63fb83a2b31b8606bd4bf6bead9",
+   "jar": "https://gh-proxy.com/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/pg.jar;md5;dffec63fb83a2b31b8606bd4bf6bead9",
    "timeout": 10,
    "searchable": 1,
    "quickSearch": 0,
    "changeable": 1,
-   "ext": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/lib/token.json"
+   "ext": "https://gh-proxy.com/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/lib/token.json"
   },
   {
    "key": "Panyq",
    "name": "🅿️盘友圈",
    "type": 3,
    "api": "csp_Panyq",
-   "jar": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/pg.jar;md5;dffec63fb83a2b31b8606bd4bf6bead9",
+   "jar": "https://gh-proxy.com/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/pg.jar;md5;dffec63fb83a2b31b8606bd4bf6bead9",
    "timeout": 10,
    "searchable": 1,
    "quickSearch": 1,
    "changeable": 1,
-   "ext": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/lib/token.json"
+   "ext": "https://gh-proxy.com/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/lib/token.json"
   },
   {
    "key": "EightEight",
    "name": "🅿️88网盘",
    "type": 3,
    "api": "csp_EightEight",
-   "jar": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/pg.jar;md5;dffec63fb83a2b31b8606bd4bf6bead9",
+   "jar": "https://gh-proxy.com/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/pg.jar;md5;dffec63fb83a2b31b8606bd4bf6bead9",
    "timeout": 10,
    "searchable": 1,
    "quickSearch": 0,
    "changeable": 1,
-   "ext": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/lib/token.json$$$https://662688.xyz"
+   "ext": "https://gh-proxy.com/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/lib/token.json$$$https://662688.xyz"
   },
   {
    "key": "PanSou",
    "name": "🅿️盘搜",
    "type": 3,
    "api": "csp_PanSou",
-   "jar": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/pg.jar;md5;dffec63fb83a2b31b8606bd4bf6bead9",
+   "jar": "https://gh-proxy.com/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/pg.jar;md5;dffec63fb83a2b31b8606bd4bf6bead9",
    "timeout": 10,
    "searchable": 1,
    "quickSearch": 0,
    "changeable": 1,
-   "ext": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/lib/token.json"
+   "ext": "https://gh-proxy.com/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/lib/token.json"
   },
   {
    "key": "MiaoSou",
    "name": "🅿️秒搜",
    "type": 3,
    "api": "csp_MiaoSou",
-   "jar": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/pg.jar;md5;dffec63fb83a2b31b8606bd4bf6bead9",
+   "jar": "https://gh-proxy.com/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/pg.jar;md5;dffec63fb83a2b31b8606bd4bf6bead9",
    "timeout": 10,
    "searchable": 1,
    "quickSearch": 0,
    "changeable": 1,
-   "ext": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/lib/token.json"
+   "ext": "https://gh-proxy.com/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/lib/token.json"
   },
   {
    "key": "Qianfan",
    "name": "🅿️千帆盘",
    "type": 3,
    "api": "csp_Qianfan",
-   "jar": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/pg.jar;md5;dffec63fb83a2b31b8606bd4bf6bead9",
+   "jar": "https://gh-proxy.com/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/pg.jar;md5;dffec63fb83a2b31b8606bd4bf6bead9",
    "timeout": 10,
    "searchable": 1,
    "quickSearch": 1,
    "changeable": 1,
-   "ext": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/lib/token.json$$$https://pan.qianfan.app$$$null$$$QianFanID="
+   "ext": "https://gh-proxy.com/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/lib/token.json$$$https://pan.qianfan.app$$$null$$$QianFanID="
   },
   {
    "key": "Xpanpan",
    "name": "🅿️小盘盘",
    "type": 3,
    "api": "csp_Xpanpan",
-   "jar": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/pg.jar;md5;dffec63fb83a2b31b8606bd4bf6bead9",
+   "jar": "https://gh-proxy.com/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/pg.jar;md5;dffec63fb83a2b31b8606bd4bf6bead9",
    "timeout": 10,
    "searchable": 1,
    "quickSearch": 0,
    "changeable": 1,
-   "ext": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/lib/token.json$$$https://xpanpan.site$$$null$$$1"
+   "ext": "https://gh-proxy.com/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/lib/token.json$$$https://xpanpan.site$$$null$$$1"
   },
   {
    "key": "YingSo",
    "name": "🅿️影搜",
    "type": 3,
    "api": "csp_YingSo",
-   "jar": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/pg.jar;md5;dffec63fb83a2b31b8606bd4bf6bead9",
+   "jar": "https://gh-proxy.com/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/pg.jar;md5;dffec63fb83a2b31b8606bd4bf6bead9",
    "timeout": 10,
    "searchable": 1,
    "quickSearch": 0,
    "changeable": 1,
-   "ext": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/lib/token.json$$$1"
+   "ext": "https://gh-proxy.com/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/lib/token.json$$$1"
   },
   {
    "key": "P115Share",
    "name": "🅿️115分享",
    "type": 3,
    "api": "csp_P115Share",
-   "jar": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/pg.jar;md5;dffec63fb83a2b31b8606bd4bf6bead9",
+   "jar": "https://gh-proxy.com/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/pg.jar;md5;dffec63fb83a2b31b8606bd4bf6bead9",
    "timeout": 10,
    "searchable": 1,
    "quickSearch": 0,
    "changeable": 1,
-   "ext": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/lib/token.json$$$https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/json/115share.txt$$$db$$$1"
+   "ext": "https://gh-proxy.com/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/lib/token.json$$$https://gh-proxy.com/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/json/115share.txt$$$db$$$1"
   },
   {
    "key": "QuarkShare",
    "name": "🅿️夸克分享",
    "type": 3,
    "api": "csp_QuarkShare",
-   "jar": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/pg.jar;md5;dffec63fb83a2b31b8606bd4bf6bead9",
+   "jar": "https://gh-proxy.com/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/pg.jar;md5;dffec63fb83a2b31b8606bd4bf6bead9",
    "timeout": 10,
    "searchable": 1,
    "quickSearch": 0,
    "changeable": 1,
-   "ext": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/lib/token.json$$$https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/json/quarkshare.txt"
+   "ext": "https://gh-proxy.com/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/lib/token.json$$$https://gh-proxy.com/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/json/quarkshare.txt"
   }
  ],
  "parses": [
@@ -1053,7 +1053,7 @@
    "key": "IPTV4-直播",
    "name": "📺 优选直播(本网测速)",
    "type": 0,
-   "url": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/live/iptv4-fast.txt",
+   "url": "https://gh-proxy.com/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/live/iptv4-fast.txt",
    "playerType": 2,
    "epg": "https://epg.51zmt.top:8000/api/diyp/?ch={name}&date={date}",
    "ua": "Mozilla/5.0",

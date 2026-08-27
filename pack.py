@@ -80,14 +80,13 @@ def main():
     filename = os.path.basename(dst)
     raw = f"https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/{filename}"
     urls = [
-        f"https://ghfast.top/{raw}",
-        f"https://gh-proxy.com/{raw}",
-        f"https://ghproxy.net/{raw}",
-        f"https://cdn.jsdelivr.net/gh/jifeng250/tvbox-sources@main/{filename}",
-        f"https://fastly.jsdelivr.net/gh/jifeng250/tvbox-sources@main/{filename}",
-        f"https://gcore.jsdelivr.net/gh/jifeng250/tvbox-sources@main/{filename}",
-        raw,
-    ]
+            f"https://gh-proxy.com/{raw}",
+            f"https://ghproxy.net/{raw}",
+            f"https://cdn.jsdelivr.net/gh/jifeng250/tvbox-sources@main/{filename}",
+            f"https://fastly.jsdelivr.net/gh/jifeng250/tvbox-sources@main/{filename}",
+            f"https://gcore.jsdelivr.net/gh/jifeng250/tvbox-sources@main/{filename}",
+            raw,
+        ]
     ver = {
         "version": date_str,
         "date": datetime.now().strftime('%Y-%m-%d %H:%M'),
