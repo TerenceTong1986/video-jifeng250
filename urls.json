@@ -21,20 +21,16 @@
       "url": "http://xmbjm.fh4u.org/dc.txt"
     },
     {
-      "name": "⭐⭐⭐道长",
-      "url": "https://gitlab.com/duomv/dzhipy/-/raw/main/index.json"
-    },
-    {
-      "name": "⭐⭐⭐无名",
-      "url": "https://6800.kstore.vip/fish.json"
-    },
-    {
       "name": "⭐⭐⭐OK影视",
       "url": "https://cdn.jsdelivr.net/gh/2hacc/TVBox@main/oktv.json"
     },
     {
       "name": "🪞OK影视镜像1",
       "url": "https://fastly.jsdelivr.net/gh/2hacc/TVBox@main/oktv.json"
+    },
+    {
+      "name": "⭐⭐⭐道长",
+      "url": "https://gitlab.com/duomv/dzhipy/-/raw/main/index.json"
     },
     {
       "name": "⭐⭐⭐王二小",
@@ -45,16 +41,16 @@
       "url": "https://9280.kstore.vip/wex.json"
     },
     {
-      "name": "⭐⭐⭐FM影视",
-      "url": "http://fmys.top/fmys.json"
+      "name": "⭐⭐⭐无名",
+      "url": "https://6800.kstore.vip/fish.json"
     },
     {
       "name": "⭐⭐⭐高天流云",
       "url": "https://fastly.jsdelivr.net/gh/gaotianliuyun/gao@master/js.json"
     },
     {
-      "name": "⭐⭐⭐俊佬",
-      "url": "http://home.jundie.top:81/top98.json"
+      "name": "⭐⭐⭐FM影视",
+      "url": "http://fmys.top/fmys.json"
     },
     {
       "name": "⭐⭐⭐VOX",
@@ -75,6 +71,10 @@
     {
       "name": "⭐⭐⭐嗷呜",
       "url": "http://itv666.cc/aowu/config.webp"
+    },
+    {
+      "name": "⭐⭐⭐俊佬",
+      "url": "http://home.jundie.top:81/top98.json"
     },
     {
       "name": "⭐⭐⭐饭太硬(ftygit)",
