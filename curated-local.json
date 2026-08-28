@@ -9,7 +9,7 @@
    }
   }
  ],
- "updateTime": "2026-08-28 10:02",
+ "updateTime": "2026-08-28 10:55",
  "warningText": "本地版：jar 走本地文件，断网可用。若源加载不出目录，把 jar 改为 file:///绝对路径（见 README）",
  "sites": [
   {
@@ -917,6 +917,79 @@
    "quickSearch": 0,
    "changeable": 1,
    "ext": "https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/lib/token.json$$$https://ghfast.top/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/json/quarkshare.txt"
+  },
+  {
+   "key": "暴風短剧",
+   "name": "短剧大全(1.2万)⚡直连",
+   "type": 1,
+   "api": "https://bfzyapi.com/api.php/provide/vod/from/bfzym3u8",
+   "searchable": 1,
+   "quickSearch": 1,
+   "changeable": 1,
+   "categories": [
+    "短剧大全",
+    "影视解说"
+   ]
+  },
+  {
+   "key": "B站短剧",
+   "name": "🅱️B站短剧/漫剧🔍搜",
+   "type": 3,
+   "api": "https://fastly.jsdelivr.net/gh/jifeng250/tvbox-sources@main/js/drpy2.min.js",
+   "ext": "https://fastly.jsdelivr.net/gh/jifeng250/tvbox-sources@main/js/bilibili_shorts.js",
+   "searchable": 1,
+   "quickSearch": 1,
+   "changeable": 0
+  },
+  {
+   "key": "七猫短剧",
+   "name": "七猫 · 短剧",
+   "type": 3,
+   "api": "csp_ShortQimao",
+   "jar": "./spider_shorts.jar",
+   "searchable": 1,
+   "quickSearch": 1,
+   "changeable": 0
+  },
+  {
+   "key": "河马短剧",
+   "name": "河马 · 短剧",
+   "type": 3,
+   "api": "csp_ShortHema",
+   "jar": "./spider_shorts.jar",
+   "searchable": 1,
+   "quickSearch": 1,
+   "changeable": 0
+  },
+  {
+   "key": "围观短剧",
+   "name": "围观 · 短剧",
+   "type": 3,
+   "api": "csp_ShortWeiguan",
+   "jar": "./spider_shorts.jar",
+   "searchable": 1,
+   "quickSearch": 1,
+   "changeable": 0
+  },
+  {
+   "key": "好看短剧",
+   "name": "好看 · 短剧",
+   "type": 3,
+   "api": "csp_ShortHaokan",
+   "jar": "./spider_shorts.jar",
+   "searchable": 1,
+   "quickSearch": 1,
+   "changeable": 0
+  },
+  {
+   "key": "星芽短剧",
+   "name": "星芽 · 短剧",
+   "type": 3,
+   "api": "csp_ShortXingya",
+   "jar": "./spider_shorts.jar",
+   "searchable": 1,
+   "quickSearch": 1,
+   "changeable": 0
   }
  ],
  "parses": [
