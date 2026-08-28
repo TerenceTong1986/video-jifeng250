@@ -9,8 +9,8 @@
    }
   }
  ],
- "updateTime": "2026-08-28 07:49",
- "warningText": "精选单仓·本地版：jar 走本地文件，断网可用。若源加载不出目录，把 jar 改为 file:///绝对路径（见 README）",
+ "updateTime": "2026-08-28 10:02",
+ "warningText": "本地版：jar 走本地文件，断网可用。若源加载不出目录，把 jar 改为 file:///绝对路径（见 README）",
  "sites": [
   {
    "key": "虎牙",

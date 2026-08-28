@@ -5,7 +5,7 @@
 用于云端每次源/直播更新后自动生成 tvbox-sources-YYYYMMDD.zip + version.json，
 并存回仓库根，使 PWA 下载页始终显示最新包。
 
-打包内容：curated.json + curated-local.json + 3 个 jar + 直播源 + 台标/EPG 配置等
+打包内容：curated.json + curated-local.json + curated-shorts.json + curated-shorts-local.json + 3/4 个 jar + 直播源 + 台标/EPG 配置等
 排除：.git / __pycache__ / 其它 tvbox-sources-*.zip / version.json / sync.bat / 调试jar
 """
 import zipfile, os, sys, json
@@ -19,24 +19,32 @@ REQUIRED = ['curated.json', 'fan.jar', 'custom_spider.jar', 'pg.jar', 'tvfan/Clo
 EXCLUDE_FILES = {'sync.bat', 'XBPQ_upgraded.jar', 'update.log', 'HCCX.jar', 'curated-bak-unsafe.json'}
 
 
-def make_local_config():
-    """生成 curated-local.json：仅 jar 字段指向包内相对路径；js源保持在线URL(影视仓本地js源不可靠,曾致全源崩溃)"""
-    src = os.path.join(SRC, 'curated.json')
-    dst = os.path.join(SRC, 'curated-local.json')
+def _localize(name, jar):
+    """生成某仓的 -local.json：仅 jar 字段指向包内相对路径；js源保持在线URL(影视仓本地js源不可靠,曾致全源崩溃)"""
+    src = os.path.join(SRC, name)
+    dst = src.replace('.json', '-local.json')
+    if not os.path.exists(src):
+        return None
     cfg = json.load(open(src, encoding='utf-8'))
-    cfg['spider'] = './fan.jar'
+    cfg['spider'] = jar
     for s in cfg.get('sites', []):
         if 'jar' in s:
-            for jn in ['custom_spider.jar', 'pg.jar', 'fan.jar']:
+            for jn in ['custom_spider.jar', 'pg.jar', 'fan.jar', 'spider_shorts.jar']:
                 if jn in s['jar']:
                     s['jar'] = './' + jn
                     break
     # 注: 不要改写 type=3 的 js 源 api/ext 为本地路径 —— 影视仓本地包加载 js 源会失败并拖垮整个配置
     cfg['updateTime'] = datetime.now().strftime('%Y-%m-%d %H:%M')
-    cfg['warningText'] = '精选单仓·本地版：jar 走本地文件，断网可用。若源加载不出目录，把 jar 改为 file:///绝对路径（见 README）'
+    cfg['warningText'] = '本地版：jar 走本地文件，断网可用。若源加载不出目录，把 jar 改为 file:///绝对路径（见 README）'
     with open(dst, 'w', encoding='utf-8') as f:
         json.dump(cfg, f, ensure_ascii=False, indent=1)
     return dst
+
+
+def make_local_configs():
+    """生成所有仓的 -local.json：精选主仓(./fan.jar) + 短剧专仓(./spider_shorts.jar)"""
+    _localize('curated.json', './fan.jar')
+    _localize('curated-shorts.json', './spider_shorts.jar')
 
 
 def main():
@@ -46,8 +54,8 @@ def main():
         print(f"❌ 缺少关键文件: {', '.join(missing)}，拒绝打包")
         sys.exit(1)
 
-    make_local_config()
-    print("已生成本地版配置: curated-local.json")
+    make_local_configs()
+    print("已生成本地版配置: curated-local.json + curated-shorts-local.json")
 
     date_str = datetime.now().strftime("%Y%m%d")
     dst = os.path.join(SRC, f"tvbox-sources-{date_str}.zip")
