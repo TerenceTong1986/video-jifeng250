@@ -1,12 +1,12 @@
 {
   "urls": [
     {
-      "name": "⭐⭐⭐小盒子多仓",
-      "url": "http://xhztv.top/dc"
-    },
-    {
       "name": "⭐⭐⭐小盒子4K",
       "url": "http://xhztv.top/4k.json"
+    },
+    {
+      "name": "⭐⭐⭐小盒子多仓",
+      "url": "http://xhztv.top/dc"
     },
     {
       "name": "⭐⭐⭐小盒子单仓",
@@ -15,14 +15,6 @@
     {
       "name": "⭐⭐⭐老刘备",
       "url": "https://raw.liucn.cc/box/m.json"
-    },
-    {
-      "name": "⭐⭐⭐OK影视",
-      "url": "https://cdn.jsdelivr.net/gh/2hacc/TVBox@main/oktv.json"
-    },
-    {
-      "name": "🪞OK影视镜像1",
-      "url": "https://fastly.jsdelivr.net/gh/2hacc/TVBox@main/oktv.json"
     },
     {
       "name": "⭐⭐⭐拾光多仓",
@@ -45,16 +37,24 @@
       "url": "https://6800.kstore.vip/fish.json"
     },
     {
+      "name": "⭐⭐⭐OK影视",
+      "url": "https://cdn.jsdelivr.net/gh/2hacc/TVBox@main/oktv.json"
+    },
+    {
+      "name": "🪞OK影视镜像1",
+      "url": "https://fastly.jsdelivr.net/gh/2hacc/TVBox@main/oktv.json"
+    },
+    {
       "name": "⭐⭐⭐FM影视",
       "url": "http://fmys.top/fmys.json"
     },
     {
-      "name": "⭐⭐⭐高天流云",
-      "url": "https://fastly.jsdelivr.net/gh/gaotianliuyun/gao@master/js.json"
-    },
-    {
       "name": "⭐⭐⭐VOX",
       "url": "http://rihou.cc:88/demo.php"
+    },
+    {
+      "name": "⭐⭐⭐高天流云",
+      "url": "https://fastly.jsdelivr.net/gh/gaotianliuyun/gao@master/js.json"
     },
     {
       "name": "⭐⭐⭐肥猫",
