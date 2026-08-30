@@ -25,6 +25,14 @@
       "url": "https://gitlab.com/duomv/dzhipy/-/raw/main/index.json"
     },
     {
+      "name": "⭐⭐⭐OK影视",
+      "url": "https://cdn.jsdelivr.net/gh/2hacc/TVBox@main/oktv.json"
+    },
+    {
+      "name": "🪞OK影视镜像1",
+      "url": "https://fastly.jsdelivr.net/gh/2hacc/TVBox@main/oktv.json"
+    },
+    {
       "name": "⭐⭐⭐王二小",
       "url": "https://9280.kstore.vip/newwex.json"
     },
@@ -35,14 +43,6 @@
     {
       "name": "⭐⭐⭐无名",
       "url": "https://6800.kstore.vip/fish.json"
-    },
-    {
-      "name": "⭐⭐⭐OK影视",
-      "url": "https://cdn.jsdelivr.net/gh/2hacc/TVBox@main/oktv.json"
-    },
-    {
-      "name": "🪞OK影视镜像1",
-      "url": "https://fastly.jsdelivr.net/gh/2hacc/TVBox@main/oktv.json"
     },
     {
       "name": "⭐⭐⭐FM影视",
@@ -69,12 +69,12 @@
       "url": "https://jinenge.us.kg/app/tvbox/tvbox.json"
     },
     {
-      "name": "⭐⭐⭐挺好分享多仓",
-      "url": "https://ztha.top/TVBox/GYCK.json"
-    },
-    {
       "name": "⭐⭐⭐小马",
       "url": "https://szyyds.cn/tv/x.json"
+    },
+    {
+      "name": "⭐⭐⭐挺好分享多仓",
+      "url": "https://ztha.top/TVBox/GYCK.json"
     },
     {
       "name": "⭐⭐⭐俊佬",
