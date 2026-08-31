@@ -37,20 +37,12 @@
       "url": "https://6800.kstore.vip/fish.json"
     },
     {
-      "name": "⭐⭐⭐FM影视",
-      "url": "http://fmys.top/fmys.json"
-    },
-    {
-      "name": "⭐⭐⭐OK影视",
-      "url": "https://cdn.jsdelivr.net/gh/2hacc/TVBox@main/oktv.json"
-    },
-    {
-      "name": "🪞OK影视镜像1",
-      "url": "https://fastly.jsdelivr.net/gh/2hacc/TVBox@main/oktv.json"
-    },
-    {
       "name": "⭐⭐⭐高天流云",
       "url": "https://fastly.jsdelivr.net/gh/gaotianliuyun/gao@master/js.json"
+    },
+    {
+      "name": "⭐⭐⭐FM影视",
+      "url": "http://fmys.top/fmys.json"
     },
     {
       "name": "⭐⭐⭐俊佬",
@@ -61,16 +53,20 @@
       "url": "http://rihou.cc:88/demo.php"
     },
     {
-      "name": "⭐⭐⭐嗷呜",
-      "url": "http://itv666.cc/aowu/config.webp"
+      "name": "⭐⭐⭐OK影视",
+      "url": "https://cdn.jsdelivr.net/gh/2hacc/TVBox@main/oktv.json"
     },
     {
-      "name": "⭐⭐⭐肥猫",
-      "url": "http://肥猫.net/"
+      "name": "🪞OK影视镜像1",
+      "url": "https://fastly.jsdelivr.net/gh/2hacc/TVBox@main/oktv.json"
     },
     {
       "name": "⭐⭐⭐jinenge",
       "url": "https://jinenge.us.kg/app/tvbox/tvbox.json"
+    },
+    {
+      "name": "⭐⭐⭐嗷呜",
+      "url": "http://itv666.cc/aowu/config.webp"
     },
     {
       "name": "⭐⭐⭐小马",
@@ -83,6 +79,10 @@
     {
       "name": "⭐⭐⭐饭太硬(ftygit)",
       "url": "https://cdn09022024.gitlink.org.cn/api/v1/repos/xxooo/in/raw/in.bmp"
+    },
+    {
+      "name": "⭐⭐肥猫",
+      "url": "http://肥猫.net/"
     },
     {
       "name": "❌摸鱼儿",
