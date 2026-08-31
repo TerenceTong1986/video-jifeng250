@@ -9,7 +9,7 @@
    }
   }
  ],
- "updateTime": "2026-08-30 14:23",
+ "updateTime": "2026-08-31 17:01",
  "warningText": "本地版：jar 走本地文件，断网可用。若源加载不出目录，把 jar 改为 file:///绝对路径（见 README）",
  "sites": [
   {
