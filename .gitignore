@@ -5,3 +5,4 @@ update.log.*
 __pycache__/
 *.pyc
 sync.bat
+curated.json.bak*

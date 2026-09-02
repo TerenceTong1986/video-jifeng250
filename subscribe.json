@@ -1,16 +1,16 @@
 {
-  "urls": [
-    {
-      "name": "精选仓(44源)",
-      "url": "https://gh-proxy.com/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/curated.json"
-    },
-    {
-      "name": "B站漫剧仓",
-      "url": "https://gh-proxy.com/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/curated-bili.json"
-    },
-    {
-      "name": "短剧专仓",
-      "url": "https://gh-proxy.com/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/curated-shorts.json"
-    }
-  ]
+ "urls": [
+  {
+   "name": "精选仓(41源)",
+   "url": "https://gh-proxy.com/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/curated.json"
+  },
+  {
+   "name": "B站漫剧仓",
+   "url": "https://gh-proxy.com/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/curated-bili.json"
+  },
+  {
+   "name": "短剧专仓",
+   "url": "https://gh-proxy.com/https://raw.githubusercontent.com/jifeng250/tvbox-sources/main/curated-shorts.json"
+  }
+ ]
 }
