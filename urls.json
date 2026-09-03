@@ -17,12 +17,12 @@
       "url": "http://xhztv.top/xhz/"
     },
     {
-      "name": "⭐⭐⭐道长",
-      "url": "https://gitlab.com/duomv/dzhipy/-/raw/main/index.json"
-    },
-    {
       "name": "⭐⭐⭐拾光多仓",
       "url": "http://xmbjm.fh4u.org/dc.txt"
+    },
+    {
+      "name": "⭐⭐⭐道长",
+      "url": "https://gitlab.com/duomv/dzhipy/-/raw/main/index.json"
     },
     {
       "name": "⭐⭐⭐高天流云",
@@ -53,10 +53,6 @@
       "url": "http://rihou.cc:88/demo.php"
     },
     {
-      "name": "⭐⭐⭐肥猫",
-      "url": "http://肥猫.net/"
-    },
-    {
       "name": "⭐⭐⭐OK影视",
       "url": "https://cdn.jsdelivr.net/gh/2hacc/TVBox@main/oktv.json"
     },
@@ -65,12 +61,16 @@
       "url": "https://fastly.jsdelivr.net/gh/2hacc/TVBox@main/oktv.json"
     },
     {
-      "name": "⭐⭐⭐jinenge",
-      "url": "https://jinenge.us.kg/app/tvbox/tvbox.json"
+      "name": "⭐⭐⭐肥猫",
+      "url": "http://肥猫.net/"
     },
     {
       "name": "⭐⭐⭐嗷呜",
       "url": "http://itv666.cc/aowu/config.webp"
+    },
+    {
+      "name": "⭐⭐⭐jinenge",
+      "url": "https://jinenge.us.kg/app/tvbox/tvbox.json"
     },
     {
       "name": "⭐⭐⭐挺好分享多仓",
