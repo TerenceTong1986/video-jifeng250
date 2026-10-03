@@ -41,10 +41,6 @@
       "url": "http://fmys.top/fmys.json"
     },
     {
-      "name": "⭐⭐⭐VOX",
-      "url": "http://rihou.cc:88/demo.php"
-    },
-    {
       "name": "⭐⭐⭐俊佬",
       "url": "http://home.jundie.top:81/top98.json"
     },
@@ -59,6 +55,10 @@
     {
       "name": "⭐⭐⭐道长",
       "url": "https://gitlab.com/duomv/dzhipy/-/raw/main/index.json"
+    },
+    {
+      "name": "⭐⭐⭐VOX",
+      "url": "http://rihou.cc:88/demo.php"
     },
     {
       "name": "⭐⭐⭐jinenge",
