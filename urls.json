@@ -21,12 +21,20 @@
       "url": "http://xmbjm.fh4u.org/dc.txt"
     },
     {
-      "name": "⭐⭐⭐高天流云",
-      "url": "https://fastly.jsdelivr.net/gh/gaotianliuyun/gao@master/js.json"
+      "name": "⭐⭐⭐OK影视",
+      "url": "https://cdn.jsdelivr.net/gh/2hacc/TVBox@main/oktv.json"
+    },
+    {
+      "name": "🪞OK影视镜像1",
+      "url": "https://fastly.jsdelivr.net/gh/2hacc/TVBox@main/oktv.json"
     },
     {
       "name": "⭐⭐⭐无名",
       "url": "https://6800.kstore.vip/fish.json"
+    },
+    {
+      "name": "⭐⭐⭐高天流云",
+      "url": "https://fastly.jsdelivr.net/gh/gaotianliuyun/gao@master/js.json"
     },
     {
       "name": "⭐⭐⭐王二小",
@@ -35,14 +43,6 @@
     {
       "name": "🪞王二小镜像1",
       "url": "https://9280.kstore.vip/wex.json"
-    },
-    {
-      "name": "⭐⭐⭐OK影视",
-      "url": "https://cdn.jsdelivr.net/gh/2hacc/TVBox@main/oktv.json"
-    },
-    {
-      "name": "🪞OK影视镜像1",
-      "url": "https://fastly.jsdelivr.net/gh/2hacc/TVBox@main/oktv.json"
     },
     {
       "name": "⭐⭐⭐FM影视",
