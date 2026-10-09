@@ -49,28 +49,24 @@
       "url": "https://9280.kstore.vip/wex.json"
     },
     {
-      "name": "⭐⭐⭐高天流云",
-      "url": "https://fastly.jsdelivr.net/gh/gaotianliuyun/gao@master/js.json"
-    },
-    {
       "name": "⭐⭐⭐道长",
       "url": "https://gitlab.com/duomv/dzhipy/-/raw/main/index.json"
     },
     {
-      "name": "⭐⭐⭐VOX",
-      "url": "http://rihou.cc:88/demo.php"
+      "name": "⭐⭐⭐高天流云",
+      "url": "https://fastly.jsdelivr.net/gh/gaotianliuyun/gao@master/js.json"
     },
     {
       "name": "⭐⭐⭐jinenge",
       "url": "https://jinenge.us.kg/app/tvbox/tvbox.json"
     },
     {
-      "name": "⭐⭐⭐挺好分享多仓",
-      "url": "https://ztha.top/TVBox/GYCK.json"
-    },
-    {
       "name": "⭐⭐⭐小马",
       "url": "https://szyyds.cn/tv/x.json"
+    },
+    {
+      "name": "⭐⭐⭐挺好分享多仓",
+      "url": "https://ztha.top/TVBox/GYCK.json"
     },
     {
       "name": "⭐⭐⭐饭太硬(ftygit)",
@@ -79,6 +75,10 @@
     {
       "name": "⭐⭐⭐肥猫",
       "url": "http://肥猫.net/"
+    },
+    {
+      "name": "⭐VOX",
+      "url": "http://rihou.cc:88/demo.php"
     },
     {
       "name": "❌嗷呜",
