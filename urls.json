@@ -29,10 +29,6 @@
       "url": "https://fastly.jsdelivr.net/gh/2hacc/TVBox@main/oktv.json"
     },
     {
-      "name": "⭐⭐⭐高天流云",
-      "url": "https://fastly.jsdelivr.net/gh/gaotianliuyun/gao@master/js.json"
-    },
-    {
       "name": "⭐⭐⭐无名",
       "url": "https://6800.kstore.vip/fish.json"
     },
@@ -43,6 +39,10 @@
     {
       "name": "🪞王二小镜像1",
       "url": "https://9280.kstore.vip/wex.json"
+    },
+    {
+      "name": "⭐⭐⭐高天流云",
+      "url": "https://fastly.jsdelivr.net/gh/gaotianliuyun/gao@master/js.json"
     },
     {
       "name": "⭐⭐⭐FM影视",
